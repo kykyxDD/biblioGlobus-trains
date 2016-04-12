@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ROOT>
+    <TRIP>
+        <DATE>17.04.2016</DATE>
+        <NUM>RZD104В</NUM>
+        <CONFIG_UID>TRAIN2</CONFIG_UID>
+        <BOARDING_TIME>1010</BOARDING_TIME>
+        <DEPARTURE_TIME>1010</DEPARTURE_TIME>
+        <CITYRUS_FROM>МОСКВА КАЗАНСКАЯ</CITYRUS_FROM>
+        <CITYRUS_TO>АДЛЕР</CITYRUS_TO>
+        <CITYEN_FROM>Moscow</CITYEN_FROM>
+        <CITYEN_TO></CITYEN_TO>
+    </TRIP>
+    <TRAIN>
+    <CAR type="coupe" num="1" gender="" elreg="true" twostorey="true">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <PRICE from="8267" to="" srv="667"/>
+    </CAR>    <CAR type="coupe" num="5" gender="" elreg="true" twostorey="true">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <PRICE from="8267" to="" srv="667"/>
+    </CAR>    <CAR type="coupe" num="10" gender="" elreg="true" twostorey="true">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <PRICE from="8267" to="" srv="667"/>
+    </CAR>    <CAR type="coupe" num="11" gender="" elreg="true" twostorey="true">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <PRICE from="8267" to="" srv="667"/>
+    </CAR>    <CAR type="coupe" num="13" gender="" elreg="true" twostorey="true">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <PRICE from="8267" to="" srv="667"/>
+    </CAR>    </TRAIN>
+    <PASSENGERS>        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
+        <PASSENGER>
+            <ID>102300000821893518</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>F</SEX>
+            <AGE>2</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>MARINA</NAME>
+            <IS_INF>true</IS_INF>
+            <PARENTID>102300000821893318</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893318</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>NIKOLAI</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893418</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>8</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>RAISA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="1-32"  status="*" sc="C"  sex="" />        <SEAT no="5-15"  status="*" sc="C"  sex="" />        <SEAT no="10-100"  status="*" sc="C"  sex="" />        <SEAT no="11-14"  status="*" sc="C"  sex="" />        <SEAT no="11-2"  status="*" sc="C"  sex="" />        <SEAT no="11-10"  status="*" sc="C"  sex="" />        <SEAT no="11-12"  status="*" sc="C"  sex="" />        <SEAT no="13-1"  status="*" sc="C"  sex="" />        <SEAT no="13-2"  status="*" sc="C"  sex="" />        <SEAT no="13-3"  status="*" sc="C"  sex="" />    </SEATS></ROOT>
+

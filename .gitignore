@@ -1,5 +1,4 @@
 *.sass-cache/
-.src/css/common.css
 build
 node_modules
 bower_components

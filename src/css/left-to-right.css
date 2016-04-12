@@ -1,0 +1,142 @@
+.airline-logo-small {
+    display: none;
+}
+.airline-logo {
+    display: none !important;
+}
+
+.controls .screen {
+    display: none !important;
+}
+
+.controls .board-info {
+    top: 15px !important;
+}
+
+.controls .board-info .route {
+    white-space: normal !important;
+}
+
+.landscape .controls .users-box {
+    top: 150px !important;
+}
+
+.train_nav {
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    margin-left: -375px;    
+    font-family: Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.portrait .train_nav {
+    margin-left: -160px;
+}
+
+.train_nav td {
+    text-align: center;
+}
+
+.train_nav .current {
+    font-size: 20px;
+    width: 180px;
+}
+
+.train_nav .current .type {
+    font-size: 14px;
+}
+
+.train_nav .neighbors {
+    font-size: 16px;
+    width: 140px;
+    cursor: pointer;
+}
+
+.train_nav .neighbors .type {
+    font-size: 12px;
+}
+
+.view .plane .deck .selection .wrap {
+  -webkit-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  -moz-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  -ms-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  -o-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  position: relative;
+  
+}
+
+.platz_lower_top  .wrap {
+  -webkit-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+}
+.platz_lower_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+}
+.platz_lower_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+}
+.platz_upper_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+}
+.platz_upper_top  .wrap {
+  -webkit-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+}
+.platz_upper_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+}
+.kupe_upper_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+}
+.kupe_upper_right .wrap {
+  -webkit-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+}
+.kupe_lower_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+}
+.kupe_lower_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+  transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+}

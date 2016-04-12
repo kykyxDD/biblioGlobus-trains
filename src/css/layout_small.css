@@ -1,0 +1,348 @@
+/************************************ MIXINS **********************************/
+body {
+  font-size: 50%; }
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 132px;
+  height: 35px;
+  border-radius: 0 35px 35px 0;
+  background-size: 115px;
+  background-position: 6px; }
+
+.view .switch-deck {
+  width: 80px;
+  height: 37px;
+  background-repeat: no-repeat;
+  padding-top: 12px;
+  font-size: 1.1em; }
+  .view .switch-deck.two {
+    position: absolute;
+    left: -3px;
+    top: 60px; }
+  .view .switch-deck.one {
+    position: absolute;
+    left: -3px;
+    top: 96px; }
+
+.controls .screen {
+  display: none; }
+  .controls .screen .board-num {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 4px; }
+  .controls .screen .airline-logo-small {
+    position: absolute;
+    left: auto;
+    top: 0px;
+    right: 6px;
+    bottom: auto;
+    width: 75px;
+    height: 25px; }
+  .controls .screen .nav {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5); }
+.controls .board-info-table {
+  font-size: 1.4em; }
+  .controls .board-info-table table {
+    width: 100%; }
+.controls .board-info .route {
+  margin: 3px 0px; }
+.controls .board-info .cred {
+  padding: 2px; }
+  .controls .board-info .cred .number, .controls .board-info .cred .date {
+    line-height: 1;
+    display: block;
+    float: none; }
+.controls .users-box .users .user {
+  height: 29px; }
+  .controls .users-box .users .user.infant {
+    height: 14px; }
+  .controls .users-box .users .user .info {
+    padding-left: 6px; }
+    .controls .users-box .users .user .info .name {
+      padding: 1px 0; }
+    .controls .users-box .users .user .info .status tr {
+      height: 7px; }
+    .controls .users-box .users .user .info .status .place, .controls .users-box .users .user .info .status .class {
+      display: none; }
+    .controls .users-box .users .user .info .status .message td {
+      padding-bottom: 2px; }
+  .controls .users-box .users .user .print {
+    width: 33px; }
+    .controls .users-box .users .user .print .icon {
+      display: none; }
+  .controls .users-box .users .user .class {
+    display: none; }
+  .controls .users-box .users .user .ok {
+    display: none;
+    width: 19px;
+    padding-top: 7px; }
+    .controls .users-box .users .user .ok svg {
+      width: 9px;
+      height: 9px; }
+.controls .confirm .confirm-caption {
+  padding-top: 22px; }
+.controls .confirm .confirm-tick {
+  background-size: 17px 17px; }
+
+.popup .register {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+  .popup .register .button-close {
+    position: absolute;
+    left: auto;
+    top: 2px;
+    right: 2px;
+    bottom: auto;
+    width: 35px;
+    height: 35px; }
+  .landscape .popup .register .content {
+    margin: 10px 40px; }
+  .portrait .popup .register .content {
+    margin: 50px 10px; }
+  .popup .register .content .header .notice {
+    margin-top: 4px; }
+  .popup .register .headers-wrap {
+    width: auto; }
+    .landscape .popup .register .headers-wrap {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      right: 60px;
+      bottom: auto; }
+    .portrait .popup .register .headers-wrap {
+      position: absolute;
+      left: 10px;
+      top: 120px;
+      right: 10px;
+      bottom: auto; }
+  .landscape .popup .register .users-container {
+    position: absolute;
+    left: 60px;
+    top: 80px;
+    right: 60px;
+    bottom: 50px; }
+  .portrait .popup .register .users-container {
+    position: absolute;
+    left: 10px;
+    top: 145px;
+    right: 10px;
+    bottom: 60px; }
+  .popup .register .list td {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 6px; }
+    .popup .register .list td:nth-child(1) {
+      padding: 0 11px; }
+    .popup .register .list td:nth-child(2) {
+      width: 50px; }
+    .popup .register .list td:nth-child(3) {
+      width: 87px; }
+  .popup .register .list.users .user td {
+    height: 20px; }
+  .popup .register .list.users .error td {
+    height: 7px; }
+  .popup .register .list.headers {
+    height: 25px; }
+    .popup .register .list.headers td {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 3px 6px; }
+  .popup .register .actions-wrap {
+    width: auto; }
+    .landscape .popup .register .actions-wrap {
+      position: absolute;
+      left: 60px;
+      top: auto;
+      right: 60px;
+      bottom: 0px; }
+    .portrait .popup .register .actions-wrap {
+      position: absolute;
+      left: 10px;
+      top: auto;
+      right: 10px;
+      bottom: 5px; }
+  .popup .register .actions .action {
+    width: 110px;
+    height: 39px; }
+.popup .register-error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 150px;
+  margin-left: -150px;
+  margin-top: -75px; }
+  .popup .register-error .message {
+    padding: 15px; }
+  .popup .register-error .close {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    right: auto;
+    bottom: 10px;
+    width: 100px;
+    height: 25px;
+    margin-left: -50px;
+    padding-top: 8px; }
+
+.background .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 176px;
+  height: 176px;
+  margin-left: -88px;
+  margin-top: -88px; }
+
+.landscape .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 164px;
+  bottom: 0; }
+.landscape .controls {
+  position: absolute;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 164px; }
+  .landscape .controls .board-info-table {
+    display: none; }
+  .landscape .controls .board-info {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 162px;
+    height: 40px; }
+  .landscape .controls .users-box {
+    position: absolute;
+    left: 1px;
+    top: 42px;
+    right: 1px;
+    bottom: 42px; }
+  .landscape .controls .confirm {
+    position: absolute;
+    left: auto;
+    top: auto;
+    right: 1px;
+    bottom: 1px;
+    width: 162px;
+    height: 40px; }
+.landscape .users-box .users .user .print {
+  width: 33px; }
+.landscape .users-box .users .user .class .label {
+  height: 9px;
+  line-height: 10px; }
+.landscape .users-box .users .user .class .value {
+  height: 12px; }
+.landscape .users-box .users .user .place {
+  width: 33px;
+  text-align: center; }
+  .landscape .users-box .users .user .place .label {
+    height: 9px;
+    line-height: 10px; }
+  .landscape .users-box .users .user .place .value {
+    height: 12px; }
+.landscape.demo .controls .screen {
+  display: block;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 162px;
+  height: 119px; }
+.landscape.demo .controls .airline-logo {
+  position: absolute;
+  left: 1px;
+  top: 121px;
+  right: 1px;
+  bottom: 42px; }
+
+.portrait .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 132px; }
+.portrait .controls {
+  position: absolute;
+  left: 0;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  height: 132px; }
+  .portrait .controls .board-info-table {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: auto;
+    height: 40px;
+    right: 42px; }
+  .portrait .controls .board-info {
+    display: none; }
+  .portrait .controls .users-box {
+    position: absolute;
+    left: 4px;
+    top: 48px;
+    right: 4px;
+    bottom: 4px; }
+  .portrait .controls .confirm {
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    left: auto;
+    top: 4px;
+    right: 4px;
+    bottom: auto; }
+.portrait .users-box .users .user {
+  font-size: 2.2em; }
+  .portrait .users-box .users .user .print div, .portrait .users-box .users .user .class div, .portrait .users-box .users .user .place div {
+    display: inline-block; }
+  .portrait .users-box .users .user .print {
+    width: 110px; }
+  .portrait .users-box .users .user .class {
+    width: 100px; }
+  .portrait .users-box .users .user .place {
+    width: 64px; }
+.portrait.demo .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 127px; }
+.portrait.demo .controls {
+  height: 127px; }
+  .portrait.demo .controls .board-info-table {
+    display: none; }
+  .portrait.demo .controls .screen {
+    display: block;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 162px;
+    height: 119px; }
+  .portrait.demo .controls .airline-logo {
+    position: absolute;
+    left: 174px;
+    top: 4px;
+    right: 4px;
+    bottom: 48px;
+    background-size: auto 100%; }
+  .portrait.demo .controls .confirm {
+    position: absolute;
+    left: 174px;
+    top: auto;
+    right: 4px;
+    bottom: 4px;
+    width: auto;
+    height: 40px; }

@@ -1,0 +1,23 @@
+{
+  "name": "train-registration",
+  "version": "1.0.0",
+  "description": "Registration on train",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "train",
+    "registration"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sequence": "^0.4.5",
+    "gulp-watch": "^4.3.5",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2"
+  }
+}

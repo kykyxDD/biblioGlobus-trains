@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/list.css" />
+    <script type="text/javascript" src="js/loader.js"></script>
+    <script>
+        var loader = new Loader
+        loader.json("config.json", make_list)
+        
+        function make_list(data)
+        {
+            var table = document.querySelector(".plane")
+            var html = ""
+        
+            for (var i=0; i<data.planes.length; i++) {
+                var bus = data.planes[i]
+                var uid = bus.uid
+                var thumb = bus.thumb
+                var model = bus.model
+                var seats = bus.seats
+                var row = '<tr><td width="20%"></td>' +
+                              '<td width="300"><a target="_blank" href="train.html?tourid=' + uid + '&amp;demo=true"><img src="' + thumb + '"/></a></td>' +
+                              '<td wudth="500">Код в системе: ' + uid + ', Модель: ' + model + '</td>' +
+                              '<td>' + seats + ' мест</td>' + 
+                              '<td width="130" align="center"><a target="_blank" href="train.html?tourid=' + uid + '&amp;demo=true&no_flash=true">html</a> <a target="_blank" href="train.html?tourid=' + uid + '&amp;demo=true">flash</a></td><td width="20%"></td></tr>'
+
+                html += row
+            }
+            
+            table.innerHTML += html
+        }
+    
+    </script>
+</head>
+<body>
+	<div class="header">
+		<img src="img/biblioglobus-logo.png" class="logo" />
+	</div>
+
+<div class="title">Список автобусов, доступных для регистрации на автомобильные туры.</div>
+    
+<table class="plane">
+    <tr><th></th><th>Превью</th><th>Модель</th><th></th><th style="text-align:center">Ссылка</th><th></th><tr>
+    <!--
+    <tr>
+        <td width="20%"></td><td width="300"><a target="_blank" href='train.html?tourid=BUS2&demo=true'><img src='img/bus2.jpg'/></a></td><td><a target="_blank" href='train.html?tourid=BUS2&demo=true'>Автобус тип 2</a></td><td>48 мест, 2 оси, 2 выхода.</td><td width="20%"></td>
+    </tr>
+    -->
+</table>
+
+<!--<div class="comment">Примеры автоматически сгенерированных автобусов для регистрации на автомобильные туры.</div>-->
+	
+</body>

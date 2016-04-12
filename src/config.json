@@ -1,0 +1,355 @@
+{
+	"locale_url": "locale.xml",
+
+	"planes": [
+		{ "uid": "TRAIN", "model": "Поезд", "config": "json/train.json", "seats": 999, "thumb": "img/train.jpg" },
+		{ "uid": "TRAIN2", "model": "Поезд", "config": "json/train.json", "seats": 999, "thumb": "img/train.jpg" }
+	],
+	"seat_types": {
+    "kupe_lower_left":{
+        "img":{"ref":"kupe_lower_left"},
+        "people":[
+            {"ref":"kup_l_l_w1","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_l_w2","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_l_w3","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_l_w4","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_l_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_l_l_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_l_l_m1","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_l_m2","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_l_m3","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_l_m4","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_l_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_l_l_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_l_l_w1","child":true,"sex":"f","age":[0,999]},
+            {"ref":"kup_l_l_m1","child":true,"sex":"m","age":[0,999]}
+        ],
+        "code":"C"
+    },
+    "kupe_upper_right":{
+        "img":{"ref":"kupe_upper_right"},
+        "people":[
+            {"ref":"kup_u_r_m1","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_r_m2","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_r_m3","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_r_m4","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_r_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_r_w1","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_r_w2","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_r_w3","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_r_w4","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_r_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_u_r_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_u_r_m1","child":true,"sex":"m","age":[0,999]},
+            {"ref":"kup_u_r_w1","child":true,"sex":"f","age":[0,999]}
+        ],
+        "code":"C"
+    },
+    "kupe_upper_left":{
+        "img":{"ref":"kupe_upper_left"},
+        "people":[
+            {"ref":"kup_u_l_m1","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_l_m2","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_l_m3","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_l_m4","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_u_l_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_l_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_l_w1","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_l_w2","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_l_w3","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_l_w4","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_u_l_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_u_l_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_u_l_m1","child":true,"sex":"m","age":[0,999]},
+            {"ref":"kup_u_l_w1","child":true,"sex":"f","age":[0,999]}
+        ],
+        "code":"C"
+    },
+    "kupe_lower_right":{
+        "img":{"ref":"kupe_lower_right"},
+        "people":[
+            {"ref":"kup_l_r_m1","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_r_m2","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_r_m3","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_r_m4","child":false,"sex":"m","age":[12,999]},
+            {"ref":"kup_l_r_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_l_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_l_r_w1","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_r_w2","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_r_w3","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_r_w4","child":false,"sex":"f","age":[12,999]},
+            {"ref":"kup_l_r_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_l_r_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_l_r_m1","child":true,"sex":"m","age":[0,999]},
+            {"ref":"kup_l_r_w1","child":true,"sex":"f","age":[0,999]}
+        ],
+        "code":"C"
+    },
+
+    "platz_upper_left":{
+        "img":{"ref":"platz_upper_left"},
+        "people":[
+            {"ref":"u_l_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_l_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_l_w2","child":true,"sex":"f","age":[0,999]},
+            {"ref":"u_l_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_l_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_l_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_l_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_l_m3","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_l_m4","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_l_m4","child":true,"sex":"m","age":[0,999]},
+            {"ref":"u_l_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"u_l_b2","child":false,"sex":"m","age":[0,12]}
+        ],
+        "code":"Y"
+    },
+    "platz_lower_top":{
+        "img":{"ref":"platz_lower_top"},
+        "people":[
+            {"ref":"b_t_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_t_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_t_w3","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_t_w3","child":true,"sex":"f","age":[0,999]},
+            {"ref":"b_t_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_t_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_t_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_t_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_t_m2","child":true,"sex":"m","age":[0,999]},
+            {"ref":"b_t_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"b_t_g2","child":false,"sex":"f","age":[0,12]}],
+        "code":"Y"
+    },
+    "platz_lower_right":{
+        "img":{"ref":"platz_lower_right"},
+        "people":[
+            {"ref":"b_r_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_r_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_r_w2","child":true,"sex":"f","age":[0,999]},
+            {"ref":"b_r_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_r_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_r_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_r_m2","child":true,"sex":"m","age":[0,999]},
+            {"ref":"b_r_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"b_r_g2","child":false,"sex":"f","age":[0,12]}
+        ],"code":"Y"
+    },
+    "platz_lower_left": {
+        "img":{"ref":"platz_lower_left"},
+        "people":[
+            {"ref":"b_l_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_l_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"b_l_w2","child":true,"sex":"f","age":[0,999]},
+            {"ref":"b_l_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_l_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_l_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_l_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"b_l_m1","child":true,"sex":"m","age":[0,999]},
+            {"ref":"b_l_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"b_l_g2","child":false,"sex":"f","age":[0,12]}
+        ],
+        "code":"Y"
+    },
+    "platz_upper_top": {
+        "img":{
+            "ref":"platz_upper_top"
+        },
+        "people": [
+            {"ref":"u_t_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_t_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_t_w2","child":true,"sex":"f","age":[0,999]},
+            {"ref":"u_t_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_t_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_t_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_t_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_t_m3","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_t_m4","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_t_m4","child":true,"sex":"m","age":[0,999]},
+            {"ref":"u_t_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"u_t_b2","child":false,"sex":"m","age":[0,12]}
+        ],
+        "code":"Y"
+    },
+    "platz_upper_right":{
+        "img":{"ref":"platz_upper_right"},
+        "people": [
+            {"ref":"u_r_w1","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_r_w2","child":false,"sex":"f","age":[13,999]},
+            {"ref":"u_r_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_r_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_r_w1","child":true,"sex":"f","age":[0,999]},
+            {"ref":"u_r_m1","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_r_m2","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_r_m3","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_r_m4","child":false,"sex":"m","age":[13,999]},
+            {"ref":"u_r_m4","child":true,"sex":"m","age":[0,999]},
+            {"ref":"u_r_b1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"u_r_b2","child":false,"sex":"m","age":[0,12]}
+        ],
+        "code":"Y"
+    }
+}
+,
+    
+    "bus_parts": {
+        
+        "empty": {
+            "id": "empty",
+            "left": {"x": 0, "y": 0},
+            "right": {"x": 0, "y": 0},
+            "offset": {"x": 0, "y": 0}
+        },
+        
+        "coupe": {
+            "id": "coupe",
+            "url": "coupe.jpg",
+            "left": {"x": -1034, "y": -437},
+            "right": {"x": 882, "y": 373},
+            "offset": {"x": -1002, "y": -573},
+            "desc": "купейный",
+            "seat_positions": [
+{ "type": "kupe_upper_left", "deck": 1, "no": "36", "x": -689.90, "y": -358.70},
+{ "type": "kupe_upper_right", "deck": 1, "no": "34", "x": -580.35, "y": -319.95},
+{ "type": "kupe_upper_left", "deck": 1, "no": "32", "x": -538.40, "y": -293.70},
+{ "type": "kupe_upper_right", "deck": 1, "no": "30", "x": -428.10, "y": -255.70},
+{ "type": "kupe_upper_left", "deck": 1, "no": "28", "x": -384.85, "y": -230.15},
+{ "type": "kupe_upper_right", "deck": 1, "no": "26", "x": -274.30, "y": -191.90},
+{ "type": "kupe_upper_left", "deck": 1, "no": "24", "x": -234.80, "y": -165.65},
+{ "type": "kupe_upper_right", "deck": 1, "no": "22", "x": -125.25, "y": -127.65},
+{ "type": "kupe_upper_left", "deck": 1, "no": "20", "x": -83.30, "y": -100.65},
+{ "type": "kupe_upper_right", "deck": 1, "no": "18", "x": 25.75, "y": -62.65},
+{ "type": "kupe_upper_left", "deck": 1, "no": "16", "x": 68.25, "y": -36.05},
+{ "type": "kupe_upper_right", "deck": 1, "no": "14", "x": 179.80, "y": 0.95},
+{ "type": "kupe_upper_left", "deck": 1, "no": "12", "x": 218.30, "y": 28.45},
+{ "type": "kupe_upper_right", "deck": 1, "no": "10", "x": 332.10, "y": 65.45},
+{ "type": "kupe_upper_left", "deck": 1, "no": "8", "x": 369.80, "y": 93.45},
+{ "type": "kupe_upper_right", "deck": 1, "no": "6", "x": 483.35, "y": 129.70},
+{ "type": "kupe_upper_left", "deck": 1, "no": "4", "x": 521.90, "y": 156.50},
+{ "type": "kupe_upper_right", "deck": 1, "no": "2", "x": 632.95, "y": 194.00},
+{ "type": "kupe_lower_left", "deck": 1, "no": "35", "x": -730.35, "y": -231.85},
+{ "type": "kupe_lower_right", "deck": 1, "no": "33", "x": -657.85, "y": -212.90},
+{ "type": "kupe_lower_left", "deck": 1, "no": "31", "x": -578.55, "y": -168.10},
+{ "type": "kupe_lower_right", "deck": 1, "no": "29", "x": -506.80, "y": -148.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "27", "x": -424.85, "y": -105.85},
+{ "type": "kupe_lower_right", "deck": 1, "no": "25", "x": -355.00, "y": -84.60},
+{ "type": "kupe_lower_left", "deck": 1, "no": "23", "x": -274.00, "y": -41.35},
+{ "type": "kupe_lower_right", "deck": 1, "no": "21", "x": -203.50, "y": -19.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "19", "x": -122.70, "y": 24.20},
+{ "type": "kupe_lower_right", "deck": 1, "no": "17", "x": -51.45, "y": 44.90},
+{ "type": "kupe_lower_left", "deck": 1, "no": "15", "x": 28.85, "y": 88.20},
+{ "type": "kupe_lower_right", "deck": 1, "no": "13", "x": 100.85, "y": 109.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "11", "x": 181.65, "y": 152.75},
+{ "type": "kupe_lower_right", "deck": 1, "no": "9", "x": 252.15, "y": 173.70},
+{ "type": "kupe_lower_left", "deck": 1, "no": "7", "x": 332.65, "y": 217.75},
+{ "type": "kupe_lower_right", "deck": 1, "no": "5", "x": 403.40, "y": 237.70},
+{ "type": "kupe_lower_left", "deck": 1, "no": "3", "x": 484.15, "y": 280.95},
+{ "type": "kupe_lower_right", "deck": 1, "no": "1", "x": 555.15, "y": 302.90}
+
+            ]
+        },
+        
+        "shtab": {
+            "id": "shtab",
+            "url": "shtab.jpg",
+            "left": {"x": -1034, "y": -437},
+            "right": {"x": 882, "y": 373},
+            "offset": {"x": -1002, "y": -573},
+            "desc": "штабной купейный",
+            "seat_positions": [
+{ "type": "kupe_upper_left", "deck": 1, "no": "32", "x": -538.40, "y": -293.70},
+{ "type": "kupe_upper_right", "deck": 1, "no": "30", "x": -428.10, "y": -255.70},
+{ "type": "kupe_upper_left", "deck": 1, "no": "28", "x": -384.85, "y": -230.15},
+{ "type": "kupe_upper_right", "deck": 1, "no": "26", "x": -274.30, "y": -191.90},
+{ "type": "kupe_upper_left", "deck": 1, "no": "24", "x": -234.80, "y": -165.65},
+{ "type": "kupe_upper_right", "deck": 1, "no": "22", "x": -125.25, "y": -127.65},
+{ "type": "kupe_upper_left", "deck": 1, "no": "20", "x": -83.30, "y": -100.65},
+{ "type": "kupe_upper_right", "deck": 1, "no": "18", "x": 25.75, "y": -62.65},
+{ "type": "kupe_upper_left", "deck": 1, "no": "16", "x": 68.25, "y": -36.05},
+{ "type": "kupe_upper_right", "deck": 1, "no": "14", "x": 179.80, "y": 0.95},
+{ "type": "kupe_upper_left", "deck": 1, "no": "12", "x": 218.30, "y": 28.45},
+{ "type": "kupe_upper_right", "deck": 1, "no": "10", "x": 332.10, "y": 65.45},
+{ "type": "kupe_lower_left", "deck": 1, "no": "31", "x": -578.55, "y": -168.10},
+{ "type": "kupe_lower_right", "deck": 1, "no": "29", "x": -506.80, "y": -148.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "27", "x": -424.85, "y": -105.85},
+{ "type": "kupe_lower_right", "deck": 1, "no": "25", "x": -355.00, "y": -84.60},
+{ "type": "kupe_lower_left", "deck": 1, "no": "23", "x": -274.00, "y": -41.35},
+{ "type": "kupe_lower_right", "deck": 1, "no": "21", "x": -203.50, "y": -19.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "19", "x": -122.70, "y": 24.20},
+{ "type": "kupe_lower_right", "deck": 1, "no": "17", "x": -51.45, "y": 44.90},
+{ "type": "kupe_lower_left", "deck": 1, "no": "15", "x": 28.85, "y": 88.20},
+{ "type": "kupe_lower_right", "deck": 1, "no": "13", "x": 100.85, "y": 109.65},
+{ "type": "kupe_lower_left", "deck": 1, "no": "11", "x": 181.65, "y": 152.75},
+{ "type": "kupe_lower_right", "deck": 1, "no": "9", "x": 252.15, "y": 173.70}
+            ]
+        },
+        
+        "platz": {
+            "id": "platz",
+            "url": "platz.jpg",
+            "left": {"x": -1034, "y": -437},
+            "right": {"x": 882, "y": 373},
+            "offset": {"x": -1002, "y": -573},
+            "desc": "плацкартный",
+            "seat_positions": [
+                { "type": "platz_upper_left", "deck": 1, "no": "36", "x": -690.60, "y": -365.25},
+{ "type": "platz_upper_right", "deck": 1, "no": "34", "x": -591.15, "y": -320.75},
+{ "type": "platz_upper_top", "deck": 1, "no": "38", "x": -537.65, "y": -441.25},
+{ "type": "platz_lower_left", "deck": 1, "no": "35", "x": -732.90, "y": -234.25},
+{ "type": "platz_lower_right", "deck": 1, "no": "33", "x": -651.35, "y": -207.25},
+{ "type": "platz_lower_top", "deck": 1, "no": "37", "x": -595.55, "y": -394.60},
+{ "type": "platz_upper_left", "deck": 1, "no": "32", "x": -538.05, "y": -301.25},
+{ "type": "platz_upper_right", "deck": 1, "no": "30", "x": -438.60, "y": -256.75},
+{ "type": "platz_upper_top", "deck": 1, "no": "40", "x": -385.10, "y": -377.25},
+{ "type": "platz_lower_left", "deck": 1, "no": "31", "x": -580.35, "y": -170.25},
+{ "type": "platz_lower_right", "deck": 1, "no": "29", "x": -498.80, "y": -143.25},
+{ "type": "platz_lower_top", "deck": 1, "no": "39", "x": -443.00, "y": -330.60},
+{ "type": "platz_upper_left", "deck": 1, "no": "28", "x": -387.45, "y": -236.50},
+{ "type": "platz_upper_right", "deck": 1, "no": "26", "x": -288.00, "y": -192.00},
+{ "type": "platz_upper_top", "deck": 1, "no": "42", "x": -234.50, "y": -312.50},
+{ "type": "platz_lower_left", "deck": 1, "no": "27", "x": -429.75, "y": -105.50},
+{ "type": "platz_lower_right", "deck": 1, "no": "25", "x": -348.20, "y": -78.50},
+{ "type": "platz_lower_top", "deck": 1, "no": "41", "x": -292.40, "y": -265.85},
+{ "type": "platz_upper_left", "deck": 1, "no": "24", "x": -234.90, "y": -172.50},
+{ "type": "platz_upper_right", "deck": 1, "no": "22", "x": -135.45, "y": -128.00},
+{ "type": "platz_upper_top", "deck": 1, "no": "44", "x": -81.95, "y": -248.50},
+{ "type": "platz_lower_left", "deck": 1, "no": "23", "x": -277.20, "y": -41.50},
+{ "type": "platz_lower_right", "deck": 1, "no": "21", "x": -195.65, "y": -14.50},
+{ "type": "platz_lower_top", "deck": 1, "no": "43", "x": -139.85, "y": -201.85},
+{ "type": "platz_upper_left", "deck": 1, "no": "20", "x": -85.15, "y": -107.75},
+{ "type": "platz_upper_right", "deck": 1, "no": "18", "x": 14.30, "y": -63.25},
+{ "type": "platz_upper_top", "deck": 1, "no": "46", "x": 67.80, "y": -183.75},
+{ "type": "platz_lower_left", "deck": 1, "no": "19", "x": -127.45, "y": 23.25},
+{ "type": "platz_lower_right", "deck": 1, "no": "17", "x": -45.90, "y": 50.25},
+{ "type": "platz_lower_top", "deck": 1, "no": "45", "x": 9.90, "y": -137.10},
+{ "type": "platz_upper_left", "deck": 1, "no": "16", "x": 67.40, "y": -43.75},
+{ "type": "platz_upper_right", "deck": 1, "no": "14", "x": 166.85, "y": 0.75},
+{ "type": "platz_upper_top", "deck": 1, "no": "48", "x": 220.35, "y": -119.75},
+{ "type": "platz_lower_left", "deck": 1, "no": "15", "x": 25.10, "y": 87.25},
+{ "type": "platz_lower_right", "deck": 1, "no": "13", "x": 106.65, "y": 114.25},
+{ "type": "platz_lower_top", "deck": 1, "no": "47", "x": 162.45, "y": -73.10},
+{ "type": "platz_upper_left", "deck": 1, "no": "12", "x": 218.00, "y": 21.00},
+{ "type": "platz_upper_right", "deck": 1, "no": "10", "x": 317.45, "y": 65.50},
+{ "type": "platz_upper_top", "deck": 1, "no": "50", "x": 370.95, "y": -55.00},
+{ "type": "platz_lower_left", "deck": 1, "no": "11", "x": 175.70, "y": 152.00},
+{ "type": "platz_lower_right", "deck": 1, "no": "9", "x": 257.25, "y": 179.00},
+{ "type": "platz_lower_top", "deck": 1, "no": "49", "x": 313.05, "y": -8.35},
+{ "type": "platz_upper_left", "deck": 1, "no": "8", "x": 370.55, "y": 85.00},
+{ "type": "platz_upper_right", "deck": 1, "no": "6", "x": 470.00, "y": 129.50},
+{ "type": "platz_upper_top", "deck": 1, "no": "52", "x": 523.50, "y": 9.00},
+{ "type": "platz_lower_left", "deck": 1, "no": "7", "x": 328.25, "y": 216.00},
+{ "type": "platz_lower_right", "deck": 1, "no": "5", "x": 409.80, "y": 243.00},
+{ "type": "platz_lower_top", "deck": 1, "no": "51", "x": 465.60, "y": 55.65},
+{ "type": "platz_upper_left", "deck": 1, "no": "4", "x": 522.70, "y": 149.25},
+{ "type": "platz_upper_right", "deck": 1, "no": "2", "x": 622.15, "y": 193.75},
+{ "type": "platz_upper_top", "deck": 1, "no": "54", "x": 675.65, "y": 73.25},
+{ "type": "platz_lower_left", "deck": 1, "no": "3", "x": 480.40, "y": 280.25},
+{ "type": "platz_lower_right", "deck": 1, "no": "1", "x": 561.95, "y": 307.25},
+{ "type": "platz_lower_top", "deck": 1, "no": "53", "x": 617.75, "y": 119.90}
+            ]
+        }
+
+    }
+
+}
