@@ -261,6 +261,7 @@ var self = window.model = {
             var overlap_h = deck.car_overlap_size[1]
 
             var cars = self.ticket.TRAIN.CAR
+            console.log(cars)
             var l = cars.length
             var hor_tiles_count = car_w*l - overlap_w*(l-1)
             var vert_tiles_count = car_h*l - overlap_h*(l-1)
