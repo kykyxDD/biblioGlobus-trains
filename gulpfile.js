@@ -59,6 +59,7 @@ gulp.task('build:js', function () {
 
 gulp.task('watch', function() {
     gulp.watch('./src/js/**/*.*', ['build:js'])
+    gulp.watch(data.assets, ['copy:assets'])
 })
 
 gulp.task('copy', sequence('copy:assets', 'copy:js'))
