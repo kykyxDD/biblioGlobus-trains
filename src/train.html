@@ -209,14 +209,32 @@
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхняя палуба</div>
 		</div>
         <table class="train_nav">
-            <tr>
-            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
-            <td class="" data-bind="visible: prev_car_num">←</td>
-            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div><div class="type" data-bind="text: current_car_type">купейный</div></td>
-            <td class="" data-bind="visible: next_car_num">→</td>
-            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
-            </tr>
-            <tr cellpadding='10px'><td class="descr" colspan='5'><div data-bind="text: current_car_descr"></div></td></tr>
+	        <thead>
+	            <tr>
+	            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
+	            <td class="" data-bind="visible: prev_car_num">←</td>
+	            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div><div class="type" data-bind="text: current_car_type">купейный</div></td>
+	            <td class="" data-bind="visible: next_car_num">→</td>
+	            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
+	            </tr>
+	        </thead>
+            <tr><td colspan="5">
+            <div class="info">
+	            <div class="descr">
+	            	<div class="name">Описание: </div> <div class="text" data-bind="text: current_car_descr"></div>
+	            </div>
+	            <div class="carrier">
+	            	<div class="name">Перевозчик: </div> <div class="text" data-bind="text: current_car_carrier"></div>
+	            </div>
+	            <div class="price">
+	            	<div class="name">Цена: </div> <div class="text">от <span data-bind="text: current_car_prime_from"></span> руб <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> руб</span></div>
+	            </div>
+            </div> 
+
+           </td></tr>
+            
+           
+            
         </table>
 		<div class="controls">
 			<div class="screen">

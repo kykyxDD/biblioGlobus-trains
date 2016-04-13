@@ -329,9 +329,13 @@ function prepare_train_view() {
     view.current_car_type = ko.observable('')
     view.current_car_num = ko.observable('')
     view.current_car_descr = ko.observable('')
+    view.current_car_carrier = ko.observable('')
+    view.current_car_prime_from = ko.observable('')
+    view.current_car_prime_to = ko.observable('')
     
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
+
 
     navigation.position = V(0.2, 0.2)
     
@@ -385,7 +389,13 @@ function update_view()
     view.current_car_type(car_info.desc)
     view.current_car_num("Вагон №" + car.num)
     view.current_car_descr(car.DESCR.text)
-    // console.log(car.DESCR)
+    view.current_car_carrier(car.CARRIER)
+    view.current_car_prime_from(car.PRICE.from)
+    if(car.PRICE.to !== '') {
+    	view.current_car_prime_to(car.PRICE.to)
+    } else {
+    	view.current_car_prime_to(false)
+    }
     
     current_car.type = car_info.desc
     current_car.num = car.num
