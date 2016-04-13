@@ -56,6 +56,19 @@ body {
       display: table-cell; }
     .controls .users-box .users .user .info .status .message td {
       padding-bottom: 4px; }
+    .controls .users-box .users .user .info .status .car,
+    .controls .users-box .users .user .info .status .sc { 
+      vertical-align: bottom;
+    }
+    .controls .users-box .users .user .info .status .car .value,
+    .controls .users-box .users .user .info .status .sc .value {
+      color: #000;
+      font-weight: bold;
+    }
+    .controls .users-box .users .user .info .status .sc td {
+      padding: 10px 0;
+    }
+
   .controls .users-box .users .user .print {
     width: 66px; }
   .controls .users-box .users .user .class {

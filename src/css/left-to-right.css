@@ -64,7 +64,6 @@
 .train_nav .info {
   margin-top: 10px;
   border-top: 1px solid #000;
-
   text-align: left;
 }
 
@@ -75,7 +74,6 @@
 .train_nav .info .price,
 .train_nav .info .descr,
 .train_nav .info .carrier {
-  /*display: table-cell;*/
   display: inline-flex;
   width: 100%;
   margin-top: 10px;

@@ -612,6 +612,8 @@ function update_users(users) {
 		user.selected = ko.observable(false)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
+		user.id_car   = ko.observable(user.id_car  || '')
+		user.fclass_name  = ko.observable(user.fclass  || '')
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
         })
@@ -1025,6 +1027,7 @@ Seat.unlink = function(user) {
 		user.seat.group.draw()
 		user.seat = null
 		user.curseat('')
+		user.id_car = ''
 	}
 }
 Seat.link = function(user, seat) {
@@ -1033,11 +1036,13 @@ Seat.link = function(user, seat) {
 		user.label.textContent = seat.name
 		seat.deckElement.appendChild(user.selection)
         add_class(user.selection, seat.type)
-        
+
 		user.seat = seat
+		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
 		seat.group.draw()
+
 	}
 }
 
