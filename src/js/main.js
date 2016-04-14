@@ -106,7 +106,8 @@ var seats, decks, groups, masks, map, tiles,
     current_car = {},
 	frames = {},
 	cookie = {},
-	params = {}
+	params = {},
+	interval = [];
 
 var debug = {
 	enabled : false,
@@ -587,6 +588,7 @@ function setup_viewmodel() {
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
 function make_selection_label() {
+	console.log('make_selection_label')
 	var root = document.createElement('div')
 	root.className = 'selection'
 	root.innerHTML =
@@ -608,6 +610,7 @@ function select_next_user() {
 }
 function update_users(users) {
 	users.some(function(user) {
+		// user.interval = ko.observable([])
 		user.seat     = seats.select('num', user.curseat)
 		user.selected = ko.observable(false)
 		user.error    = ko.observable(user.error   || '')
@@ -805,13 +808,35 @@ function register_events() {
 		e.preventDefault()
 	}
 	function click(e) {
+		console.log(C.VIEWONLY)
 		if(view.user() && !C.VIEWONLY) {
 			var point = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
-				x     = point.pageX + frames.view.center.x,
-				y     = point.pageY + frames.view.center.y,
+				x     = (point.pageX + frames.view.center.x),
+				y     = (point.pageY + frames.view.center.y),
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
+			if(seat){
+				if(seat.marker_check){
+					console.log(true, seat.id)
+		        	var size = seat.labelSize;
+					var minx = seat.group.x + seat.marker_check.x - (size/2);
+					var miny = seat.group.y + seat.marker_check.y - size;
+	        		var maxx = minx + size
+					var maxy = miny + size
+					if(minx <= x && x <= maxx && miny <= y && y <= maxy){
+						var user = view.user();
+						FunInterval.addSear(interval[0], seat);
+						FunInterval.addUser(interval[0], view.user());
+						seat.group.draw()
+					} else  if(seat.marker_check.check){
+						seat && seat.take(view.user())	
+					}
 
-			seat && seat.take(view.user())
+				} else {
+					console.log(false, seat.id)
+					seat && seat.take(view.user())	
+				}
+			}
+			// seat && seat.take(view.user())
 		}
 	}
 }
@@ -1027,7 +1052,7 @@ Seat.unlink = function(user) {
 		user.seat.group.draw()
 		user.seat = null
 		user.curseat('')
-		user.id_car = ''
+		user.id_car('')
 	}
 }
 Seat.link = function(user, seat) {
@@ -1092,12 +1117,21 @@ Seat.prototype = {
             }
 		}
 
-		if(this.user) this.drawUnit(this.user,
-			this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
-			this.Y + this.sprite.offset.user[1])
-		else if(this.match_service_class || C.DEMO) this.drawLabel(this.name.toUpperCase())
+		if(this.user) {
+			this.drawUnit(this.user,
+					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
+					this.Y + this.sprite.offset.user[1])
+		} else if(this.match_service_class || C.DEMO) {
+			if(this.marker_check && this.marker_check.check){
+				this.drawLabel(this.name.toUpperCase())
+				this.drawCheck(this.ref)	
+			} else {
+				this.drawCheck(this.ref)
+			}
+		}
 	},
 	drawUnit: function(img, x, y) {
+		// console.log('drawUnit')
         
         var ctx = this.group.context
         ctx.save()
@@ -1119,6 +1153,7 @@ Seat.prototype = {
         ctx.restore()
 	},
     drawPath: function(path) {
+    	// console.log('drawPath')
         var left = this.x - this.group.size.left
         var top = this.y - this.group.size.top
         var ctx  = this.group.context
@@ -1137,6 +1172,7 @@ Seat.prototype = {
         ctx.restore()
     },
 	drawArea: function(area) {
+		// console.log('drawArea')
 		this.group.context.strokeRect(
 			area[0] + this.x - this.group.size.left,
 			area[1] + this.y - this.group.size.top,
@@ -1144,11 +1180,12 @@ Seat.prototype = {
 			area[3])
 	},
 	drawLabel: function(text) {
+		// console.log('drawLabel')
 		var ctx  = this.group.context
         var size = this.labelSize
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
         var dy = this.sprite.offset.label[1]
-            
+
 		ctx.save()
 		ctx.fillStyle =
 			debug.enabled && this.over ? 'orangered' :
@@ -1160,6 +1197,46 @@ Seat.prototype = {
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
+		ctx.restore()
+	},
+	drawCheck: function(str) {
+		// console.log('drawCheck', str,str.indexOf('left'))
+		var ctx  = this.group.context
+        var size = this.labelSize
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
+        var dy = this.sprite.offset.label[1]
+           
+		ctx.save()
+		ctx.fillStyle =
+			this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
+			                             'rgba(255,255,255,0.5)'
+
+		var pad = size
+		if(str.indexOf('left') > -1){
+			// pad *= -1 
+		}
+		if(!this.marker_check) {
+			this.marker_check = {
+	        	x: this.X + dx + size,
+	        	y: this.Y + dy,
+	        	check: false
+	        };	
+		} else {
+        	this.marker_check.x = this.X + dx + size
+        	this.marker_check.y = this.Y + dy
+		}
+		
+
+		ctx.translate(this.marker_check.x,this.marker_check.y)
+		ctx.transform.apply(ctx, this.labelTransform)
+		ctx.fillRect(0, 0, size, size)
+		if(this.marker_check.check == true){
+			ctx.strokeText('T', size / 2, size / 2)
+        } else {
+        	ctx.strokeText('F', size / 2, size / 2)	
+        }
+		
+		// console.log('text',text)
 		ctx.restore()
 	},
 	highlight: function() {
@@ -1184,7 +1261,7 @@ Seat.prototype = {
 
 		if(!already_placed) {
 			Seat.link(user, this)
-			C.DEMO || select_next_user()
+			// C.DEMO || select_next_user() // переключение на следующего user
 		}
 
 		this.highlight()
@@ -1195,3 +1272,45 @@ Seat.prototype = {
 		this.group.draw()
 	}
 };
+// var funIntervar = new FunInterval;
+
+function FunInterval(){
+
+};
+FunInterval.createInterval = function(){
+	var obj = {};
+	obj.seat = [];
+	obj.user = [];
+	interval.push(obj)
+};
+
+FunInterval.searchVal = function(arr, id){
+	var res = undefined;
+
+	arr.forEach(function(val, i){
+		if(val.id.toString() == id.toString() && res == undefined) {
+			res = i
+		}
+	})
+	return res
+}
+FunInterval.addSear = function(obj, seat){
+	// var arr = funIntervar.arr_user()
+	var index = FunInterval.searchVal(obj.seat, seat.id);
+	if(index === undefined) {
+		obj.seat.push(seat)
+		seat.marker_check.check = true
+	} else {
+		obj.seat.splice(index, 1);
+		seat.marker_check.check = false
+	}
+},
+FunInterval.addUser = function(obj, user){
+	var index = FunInterval.searchVal(obj.user, user.id);
+	if(index === undefined) {
+		obj.user.push(user)
+	} else {
+		obj.user.splice(index, 1);
+	}
+};
+FunInterval.createInterval();
