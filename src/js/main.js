@@ -159,7 +159,6 @@ var debug = {
 		}
 	}
 }
-
 var view = {
 	loading: '',
 	orient : '',
@@ -234,6 +233,8 @@ function ready() {
 	debug.enabled = hash(params.debug) === debug.token
 
 	document.body.style.display = 'block'
+	view.groups_users = ko.observableArray();
+	view.show_popup_group = ko.observable(false)
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -261,6 +262,9 @@ function ready() {
 		clearInterval(refresh.interval)
 		el.progress.textContent = error.message
 	}
+	
+
+	
 }
 function start() {
     
@@ -499,6 +503,7 @@ function setup_viewmodel() {
 		return data.port_rus + " " + data.port
 	}
 
+	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(method('curseat'))
@@ -522,6 +527,34 @@ function setup_viewmodel() {
 			}
 
 			return true
+		}
+	}
+	view.clickGroup = function(str, index, data){
+		if (str == 'rem') {
+			GroupsUsers.remGroup(data, index)
+		} else if (str == 'set'){
+			GroupsUsers.setGroup(data, index)
+		}
+	}
+	view.addGroup = function(){
+		GroupsUsers.createGroup();
+	}
+	view.clickUser = function(data, parent){
+		if(view.item_group() == false) return
+		
+		if(data.d_check() == false)  {
+			GroupsUsers.addUser(data)
+		} else if(data.d_check() == true) {
+			if(data.id_group() == view.item_group().id) {
+				GroupsUsers.addUser(data) 
+			} 
+		}
+	}
+	view.popupGroup = function(){
+		if(view.show_popup_group() == false) {
+			view.show_popup_group(true)	
+		} else {
+			view.show_popup_group(false)
 		}
 	}
 
@@ -579,6 +612,7 @@ function setup_viewmodel() {
 		view.selectUser(view.users()[0])
 		setTimeout(view.loading, 500, 'void')
 	}
+	GroupsUsers.createGroup();
 
 	ko.applyBindings(view)
 
@@ -610,7 +644,8 @@ function select_next_user() {
 }
 function update_users(users) {
 	users.some(function(user) {
-		// user.interval = ko.observable([])
+		user.d_check  = ko.observable(user.d_check  || false)
+		user.id_group = ko.observable(user.id_group || false)
 		user.seat     = seats.select('num', user.curseat)
 		user.selected = ko.observable(false)
 		user.error    = ko.observable(user.error   || '')
@@ -816,7 +851,6 @@ function register_events() {
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 			if(seat){
 				if(seat.marker_check){
-					console.log(true, seat.id)
 		        	var size = seat.labelSize;
 					var minx = seat.group.x + seat.marker_check.x - (size/2);
 					var miny = seat.group.y + seat.marker_check.y - size;
@@ -824,15 +858,14 @@ function register_events() {
 					var maxy = miny + size
 					if(minx <= x && x <= maxx && miny <= y && y <= maxy){
 						var user = view.user();
-						FunInterval.addSear(interval[0], seat);
-						FunInterval.addUser(interval[0], view.user());
+						GroupsUsers.addSear(interval[0], seat);
+						// GroupsUsers.addUser(interval[0], view.user());
 						seat.group.draw()
 					} else  if(seat.marker_check.check){
 						seat && seat.take(view.user())	
 					}
 
 				} else {
-					console.log(false, seat.id)
 					seat && seat.take(view.user())	
 				}
 			}
@@ -1208,13 +1241,14 @@ Seat.prototype = {
            
 		ctx.save()
 		ctx.fillStyle =
-			this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
+		this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
 			                             'rgba(255,255,255,0.5)'
 
 		var pad = size
 		if(str.indexOf('left') > -1){
 			// pad *= -1 
 		}
+		// console.log(this)
 		if(!this.marker_check) {
 			this.marker_check = {
 	        	x: this.X + dx + size,
@@ -1272,19 +1306,58 @@ Seat.prototype = {
 		this.group.draw()
 	}
 };
-// var funIntervar = new FunInterval;
+// var funIntervar = new GroupsUsers;
 
-function FunInterval(){
+function GroupsUsers(){
 
 };
-FunInterval.createInterval = function(){
+
+GroupsUsers.createGroup = function(){
+	var groups = view.groups_users
+	var l = groups().length
+	// console.log(l)
 	var obj = {};
-	obj.seat = [];
-	obj.user = [];
-	interval.push(obj)
+	var id = l > 0 ? groups()[l-1].id + 1 : 0;
+
+	obj.check = ko.observable( l == 0 ? true : false);
+	if(l == 0) {
+		view.item_group(obj)
+	}
+	obj.id = id;
+	
+	obj.name = 'Группа ' + (id+1)
+	obj.seat = ko.observableArray();
+	obj.user = ko.observableArray();
+	groups.push(obj)
+};
+GroupsUsers.setGroup = function(obj, index){
+
+	if(view.item_group() && obj.id !== view.item_group().id) {
+		view.item_group().check(false);
+		obj.check(true);
+		view.item_group(obj);
+	} else {
+		view.item_group(obj);
+	}
+	
+}
+GroupsUsers.remGroup = function(obj, index){
+
+	var groups = view.groups_users();
+	var users = obj.user()
+	users.forEach(function(item){
+
+		item.d_check(false)
+		item.id_group(false)
+	});
+	view.groups_users.splice(index, 1);
+
+	if(view.groups_users().length == 0) {
+		view.item_group(false)
+	}
 };
 
-FunInterval.searchVal = function(arr, id){
+GroupsUsers.searchVal = function(arr, id){
 	var res = undefined;
 
 	arr.forEach(function(val, i){
@@ -1294,9 +1367,9 @@ FunInterval.searchVal = function(arr, id){
 	})
 	return res
 }
-FunInterval.addSear = function(obj, seat){
+GroupsUsers.addSear = function(obj, seat){
 	// var arr = funIntervar.arr_user()
-	var index = FunInterval.searchVal(obj.seat, seat.id);
+	var index = GroupsUsers.searchVal(obj.seat, seat.id);
 	if(index === undefined) {
 		obj.seat.push(seat)
 		seat.marker_check.check = true
@@ -1305,12 +1378,17 @@ FunInterval.addSear = function(obj, seat){
 		seat.marker_check.check = false
 	}
 },
-FunInterval.addUser = function(obj, user){
-	var index = FunInterval.searchVal(obj.user, user.id);
+GroupsUsers.addUser = function(user){
+	var item_group = view.item_group;
+	var index = GroupsUsers.searchVal(item_group().user(), user.id);
+
 	if(index === undefined) {
-		obj.user.push(user)
+		user.d_check(true)
+		user.id_group(item_group().id)
+		item_group().user.push(user)
 	} else {
-		obj.user.splice(index, 1);
+		user.d_check(false)
+		user.id_group(false)
+		item_group().user.splice(index, 1);
 	}
 };
-FunInterval.createInterval();

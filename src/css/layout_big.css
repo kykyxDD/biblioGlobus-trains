@@ -279,3 +279,141 @@ body {
     right: 12px;
     bottom: 104px;
     background-size: auto 100%; }
+
+
+.group {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 30;}
+  .group .cont_group {
+    position: absolute;
+    background: #fff;
+    height: 500px;
+    width: 600px;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;}
+    .group .title_cont_group {
+      height: 35px;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 30px;
+      position: relative;
+    }
+    .group .title_cont_group .close {
+      position: absolute;
+      top: 15px; 
+      right: 15px;
+      width: 33px;
+      height: 33px;
+      line-height: 31px;
+      border: 1px solid gray;
+      border-radius: 50%;
+    }
+    .group  .list {
+      width: 50%;
+      height: 400px;
+    }
+    .group .title_path {
+      padding: 10px 20px 15px;
+      font-size: 20px;
+    }
+    .group .list_user {
+      float: left;
+    }
+    .group .list_user .cont_list_user {
+      width: 100%;
+      height: 100%;
+    }
+    .group .list_user ul {
+      padding: 0 20px;
+      list-style: none;
+      margin: 0;
+      font-size: 20px;
+      line-height: 35px;
+      text-transform: capitalize;
+    }
+
+    .group .list_user .itm_user {
+      cursor: pointer;
+    }
+    .group .list_user .itm_user.item {
+      color: #f;
+    }
+    .group .list_group {
+      float: right;
+    }
+    .group .list_group .cont_list_group{
+      padding: 0 25px;
+    }
+    .group .list_group .btn_create_group {
+      height: 25px;
+      /*width: 100%;*/
+      padding: 5px 0 ;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+      -moz-user-select: -moz-none;
+      -o-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      border: 1px solid #000;
+      border-radius: 5px;
+      margin: 10px 30px ;
+    }
+    .group .list_group .cont_groups {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #000;
+      list-style: none;
+    }
+    .group .item_group {
+      position: relative;
+      padding: 5px 0;
+      width: 100%;
+      min-height: 20px;
+      cursor: pointer;
+      -moz-user-select: -moz-none;
+      -o-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .group .item_group.item {
+      background: #D2D2D2;
+    }
+    .group .item_group .name_group {
+      padding-left: 5px;
+      width: 65%;
+      height: 20px;
+    }
+    .group .item_group .rem_group{
+      position: absolute;
+      top: 5px; 
+      right: 5px;
+      width: 30%;
+      height: 20px;
+    }
+    .group .item_group .g_user {
+      text-transform: capitalize;
+      padding: 0 10px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+    .group .item_group .g_user:first-child {
+      margin-top: 5px;
+      border-top: 1px solid #000;
+    }
+    .group .item_group .g_user:last-child {
+      border-bottom: 1px solid #000;
+    }
+

@@ -324,5 +324,35 @@
 				<div class="caption">0%</div>
 			</div>
 		</div>
+		<div class="popup group" data-bind='visible: show_popup_group()'>
+			<div class="cont_group">
+				<div class="title_cont_group">
+					Создание групп
+					<div class="close" data-bind='click: $root.popupGroup'>&times;</div>
+				</div>
+				<div class="list list_user">
+					<div class="cont_list_user">
+						<div class="title_path">Не выбранные пассажиры</div>
+						<ul class="" data-bind='foreach: users'>
+							<li class="itm_user" data-bind="visible: !d_check(), text: name, click:$root.clickUser" ></li>
+						</ul>
+					</div>
+				</div>
+				<div class="list list_group">
+					<div class="cont_list_group">
+						<div class="btn_create_group" data-bind='click: $root.addGroup'>Добавить группу +</div>
+						<div class="cont_groups" data-bind='foreach: groups_users'>
+							<div class="item_group" data-bind='css: { item: check}'>
+								<div data-bind='text: name, click: $root.clickGroup.bind($data, "set", $index())' class='name_group'></div> 
+								<div class="rem_group" data-bind='click :$root.clickGroup.bind($data,"rem", $index())'>Удалить -</div>
+								<div class="list_g_user" data-bind='foreach: user'>
+									<div class="g_user" data-bind='text:name, click:$root.clickUser' ></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
