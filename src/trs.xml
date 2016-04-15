@@ -61,7 +61,19 @@
             <NAME>RAISA</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893518</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>18</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>RAISA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
     </PASSENGERS>

@@ -573,6 +573,7 @@ function setup_viewmodel() {
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
 	view.error_message  = ko.observable('')
+	view.error_seat     = ko.observable(false)
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -843,13 +844,24 @@ function register_events() {
 		e.preventDefault()
 	}
 	function click(e) {
-		console.log(C.VIEWONLY)
 		if(view.user() && !C.VIEWONLY) {
 			var point = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x     = (point.pageX + frames.view.center.x),
 				y     = (point.pageY + frames.view.center.y),
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 			if(seat){
+				var check =  FilterSeat.checkSeat(seat, view.user())
+				var check_sex = FilterSeat.checkSeatSex(seat, view.user())
+				console.log('check', check, check_sex)
+				if(!check || !check_sex){
+					view.error_seat(true)
+				} else if (check || check_sex){
+					view.error_seat(false)
+				}
+				
+				console.log('check',check, check_sex)
+				// var check_reserv = GroupsUsers.checkReserv(seat.group, seat)
+				// console.log('check_reserv',check_reserv)
 				if(seat.marker_check){
 		        	var size = seat.labelSize;
 					var minx = seat.group.x + seat.marker_check.x - (size/2);
@@ -858,13 +870,12 @@ function register_events() {
 					var maxy = miny + size
 					if(minx <= x && x <= maxx && miny <= y && y <= maxy){
 						var user = view.user();
-						GroupsUsers.addSear(interval[0], seat);
+						GroupsUsers.addSear(seat);
 						// GroupsUsers.addUser(interval[0], view.user());
 						seat.group.draw()
 					} else  if(seat.marker_check.check){
 						seat && seat.take(view.user())	
 					}
-
 				} else {
 					seat && seat.take(view.user())	
 				}
@@ -987,6 +998,7 @@ function SeatGroup(items, index) {
 	this.canvas  = document.createElement('canvas')
 	this.context = this.canvas.getContext('2d')
 	this.size    = this.getDimensions()
+	// this.filter_sex = false
 	this.deck    = decks[items[0].deck - 1].elem
 
 	this.canvas.className     = 'seat'
@@ -1047,7 +1059,6 @@ SeatGroup.prototype.getDimensions = function() {
 }
 function Seat(data) {
 	this.copy(data)
-
 	this.size = [
 		Math.max(this.sprite.offset.size[0], this.sprite.w),
 		Math.max(this.sprite.offset.size[1], this.sprite.h)
@@ -1155,12 +1166,12 @@ Seat.prototype = {
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
 		} else if(this.match_service_class || C.DEMO) {
-			if(this.marker_check && this.marker_check.check){
+			// if(this.marker_check && this.marker_check.check){
 				this.drawLabel(this.name.toUpperCase())
-				this.drawCheck(this.ref)	
-			} else {
-				this.drawCheck(this.ref)
-			}
+				// this.drawCheck(this.ref)	
+			// } else {
+				// this.drawCheck(this.ref)
+			// }
 		}
 	},
 	drawUnit: function(img, x, y) {
@@ -1306,7 +1317,7 @@ Seat.prototype = {
 		this.group.draw()
 	}
 };
-// var funIntervar = new GroupsUsers;
+
 
 function GroupsUsers(){
 
@@ -1324,7 +1335,7 @@ GroupsUsers.createGroup = function(){
 		view.item_group(obj)
 	}
 	obj.id = id;
-	
+	obj.filter_sex = false;
 	obj.name = 'Группа ' + (id+1)
 	obj.seat = ko.observableArray();
 	obj.user = ko.observableArray();
@@ -1356,6 +1367,30 @@ GroupsUsers.remGroup = function(obj, index){
 		view.item_group(false)
 	}
 };
+GroupsUsers.checkReserv = function(obj, new_seat){
+	var seat = obj.seat();
+	
+	var odd  = 0; // нечетные
+	var even = 0; // четные
+	seat.forEach(function(itm, index){	
+		var num = (+itm.name)%2;
+		if(num === 0) {
+			even += 1;
+		} else {
+			odd  += 1;
+		}
+	})
+	if(even > 0 && even > 0) {
+		if(even > odd || 
+		  (even == odd && (+new_seat.num)%2 == 0)){
+			return true
+		} else {
+			return false
+		}
+	} else {
+		return true
+	}
+},
 
 GroupsUsers.searchVal = function(arr, id){
 	var res = undefined;
@@ -1367,9 +1402,12 @@ GroupsUsers.searchVal = function(arr, id){
 	})
 	return res
 }
-GroupsUsers.addSear = function(obj, seat){
+GroupsUsers.addSear = function(seat){
 	// var arr = funIntervar.arr_user()
-	var index = GroupsUsers.searchVal(obj.seat, seat.id);
+	var obj = view.item_group();
+	var index = GroupsUsers.searchVal(obj.seat(), seat.id);
+	var check_reserv = GroupsUsers.checkReserv(obj, seat);
+	// console.log('checkReserv',check_reserv)
 	if(index === undefined) {
 		obj.seat.push(seat)
 		seat.marker_check.check = true
@@ -1392,3 +1430,53 @@ GroupsUsers.addUser = function(user){
 		item_group().user.splice(index, 1);
 	}
 };
+
+function FilterSeat(){}
+
+FilterSeat.checkSeat = function(seat, user){
+	var arr = seat.group.items;
+	var odd  = 0; // нечетные
+	var even = 0; // четные
+
+	for(var i = 0; i < arr.length; i++){
+		var itm = arr[i];
+		if(!itm.user || ( user.seat && itm.id == user.seat.id)) continue
+		var num = (+itm.name)%2;
+
+		if(num === 0) {
+			even += 1;
+		} else {
+			odd  += 1;
+		}
+	}
+	
+	if((+seat.name)%2 == 0) {
+		even += 1
+	} else {
+		odd  += 1
+	}
+	
+	if(odd > even) {
+		return false
+	} else {
+		return true	
+	}
+	
+		// if(even > odd || 
+		//   (even == odd && (+user.num)%2 == 0)){
+		// 	return true
+		// } else {
+		// 	return false
+		// }
+	
+};
+FilterSeat.checkSeatSex = function(seat, user){
+	var filter = seat.group.filter_sex;
+	if(!filter) return true
+
+	if(filter == seat.sex && seat.sex == user.sex) {
+		return true
+	} else {
+		return false
+	}
+}

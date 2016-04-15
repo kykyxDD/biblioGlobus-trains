@@ -136,7 +136,6 @@ var self = window.model = {
 		data['SEATS']['SEAT'].forEach(function(info) {
 
 			var seat = self.struct['seats'].select('num', info['no'].toUpperCase())
-
 			if(seat) {
 				var mock = { child: !rand(20), age: rand(100), sex: 'mf'[rand(2)] }
 				var back = seat.back || self.selectPassenger(seat.sid, mock)
@@ -151,8 +150,10 @@ var self = window.model = {
 					         back
 
 				seat.user = face
+
 				seat.back = back
 				seat.sc   = info['sc']
+				seat.sex  = info['sex'] || false;
                 seat.status = status
                 seat.has_child_cradle = status === 'i'
 			}
