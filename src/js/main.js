@@ -852,16 +852,12 @@ function register_events() {
 			if(seat){
 				var check =  FilterSeat.checkSeat(seat, view.user())
 				var check_sex = FilterSeat.checkSeatSex(seat, view.user())
-				console.log('check', check, check_sex)
 				if(!check || !check_sex){
 					view.error_seat(true)
-				} else if (check || check_sex){
+				} else if (check && check_sex){
 					view.error_seat(false)
 				}
 				
-				console.log('check',check, check_sex)
-				// var check_reserv = GroupsUsers.checkReserv(seat.group, seat)
-				// console.log('check_reserv',check_reserv)
 				if(seat.marker_check){
 		        	var size = seat.labelSize;
 					var minx = seat.group.x + seat.marker_check.x - (size/2);
@@ -1461,22 +1457,20 @@ FilterSeat.checkSeat = function(seat, user){
 	} else {
 		return true	
 	}
-	
-		// if(even > odd || 
-		//   (even == odd && (+user.num)%2 == 0)){
-		// 	return true
-		// } else {
-		// 	return false
-		// }
-	
 };
 FilterSeat.checkSeatSex = function(seat, user){
-	var filter = seat.group.filter_sex;
-	if(!filter) return true
-
-	if(filter == seat.sex && seat.sex == user.sex) {
-		return true
-	} else {
-		return false
+	var res = true
+	var arr = view.users()
+	for(var i = 0; i < arr.length; i++){
+		var itm = arr[i];
+		if(itm.id == user.id) continue
+		if(itm.seat && itm.seat.sex && itm.seat.sex !== itm.sex) {
+			res = false
+		}
 	}
+	if(seat.sex && seat.sex !== user.sex) {
+		res = false
+	}
+
+	return res
 }

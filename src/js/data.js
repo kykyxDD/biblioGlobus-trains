@@ -153,7 +153,7 @@ var self = window.model = {
 
 				seat.back = back
 				seat.sc   = info['sc']
-				seat.sex  = info['sex'] || false;
+				seat.sex  = info['sex'].toLowerCase() || false;
                 seat.status = status
                 seat.has_child_cradle = status === 'i'
 			}
