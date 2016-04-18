@@ -573,7 +573,11 @@ function setup_viewmodel() {
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
 	view.error_message  = ko.observable('')
-	view.error_seat     = ko.observable(false)
+
+	var check = true;// FilterSeat.checkSeat(seat, view.user())
+	var check_sex = FilterSeat.checkSeatSex()
+	var val = !check ?  check : check_sex;
+	view.error_seat = ko.observable(val || true)
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -1468,9 +1472,12 @@ FilterSeat.checkSeatSex = function(seat, user){
 			res = false
 		}
 	}
-	if(seat.sex && seat.sex !== user.sex) {
-		res = false
+	if(seat && user) {
+		if(seat.sex && seat.sex !== user.sex) {
+			res = false
+		}	
 	}
+	
 
 	return res
 }
