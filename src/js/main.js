@@ -460,6 +460,13 @@ function load_session() {
 		document.cookie = 'seats=; expires='+ new Date(0)
 	}
 
+	var check = FilterSeat.checkSeat()
+	var check_sex = FilterSeat.checkSeatSex()
+	var val = check.res == false || !check_sex ?  true : false;
+	view.num_odd(check.odd);
+	view.num_even(check.even);
+	view.error_seat(val)
+
 }
 function setup_viewmodel() {
 	document.title = model.boardinfo.name
@@ -508,7 +515,7 @@ function setup_viewmodel() {
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(method('curseat'))
 	}, view)
-	view.selectUser = function(user) {
+	view.selectUser = function(user, e) {
 		if(user && !user.parent && !user.disabled) {
 			var previous = view.user()
 			if(previous) {
@@ -516,7 +523,7 @@ function setup_viewmodel() {
 			}
 			view.user(user)
 			user.selected(true)
-			if(!previous || user.sc !== previous.sc || (user.child && !previous.child) || (!user.child && previous.child)) {
+			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex ||  (user.child && !previous.child) || (!user.child && previous.child)) {
 				groups.some(method('draw'))
 			}
 			if(user.seat) {
@@ -524,6 +531,12 @@ function setup_viewmodel() {
 					upper_deck_visible(user.seat.deck > 1)
 				}
 				frames.view.move(user.seat.x, user.seat.y, true)
+			}
+			if(e && previous && user.id == previous.id){
+				var elem = e.target || e.srcElement;
+				if(elem.tagName == 'TD' && has_class(elem, 'ok')) {
+					user.seat && user.seat.take(user);
+				}
 			}
 
 			return true
@@ -573,11 +586,9 @@ function setup_viewmodel() {
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
 	view.error_message  = ko.observable('')
-
-	var check = true;// FilterSeat.checkSeat(seat, view.user())
-	var check_sex = FilterSeat.checkSeatSex()
-	var val = !check ?  check : check_sex;
-	view.error_seat = ko.observable(val || true)
+	view.num_odd   		= ko.observable(0);
+	view.num_even  		= ko.observable(0);
+	view.error_seat  	= ko.observable(true);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -627,7 +638,6 @@ function setup_viewmodel() {
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
 function make_selection_label() {
-	console.log('make_selection_label')
 	var root = document.createElement('div')
 	root.className = 'selection'
 	root.innerHTML =
@@ -854,11 +864,13 @@ function register_events() {
 				y     = (point.pageY + frames.view.center.y),
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 			if(seat){
-				var check =  FilterSeat.checkSeat(seat, view.user())
-				var check_sex = FilterSeat.checkSeatSex(seat, view.user())
-				if(!check || !check_sex){
+				var check =  FilterSeat.checkSeat(seat, view.user());
+				var check_sex = FilterSeat.checkSeatSex(seat, view.user());
+				view.num_odd(check.odd);
+				view.num_even(check.even);
+				if(check.res == false || !check_sex){
 					view.error_seat(true)
-				} else if (check && check_sex){
+				} else if (check.res == true && check_sex){
 					view.error_seat(false)
 				}
 				
@@ -1075,6 +1087,7 @@ Seat.findByPosition = function(x, y) {
 
 	while(seat = seats[--remains]) if(
 		(seat.match_service_class || C.DEMO      ) &&
+		
 		(!seat.user || seat === view.user().seat ) &&
 		(view.upper() ? !seat.low : seat.deck < 2) &&
 		seat.contains(x, y)
@@ -1135,14 +1148,19 @@ Seat.prototype = {
 		}, this)
 	},
 	updateState: function() {
+
 		this.X = this.x - this.group.size.left - this.size[0]
 		this.Y = this.y - this.group.size.top
         this.match_service_class = false
+        this.match_sex = false
         var user = view.user()
+
         if (user) {
             this.match_service_class = user.sc === "*" || this.sc === user.sc
+            this.match_sex = this.sex && this.sex === user.sex || !this.sex;
             if (user.child) {
                 this.match_service_class = this.match_service_class && this.has_child_cradle
+                this.match_sex = this.match_sex && this.has_child_cradle
             }
         }
 	},
@@ -1160,12 +1178,11 @@ Seat.prototype = {
                 this.drawPath(this.sprite.offset.polygon)
             }
 		}
-
 		if(this.user) {
 			this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
-		} else if(this.match_service_class || C.DEMO) {
+		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
 			// if(this.marker_check && this.marker_check.check){
 				this.drawLabel(this.name.toUpperCase())
 				// this.drawCheck(this.ref)	
@@ -1300,12 +1317,12 @@ Seat.prototype = {
 	take: function(user) {
 		if(debug.enabled) console.log(this)
 
-		var already_placed = user.seat === this
+		var already_placed = user.seat === this;
 
-		Seat.unlink(user)
+		Seat.unlink(user);
 
 		if(!already_placed) {
-			Seat.link(user, this)
+			Seat.link(user, this);
 			// C.DEMO || select_next_user() // переключение на следующего user
 		}
 
@@ -1319,14 +1336,11 @@ Seat.prototype = {
 };
 
 
-function GroupsUsers(){
-
-};
+function GroupsUsers(){ };
 
 GroupsUsers.createGroup = function(){
-	var groups = view.groups_users
-	var l = groups().length
-	// console.log(l)
+	var groups = view.groups_users;
+	var l = groups().length;
 	var obj = {};
 	var id = l > 0 ? groups()[l-1].id + 1 : 0;
 
@@ -1336,10 +1350,10 @@ GroupsUsers.createGroup = function(){
 	}
 	obj.id = id;
 	obj.filter_sex = false;
-	obj.name = 'Группа ' + (id+1)
+	obj.name = 'Группа ' + (id+1);
 	obj.seat = ko.observableArray();
 	obj.user = ko.observableArray();
-	groups.push(obj)
+	groups.push(obj);
 };
 GroupsUsers.setGroup = function(obj, index){
 
@@ -1357,9 +1371,8 @@ GroupsUsers.remGroup = function(obj, index){
 	var groups = view.groups_users();
 	var users = obj.user()
 	users.forEach(function(item){
-
-		item.d_check(false)
-		item.id_group(false)
+		item.d_check(false);
+		item.id_group(false);
 	});
 	view.groups_users.splice(index, 1);
 
@@ -1403,17 +1416,16 @@ GroupsUsers.searchVal = function(arr, id){
 	return res
 }
 GroupsUsers.addSear = function(seat){
-	// var arr = funIntervar.arr_user()
 	var obj = view.item_group();
 	var index = GroupsUsers.searchVal(obj.seat(), seat.id);
 	var check_reserv = GroupsUsers.checkReserv(obj, seat);
 	// console.log('checkReserv',check_reserv)
 	if(index === undefined) {
-		obj.seat.push(seat)
-		seat.marker_check.check = true
+		obj.seat.push(seat);
+		seat.marker_check.check = true;
 	} else {
 		obj.seat.splice(index, 1);
-		seat.marker_check.check = false
+		seat.marker_check.check = false;
 	}
 },
 GroupsUsers.addUser = function(user){
@@ -1421,12 +1433,12 @@ GroupsUsers.addUser = function(user){
 	var index = GroupsUsers.searchVal(item_group().user(), user.id);
 
 	if(index === undefined) {
-		user.d_check(true)
-		user.id_group(item_group().id)
-		item_group().user.push(user)
+		user.d_check(true);
+		user.id_group(item_group().id);
+		item_group().user.push(user);
 	} else {
-		user.d_check(false)
-		user.id_group(false)
+		user.d_check(false);
+		user.id_group(false);
 		item_group().user.splice(index, 1);
 	}
 };
@@ -1434,14 +1446,42 @@ GroupsUsers.addUser = function(user){
 function FilterSeat(){}
 
 FilterSeat.checkSeat = function(seat, user){
-	var arr = seat.group.items;
+	var res = true
+	var num = {
+		odd: 0,
+		even: 0
+	};
+	for(var g = 0; g < groups.length; g++){
+		var res_g = FilterSeat.checkGroup(groups[g], seat, user);
+		if(res_g){
+			num.odd += res_g.odd;
+			num.even += res_g.even;
+		}
+		// res = res_g.check == false ? res_g.check : res;
+	}
+	res = num.odd > num.even ? false : true
+	return {
+		res: res, 
+		odd: num.odd,
+		even: num.even
+	}
+};
+FilterSeat.checkGroup = function(groups,seat, user){
+	var arr = groups.items;
 	var odd  = 0; // нечетные
 	var even = 0; // четные
 
 	for(var i = 0; i < arr.length; i++){
 		var itm = arr[i];
-		if(!itm.user || ( user.seat && itm.id == user.seat.id)) continue
+
+		if((!itm.user && !seat) || 
+		  (seat && !itm.user && itm.id != seat.id)|| 
+		  (user && user.seat && itm.id == user.seat.id)) continue
+		// console.log('true',itm.id)
 		var num = (+itm.name)%2;
+		if(seat && itm.id == seat.id) {
+			num = (+seat.name)%2;
+		}
 
 		if(num === 0) {
 			even += 1;
@@ -1449,25 +1489,26 @@ FilterSeat.checkSeat = function(seat, user){
 			odd  += 1;
 		}
 	}
-	
-	if((+seat.name)%2 == 0) {
-		even += 1
-	} else {
-		odd  += 1
-	}
-	
 	if(odd > even) {
-		return false
+		return {
+			check: false,
+			even: even,
+			odd: odd
+		}
 	} else {
-		return true	
+		return {
+			check: true,
+			even: even,
+			odd: odd
+		}
 	}
-};
+},
 FilterSeat.checkSeatSex = function(seat, user){
-	var res = true
-	var arr = view.users()
+	var res = true;
+	var arr = view.users();
 	for(var i = 0; i < arr.length; i++){
 		var itm = arr[i];
-		if(itm.id == user.id) continue
+		if(user && itm.id == user.id) continue
 		if(itm.seat && itm.seat.sex && itm.seat.sex !== itm.sex) {
 			res = false
 		}
@@ -1477,7 +1518,5 @@ FilterSeat.checkSeatSex = function(seat, user){
 			res = false
 		}	
 	}
-	
-
 	return res
 }

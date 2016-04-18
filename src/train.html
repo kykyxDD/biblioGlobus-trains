@@ -251,6 +251,7 @@
 					<div data-bind="text: board.name"     class="name" ></div>
 					<div data-bind="text: board.boardnum" class="board"></div>
 				</div>
+
 				<div class="airline-logo-small"></div>
 				<div class="nav">
 					<div class="frame center"></div>
@@ -290,6 +291,10 @@
 						<span data-bind="text: board.date" class="value"></span>
 					</div>
 				</div>
+			</div>
+			<div class="num_seat">
+				<span>Количество нечетных мест:</span> <span class="num_odd" data-bind='text: num_odd'></span><br>
+				<span>Количество четных мест:</span> <span class="num_even" data-bind='text: num_even'></span>
 			</div>
 			<div id="users-scroll" class="users-box static-user-bg">
 				<table class="users" cellpadding=0>

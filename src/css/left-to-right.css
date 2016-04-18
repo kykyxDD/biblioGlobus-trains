@@ -8,7 +8,14 @@
 .controls .screen {
     display: none !important;
 }
-
+.controls .num_seat {
+  position: absolute;
+  padding: 0 15px;
+  font-size: 12px;
+  right: 0px;
+  left: 0px;
+  top: 110px;
+}
 .controls .board-info {
     top: 15px !important;
 }

@@ -87,9 +87,11 @@ body {
     .controls .users-box .users .user .place .value {
       height: 24px; }
   .controls .users-box .users .user .ok {
+
     width: 37px;
     padding-top: 10px; }
     .controls .users-box .users .user .ok svg {
+      pointer-events: none;
       width: 18px;
       height: 18px; }
 .controls .confirm .confirm-caption {
