@@ -178,8 +178,24 @@ var self = window.model = {
 	seatRequest: function(done, fail) {
 		var seats = self.users.map(function(user) {
 			var seat = user.curseat().toUpperCase()
+			var add = []
+			if(user.parent){
+				add = ['c'+user.id, user.parent.id]
+			} else if(user.child) {
+				add[0] = 'p' + user.id;
+				var arr = []
+				user.child().forEach(function(child){
+					arr.push('c'+child.id)
+				})
+				add[1] = arr.join(',')
+			}
+	
 			if(seat) {
-				return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
+				if(add.length){
+					return [['n'+ user.id, seat].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
+				} else {
+					return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
+				}
 			}
 		}).filter(Boolean).concat('platform=html5').join('&')
 

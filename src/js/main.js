@@ -590,6 +590,7 @@ function setup_viewmodel() {
 	view.num_odd   		= ko.observable(0);
 	view.num_even  		= ko.observable(0);
 	view.error_seat  	= ko.observable(true);
+	view.error_len 		= ko.observable(false);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -1108,6 +1109,7 @@ Seat.unlink = function(user) {
 				child.block(true)
 			})
 		}
+		checkLength()
 	}
 }
 Seat.link = function(user, seat) {
@@ -1127,7 +1129,14 @@ Seat.link = function(user, seat) {
 				child.block(false)
 			})
 		}
-
+		checkLength()
+	}
+}
+function checkLength(){
+	if(view.placedUsers().length !== view.users().length){
+		view.error_len(true)
+	} else {
+		view.error_len(false)
 	}
 }
 
