@@ -83,9 +83,10 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-			if(data['IS_INF']) {
+			if(data['IS_INF'] || data['PARENTID']) {
 				data.parent = users.select('ID', data['PARENTID'])
-				data.parent.child = data
+				if(!data.parent.child) data.parent.child = ko.observableArray();
+				data.parent.child.push(data)
 			}
 		})
 		self.users = users.map(function(data, index) {
@@ -101,8 +102,7 @@ var self = window.model = {
 				sc        : data['SC'],
 
 				parent    : data.parent,
-				child     : data.child,
-
+				child     : data.child ? data.child : false,
 				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
 
@@ -129,8 +129,16 @@ var self = window.model = {
 			return user
 		})
 		self.users.some(function(user) {
-			if(user.parent) user.parent = self.users.select('id', user.parent.ID)
-			if(user.child ) user.child  = self.users.select('id', user.child .ID)
+			if(user.parent){ 
+				user.parent = self.users.select('id', user.parent.ID)
+			}
+			
+			if(user.child) {
+				var childs = user.child();
+				childs.forEach(function(data, index){
+					childs[index] = self.users.select('id', data.ID)
+				})
+			}
 		})
 
 		data['SEATS']['SEAT'].forEach(function(info) {

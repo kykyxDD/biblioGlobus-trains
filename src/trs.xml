@@ -40,32 +40,8 @@
     </TRAIN>
     <PASSENGERS>
         <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
-        <PASSENGER>
-            <ID>102300000821893318</ID>
-            <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
-            <AGE>36</AGE>
-            <SURNAME>BRON</SURNAME>
-            <NAME>NIKOLAI</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>Y</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER>
-            <ID>102300000821893618</ID>
-            <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
-            <AGE>36</AGE>
-            <SURNAME>BRON</SURNAME>
-            <NAME>NIKOLAI</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>Y</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER>
-            <ID>102300000821893418</ID>
+         <PASSENGER>
+            <ID>102300000821893420</ID>
             <TITLE>Mrs</TITLE>
             <SEX>F</SEX>
             <AGE>29</AGE>
@@ -77,17 +53,59 @@
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER>
-            <ID>102300000821893518</ID>
+            <ID>102300000821893619</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>KIRILL</SURNAME>
+            <NAME>NIKOLAI</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+
+        <PASSENGER>
+            <ID>102300000821893511</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>18</AGE>
             <SURNAME>BRON</SURNAME>
             <NAME>RAISA</NAME>
+            <PARENTID>102300000821893619</PARENTID>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>Y</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893318</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>2</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>NIKOLAI</NAME>
+            <PARENTID>102300000821893619</PARENTID>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893818</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>2</AGE>
+            <SURNAME>BRON</SURNAME>
+            <NAME>NIKOLAI</NAME>
+            <PARENTID>102300000821893619</PARENTID>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+
+
     </PASSENGERS>
     <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>
     <SEATS>

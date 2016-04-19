@@ -461,8 +461,8 @@ function load_session() {
 	}
 
 	var check = FilterSeat.checkSeat()
-	var check_sex = FilterSeat.checkSeatSex()
-	var val = check.res == false || !check_sex ?  true : false;
+	// var check_sex = FilterSeat.checkSeatSex()
+	var val = check.res == false?  true : false;
 	view.num_odd(check.odd);
 	view.num_even(check.even);
 	view.error_seat(val)
@@ -516,14 +516,15 @@ function setup_viewmodel() {
 		return view.users().filter(method('curseat'))
 	}, view)
 	view.selectUser = function(user, e) {
-		if(user && !user.parent && !user.disabled) {
+		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled) {
 			var previous = view.user()
 			if(previous) {
 				previous.selected(false)
 			}
 			view.user(user)
 			user.selected(true)
-			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex ||  (user.child && !previous.child) || (!user.child && previous.child)) {
+			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
+				|| user.child || user.parent) {
 				groups.some(method('draw'))
 			}
 			if(user.seat) {
@@ -659,14 +660,18 @@ function select_next_user() {
 }
 function update_users(users) {
 	users.some(function(user) {
+
 		user.d_check  = ko.observable(user.d_check  || false)
 		user.id_group = ko.observable(user.id_group || false)
 		user.seat     = seats.select('num', user.curseat)
 		user.selected = ko.observable(false)
+		user.block    = ko.observable(!user.parent ? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
 		user.fclass_name  = ko.observable(user.fclass  || '')
+		// user.parent_select = ko.observable(user.parent ? false : true);
+
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
         })
@@ -865,32 +870,20 @@ function register_events() {
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 			if(seat){
 				var check =  FilterSeat.checkSeat(seat, view.user());
-				var check_sex = FilterSeat.checkSeatSex(seat, view.user());
+				// var check_sex = FilterSeat.checkSeatSex(seat, view.user());
 				view.num_odd(check.odd);
 				view.num_even(check.even);
-				if(check.res == false || !check_sex){
+				if(check.res == false){
 					view.error_seat(true)
-				} else if (check.res == true && check_sex){
+				} else if (check.res == true){
 					view.error_seat(false)
 				}
-				
-				if(seat.marker_check){
-		        	var size = seat.labelSize;
-					var minx = seat.group.x + seat.marker_check.x - (size/2);
-					var miny = seat.group.y + seat.marker_check.y - size;
-	        		var maxx = minx + size
-					var maxy = miny + size
-					if(minx <= x && x <= maxx && miny <= y && y <= maxy){
-						var user = view.user();
-						GroupsUsers.addSear(seat);
-						// GroupsUsers.addUser(interval[0], view.user());
-						seat.group.draw()
-					} else  if(seat.marker_check.check){
-						seat && seat.take(view.user())	
-					}
-				} else {
-					seat && seat.take(view.user())	
+				if(view.user().parent) {
+					var seat_parent = view.user().parent.seat;
+					// var res = FilterSeat.seatChild(seat, view.user().parent)
 				}
+				seat && seat.take(view.user())	
+
 			}
 			// seat && seat.take(view.user())
 		}
@@ -1110,6 +1103,11 @@ Seat.unlink = function(user) {
 		user.seat = null
 		user.curseat('')
 		user.id_car('')
+		if(user.child) {
+			user.child().forEach(function(child){
+				child.block(true)
+			})
+		}
 	}
 }
 Seat.link = function(user, seat) {
@@ -1124,6 +1122,11 @@ Seat.link = function(user, seat) {
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
 		seat.group.draw()
+		if(user.child) {
+			user.child().forEach(function(child){
+				child.block(false)
+			})
+		}
 
 	}
 }
@@ -1158,10 +1161,10 @@ Seat.prototype = {
         if (user) {
             this.match_service_class = user.sc === "*" || this.sc === user.sc
             this.match_sex = this.sex && this.sex === user.sex || !this.sex;
-            if (user.child) {
-                this.match_service_class = this.match_service_class && this.has_child_cradle
-                this.match_sex = this.match_sex && this.has_child_cradle
-            }
+            // if (user.child) {
+            //     this.match_service_class = this.match_service_class && this.has_child_cradle
+            //     this.match_sex = this.match_sex && this.has_child_cradle
+            // }
         }
 	},
 	draw: function() {
@@ -1178,13 +1181,24 @@ Seat.prototype = {
                 this.drawPath(this.sprite.offset.polygon)
             }
 		}
+
 		if(this.user) {
 			this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
 		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
 			// if(this.marker_check && this.marker_check.check){
-				this.drawLabel(this.name.toUpperCase())
+			if(view.user().parent && view.user().parent.seat){
+				var res = FilterSeat.seatChild(this, view.user().parent)
+				if(res) {
+					this.drawLabel(this.name.toUpperCase())
+				}
+			} else {
+				this.drawLabel(this.name.toUpperCase())	
+			}
+
+
+			
 				// this.drawCheck(this.ref)	
 			// } else {
 				// this.drawCheck(this.ref)
@@ -1320,6 +1334,11 @@ Seat.prototype = {
 		var already_placed = user.seat === this;
 
 		Seat.unlink(user);
+		if(user.child) {
+			user.child().forEach(function(child){
+				Seat.unlink(child);
+			})
+		}
 
 		if(!already_placed) {
 			Seat.link(user, this);
@@ -1334,189 +1353,3 @@ Seat.prototype = {
 		this.group.draw()
 	}
 };
-
-
-function GroupsUsers(){ };
-
-GroupsUsers.createGroup = function(){
-	var groups = view.groups_users;
-	var l = groups().length;
-	var obj = {};
-	var id = l > 0 ? groups()[l-1].id + 1 : 0;
-
-	obj.check = ko.observable( l == 0 ? true : false);
-	if(l == 0) {
-		view.item_group(obj)
-	}
-	obj.id = id;
-	obj.filter_sex = false;
-	obj.name = 'Группа ' + (id+1);
-	obj.seat = ko.observableArray();
-	obj.user = ko.observableArray();
-	groups.push(obj);
-};
-GroupsUsers.setGroup = function(obj, index){
-
-	if(view.item_group() && obj.id !== view.item_group().id) {
-		view.item_group().check(false);
-		obj.check(true);
-		view.item_group(obj);
-	} else {
-		view.item_group(obj);
-	}
-	
-}
-GroupsUsers.remGroup = function(obj, index){
-
-	var groups = view.groups_users();
-	var users = obj.user()
-	users.forEach(function(item){
-		item.d_check(false);
-		item.id_group(false);
-	});
-	view.groups_users.splice(index, 1);
-
-	if(view.groups_users().length == 0) {
-		view.item_group(false)
-	}
-};
-GroupsUsers.checkReserv = function(obj, new_seat){
-	var seat = obj.seat();
-	
-	var odd  = 0; // нечетные
-	var even = 0; // четные
-	seat.forEach(function(itm, index){	
-		var num = (+itm.name)%2;
-		if(num === 0) {
-			even += 1;
-		} else {
-			odd  += 1;
-		}
-	})
-	if(even > 0 && even > 0) {
-		if(even > odd || 
-		  (even == odd && (+new_seat.num)%2 == 0)){
-			return true
-		} else {
-			return false
-		}
-	} else {
-		return true
-	}
-},
-
-GroupsUsers.searchVal = function(arr, id){
-	var res = undefined;
-
-	arr.forEach(function(val, i){
-		if(val.id.toString() == id.toString() && res == undefined) {
-			res = i
-		}
-	})
-	return res
-}
-GroupsUsers.addSear = function(seat){
-	var obj = view.item_group();
-	var index = GroupsUsers.searchVal(obj.seat(), seat.id);
-	var check_reserv = GroupsUsers.checkReserv(obj, seat);
-	// console.log('checkReserv',check_reserv)
-	if(index === undefined) {
-		obj.seat.push(seat);
-		seat.marker_check.check = true;
-	} else {
-		obj.seat.splice(index, 1);
-		seat.marker_check.check = false;
-	}
-},
-GroupsUsers.addUser = function(user){
-	var item_group = view.item_group;
-	var index = GroupsUsers.searchVal(item_group().user(), user.id);
-
-	if(index === undefined) {
-		user.d_check(true);
-		user.id_group(item_group().id);
-		item_group().user.push(user);
-	} else {
-		user.d_check(false);
-		user.id_group(false);
-		item_group().user.splice(index, 1);
-	}
-};
-
-function FilterSeat(){}
-
-FilterSeat.checkSeat = function(seat, user){
-	var res = true
-	var num = {
-		odd: 0,
-		even: 0
-	};
-	for(var g = 0; g < groups.length; g++){
-		var res_g = FilterSeat.checkGroup(groups[g], seat, user);
-		if(res_g){
-			num.odd += res_g.odd;
-			num.even += res_g.even;
-		}
-		// res = res_g.check == false ? res_g.check : res;
-	}
-	res = num.odd > num.even ? false : true
-	return {
-		res: res, 
-		odd: num.odd,
-		even: num.even
-	}
-};
-FilterSeat.checkGroup = function(groups,seat, user){
-	var arr = groups.items;
-	var odd  = 0; // нечетные
-	var even = 0; // четные
-
-	for(var i = 0; i < arr.length; i++){
-		var itm = arr[i];
-
-		if((!itm.user && !seat) || 
-		  (seat && !itm.user && itm.id != seat.id)|| 
-		  (user && user.seat && itm.id == user.seat.id)) continue
-		// console.log('true',itm.id)
-		var num = (+itm.name)%2;
-		if(seat && itm.id == seat.id) {
-			num = (+seat.name)%2;
-		}
-
-		if(num === 0) {
-			even += 1;
-		} else {
-			odd  += 1;
-		}
-	}
-	if(odd > even) {
-		return {
-			check: false,
-			even: even,
-			odd: odd
-		}
-	} else {
-		return {
-			check: true,
-			even: even,
-			odd: odd
-		}
-	}
-},
-FilterSeat.checkSeatSex = function(seat, user){
-	var res = true;
-	var arr = view.users();
-	for(var i = 0; i < arr.length; i++){
-		var itm = arr[i];
-		if(user && itm.id == user.id) continue
-		if(itm.seat && itm.seat.sex && itm.seat.sex !== itm.sex) {
-			res = false
-		}
-	}
-	if(seat && user) {
-		if(seat.sex && seat.sex !== user.sex) {
-			res = false
-		}	
-	}
-	return res
-}

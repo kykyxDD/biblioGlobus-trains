@@ -43,7 +43,7 @@ body {
 .controls .board-info .cred {
   padding: 10px 12px; }
 .controls .users-box .users .user {
-  height: 57px; }
+  min-height: 57px; }
   .controls .users-box .users .user.infant {
     height: 28px; }
   .controls .users-box .users .user .info {
@@ -53,7 +53,7 @@ body {
     .controls .users-box .users .user .info .status tr {
       height: 14px; }
     .controls .users-box .users .user .info .status .place {
-      display: table-cell; }
+      display: table-row; }
     .controls .users-box .users .user .info .status .message td {
       padding-bottom: 4px; }
     .controls .users-box .users .user .info .status .car,
@@ -67,6 +67,19 @@ body {
     }
     .controls .users-box .users .user .info .status .sc td {
       padding: 10px 0;
+    }
+    .controls .users-box .users .user .info .status .child .field,
+    .controls .users-box .users .user .info .status .parent .field {
+      vertical-align: top;
+    }
+
+    .controls .users-box .users .user .info .status .child .value,
+    .controls .users-box .users .user .info .status .parent .value {
+      text-transform: capitalize;
+    }
+    .controls .users-box .users .user .info .status .parent .value,
+    .controls .users-box .users .user .info .status .child .value:last-child{
+      margin-bottom: 5px;
     }
 
   .controls .users-box .users .user .print {
