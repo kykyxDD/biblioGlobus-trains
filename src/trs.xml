@@ -53,12 +53,36 @@
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER>
-            <ID>102300000821893418</ID>
+            <ID>102300000821893419</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>8</AGE>
             <SURNAME>BRON</SURNAME>
             <NAME>RAISA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893320</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>SOBLEV</SURNAME>
+            <NAME>ARSENIY</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
+            <ID>102300000821893421</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>8</AGE>
+            <SURNAME>BORISOVGLEBSKAYA</SURNAME>
+            <NAME>ANASTASIYA</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>C</SC>

@@ -44,6 +44,11 @@
 		<code>7</code>
 		<message><![CDATA[В заявке нет туристов с указанным классом салона]]></message>
 	</error>
+	
+	<error>
+		<code>5060</code>
+		<message><![CDATA[На заданном направлении (или поезде) мест нет]]></message>
+	</error>
 
 	<resultsPopupHeader>Вы успешно зарегистрировались на рейс __val__</resultsPopupHeader>
 	<resultsPopupText1>Спасибо что воспользовались услугами нашей компании.</resultsPopupText1>
