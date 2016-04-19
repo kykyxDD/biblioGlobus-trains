@@ -8,7 +8,14 @@
 .controls .screen {
     display: none !important;
 }
-
+.controls .num_seat {
+  position: absolute;
+  padding: 0 15px;
+  font-size: 12px;
+  right: 0px;
+  left: 0px;
+  top: 110px;
+}
 .controls .board-info {
     top: 15px !important;
 }
@@ -30,15 +37,17 @@
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 10px;
-
+    max-width: 40%;
 }
-
+.train_nav thead {
+  text-align: center;
+}
 .portrait .train_nav {
     margin-left: -160px;
 }
 
 .train_nav td {
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .train_nav .current {
@@ -59,6 +68,33 @@
 .train_nav .neighbors .type {
     font-size: 12px;
 }
+.train_nav .info {
+  margin-top: 10px;
+  border-top: 1px solid #000;
+  text-align: left;
+}
+
+.train_nav .info .text,
+.train_nav .info .name{
+    display: inline-block;
+}
+.train_nav .info .price,
+.train_nav .info .descr,
+.train_nav .info .carrier {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.train_nav .info .name {
+  width: 25%;
+  font-weight: bold;
+} 
+.train_nav .info .text {
+  width: 75%;
+}
+
 
 .view .plane .deck .selection .wrap {
   -webkit-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);

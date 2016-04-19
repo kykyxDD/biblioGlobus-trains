@@ -83,9 +83,10 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-			if(data['IS_INF']) {
+			if(data['IS_INF'] || data['PARENTID']) {
 				data.parent = users.select('ID', data['PARENTID'])
-				data.parent.child = data
+				if(!data.parent.child) data.parent.child = ko.observableArray();
+				data.parent.child.push(data)
 			}
 		})
 		self.users = users.map(function(data, index) {
@@ -101,8 +102,7 @@ var self = window.model = {
 				sc        : data['SC'],
 
 				parent    : data.parent,
-				child     : data.child,
-
+				child     : data.child ? data.child : false,
 				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
 
@@ -129,13 +129,21 @@ var self = window.model = {
 			return user
 		})
 		self.users.some(function(user) {
-			if(user.parent) user.parent = self.users.select('id', user.parent.ID)
-			if(user.child ) user.child  = self.users.select('id', user.child .ID)
+			if(user.parent){ 
+				user.parent = self.users.select('id', user.parent.ID)
+			}
+			
+			if(user.child) {
+				var childs = user.child();
+				childs.forEach(function(data, index){
+					childs[index] = self.users.select('id', data.ID)
+				})
+			}
 		})
 
 		data['SEATS']['SEAT'].forEach(function(info) {
-			var seat = self.struct['seats'].select('num', info['no'].toUpperCase())
 
+			var seat = self.struct['seats'].select('num', info['no'].toUpperCase())
 			if(seat) {
 				var mock = { child: !rand(20), age: rand(100), sex: 'mf'[rand(2)] }
 				var back = seat.back || self.selectPassenger(seat.sid, mock)
@@ -150,8 +158,10 @@ var self = window.model = {
 					         back
 
 				seat.user = face
+
 				seat.back = back
 				seat.sc   = info['sc']
+				seat.sex  = info['sex'].toLowerCase() || false;
                 seat.status = status
                 seat.has_child_cradle = status === 'i'
 			}
@@ -168,8 +178,24 @@ var self = window.model = {
 	seatRequest: function(done, fail) {
 		var seats = self.users.map(function(user) {
 			var seat = user.curseat().toUpperCase()
+			var add = []
+			if(user.parent){
+				add = ['c'+user.id, user.parent.id]
+			} else if(user.child) {
+				add[0] = 'p' + user.id;
+				var arr = []
+				user.child().forEach(function(child){
+					arr.push('c'+child.id)
+				})
+				add[1] = arr.join(',')
+			}
+	
 			if(seat) {
-				return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
+				if(add.length){
+					return [['n'+ user.id, seat].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
+				} else {
+					return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
+				}
 			}
 		}).filter(Boolean).concat('platform=html5').join('&')
 

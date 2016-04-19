@@ -106,7 +106,8 @@ var seats, decks, groups, masks, map, tiles,
     current_car = {},
 	frames = {},
 	cookie = {},
-	params = {}
+	params = {},
+	interval = [];
 
 var debug = {
 	enabled : false,
@@ -158,7 +159,6 @@ var debug = {
 		}
 	}
 }
-
 var view = {
 	loading: '',
 	orient : '',
@@ -233,6 +233,8 @@ function ready() {
 	debug.enabled = hash(params.debug) === debug.token
 
 	document.body.style.display = 'block'
+	view.groups_users = ko.observableArray();
+	view.show_popup_group = ko.observable(false)
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -260,6 +262,9 @@ function ready() {
 		clearInterval(refresh.interval)
 		el.progress.textContent = error.message
 	}
+	
+
+	
 }
 function start() {
     
@@ -328,9 +333,14 @@ function prepare_train_view() {
     
     view.current_car_type = ko.observable('')
     view.current_car_num = ko.observable('')
+    view.current_car_descr = ko.observable('')
+    view.current_car_carrier = ko.observable('')
+    view.current_car_prime_from = ko.observable('')
+    view.current_car_prime_to = ko.observable('')
     
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
+
 
     navigation.position = V(0.2, 0.2)
     
@@ -383,6 +393,14 @@ function update_view()
     
     view.current_car_type(car_info.desc)
     view.current_car_num("Вагон №" + car.num)
+    view.current_car_descr(car.DESCR.text)
+    view.current_car_carrier(car.CARRIER)
+    view.current_car_prime_from(car.PRICE.from)
+    if(car.PRICE.to !== '') {
+    	view.current_car_prime_to(car.PRICE.to)
+    } else {
+    	view.current_car_prime_to(false)
+    }
     
     current_car.type = car_info.desc
     current_car.num = car.num
@@ -442,6 +460,13 @@ function load_session() {
 		document.cookie = 'seats=; expires='+ new Date(0)
 	}
 
+	var check = FilterSeat.checkSeat()
+	// var check_sex = FilterSeat.checkSeatSex()
+	var val = check.res == false?  true : false;
+	view.num_odd(check.odd);
+	view.num_even(check.even);
+	view.error_seat(val)
+
 }
 function setup_viewmodel() {
 	document.title = model.boardinfo.name
@@ -485,19 +510,21 @@ function setup_viewmodel() {
 		return data.port_rus + " " + data.port
 	}
 
+	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(method('curseat'))
 	}, view)
-	view.selectUser = function(user) {
-		if(user && !user.parent && !user.disabled) {
+	view.selectUser = function(user, e) {
+		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled) {
 			var previous = view.user()
 			if(previous) {
 				previous.selected(false)
 			}
 			view.user(user)
 			user.selected(true)
-			if(!previous || user.sc !== previous.sc || (user.child && !previous.child) || (!user.child && previous.child)) {
+			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
+				|| user.child || user.parent) {
 				groups.some(method('draw'))
 			}
 			if(user.seat) {
@@ -506,8 +533,42 @@ function setup_viewmodel() {
 				}
 				frames.view.move(user.seat.x, user.seat.y, true)
 			}
+			if(e && previous && user.id == previous.id){
+				var elem = e.target || e.srcElement;
+				if(elem.tagName == 'TD' && has_class(elem, 'ok')) {
+					user.seat && user.seat.take(user);
+				}
+			}
 
 			return true
+		}
+	}
+	view.clickGroup = function(str, index, data){
+		if (str == 'rem') {
+			GroupsUsers.remGroup(data, index)
+		} else if (str == 'set'){
+			GroupsUsers.setGroup(data, index)
+		}
+	}
+	view.addGroup = function(){
+		GroupsUsers.createGroup();
+	}
+	view.clickUser = function(data, parent){
+		if(view.item_group() == false) return
+		
+		if(data.d_check() == false)  {
+			GroupsUsers.addUser(data)
+		} else if(data.d_check() == true) {
+			if(data.id_group() == view.item_group().id) {
+				GroupsUsers.addUser(data) 
+			} 
+		}
+	}
+	view.popupGroup = function(){
+		if(view.show_popup_group() == false) {
+			view.show_popup_group(true)	
+		} else {
+			view.show_popup_group(false)
 		}
 	}
 
@@ -526,6 +587,10 @@ function setup_viewmodel() {
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
 	view.error_message  = ko.observable('')
+	view.num_odd   		= ko.observable(0);
+	view.num_even  		= ko.observable(0);
+	view.error_seat  	= ko.observable(true);
+	view.error_len 		= ko.observable(false);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -565,6 +630,7 @@ function setup_viewmodel() {
 		view.selectUser(view.users()[0])
 		setTimeout(view.loading, 500, 'void')
 	}
+	GroupsUsers.createGroup();
 
 	ko.applyBindings(view)
 
@@ -595,10 +661,18 @@ function select_next_user() {
 }
 function update_users(users) {
 	users.some(function(user) {
+
+		user.d_check  = ko.observable(user.d_check  || false)
+		user.id_group = ko.observable(user.id_group || false)
 		user.seat     = seats.select('num', user.curseat)
 		user.selected = ko.observable(false)
+		user.block    = ko.observable(!user.parent ? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
+		user.id_car   = ko.observable(user.id_car  || '')
+		user.fclass_name  = ko.observable(user.fclass  || '')
+		// user.parent_select = ko.observable(user.parent ? false : true);
+
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
         })
@@ -792,11 +866,27 @@ function register_events() {
 	function click(e) {
 		if(view.user() && !C.VIEWONLY) {
 			var point = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
-				x     = point.pageX + frames.view.center.x,
-				y     = point.pageY + frames.view.center.y,
+				x     = (point.pageX + frames.view.center.x),
+				y     = (point.pageY + frames.view.center.y),
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
+			if(seat){
+				var check =  FilterSeat.checkSeat(seat, view.user());
+				// var check_sex = FilterSeat.checkSeatSex(seat, view.user());
+				view.num_odd(check.odd);
+				view.num_even(check.even);
+				if(check.res == false){
+					view.error_seat(true)
+				} else if (check.res == true){
+					view.error_seat(false)
+				}
+				if(view.user().parent) {
+					var seat_parent = view.user().parent.seat;
+					// var res = FilterSeat.seatChild(seat, view.user().parent)
+				}
+				seat && seat.take(view.user())	
 
-			seat && seat.take(view.user())
+			}
+			// seat && seat.take(view.user())
 		}
 	}
 }
@@ -914,6 +1004,7 @@ function SeatGroup(items, index) {
 	this.canvas  = document.createElement('canvas')
 	this.context = this.canvas.getContext('2d')
 	this.size    = this.getDimensions()
+	// this.filter_sex = false
 	this.deck    = decks[items[0].deck - 1].elem
 
 	this.canvas.className     = 'seat'
@@ -974,7 +1065,6 @@ SeatGroup.prototype.getDimensions = function() {
 }
 function Seat(data) {
 	this.copy(data)
-
 	this.size = [
 		Math.max(this.sprite.offset.size[0], this.sprite.w),
 		Math.max(this.sprite.offset.size[1], this.sprite.h)
@@ -991,6 +1081,7 @@ Seat.findByPosition = function(x, y) {
 
 	while(seat = seats[--remains]) if(
 		(seat.match_service_class || C.DEMO      ) &&
+		
 		(!seat.user || seat === view.user().seat ) &&
 		(view.upper() ? !seat.low : seat.deck < 2) &&
 		seat.contains(x, y)
@@ -1012,6 +1103,13 @@ Seat.unlink = function(user) {
 		user.seat.group.draw()
 		user.seat = null
 		user.curseat('')
+		user.id_car('')
+		if(user.child) {
+			user.child().forEach(function(child){
+				child.block(true)
+			})
+		}
+		checkLength()
 	}
 }
 Seat.link = function(user, seat) {
@@ -1020,11 +1118,25 @@ Seat.link = function(user, seat) {
 		user.label.textContent = seat.name
 		seat.deckElement.appendChild(user.selection)
         add_class(user.selection, seat.type)
-        
+
 		user.seat = seat
+		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
 		seat.group.draw()
+		if(user.child) {
+			user.child().forEach(function(child){
+				child.block(false)
+			})
+		}
+		checkLength()
+	}
+}
+function checkLength(){
+	if(view.placedUsers().length !== view.users().length){
+		view.error_len(true)
+	} else {
+		view.error_len(false)
 	}
 }
 
@@ -1048,15 +1160,20 @@ Seat.prototype = {
 		}, this)
 	},
 	updateState: function() {
+
 		this.X = this.x - this.group.size.left - this.size[0]
 		this.Y = this.y - this.group.size.top
         this.match_service_class = false
+        this.match_sex = false
         var user = view.user()
+
         if (user) {
             this.match_service_class = user.sc === "*" || this.sc === user.sc
-            if (user.child) {
-                this.match_service_class = this.match_service_class && this.has_child_cradle
-            }
+            this.match_sex = this.sex && this.sex === user.sex || !this.sex;
+            // if (user.child) {
+            //     this.match_service_class = this.match_service_class && this.has_child_cradle
+            //     this.match_sex = this.match_sex && this.has_child_cradle
+            // }
         }
 	},
 	draw: function() {
@@ -1074,13 +1191,22 @@ Seat.prototype = {
             }
 		}
 
-		if(this.user) this.drawUnit(this.user,
-			this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
-			this.Y + this.sprite.offset.user[1])
-		else if(this.match_service_class || C.DEMO) this.drawLabel(this.name.toUpperCase())
+		if(this.user) {
+			this.drawUnit(this.user,
+					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
+					this.Y + this.sprite.offset.user[1])
+		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
+			if(view.user().parent && view.user().parent.seat){
+				var res = FilterSeat.seatChild(this, view.user().parent)
+				if(res) {
+					this.drawLabel(this.name.toUpperCase())
+				}
+			} else {
+				this.drawLabel(this.name.toUpperCase())	
+			}
+		}
 	},
 	drawUnit: function(img, x, y) {
-        
         var ctx = this.group.context
         ctx.save()
         
@@ -1130,7 +1256,7 @@ Seat.prototype = {
         var size = this.labelSize
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
         var dy = this.sprite.offset.label[1]
-            
+
 		ctx.save()
 		ctx.fillStyle =
 			debug.enabled && this.over ? 'orangered' :
@@ -1142,6 +1268,38 @@ Seat.prototype = {
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
+		ctx.restore()
+	},
+	drawCheck: function(str) {
+		var ctx  = this.group.context
+        var size = this.labelSize
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
+        var dy = this.sprite.offset.label[1]
+           
+		ctx.save()
+		ctx.fillStyle =
+		this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
+			                             'rgba(255,255,255,0.5)'
+
+		if(!this.marker_check) {
+			this.marker_check = {
+	        	x: this.X + dx + size,
+	        	y: this.Y + dy,
+	        	check: false
+	        };	
+		} else {
+        	this.marker_check.x = this.X + dx + size
+        	this.marker_check.y = this.Y + dy
+		}
+
+		ctx.translate(this.marker_check.x,this.marker_check.y)
+		ctx.transform.apply(ctx, this.labelTransform)
+		ctx.fillRect(0, 0, size, size)
+		if(this.marker_check.check == true){
+			ctx.strokeText('T', size / 2, size / 2)
+        } else {
+        	ctx.strokeText('F', size / 2, size / 2)	
+        }
 		ctx.restore()
 	},
 	highlight: function() {
@@ -1160,13 +1318,18 @@ Seat.prototype = {
 	take: function(user) {
 		if(debug.enabled) console.log(this)
 
-		var already_placed = user.seat === this
+		var already_placed = user.seat === this;
 
-		Seat.unlink(user)
+		Seat.unlink(user);
+		if(user.child) {
+			user.child().forEach(function(child){
+				Seat.unlink(child);
+			})
+		}
 
 		if(!already_placed) {
-			Seat.link(user, this)
-			C.DEMO || select_next_user()
+			Seat.link(user, this);
+			// C.DEMO || select_next_user() // переключение на следующего user
 		}
 
 		this.highlight()
