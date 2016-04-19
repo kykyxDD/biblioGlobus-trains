@@ -24,6 +24,7 @@
             {"ref":"kup_l_l_w1","child":true,"sex":"f","age":[0,999]},
             {"ref":"kup_l_l_m1","child":true,"sex":"m","age":[0,999]}
         ],
+        "name": "купейный",
         "code":"C"
     },
     "kupe_upper_right":{
@@ -44,6 +45,7 @@
             {"ref":"kup_u_r_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_u_r_w1","child":true,"sex":"f","age":[0,999]}
         ],
+        "name": "купейный",
         "code":"C"
     },
     "kupe_upper_left":{
@@ -64,6 +66,7 @@
             {"ref":"kup_u_l_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_u_l_w1","child":true,"sex":"f","age":[0,999]}
         ],
+        "name": "купейный",
         "code":"C"
     },
     "kupe_lower_right":{
@@ -84,6 +87,7 @@
             {"ref":"kup_l_r_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_l_r_w1","child":true,"sex":"f","age":[0,999]}
         ],
+        "name": "купейный",
         "code":"C"
     },
 
@@ -103,6 +107,7 @@
             {"ref":"u_l_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_l_b2","child":false,"sex":"m","age":[0,12]}
         ],
+        "name": "плацкартный",
         "code":"Y"
     },
     "platz_lower_top":{
@@ -118,7 +123,9 @@
             {"ref":"b_t_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"b_t_m2","child":true,"sex":"m","age":[0,999]},
             {"ref":"b_t_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"b_t_g2","child":false,"sex":"f","age":[0,12]}],
+            {"ref":"b_t_g2","child":false,"sex":"f","age":[0,12]}
+        ],
+        "name": "плацкартный",
         "code":"Y"
     },
     "platz_lower_right":{
@@ -134,7 +141,9 @@
             {"ref":"b_r_m2","child":true,"sex":"m","age":[0,999]},
             {"ref":"b_r_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_r_g2","child":false,"sex":"f","age":[0,12]}
-        ],"code":"Y"
+        ],
+        "name": "плацкартный",
+        "code":"Y"
     },
     "platz_lower_left": {
         "img":{"ref":"platz_lower_left"},
@@ -150,6 +159,7 @@
             {"ref":"b_l_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_l_g2","child":false,"sex":"f","age":[0,12]}
         ],
+        "name": "плацкартный",
         "code":"Y"
     },
     "platz_upper_top": {
@@ -170,6 +180,7 @@
             {"ref":"u_t_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_t_b2","child":false,"sex":"m","age":[0,12]}
         ],
+        "name": "плацкартный",
         "code":"Y"
     },
     "platz_upper_right":{
@@ -188,6 +199,7 @@
             {"ref":"u_r_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_r_b2","child":false,"sex":"m","age":[0,12]}
         ],
+        "name": "плацкартный",
         "code":"Y"
     }
 }

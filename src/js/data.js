@@ -56,6 +56,7 @@ var self = window.model = {
             seat.sid = seat['type']
             seat.num = seat['id'].toUpperCase()
             seat.ref = self.planes['seat_types'][seat.sid].img.ref
+            seat.sc_name = self.planes['seat_types'][seat.sid].name
         })
 
         ;[].concat(
@@ -185,7 +186,7 @@ var self = window.model = {
 				add[0] = 'p' + user.id;
 				var arr = []
 				user.child().forEach(function(child){
-					arr.push('c'+child.id)
+					arr.push(child.id)
 				})
 				add[1] = arr.join(',')
 			}
@@ -200,7 +201,7 @@ var self = window.model = {
 		}).filter(Boolean).concat('platform=html5').join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
-
+		console.log(seats)
 		self.get.xml(SEAT_REQUEST + join + seats,
 		function(data) {
 			if('ERROR' in data) {

@@ -1268,6 +1268,7 @@ Seat.prototype = {
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
+		ctx.strokeText(this.sc_name, (size/2) + size*2, size / 2)
 		ctx.restore()
 	},
 	drawCheck: function(str) {
