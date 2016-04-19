@@ -400,11 +400,9 @@ var self = window.model = {
         for (var i=0; i<cars.length; i++) {
             var car = cars[i]
             var cfg = self.planes.bus_parts[car.type]
-            // console.log(car, cfg)
             
             for (var j=0; j<cfg.seat_positions.length; j++) {
                 var pos = cfg.seat_positions[j]
-                // console.log(pos)
                 var seat = {
                     deck: 1,
                     id: car.num + "-" + pos.no,

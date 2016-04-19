@@ -1187,7 +1187,6 @@ Seat.prototype = {
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
 		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
-			// if(this.marker_check && this.marker_check.check){
 			if(view.user().parent && view.user().parent.seat){
 				var res = FilterSeat.seatChild(this, view.user().parent)
 				if(res) {
@@ -1196,18 +1195,9 @@ Seat.prototype = {
 			} else {
 				this.drawLabel(this.name.toUpperCase())	
 			}
-
-
-			
-				// this.drawCheck(this.ref)	
-			// } else {
-				// this.drawCheck(this.ref)
-			// }
 		}
 	},
 	drawUnit: function(img, x, y) {
-		// console.log('drawUnit')
-        
         var ctx = this.group.context
         ctx.save()
         
@@ -1228,7 +1218,6 @@ Seat.prototype = {
         ctx.restore()
 	},
     drawPath: function(path) {
-    	// console.log('drawPath')
         var left = this.x - this.group.size.left
         var top = this.y - this.group.size.top
         var ctx  = this.group.context
@@ -1247,7 +1236,6 @@ Seat.prototype = {
         ctx.restore()
     },
 	drawArea: function(area) {
-		// console.log('drawArea')
 		this.group.context.strokeRect(
 			area[0] + this.x - this.group.size.left,
 			area[1] + this.y - this.group.size.top,
@@ -1255,7 +1243,6 @@ Seat.prototype = {
 			area[3])
 	},
 	drawLabel: function(text) {
-		// console.log('drawLabel')
 		var ctx  = this.group.context
         var size = this.labelSize
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
@@ -1275,7 +1262,6 @@ Seat.prototype = {
 		ctx.restore()
 	},
 	drawCheck: function(str) {
-		// console.log('drawCheck', str,str.indexOf('left'))
 		var ctx  = this.group.context
         var size = this.labelSize
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
@@ -1286,11 +1272,6 @@ Seat.prototype = {
 		this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
 			                             'rgba(255,255,255,0.5)'
 
-		var pad = size
-		if(str.indexOf('left') > -1){
-			// pad *= -1 
-		}
-		// console.log(this)
 		if(!this.marker_check) {
 			this.marker_check = {
 	        	x: this.X + dx + size,
@@ -1301,7 +1282,6 @@ Seat.prototype = {
         	this.marker_check.x = this.X + dx + size
         	this.marker_check.y = this.Y + dy
 		}
-		
 
 		ctx.translate(this.marker_check.x,this.marker_check.y)
 		ctx.transform.apply(ctx, this.labelTransform)
@@ -1311,8 +1291,6 @@ Seat.prototype = {
         } else {
         	ctx.strokeText('F', size / 2, size / 2)	
         }
-		
-		// console.log('text',text)
 		ctx.restore()
 	},
 	highlight: function() {

@@ -12,7 +12,6 @@ FilterSeat.checkSeat = function(seat, user){
 			num.odd += res_g.odd;
 			num.even += res_g.even;
 		}
-		// res = res_g.check == false ? res_g.check : res;
 	}
 	res = num.odd > num.even ? false : true
 	return {
@@ -32,7 +31,6 @@ FilterSeat.checkGroup = function(groups,seat, user){
 		if((!itm.user && !seat) || 
 		  (seat && !itm.user && itm.id != seat.id)|| 
 		  (user && user.seat && itm.id == user.seat.id)) continue
-		// console.log('true',itm.id)
 		var num = (+itm.name)%2;
 		if(seat && itm.id == seat.id) {
 			num = (+seat.name)%2;
