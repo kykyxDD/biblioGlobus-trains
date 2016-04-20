@@ -24,7 +24,7 @@
             {"ref":"kup_l_l_w1","child":true,"sex":"f","age":[0,999]},
             {"ref":"kup_l_l_m1","child":true,"sex":"m","age":[0,999]}
         ],
-        "name": "купейный",
+        "name": "купе",
         "code":"C"
     },
     "kupe_upper_right":{
@@ -45,7 +45,7 @@
             {"ref":"kup_u_r_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_u_r_w1","child":true,"sex":"f","age":[0,999]}
         ],
-        "name": "купейный",
+        "name": "купе",
         "code":"C"
     },
     "kupe_upper_left":{
@@ -66,7 +66,7 @@
             {"ref":"kup_u_l_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_u_l_w1","child":true,"sex":"f","age":[0,999]}
         ],
-        "name": "купейный",
+        "name": "купе",
         "code":"C"
     },
     "kupe_lower_right":{
@@ -87,7 +87,7 @@
             {"ref":"kup_l_r_m1","child":true,"sex":"m","age":[0,999]},
             {"ref":"kup_l_r_w1","child":true,"sex":"f","age":[0,999]}
         ],
-        "name": "купейный",
+        "name": "купе",
         "code":"C"
     },
 
@@ -107,7 +107,7 @@
             {"ref":"u_l_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_l_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "плацкартный",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_lower_top":{
@@ -142,7 +142,7 @@
             {"ref":"b_r_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_r_g2","child":false,"sex":"f","age":[0,12]}
         ],
-        "name": "плацкартный",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_lower_left": {
@@ -159,7 +159,7 @@
             {"ref":"b_l_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_l_g2","child":false,"sex":"f","age":[0,12]}
         ],
-        "name": "плацкартный",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_upper_top": {
@@ -180,7 +180,7 @@
             {"ref":"u_t_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_t_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "плацкартный",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_upper_right":{
@@ -199,7 +199,7 @@
             {"ref":"u_r_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_r_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "плацкартный",
+        "name": "плацкарт",
         "code":"Y"
     }
 }

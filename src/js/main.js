@@ -524,7 +524,7 @@ function setup_viewmodel() {
 			view.user(user)
 			user.selected(true)
 			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
-				|| user.child || user.parent) {
+				|| user.child || user.parent || (previous.parent || (!user.child))) {
 				groups.some(method('draw'))
 			}
 			if(user.seat) {
@@ -679,6 +679,13 @@ function update_users(users) {
 
 		user.copy(make_selection_label())
 	})
+	if(view.users().length){
+		view.users().forEach(function(user){
+			if(user.seat) {
+				Seat.unlink(user);
+			}
+		})
+	}
 	view.users(users)
 	view.group_ticket(model.group_ticket)
 }
@@ -1268,7 +1275,9 @@ Seat.prototype = {
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
-		ctx.strokeText(this.sc_name, (size/2) + size*2, size / 2)
+		ctx.textAlign = 'left';
+		ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)
+		ctx.textAlign = 'center';
 		ctx.restore()
 	},
 	drawCheck: function(str) {

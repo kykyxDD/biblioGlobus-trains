@@ -53,6 +53,18 @@
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER>
+            <ID>102300000821893423</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>29</AGE>
+            <SURNAME>KURT</SURNAME>
+            <NAME>ADAM</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER>
             <ID>102300000821893619</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
