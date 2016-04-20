@@ -129,7 +129,7 @@
         "url": "TRAIN/bg.jpg",
         "position": [0, 0]
    },
-   "double_decker":false,
+   "double_decker":true,
    "plane":{
       "decks":[
          {
@@ -138,6 +138,17 @@
             "car_size":[6,4],
             "car_overlap_size":[2,2],
             "tile_path_template":"TRAIN/_name_.jpg",
+            "thumb":{
+               "url":"TRAIN/lower_small.jpg"
+            },
+            "huge":true
+         },
+         {
+            "width": 479,
+            "height": 405,
+            "car_size":[6,4],
+            "car_overlap_size":[2,2],
+            "tile_path_template":"TRAIN/_name_.2.jpg",
             "thumb":{
                "url":"TRAIN/lower_small.jpg"
             },
