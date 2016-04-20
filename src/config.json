@@ -180,7 +180,7 @@
             {"ref":"u_t_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_t_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_upper_right":{

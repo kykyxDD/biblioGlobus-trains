@@ -78,13 +78,9 @@ FilterSeat.seatChild = function(seat, p_user){
 	var id_p  = p_user.seat.id;
 	var num_c = id_c.split('-');
 	var num_p = id_p.split('-');
-	if(num_c[0] !== num_p[0]) return false
-	num_p = +num_p[1] - 1;
-	num_c = +num_c[1] - 1;
-	var cont = Math.floor((p_user.child().length)/4) + 1;
-	if(Math.floor(num_c/(4*cont)) == Math.floor(num_p/(4*cont))) {
-		return true
-	} else {
+	if(num_c[0] !== num_p[0]){ 
 		return false
+	} else {
+		return true
 	}
 }

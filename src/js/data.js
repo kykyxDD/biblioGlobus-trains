@@ -201,7 +201,6 @@ var self = window.model = {
 		}).filter(Boolean).concat('platform=html5').join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
-		console.log(seats)
 		self.get.xml(SEAT_REQUEST + join + seats,
 		function(data) {
 			if('ERROR' in data) {
