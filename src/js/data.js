@@ -420,7 +420,7 @@ var self = window.model = {
             for (var j=0; j<cfg.seat_positions.length; j++) {
                 var pos = cfg.seat_positions[j]
                 var seat = {
-                    deck: 1,
+                    deck: pos.deck,
                     id: car.num + "-" + pos.no,
                     type: pos.type,
                     x: pos.x + left,
