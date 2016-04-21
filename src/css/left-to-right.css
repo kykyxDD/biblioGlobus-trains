@@ -39,13 +39,13 @@
     padding: 10px;
     max-width: 40%;
 }
+
 .train_nav thead {
   text-align: center;
 }
 .portrait .train_nav {
     margin-left: -160px;
 }
-
 .train_nav td {
     /*text-align: center;*/
 }

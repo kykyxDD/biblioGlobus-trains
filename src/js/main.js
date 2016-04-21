@@ -1011,7 +1011,6 @@ function SeatGroup(items, index) {
 	this.canvas  = document.createElement('canvas')
 	this.context = this.canvas.getContext('2d')
 	this.size    = this.getDimensions()
-	// this.filter_sex = false
 	this.deck    = decks[items[0].deck - 1].elem
 
 	this.canvas.className     = 'seat'
@@ -1060,8 +1059,9 @@ SeatGroup.prototype.getDimensions = function() {
 		dx = min(this.items.map(offset_left  )),
 		dy = max(this.items.map(offset_bottom))
 
-	function offset_left  (s) { return s.x - x - s.size[0] }
-	function offset_bottom(s) { return s.y - Y + s.size[1] }
+
+	function offset_left  (s) { return s.x - x - s.size[0]*1.5 }
+	function offset_bottom(s) { return s.y - Y + s.size[1]*1.5 }
 
 	return {
 		left  : x + dx,
@@ -1275,10 +1275,17 @@ Seat.prototype = {
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
-		ctx.textAlign = 'left';
-		ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)
+		if(this.type.indexOf('right') !== -1) {
+			ctx.textAlign = 'right';
+			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2)	
+		} else {
+			ctx.textAlign = 'left';
+			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)	
+		}
+		
 		ctx.textAlign = 'center';
 		ctx.restore()
+		
 	},
 	drawCheck: function(str) {
 		var ctx  = this.group.context

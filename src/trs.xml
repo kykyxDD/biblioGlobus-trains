@@ -81,7 +81,7 @@
             <ID>102300000821893511</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
-            <AGE>14</AGE>
+            <AGE>10</AGE>
             <SURNAME>BRON</SURNAME>
             <NAME>RAISA</NAME>
             <PARENTID>102300000821893619</PARENTID>
@@ -106,11 +106,10 @@
         <PASSENGER>
             <ID>102300000821893818</ID>
             <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
+            <SEX>F</SEX>
             <AGE>2</AGE>
             <SURNAME>BRON</SURNAME>
             <NAME>Alex</NAME>
-            <PARENTID>102300000821893619</PARENTID>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>Y</SC>
