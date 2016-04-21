@@ -876,11 +876,11 @@ function register_events() {
 				x     = (point.pageX + frames.view.center.x),
 				y     = (point.pageY + frames.view.center.y),
 				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
+
 			if(seat){
 				var check =  FilterSeat.checkSeat(seat, view.user());
-				// var check_sex = FilterSeat.checkSeatSex(seat, view.user());
 				view.num_odd(check.odd);
-				view.num_even(check.even);
+				view.num_even(check.even); 
 				if(check.res == false){
 					view.error_seat(true)
 				} else if (check.res == true){
@@ -888,12 +888,10 @@ function register_events() {
 				}
 				if(view.user().parent) {
 					var seat_parent = view.user().parent.seat;
-					// var res = FilterSeat.seatChild(seat, view.user().parent)
 				}
 				seat && seat.take(view.user())	
 
 			}
-			// seat && seat.take(view.user())
 		}
 	}
 }
@@ -1086,13 +1084,11 @@ function Seat(data) {
 Seat.findByPosition = function(x, y) {
 	var remains = seats.length, seat
 
-	while(seat = seats[--remains]) if(
-		(seat.match_service_class || C.DEMO      ) &&
-		
-		(!seat.user || seat === view.user().seat ) &&
-		(view.upper() ? !seat.low : seat.deck < 2) &&
-		seat.contains(x, y)
-	) return seat
+
+	while(seat = seats[--remains]) if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
+			(!seat.user || seat === view.user().seat ) &&
+			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			seat.contains(x, y)) return seat
 }
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
