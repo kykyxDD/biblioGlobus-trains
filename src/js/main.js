@@ -330,7 +330,7 @@ function prepare_train_view() {
     
     view.prev_car_type = ko.observable('')
     view.prev_car_num = ko.observable('')
-    
+
     view.current_car_type = ko.observable('')
     view.current_car_num = ko.observable('')
     view.current_car_descr = ko.observable('')
@@ -390,7 +390,7 @@ function update_view()
     var cars = model.ticket.TRAIN.CAR
     var car = cars[ind]
     var car_info = model.planes.bus_parts[car.type]
-    
+
     view.current_car_type(car_info.desc)
     view.current_car_num("Вагон №" + car.num)
     view.current_car_descr(car.DESCR.text)
@@ -401,7 +401,7 @@ function update_view()
     } else {
     	view.current_car_prime_to(false)
     }
-    
+
     current_car.type = car_info.desc
     current_car.num = car.num
     
@@ -1084,11 +1084,20 @@ function Seat(data) {
 Seat.findByPosition = function(x, y) {
 	var remains = seats.length, seat
 
+	while(seat = seats[--remains]) {
+		// if(seat.id == '1-25'){
+			//console.log(seat.id, seat.contains(x,y))	
+		// }
+		if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
+				(!seat.user || seat === view.user().seat ) &&
+				(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+				seat.contains(x, y)){
+				return seat
+		} else {
 
-	while(seat = seats[--remains]) if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
-			(!seat.user || seat === view.user().seat ) &&
-			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-			seat.contains(x, y)) return seat
+			
+		}
+	}
 }
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
@@ -1111,6 +1120,7 @@ Seat.unlink = function(user) {
 			user.child().forEach(function(child){
 				child.block(true)
 			})
+			view.usersbox_scroll._resize();
 		}
 		checkLength()
 	}
@@ -1131,6 +1141,7 @@ Seat.link = function(user, seat) {
 			user.child().forEach(function(child){
 				child.block(false)
 			})
+			view.usersbox_scroll._resize();
 		}
 		checkLength()
 	}
@@ -1156,6 +1167,7 @@ Seat.prototype = {
         }
         
 		return this.sprite.offset.areas.some(function(border) {
+
 			var dx = x - this.x - border[0],
 				dy = y - this.y - border[1]
 			return dx > 0 && dx < border[2]

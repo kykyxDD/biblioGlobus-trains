@@ -416,9 +416,9 @@ var self = window.model = {
         for (var i=0; i<cars.length; i++) {
             var car = cars[i]
             var cfg = self.planes.bus_parts[car.type]
-            
             for (var j=0; j<cfg.seat_positions.length; j++) {
                 var pos = cfg.seat_positions[j]
+                num = Math.max(pos.deck)
                 var seat = {
                     deck: pos.deck,
                     id: car.num + "-" + pos.no,
@@ -429,7 +429,7 @@ var self = window.model = {
                 }
                 seats.push(seat)
             }
-            
+
             left += cfg.right.x - cfg.left.x
             top += cfg.right.y - cfg.left.y
 

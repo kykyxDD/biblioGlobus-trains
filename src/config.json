@@ -107,7 +107,7 @@
             {"ref":"u_l_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_l_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_lower_top":{
@@ -125,7 +125,7 @@
             {"ref":"b_t_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_t_g2","child":false,"sex":"f","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_lower_right":{
@@ -142,7 +142,7 @@
             {"ref":"b_r_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_r_g2","child":false,"sex":"f","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_lower_left": {
@@ -159,7 +159,7 @@
             {"ref":"b_l_g1","child":false,"sex":"f","age":[0,12]},
             {"ref":"b_l_g2","child":false,"sex":"f","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     },
     "platz_upper_top": {
@@ -199,7 +199,7 @@
             {"ref":"u_r_b1","child":false,"sex":"m","age":[0,12]},
             {"ref":"u_r_b2","child":false,"sex":"m","age":[0,12]}
         ],
-        "name": "платцкарт",
+        "name": "плацкарт",
         "code":"Y"
     }
 }
@@ -303,7 +303,7 @@
             "left": {"x": -1034, "y": -437},
             "right": {"x": 882, "y": 373},
             "offset": {"x": -1002, "y": -573},
-            "desc": "платцкарт",
+            "desc": "плацкарт",
             "seat_positions": [
                 { "type": "platz_upper_left", "deck": 1, "no": "36", "x": -690.60, "y": -365.25},
 { "type": "platz_upper_right", "deck": 1, "no": "34", "x": -591.15, "y": -320.75},
