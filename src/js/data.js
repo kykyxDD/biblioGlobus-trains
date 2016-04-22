@@ -177,8 +177,26 @@ var self = window.model = {
 		})
 	},
 	seatRequest: function(done, fail) {
+        
+        var schemas = {
+            hash: {},
+            collect: function(car) {
+                if (car) {
+                    hash[car.num] = car.schema
+                }
+            },
+            toString: function() {
+                var arr = []
+                for (var car_num in hash) {
+                    arr.push('schema' + car_num + "=" + hash[car_num])
+                }
+                return arr
+            }
+        }
+        
 		var seats = self.users.map(function(user) {
 			var seat = user.curseat().toUpperCase()
+            
 			var add = []
 			if(user.parent){
 				add = ['c'+user.id, user.parent.id]
@@ -192,13 +210,17 @@ var self = window.model = {
 			}
 	
 			if(seat) {
+                
+                var seat_data = self.struct.seats.select('num', user.curseat())
+                schemas.collect(seat_data.car)
+
 				if(add.length){
 					return [['n'+ user.id, seat].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
 				} else {
 					return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
 				}
 			}
-		}).filter(Boolean).concat('platform=html5').join('&')
+		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
 		self.get.xml(SEAT_REQUEST + join + seats,
@@ -421,6 +443,7 @@ var self = window.model = {
                 num = Math.max(pos.deck)
                 var seat = {
                     deck: pos.deck,
+                    car: car,
                     id: car.num + "-" + pos.no,
                     type: pos.type,
                     x: pos.x + left,

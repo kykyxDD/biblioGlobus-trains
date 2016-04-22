@@ -12,27 +12,27 @@
         <CITYEN_TO></CITYEN_TO>
     </TRIP>
     <TRAIN>
-        <CAR type="coupe2x" num="1" gender="F" elreg="true" twostorey="false">
+        <CAR type="coupe2x" num="1" gender="F" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
             <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
         </CAR>
-        <CAR type="platz" num="2" gender="" elreg="false" twostorey="false">
+        <CAR type="platz" num="2" gender="" elreg="false" twostorey="false" schema="FPK_2/4_2Storey_V1">
             <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
         </CAR>
-        <CAR type="shtab" num="3" gender="" elreg="true" twostorey="false">
+        <CAR type="shtab" num="3" gender="" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
             <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
         </CAR>
-        <CAR type="coupe2x" num="4" gender="" elreg="false" twostorey="false">
+        <CAR type="coupe2x" num="4" gender="" elreg="false" twostorey="false" schema="FPK_2/4_2Storey_V1">
             <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
         </CAR>
-        <CAR type="coupe" num="5" gender="M" elreg="true" twostorey="false">
+        <CAR type="coupe" num="5" gender="M" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
             <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
