@@ -279,7 +279,7 @@ function start() {
 	function  by_deck(e, i) { return e.deck > 1 ? 1 : 0  }
 	function by_index(e, i) { return i / C.GROUP_SIZE |0 }
 	function  by_axis(a, b) { return (a.x - b.x) * axis[0] + (a.y - b.y) * axis[1] }
-
+	
 	// calculate ship axis normalized vector
     var p1 = model.struct.plane.point1
     var p2 = model.struct.plane.point2
@@ -609,6 +609,7 @@ function setup_viewmodel() {
 	}
 	view.success = function(text) {
 		update_users(model.users)
+		
 		groups.some(method('draw'))
 		view.display_result(true)
 		view.result_header(text.head)
@@ -661,11 +662,20 @@ function select_next_user() {
 	if(await.length) view.selectUser(await[0])
 }
 function update_users(users) {
+	if(view.users().length){
+		view.users().forEach(function(user){
+			if(user.seat) {
+				Seat.unlink(user);
+			}
+		})
+	}
+
 	users.some(function(user) {
+		var seat = seats.select('num', user.curseat)
 
 		user.d_check  = ko.observable(user.d_check  || false)
 		user.id_group = ko.observable(user.id_group || false)
-		user.seat     = seats.select('num', user.curseat)
+		user.seat     = seat
 		user.selected = ko.observable(false)
 		user.block    = ko.observable(!user.parent ? false : true)
 		user.error    = ko.observable(user.error   || '')
@@ -678,15 +688,10 @@ function update_users(users) {
             return user.curseat().replace(/^.*-/, '')
         })
 
-		user.copy(make_selection_label())
+        if(seat) seat.user = user.face[seat.sid]
+
+		user.copy(make_selection_label())		
 	})
-	if(view.users().length){
-		view.users().forEach(function(user){
-			if(user.seat) {
-				Seat.unlink(user);
-			}
-		})
-	}
 	view.users(users)
 	view.group_ticket(model.group_ticket)
 }
@@ -890,7 +895,7 @@ function register_events() {
 				if(view.user().parent) {
 					var seat_parent = view.user().parent.seat;
 				}
-				seat && seat.take(view.user())	
+				seat && seat.take(view.user(), [x,y])	
 
 			}
 		}
@@ -912,7 +917,6 @@ function click_sound() {
 	// Sometimes setting time to 0 doesn't play back
 	try { el.sound.currentTime = 0.01 }
 	catch(e) { 'hello, my name is iOS' }
-	console.log(el.sound.play)
 	el.sound.play()
 }
 
@@ -1088,17 +1092,11 @@ Seat.findByPosition = function(x, y) {
 	var remains = seats.length, seat
 
 	while(seat = seats[--remains]) {
-		// if(seat.id == '1-25'){
-			//console.log(seat.id, seat.contains(x,y))	
-		// }
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
 				(!seat.user || seat === view.user().seat ) &&
 				(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
 				seat.contains(x, y)){
 				return seat
-		} else {
-
-			
 		}
 	}
 }
@@ -1198,7 +1196,6 @@ Seat.prototype = {
 		this.updateState()
 
 		this.drawUnit(this.sprite, this.X, this.Y)
-
 		if(debug.enabled) {
 			this.drawArea([-1, -1, 2, 2])
 			if (this.sprite.offset.areas) {
@@ -1330,16 +1327,17 @@ Seat.prototype = {
         }
 		ctx.restore()
 	},
-	highlight: function() {
-		// console.log(el.fly, this.sprite.offset.center)
+	highlight: function(coor) {
 		clearTimeout(Seat.highlightTimer)
+		
 		if(Seat.clickTimer) {
 			clearTimeout(Seat.clickTimer)
 			add_class(el.fly, 'void')
-			// setTimeout(function(seat) { seat.highlight() }, 0, this)
 			Seat.clickTimer = undefined
 		} else {
-			position(el.fly, this.x + this.sprite.offset.center[0], this.y + this.sprite.offset.center[1])
+			clearTimeout(Seat.clickTimer)
+			position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
+							 coor ? coor[1] : this.y + this.sprite.offset.center[1])
 			rem_class(el.fly, 'animate')
 			rem_class(el.fly, 'void')
 			setTimeout(add_class, 0, el.fly, 'animate')
@@ -1347,7 +1345,7 @@ Seat.prototype = {
 			Seat.highlightTimer =  setTimeout(function(seat) { seat.highlight() }, 500, this)
 		}
 	},
-	take: function(user) {
+	take: function(user, coor) {
 		if(debug.enabled) console.log(this)
 
 		var already_placed = user.seat === this;
@@ -1364,7 +1362,7 @@ Seat.prototype = {
 			C.DEMO || select_next_user() // переключение на следующего user
 		}
 
-		this.highlight()
+		this.highlight(coor)
 		click_sound()
 	},
 	hover: function(value) {
