@@ -102,7 +102,7 @@ Object.defineProperty(Array.prototype, 'group', { value: function(func, scope) {
 	return ary
 }})
 
-var seats, decks, groups, masks, map, tiles,
+var seats, decks, groups, masks, map, tiles, item_timeout,
     current_car = {},
 	frames = {},
 	cookie = {},
@@ -478,6 +478,7 @@ function setup_viewmodel() {
 
 	function upper_deck_visible(visible) {
 		view.upper(visible)
+		clearTimeout(item_timeout)
 
 		if(visible) {
 			view.lower_deck_class('static-deck_ina')
@@ -485,7 +486,7 @@ function setup_viewmodel() {
 			rem_class(decks[1].elem, 'hidden')
 			if(decks[1].huge) {
 				add_class(decks[0].elem, 'hidden')
-				setTimeout(add_class, 500, decks[0].elem, 'void')
+				item_timeout = setTimeout(add_class, 500, decks[0].elem, 'void')
 			} else {
 				// navigation.move(model.upper_pos, true)
 				var point = model.struct.plane.point1
@@ -907,9 +908,11 @@ function position(elem, x, y, s) {
 	elem.style.webkitTransform = transform
 }
 function click_sound() {
+	if(el.sound.error && el.sound.error.code > 0) return
 	// Sometimes setting time to 0 doesn't play back
 	try { el.sound.currentTime = 0.01 }
 	catch(e) { 'hello, my name is iOS' }
+	console.log(el.sound.play)
 	el.sound.play()
 }
 
@@ -1328,16 +1331,20 @@ Seat.prototype = {
 		ctx.restore()
 	},
 	highlight: function() {
+		// console.log(el.fly, this.sprite.offset.center)
+		clearTimeout(Seat.highlightTimer)
 		if(Seat.clickTimer) {
-			Seat.clickTimer = clearTimeout(Seat.clickTimer)
+			clearTimeout(Seat.clickTimer)
 			add_class(el.fly, 'void')
-			setTimeout(function(seat) { seat.highlight() }, 0, this)
+			// setTimeout(function(seat) { seat.highlight() }, 0, this)
+			Seat.clickTimer = undefined
 		} else {
 			position(el.fly, this.x + this.sprite.offset.center[0], this.y + this.sprite.offset.center[1])
 			rem_class(el.fly, 'animate')
 			rem_class(el.fly, 'void')
 			setTimeout(add_class, 0, el.fly, 'animate')
 			Seat.clickTimer = setTimeout(add_class, 500, el.fly, 'void')
+			Seat.highlightTimer =  setTimeout(function(seat) { seat.highlight() }, 500, this)
 		}
 	},
 	take: function(user) {
@@ -1354,7 +1361,7 @@ Seat.prototype = {
 
 		if(!already_placed) {
 			Seat.link(user, this);
-			// C.DEMO || select_next_user() // переключение на следующего user
+			C.DEMO || select_next_user() // переключение на следующего user
 		}
 
 		this.highlight()
