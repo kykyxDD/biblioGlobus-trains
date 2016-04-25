@@ -232,9 +232,9 @@
 	        <thead>
 	            <tr>
 	            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
-	            <td class="" data-bind="visible: prev_car_num">←</td>
+	            <td class="" data-bind="css: { 'hide': !prev_car_item()}">←</td>
 	            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div><div class="type" data-bind="text: current_car_type">купейный</div></td>
-	            <td class="" data-bind="visible: next_car_num">→</td>
+	            <td class="" data-bind="css: { 'hide': !next_car_num()}">→</td>
 	            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
 	            </tr>
 	        </thead>

@@ -328,6 +328,7 @@ function prepare_train_view() {
     
     view.current_car = ko.observable(current_car)
     
+    view.prev_car_item = ko.observable(false)
     view.prev_car_type = ko.observable('')
     view.prev_car_num = ko.observable('')
 
@@ -338,6 +339,7 @@ function prepare_train_view() {
     view.current_car_prime_from = ko.observable('')
     view.current_car_prime_to = ko.observable('')
     
+    view.next_car_item = ko.observable(false)
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
 
@@ -406,23 +408,27 @@ function update_view()
     current_car.num = car.num
     
     if (ind > 0) {
+    	view.prev_car_item(true)
         car = cars[ind-1]
         car_info = model.planes.bus_parts[car.type]
         view.prev_car_type(car_info.desc)
         view.prev_car_num("Вагон №" + car.num)
     }
     else {
+    	view.prev_car_item(false)
         view.prev_car_type("")
         view.prev_car_num("")
     }
     
     if (ind < cars.length-1) {
+    	view.next_car_item(true)
         car = cars[ind+1]
         car_info = model.planes.bus_parts[car.type]
         view.next_car_type(car_info.desc)
         view.next_car_num("Вагон №" + car.num)
     }
     else {
+    	view.next_car_item(false)
         view.next_car_type("")
         view.next_car_num("")
     }
@@ -598,7 +604,7 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length) {
+		if(view.placedUsers().length && !view.error_len() && !view.error_seat()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
@@ -682,8 +688,9 @@ function update_users(users) {
 			}
 		})
 	}
+	view.user(null)
 
-	users.some(function(user) {
+	users.forEach(function(user, index) {
 		var seat = seats.select('num', user.curseat)
 
 		user.d_check  = ko.observable(user.d_check  || false)
@@ -695,7 +702,6 @@ function update_users(users) {
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
 		user.fclass_name  = ko.observable(user.fclass  || '')
-		// user.parent_select = ko.observable(user.parent ? false : true);
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -703,7 +709,10 @@ function update_users(users) {
 
         if(seat) seat.user = user.face[seat.sid]
 
-		user.copy(make_selection_label())		
+		user.copy(make_selection_label())
+		if(!user.disabled) {
+			view.user(user)
+		}
 	})
 	view.users(users)
 	view.group_ticket(model.group_ticket)
@@ -891,12 +900,13 @@ function register_events() {
 	}
 	function click(e) {
 		if(view.user() && !C.VIEWONLY) {
-			var point = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
-				x     = (point.pageX + frames.view.center.x),
-				y     = (point.pageY + frames.view.center.y),
-				seat  = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
+			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
+				x      = (point.pageX + frames.view.center.x),
+				y      = (point.pageY + frames.view.center.y),
+				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
+				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
 
-			if(seat){
+			if(seat && parent){
 				var check =  FilterSeat.checkSeat(seat, view.user());
 				view.num_odd(check.odd);
 				view.num_even(check.even); 
@@ -1105,6 +1115,7 @@ Seat.findByPosition = function(x, y) {
 	var remains = seats.length, seat
 
 	while(seat = seats[--remains]) {
+		// var res = FilterSeat.seatChild(this, view.user().parent);
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
 				(!seat.user || seat === view.user().seat ) &&
 				(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
