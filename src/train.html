@@ -313,7 +313,7 @@
 				</table>
 			</div>
 			<div class="airline-logo"></div>
-			<div data-bind="event: { tap: submit }, css: { disabled: !placedUsers().length || error_seat }" class="button confirm static-confirm">
+			<div data-bind="event: { tap: submit }, css: { disabled: !placedUsers().length || (error_seat && error_len)}" class="button confirm static-confirm">
 				<div class="confirm-tick static-tick"></div>
 				<div data-bind="text: confirm_caption" class="confirm-caption"></div>
 			</div>

@@ -468,7 +468,7 @@ function load_session() {
 
 	var check = FilterSeat.checkSeat()
 	// var check_sex = FilterSeat.checkSeatSex()
-	var val = check.res == false || view.error_len() ?  true : false;
+	var val = check.res == false?  true : false;
 	view.num_odd(check.odd);
 	view.num_even(check.even);
 	view.error_seat(val)
@@ -604,11 +604,13 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length && !view.error_seat()) {
+		if(view.placedUsers().length && !view.error_len() && !view.error_seat()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
 			model.seatRequest(view.success, view.error)
+		} else {
+			// console.log('please, place all the users')
 		}
 	}
 	view.success = function(text) {
@@ -908,9 +910,9 @@ function register_events() {
 				var check =  FilterSeat.checkSeat(seat, view.user());
 				view.num_odd(check.odd);
 				view.num_even(check.even); 
-				if(check.res == false || view.error_len()){
+				if(check.res == false){
 					view.error_seat(true)
-				} else {
+				} else if (check.res == true){
 					view.error_seat(false)
 				}
 				if(view.user().parent) {
@@ -1170,8 +1172,7 @@ Seat.link = function(user, seat) {
 	}
 }
 function checkLength(){
-
-	if(view.placedUsers().length < view.users().length){
+	if(view.placedUsers().length !== view.users().length){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
