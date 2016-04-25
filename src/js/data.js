@@ -104,6 +104,7 @@ var self = window.model = {
 
 				parent    : data.parent,
 				child     : data.child ? data.child : false,
+				infant	  : data['IS_INF'],
 				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
 

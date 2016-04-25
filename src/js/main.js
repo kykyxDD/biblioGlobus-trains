@@ -1170,7 +1170,8 @@ Seat.link = function(user, seat) {
 	}
 }
 function checkLength(){
-	if(view.placedUsers().length !== view.users().length){
+
+	if(view.placedUsers().length < view.users().length){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
