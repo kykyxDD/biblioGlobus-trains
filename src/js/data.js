@@ -142,10 +142,12 @@ var self = window.model = {
 			}
 		})
 
-		data['SEATS']['SEAT'].forEach(function(info) {
+		data['SEATS']['SEAT'].forEach(function(info, index) {
+			var arr = data['SEATS']['SEAT'].slice(0, index);
+			var duplicate = arr.select('no', info['no'].toUpperCase());
 
 			var seat = self.struct['seats'].select('num', info['no'].toUpperCase())
-			if(seat) {
+			if(seat && !duplicate) {
 				var mock = { child: !rand(20), age: rand(100), sex: 'mf'[rand(2)] }
 				var back = seat.back || self.selectPassenger(seat.sid, mock)
                 var status = info['status'].toLowerCase()
@@ -165,6 +167,8 @@ var self = window.model = {
 				seat.sex  = info['sex'].toLowerCase() || false;
                 seat.status = status
                 seat.has_child_cradle = status === 'i'
+			} else if(duplicate){
+				console.log('Повторение значения места: ', info['no'])
 			}
 		})
 

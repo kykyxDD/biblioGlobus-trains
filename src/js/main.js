@@ -608,8 +608,8 @@ function setup_viewmodel() {
 		}
 	}
 	view.success = function(text) {
+		update_seats()
 		update_users(model.users)
-		
 		groups.some(method('draw'))
 		view.display_result(true)
 		view.result_header(text.head)
@@ -660,6 +660,19 @@ function select_next_user() {
 		await = users.slice(index).concat(users.slice(0, index)).filter(not(method('curseat')))
 
 	if(await.length) view.selectUser(await[0])
+}
+function update_seats() {
+	var mod = model.struct['seats'];
+
+	mod.forEach(function(info){
+		var seat = seats.select('num', info.num);
+		if(info.status && info.status !== '*'){
+			seat.status = info.status;
+			seat.user   = info.user;
+		} else if(seat.user && (!info.status || info.status == '*')){
+			seat.user = null;
+		}
+	})
 }
 function update_users(users) {
 	if(view.users().length){
