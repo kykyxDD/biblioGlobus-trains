@@ -468,7 +468,7 @@ function load_session() {
 
 	var check = FilterSeat.checkSeat()
 	// var check_sex = FilterSeat.checkSeatSex()
-	var val = check.res == false?  true : false;
+	var val = check.res == false || view.error_len() ?  true : false;
 	view.num_odd(check.odd);
 	view.num_even(check.even);
 	view.error_seat(val)
@@ -604,13 +604,11 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length && !view.error_len() && !view.error_seat()) {
+		if(view.placedUsers().length && !view.error_seat()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
 			model.seatRequest(view.success, view.error)
-		} else {
-			// console.log('please, place all the users')
 		}
 	}
 	view.success = function(text) {
@@ -910,9 +908,9 @@ function register_events() {
 				var check =  FilterSeat.checkSeat(seat, view.user());
 				view.num_odd(check.odd);
 				view.num_even(check.even); 
-				if(check.res == false){
+				if(check.res == false || view.error_len()){
 					view.error_seat(true)
-				} else if (check.res == true){
+				} else {
 					view.error_seat(false)
 				}
 				if(view.user().parent) {
@@ -1208,7 +1206,7 @@ Seat.prototype = {
         var user = view.user()
 
         if (user) {
-            this.match_service_class = user.sc === "*" || this.sc === user.sc
+            this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
             this.match_sex = this.sex && this.sex === user.sex || !this.sex;
             // if (user.child) {
             //     this.match_service_class = this.match_service_class && this.has_child_cradle
