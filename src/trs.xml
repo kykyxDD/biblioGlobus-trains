@@ -130,7 +130,7 @@
         <PASSENGER>
             <ID>102300000821893421</ID>
             <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
+            <SEX>F</SEX>
             <AGE>8</AGE>
             <SURNAME>BORISOVGLEBSKAYA</SURNAME>
             <NAME>ANASTASIYA</NAME>
@@ -202,18 +202,18 @@
         <SEAT no="1-106"  status="*" sc="C"  sex="" />
         <SEAT no="1-107"  status="*" sc="C"  sex="" />
         <SEAT no="1-108"  status="*" sc="C"  sex="" />
-        <SEAT no="1-109"  status="*" sc="C"  sex="" />
-        <SEAT no="1-110"  status="*" sc="C"  sex="" />
-        <SEAT no="1-111"  status="*" sc="C"  sex="" />
-        <SEAT no="1-112"  status="*" sc="C"  sex="" />        
-        <SEAT no="2-1"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-2"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-3"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-4"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-5"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-6"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-7"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-8"  status="*" sc="Y"  sex="" />
+        <SEAT no="1-109"  status="*" sc="*"  sex="" />
+        <SEAT no="1-110"  status="*" sc="*"  sex="" />
+        <SEAT no="1-111"  status="*" sc="*"  sex="" />
+        <SEAT no="1-112"  status="*" sc="*"  sex="" />        
+        <SEAT no="2-1"  status="*" sc="Y"  sex="F" />
+        <SEAT no="2-2"  status="*" sc="Y"  sex="F" />
+        <SEAT no="2-3"  status="*" sc="Y"  sex="F" />
+        <SEAT no="2-4"  status="*" sc="Y"  sex="F" />
+        <SEAT no="2-5"  status="*" sc="Y"  sex="M" />
+        <SEAT no="2-6"  status="*" sc="Y"  sex="M" />
+        <SEAT no="2-7"  status="*" sc="Y"  sex="M" />
+        <SEAT no="2-8"  status="*" sc="Y"  sex="M" />
         <SEAT no="2-9"  status="*" sc="Y"  sex="" />
         <SEAT no="2-10"  status="*" sc="Y"  sex="" />
         <SEAT no="2-11"  status="*" sc="Y"  sex="" />
@@ -326,7 +326,39 @@
         <SEAT no="4-30"  status="*" sc="C"  sex="" />
         <SEAT no="4-31"  status="*" sc="C"  sex="" />
         <SEAT no="4-32"  status="*" sc="C"  sex="" />
-         
+        <SEAT no="4-81"  status="*" sc="C"  sex="" />
+        <SEAT no="4-82"  status="*" sc="C"  sex="" />
+        <SEAT no="4-83"  status="*" sc="C"  sex="" />
+        <SEAT no="4-84"  status="*" sc="C"  sex="" />
+        <SEAT no="4-85"  status="*" sc="C"  sex="" />
+        <SEAT no="4-86"  status="*" sc="C"  sex="" />
+        <SEAT no="4-87"  status="*" sc="C"  sex="" />
+        <SEAT no="4-88"  status="*" sc="C"  sex="" />
+        <SEAT no="4-89"  status="*" sc="C"  sex="" />
+        <SEAT no="4-90"  status="*" sc="C"  sex="" />
+        <SEAT no="4-91"  status="*" sc="C"  sex="" />
+        <SEAT no="4-92"  status="*" sc="C"  sex="" />
+        <SEAT no="4-93"  status="*" sc="C"  sex="" />
+        <SEAT no="4-94"  status="*" sc="C"  sex="" />
+        <SEAT no="4-95"  status="*" sc="C"  sex="" />
+        <SEAT no="4-96"  status="*" sc="C"  sex="" />
+        <SEAT no="4-97"  status="*" sc="C"  sex="" />
+        <SEAT no="4-98"  status="*" sc="C"  sex="" />
+        <SEAT no="4-99"  status="*" sc="C"  sex="" />
+        <SEAT no="4-100"  status="*" sc="C"  sex="" />
+        <SEAT no="4-101"  status="*" sc="C"  sex="" />
+        <SEAT no="4-102"  status="*" sc="C"  sex="" />
+        <SEAT no="4-103"  status="*" sc="C"  sex="" />
+        <SEAT no="4-104"  status="*" sc="C"  sex="" />
+        <SEAT no="4-105"  status="*" sc="C"  sex="" />
+        <SEAT no="4-106"  status="*" sc="C"  sex="" />
+        <SEAT no="4-107"  status="*" sc="C"  sex="" />
+        <SEAT no="4-108"  status="*" sc="C"  sex="" />
+        <SEAT no="4-109"  status="*" sc="C"  sex="" />
+        <SEAT no="4-110"  status="*" sc="C"  sex="" />
+        <SEAT no="4-111"  status="*" sc="C"  sex="" />
+        <SEAT no="4-112"  status="*" sc="C"  sex="" />    
+        
         <SEAT no="5-1"  status="*" sc="C"  sex="" />
         <SEAT no="5-2"  status="*" sc="C"  sex="" />
         <SEAT no="5-3"  status="*" sc="C"  sex="" />
