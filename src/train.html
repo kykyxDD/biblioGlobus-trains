@@ -209,9 +209,6 @@
 									<td>
 										<a target="_blank"gclass="action button-print-all static-button-print-all" data-bind="attr: { href: group_ticket }, visible: group_ticket"></a>
 									</td>
-									<td>
-										<div class="action button-complete static-button-complete" data-bind="event: { tap: complete }"></div>
-									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -235,9 +232,9 @@
 	        <thead>
 	            <tr>
 	            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
-	            <td class="" data-bind="visible: prev_car_num">←</td>
+	            <td class="" data-bind="css: { 'hide': !prev_car_item()}">←</td>
 	            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div><div class="type" data-bind="text: current_car_type">купейный</div></td>
-	            <td class="" data-bind="visible: next_car_num">→</td>
+	            <td class="" data-bind="css: { 'hide': !next_car_num()}">→</td>
 	            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
 	            </tr>
 	        </thead>
@@ -316,7 +313,7 @@
 				</table>
 			</div>
 			<div class="airline-logo"></div>
-			<div data-bind="event: { tap: submit }, css: { disabled: !placedUsers().length || (error_seat && error_len) }" class="button confirm static-confirm">
+			<div data-bind="event: { tap: submit }, css: { disabled: !placedUsers().length || (error_seat && error_len)}" class="button confirm static-confirm">
 				<div class="confirm-tick static-tick"></div>
 				<div data-bind="text: confirm_caption" class="confirm-caption"></div>
 			</div>

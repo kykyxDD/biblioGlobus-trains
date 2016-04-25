@@ -46,8 +46,8 @@
 .portrait .train_nav {
     margin-left: -160px;
 }
-.train_nav td {
-    /*text-align: center;*/
+.train_nav td.hide {
+    visibility: hidden;
 }
 
 .train_nav .current {
