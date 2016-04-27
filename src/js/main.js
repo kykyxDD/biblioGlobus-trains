@@ -463,11 +463,7 @@ function load_session() {
 		document.cookie = 'seats=; expires='+ new Date(0)
 	}
 
-	var check = FilterSeat.checkSeat();
-	var val = check.res == false?  true : false;
-	view.num_odd(check.odd);
-	view.num_even(check.even);
-	view.error_seat(val)
+	updateDisable()
 
 }
 function setup_viewmodel() {
@@ -542,6 +538,7 @@ function setup_viewmodel() {
 					user.seat && user.seat.take(user);
 				}
 			}
+			updateDisable()
 
 			return true
 		}
@@ -603,7 +600,7 @@ function setup_viewmodel() {
 				user.id_car('')
 			}
 		}
-		checkLength()
+		updateDisable()
 	}
 	view.clickSelectParent = function(data){
 		if(data.id !== view.user().id) {
@@ -631,7 +628,8 @@ function setup_viewmodel() {
 	view.num_odd   		= ko.observable(0);
 	view.num_even  		= ko.observable(0);
 	view.error_seat  	= ko.observable(true);
-	view.error_len 		= ko.observable(false);
+	view.error_len 		= ko.observable(true);
+	view.disable_submite = ko.observable(true);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -948,19 +946,12 @@ function register_events() {
 				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
 
 			if(seat && parent){
-				var check =  FilterSeat.checkSeat(seat, view.user());
-				view.num_odd(check.odd);
-				view.num_even(check.even); 
-				if(check.res == false){
-					view.error_seat(true)
-				} else if (check.res == true){
-					view.error_seat(false)
-				}
+				updateDisable(seat, view.user())
+				
 				if(view.user().parent) {
 					var seat_parent = view.user().parent.seat;
 				}
 				seat && seat.take(view.user(), [x,y])
-
 			}
 		}
 	}
@@ -1197,7 +1188,7 @@ Seat.unlink = function(user) {
 			view.usersbox_scroll._resize(); 
 		}
 
-		checkLength()
+		updateDisable()
 	}
 }
 Seat.link = function(user, seat) {
@@ -1218,7 +1209,7 @@ Seat.link = function(user, seat) {
 				child.block(false)
 			})
 		}
-		checkLength()
+		updateDisable()
 	}
 }
 function numInfant(){
@@ -1232,13 +1223,20 @@ function numInfant(){
 	})
 	return num
 }
-function checkLength(){
+function updateDisable(seat, user){
 	var num = numInfant();
 	if((view.placedUsers().length + num) < (view.users().length)){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
 	}
+
+	var check = FilterSeat.checkSeat(seat, user);
+	var val = check.res == false?  true : false;
+	view.num_odd(check.odd);
+	view.num_even(check.even);
+	view.error_seat(val)
+	view.disable_submite(view.error_seat() || view.error_len())
 }
 
 Seat.prototype = {
@@ -1488,7 +1486,7 @@ Seat.prototype = {
 
 		if(!already_placed) {
 			Seat.link(user, this);
-			// C.DEMO || select_next_user() // переключение на следующего user
+			C.DEMO || select_next_user() // переключение на следующего user
 		}
 
 		this.highlight(coor)
