@@ -13,29 +13,34 @@
     </TRIP>
     <TRAIN>
         <CAR type="coupe2x" num="1" gender="F" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>
+            <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
             <PRICE from="8267" to="" srv="667"/>
         </CAR>
-        <CAR type="platz" num="2" gender="" elreg="false" twostorey="false" schema="FPK_2/4_2Storey_V1">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CAR type="shtab2x" num="2" gender="" elreg="false" twostorey="false" schema="FPK_2/4_2Storey_V1">
+            <DESCR SHORT="2Э">Nulla porta finibus sem et porttitor. Maecenas nibh dolor, auctor non faucibus sit amet, ultrices id arcu. Ut ut ante eu purus vestibulum cursus. Praesent neque enim, dictum sed ex eu, bibendum semper turpis. Ut eget sem est. Integer in sapien ultricies, gravida felis in, consectetur eros. Aliquam massa erat, pulvinar eu eleifend dictum, facilisis dapibus lorem. Sed felis sapien, scelerisque sed nisi ac, consequat malesuada nunc. Fusce quis aliquam dui, sit amet hendrerit odio. Suspendisse neque dui, tristique nec lacinia eget, porttitor eu tortor. Nunc eget erat purus. Sed vel tincidunt orci. Suspendisse malesuada eros eu consectetur consequat.</DESCR>
+            <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
+            <PRICE from="13267" to="" srv="667"/>
         </CAR>
         <CAR type="shtab" num="3" gender="" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+            <DESCR SHORT="2Э">Proin mattis risus sed elit blandit, at rhoncus nulla tincidunt. Donec interdum luctus mi, ac ullamcorper tortor. Nullam laoreet nisi in lorem ornare porta. Integer laoreet vulputate gravida. Quisque auctor vel massa a dignissim. Aliquam erat volutpat. Proin at ultricies nunc. Aliquam erat volutpat. Praesent ac pharetra odio. </DESCR>
+            <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
+            <PRICE from="4260" to="6599" srv="667"/>
         </CAR>
         <CAR type="coupe2x" num="4" gender="" elreg="false" twostorey="false" schema="FPK_2/4_2Storey_V1">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+            <DESCR SHORT="2Э">Maecenas ac nisl ornare, malesuada erat ac, rutrum lectus. Donec condimentum aliquam elit eget tempus. Integer tristique risus non magna viverra</DESCR>
+            <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
+            <PRICE from="9267" to="24456" srv="667"/>
         </CAR>
-        <CAR type="coupe" num="5" gender="M" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
+        <CAR type="sedentary2x" num="5" gender="M" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
+            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>
+            <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
             <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
+            <PRICE from="3440" to="" srv="667"/>
         </CAR>
     </TRAIN>
     <PASSENGERS>
@@ -49,7 +54,7 @@
             <NAME>RAISA</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>*</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER>
@@ -142,38 +147,39 @@
     </PASSENGERS>
     <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>
     <SEATS>
-        <SEAT no="1-1"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-2"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-3"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-4"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-5"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-6"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-7"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-8"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-9"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-10"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-11"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-12"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-13"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-14"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-15"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-16"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-17"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-18"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-19"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-20"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-21"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-22"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-23"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-24"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-25"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-26"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-27"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-28"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-29"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-30"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-31"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-32"  status="*" sc="C"  sex="M" />
+    
+        <SEAT no="1-1"  status="*" sc="C"  sex="" />
+        <SEAT no="1-2"  status="*" sc="C"  sex="" />
+        <SEAT no="1-3"  status="*" sc="C"  sex="" />
+        <SEAT no="1-4"  status="*" sc="C"  sex="" />
+        <SEAT no="1-5"  status="*" sc="C"  sex="" />
+        <SEAT no="1-6"  status="*" sc="C"  sex="" />
+        <SEAT no="1-7"  status="*" sc="C"  sex="" />
+        <SEAT no="1-8"  status="*" sc="C"  sex="" />
+        <SEAT no="1-9"  status="*" sc="C"  sex="" />
+        <SEAT no="1-10"  status="*" sc="C"  sex="" />
+        <SEAT no="1-11"  status="*" sc="C"  sex="" />
+        <SEAT no="1-12"  status="*" sc="C"  sex="" />
+        <SEAT no="1-13"  status="*" sc="C"  sex="" />
+        <SEAT no="1-14"  status="*" sc="C"  sex="" />
+        <SEAT no="1-15"  status="*" sc="C"  sex="" />
+        <SEAT no="1-16"  status="*" sc="C"  sex="" />
+        <SEAT no="1-17"  status="*" sc="C"  sex="" />
+        <SEAT no="1-18"  status="*" sc="C"  sex="" />
+        <SEAT no="1-19"  status="*" sc="C"  sex="" />
+        <SEAT no="1-20"  status="*" sc="C"  sex="" />
+        <SEAT no="1-21"  status="*" sc="C"  sex="" />
+        <SEAT no="1-22"  status="*" sc="C"  sex="" />
+        <SEAT no="1-23"  status="*" sc="C"  sex="" />
+        <SEAT no="1-24"  status="*" sc="C"  sex="" />
+        <SEAT no="1-25"  status="*" sc="C"  sex="" />
+        <SEAT no="1-26"  status="*" sc="C"  sex="" />
+        <SEAT no="1-27"  status="*" sc="C"  sex="" />
+        <SEAT no="1-28"  status="*" sc="C"  sex="" />
+        <SEAT no="1-29"  status="*" sc="C"  sex="" />
+        <SEAT no="1-30"  status="*" sc="C"  sex="" />
+        <SEAT no="1-31"  status="*" sc="C"  sex="" />
+        <SEAT no="1-32"  status="*" sc="C"  sex="" />
         <SEAT no="1-81"  status="*" sc="C"  sex="" />
         <SEAT no="1-82"  status="*" sc="C"  sex="" />
         <SEAT no="1-83"  status="*" sc="C"  sex="" />
@@ -206,61 +212,72 @@
         <SEAT no="1-110"  status="*" sc="*"  sex="" />
         <SEAT no="1-111"  status="*" sc="*"  sex="" />
         <SEAT no="1-112"  status="*" sc="*"  sex="" />        
-        <SEAT no="2-1"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-2"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-3"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-4"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-5"  status="*" sc="Y"  sex="M" />
-        <SEAT no="2-6"  status="*" sc="Y"  sex="M" />
-        <SEAT no="2-7"  status="*" sc="Y"  sex="M" />
-        <SEAT no="2-8"  status="*" sc="Y"  sex="M" />
-        <SEAT no="2-9"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-10"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-11"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-12"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-13"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-14"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-15"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-16"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-17"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-18"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-19"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-20"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-21"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-22"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-23"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-24"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-25"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-26"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-27"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-28"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-29"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-30"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-31"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-32"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-33"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-34"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-35"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-36"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-37"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-38"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-39"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-40"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-41"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-42"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-43"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-44"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-45"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-46"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-47"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-48"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-49"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-50"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-51"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-52"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-53"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-54"  status="*" sc="Y"  sex="" />
-        
+    
+        <SEAT no="2-1"  status="*" sc="C"  sex="" />
+        <SEAT no="2-2"  status="*" sc="C"  sex="" />
+        <SEAT no="2-3"  status="*" sc="C"  sex="" />
+        <SEAT no="2-4"  status="*" sc="C"  sex="" />
+        <SEAT no="2-5"  status="*" sc="C"  sex="" />
+        <SEAT no="2-6"  status="*" sc="C"  sex="" />
+        <SEAT no="2-7"  status="*" sc="C"  sex="" />
+        <SEAT no="2-8"  status="*" sc="C"  sex="" />
+        <SEAT no="2-9"  status="*" sc="C"  sex="" />
+        <SEAT no="2-10"  status="*" sc="C"  sex="" />
+        <SEAT no="2-11"  status="*" sc="C"  sex="" />
+        <SEAT no="2-12"  status="*" sc="C"  sex="" />
+        <SEAT no="2-13"  status="*" sc="C"  sex="" />
+        <SEAT no="2-14"  status="*" sc="C"  sex="" />
+        <SEAT no="2-15"  status="*" sc="C"  sex="" />
+        <SEAT no="2-16"  status="*" sc="C"  sex="" />
+        <SEAT no="2-17"  status="*" sc="C"  sex="" />
+        <SEAT no="2-18"  status="*" sc="C"  sex="" />
+        <SEAT no="2-19"  status="*" sc="C"  sex="" />
+        <SEAT no="2-20"  status="*" sc="C"  sex="" />
+        <SEAT no="2-21"  status="*" sc="C"  sex="" />
+        <SEAT no="2-22"  status="*" sc="C"  sex="" />
+        <SEAT no="2-23"  status="*" sc="C"  sex="" />
+        <SEAT no="2-24"  status="*" sc="C"  sex="" />
+        <SEAT no="2-25"  status="*" sc="C"  sex="" />
+        <SEAT no="2-26"  status="*" sc="C"  sex="" />
+        <SEAT no="2-27"  status="*" sc="C"  sex="" />
+        <SEAT no="2-28"  status="*" sc="C"  sex="" />
+        <SEAT no="2-29"  status="*" sc="C"  sex="" />
+        <SEAT no="2-30"  status="*" sc="C"  sex="" />
+        <SEAT no="2-31"  status="*" sc="C"  sex="" />
+        <SEAT no="2-32"  status="*" sc="C"  sex="" />
+        <SEAT no="2-81"  status="*" sc="C"  sex="" />
+        <SEAT no="2-82"  status="*" sc="C"  sex="" />
+        <SEAT no="2-83"  status="*" sc="C"  sex="" />
+        <SEAT no="2-84"  status="*" sc="C"  sex="" />
+        <SEAT no="2-85"  status="*" sc="C"  sex="" />
+        <SEAT no="2-86"  status="*" sc="C"  sex="" />
+        <SEAT no="2-87"  status="*" sc="C"  sex="" />
+        <SEAT no="2-88"  status="*" sc="C"  sex="" />
+        <SEAT no="2-89"  status="*" sc="C"  sex="" />
+        <SEAT no="2-90"  status="*" sc="C"  sex="" />
+        <SEAT no="2-91"  status="*" sc="C"  sex="" />
+        <SEAT no="2-92"  status="*" sc="C"  sex="" />
+        <SEAT no="2-93"  status="*" sc="C"  sex="" />
+        <SEAT no="2-94"  status="*" sc="C"  sex="" />
+        <SEAT no="2-95"  status="*" sc="C"  sex="" />
+        <SEAT no="2-96"  status="*" sc="C"  sex="" />
+        <SEAT no="2-97"  status="*" sc="C"  sex="" />
+        <SEAT no="2-98"  status="*" sc="C"  sex="" />
+        <SEAT no="2-99"  status="*" sc="C"  sex="" />
+        <SEAT no="2-100"  status="*" sc="C"  sex="" />
+        <SEAT no="2-101"  status="*" sc="C"  sex="" />
+        <SEAT no="2-102"  status="*" sc="C"  sex="" />
+        <SEAT no="2-103"  status="*" sc="C"  sex="" />
+        <SEAT no="2-104"  status="*" sc="C"  sex="" />
+        <SEAT no="2-105"  status="*" sc="C"  sex="" />
+        <SEAT no="2-106"  status="*" sc="C"  sex="" />
+        <SEAT no="2-107"  status="*" sc="C"  sex="" />
+        <SEAT no="2-108"  status="*" sc="C"  sex="" />
+        <SEAT no="2-109"  status="*" sc="*"  sex="" />
+        <SEAT no="2-110"  status="*" sc="*"  sex="" />
+        <SEAT no="2-111"  status="*" sc="*"  sex="" />
+        <SEAT no="2-112"  status="*" sc="*"  sex="" />        
+
         <SEAT no="3-1"  status="*" sc="C"  sex="" />
         <SEAT no="3-2"  status="*" sc="C"  sex="" />
         <SEAT no="3-3"  status="*" sc="C"  sex="" />
