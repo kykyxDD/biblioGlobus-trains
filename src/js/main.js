@@ -579,6 +579,9 @@ function setup_viewmodel() {
 		var user = view.user();
 		var select = event.target || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
+
+		if(val.child && val.child.indexOf(user) >= 0) return
+
 		if(user.parent && user.parent.child) {
 			user.parent.child.remove(user);	
 		}
@@ -1456,20 +1459,18 @@ Seat.prototype = {
 		ctx.restore()
 	},
 	highlight: function(coor) {
+		rem_class(el.fly, 'animate')
 		clearTimeout(Seat.highlightTimer)
-		
-		if(Seat.clickTimer) {
-			clearTimeout(Seat.clickTimer)
+
+		if(Seat.highlightTimer) {
 			add_class(el.fly, 'void')
-			Seat.clickTimer = undefined
+			Seat.highlightTimer = undefined
 		} else {
-			clearTimeout(Seat.clickTimer)
 			position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
 							 coor ? coor[1] : this.y + this.sprite.offset.center[1])
-			rem_class(el.fly, 'animate')
+			// rem_class(el.fly, 'animate')
 			rem_class(el.fly, 'void')
-			setTimeout(add_class, 0, el.fly, 'animate')
-			Seat.clickTimer = setTimeout(add_class, 500, el.fly, 'void')
+			setTimeout(function(){add_class(el.fly, 'animate')}, 0 )
 			Seat.highlightTimer =  setTimeout(function(seat) { seat.highlight() }, 500, this)
 		}
 	},
@@ -1487,7 +1488,7 @@ Seat.prototype = {
 
 		if(!already_placed) {
 			Seat.link(user, this);
-			C.DEMO || select_next_user() // переключение на следующего user
+			// C.DEMO || select_next_user() // переключение на следующего user
 		}
 
 		this.highlight(coor)

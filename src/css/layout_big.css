@@ -53,9 +53,13 @@ body {
   .controls .users-box .users .user .info {
     padding: 5px 12px; }
     .controls .users-box .users .user .info .name {
-      padding: 6px 0 10px; }
+      padding: 5px 0 5px; }
+    .controls .users-box .users .user .info .role {
+      padding: 5px 0 0px; }
+    .controls .users-box .users .user.infant .info .role {
+      padding: 0px 0 5px; }
     .controls .users-box .users .user .info .status tr {
-      max-height: 14px; }
+      max-height: 20px; }
     .controls .users-box .users .user .info .status .place {
       display: table-row; }
 
@@ -79,6 +83,7 @@ body {
     .controls .users-box .users .user .info .status .parent select{
       width: 100%;
       text-transform: capitalize;
+      outline: none;
     }
     .controls .users-box .users .user .info .status .child td .list-child div {
       display: block;
