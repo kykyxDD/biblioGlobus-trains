@@ -103,10 +103,11 @@ var self = window.model = {
 				sc        : data['SC'],
 
 				parent    : data.parent,
-				child     : data.child ? data.child : false,
+				child     : data.child ? data.child : ko.observableArray(),
 				infant	  : data['IS_INF'],
 				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
+				role 	  : data['PARENTID'] ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
 
 				curseat   : '',
 				face      : {}

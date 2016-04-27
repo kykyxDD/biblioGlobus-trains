@@ -94,11 +94,11 @@
             <ID>102300000821893318</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
-            <AGE>2</AGE>
+            <AGE>1</AGE>
             <SURNAME>BRON</SURNAME>
             <NAME>NIKOLAI</NAME>
             <PARENTID>102300000821893619</PARENTID>
-            <IS_INF>false</IS_INF>
+            <IS_INF>true</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>Y</SC>
             <BOARDINGPASS></BOARDINGPASS>

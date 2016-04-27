@@ -234,7 +234,7 @@ function ready() {
 
 	document.body.style.display = 'block'
 	view.groups_users = ko.observableArray();
-	view.show_popup_group = ko.observable(false)
+	// view.show_popup_group = ko.observable(false)
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -267,9 +267,9 @@ function ready() {
 	
 }
 function start() {
-    
-    prepare_train_view()        
-    
+
+    prepare_train_view()
+
 	decks = model.struct.plane.decks.map(make(Deck))
 	masks = model.struct.masks.map(make(Mask))
 	seats = model.struct.seats.map(make(Seat)).sort(numeric('y'))
@@ -343,11 +343,8 @@ function prepare_train_view() {
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
 
-
     navigation.position = V(0.2, 0.2)
-    
     var update_nav_interval = setInterval(update_view, 200)
-    
     view.scroll_prev_to_car = function() {
         
         var cars = model.ticket.TRAIN.CAR
@@ -358,9 +355,9 @@ function prepare_train_view() {
         navigation.stop_glide()
         navigation.move(V(pos, pos))
         
-        update_view()        
+        update_view()
     }
-    
+
     view.scroll_next_to_car = function() {
         
         var cars = model.ticket.TRAIN.CAR
@@ -373,7 +370,7 @@ function prepare_train_view() {
         
         update_view()
     }
-    
+
 }
 
 function calc_current_car_index()
@@ -466,8 +463,7 @@ function load_session() {
 		document.cookie = 'seats=; expires='+ new Date(0)
 	}
 
-	var check = FilterSeat.checkSeat()
-	// var check_sex = FilterSeat.checkSeatSex()
+	var check = FilterSeat.checkSeat();
 	var val = check.res == false?  true : false;
 	view.num_odd(check.odd);
 	view.num_even(check.even);
@@ -571,13 +567,47 @@ function setup_viewmodel() {
 			} 
 		}
 	}
-	view.popupGroup = function(){
-		if(view.show_popup_group() == false) {
-			view.show_popup_group(true)	
+	// view.popupGroup = function(){
+	// 	if(view.show_popup_group() == false) {
+	// 		view.show_popup_group(true)	
+	// 	} else {
+	// 		view.show_popup_group(false)
+	// 	}
+	// }
+	view.changeSelectParent = function(data){
+		if(data.id !== view.user())
+		var user = view.user();
+		var select = event.target || event.srcElement;
+		var val = view.list_parent()[select.selectedIndex];
+		if(user.parent && user.parent.child) {
+			user.parent.child.remove(user);	
+		}
+		user.sc = val.sc;
+		user.parent = val;
+		user.fclass_name(val.fclass_name());
+		val.child.push(user);
+		if(!val.seat) {
+			user.block(true);
+			user.seat = null;
+			user.curseat('');
+			user.id_car('');
+			C.DEMO || select_next_user() // переключение на следующего user
 		} else {
-			view.show_popup_group(false)
+			user.block(false)
+			if(!user.seat || user.seat.id.split('-')[0] !== val.seat.id.split('-')[0]) {
+				user.seat = null;
+				user.curseat('')
+				user.id_car('')
+			}
+		}
+		checkLength()
+	}
+	view.clickSelectParent = function(data){
+		if(data.id !== view.user().id) {
+			view.selectUser(data)
 		}
 	}
+
 
 	view.airline = ko.observable(model.airline)
 	view.classes = ko.observableArray([view.orient, view.decker, view.airline])
@@ -589,6 +619,7 @@ function setup_viewmodel() {
 		return this.classes().map(method('call')).join(' ')
 	}, view)
 
+	view.list_parent 	= ko.observableArray()
 	view.display_result = ko.observable(false)
 	view.result_header  = ko.observable('')
 	view.result_text    = ko.observable('')
@@ -663,8 +694,10 @@ function make_selection_label() {
 function select_next_user() {
 	var users = view.users(),
 		index = users.indexOf(view.user()),
-		await = users.slice(index).concat(users.slice(0, index)).filter(not(method('curseat')))
 
+		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
+			if(!item.curseat() && !item.block()) return item
+		})
 	if(await.length) view.selectUser(await[0])
 }
 function update_seats() {
@@ -681,6 +714,7 @@ function update_seats() {
 	})
 }
 function update_users(users) {
+	view.user(null)
 	if(view.users().length){
 		view.users().forEach(function(user){
 			if(user.seat) {
@@ -688,7 +722,8 @@ function update_users(users) {
 			}
 		})
 	}
-	view.user(null)
+
+	view.list_parent([])
 
 	users.forEach(function(user, index) {
 		var seat = seats.select('num', user.curseat)
@@ -702,6 +737,9 @@ function update_users(users) {
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
 		user.fclass_name  = ko.observable(user.fclass  || '')
+		if(!user.parent && !user.infant) {
+			view.list_parent().push(user)
+		}
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -918,7 +956,7 @@ function register_events() {
 				if(view.user().parent) {
 					var seat_parent = view.user().parent.seat;
 				}
-				seat && seat.take(view.user(), [x,y])	
+				seat && seat.take(view.user(), [x,y])
 
 			}
 		}
@@ -1112,15 +1150,16 @@ function Seat(data) {
 	this.deckElement = decks[this.deck -1].elem
 }
 Seat.findByPosition = function(x, y) {
-	var remains = seats.length, seat
+	var remains = seats.length, seat,
+		user = view.user();
 
 	while(seat = seats[--remains]) {
-		// var res = FilterSeat.seatChild(this, view.user().parent);
-		if(((seat.match_service_class && seat.match_sex) || C.DEMO      ) &&
-				(!seat.user || seat === view.user().seat ) &&
-				(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-				seat.contains(x, y)){
-				return seat
+		if(((seat.match_service_class && seat.match_sex) || C.DEMO || user.infant) &&
+			(!seat.user || seat === user.seat || (user.infant && seat.id == user.parent.seat.id)) &&
+			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			(!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
+			seat.contains(x, y)){
+			return seat
 		}
 	}
 }
@@ -1134,19 +1173,27 @@ Seat.togglePassengers = function(show) {
 Seat.unlink = function(user) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
-        user.selection.className = "selection"
-        
-		user.seat.user = null
+		user.selection.className = "selection"
+
+		user.seat.info = null
+
+    	user.seat.user = null
 		user.seat.group.draw()
 		user.seat = null
+		if(user.infant && user.parent.seat){
+			var seat = seats.select('id',user.parent.seat.id)
+			Seat.link(user.parent, seat)
+		}
+		
 		user.curseat('')
 		user.id_car('')
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(true)
 			})
-			view.usersbox_scroll._resize();
+			view.usersbox_scroll._resize(); 
 		}
+
 		checkLength()
 	}
 }
@@ -1158,6 +1205,7 @@ Seat.link = function(user, seat) {
         add_class(user.selection, seat.type)
 
 		user.seat = seat
+		seat.info = user
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
@@ -1166,13 +1214,24 @@ Seat.link = function(user, seat) {
 			user.child().forEach(function(child){
 				child.block(false)
 			})
-			view.usersbox_scroll._resize();
 		}
 		checkLength()
 	}
 }
+function numInfant(){
+	var num = 0;
+	view.users().forEach(function(user){
+		if(user.infant){ 
+			if(!user.seat){
+				num += 1
+			}
+		}
+	})
+	return num
+}
 function checkLength(){
-	if(view.placedUsers().length !== view.users().length){
+	var num = numInfant();
+	if((view.placedUsers().length + num) < (view.users().length)){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
@@ -1188,7 +1247,7 @@ Seat.prototype = {
 	contains: function(x, y) {
         
         if (this.polygon) {
-            return this.polygon.contains(x - this.x, y - this.y)            
+            return this.polygon.contains(x - this.x, y - this.y)
         }
         
 		return this.sprite.offset.areas.some(function(border) {
@@ -1218,6 +1277,7 @@ Seat.prototype = {
 	},
 	draw: function() {
 		this.updateState()
+		var user = view.user();
 
 		this.drawUnit(this.sprite, this.X, this.Y)
 		if(debug.enabled) {
@@ -1230,20 +1290,36 @@ Seat.prototype = {
             }
 		}
 
-		if(this.user) {
-			this.drawUnit(this.user,
+		if(user && user.infant){
+			if(this.user) {
+				this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
-		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
-			if(view.user().parent && view.user().parent.seat){
-				var res = FilterSeat.seatChild(this, view.user().parent)
-				if(res) {
-					this.drawLabel(this.name.toUpperCase())
+			}
+
+			if(user.parent.seat && this.id == user.parent.seat.id){
+				if(user.parent && user.parent.seat && this.id == user.parent.seat.id && !user.seat) {
+					this.drawLabelInfant(this.name.toUpperCase());
+					this.user = user.parent.face[this.sid];
 				}
-			} else {
-				this.drawLabel(this.name.toUpperCase())	
+			}
+		} else {
+			if(this.user) {
+				this.drawUnit(this.user,
+						this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
+						this.Y + this.sprite.offset.user[1])
+			} else if((this.match_service_class && this.match_sex) || C.DEMO) {
+				if(view.user().parent && view.user().parent.seat){
+					var res = FilterSeat.seatChild(this, view.user().parent)
+					if(res) {
+						this.drawLabel(this.name.toUpperCase())
+					}
+				} else {
+					this.drawLabel(this.name.toUpperCase())	
+				}
 			}
 		}
+
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1302,8 +1378,37 @@ Seat.prototype = {
 			debug.enabled && this.low  ? 'crimson'   :
 			this === model.taken       ? '#19cf00'   :
 			                             'rgba(0,0,0,0.5)'
-                                         
+
 		ctx.translate(this.X + dx, this.Y + dy)
+		ctx.transform.apply(ctx, this.labelTransform)
+		ctx.fillRect(0, 0, size, size)
+		ctx.strokeText(text, size / 2, size / 2)
+		if(this.type.indexOf('right') !== -1) {
+			ctx.textAlign = 'right';
+			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2)
+		} else {
+			ctx.textAlign = 'left';
+			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)
+		}
+		
+		ctx.textAlign = 'center';
+		ctx.restore()
+		
+	},
+	drawLabelInfant: function(text){
+		var ctx  = this.group.context
+        var size = this.labelSize
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
+        var dy = this.sprite.offset.label[1]
+
+		ctx.save()
+		ctx.fillStyle =
+			debug.enabled && this.over ? 'orangered' :
+			debug.enabled && this.low  ? 'crimson'   :
+			this === model.taken       ? '#19cf00'   :
+			                             'rgba(0,0,0,0.5)'
+
+		ctx.translate(this.X + dx + size, this.Y + dy)
 		ctx.transform.apply(ctx, this.labelTransform)
 		ctx.fillRect(0, 0, size, size)
 		ctx.strokeText(text, size / 2, size / 2)
@@ -1317,7 +1422,6 @@ Seat.prototype = {
 		
 		ctx.textAlign = 'center';
 		ctx.restore()
-		
 	},
 	drawCheck: function(str) {
 		var ctx  = this.group.context

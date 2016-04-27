@@ -344,8 +344,9 @@ iScroll.prototype = {
 			c1, c2;
 
 		if (!that.enabled) return;
+		// console.log(this.options)
 
-		if (that.options.onBeforeScrollStart) that.options.onBeforeScrollStart.call(that, e);
+		// if (that.options.onBeforeScrollStart) that.options.onBeforeScrollStart.call(that, e);
 
 		if (that.options.useTransition || that.options.zoom) that._transitionTime(0);
 
