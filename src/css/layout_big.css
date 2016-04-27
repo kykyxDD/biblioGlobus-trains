@@ -43,17 +43,54 @@ body {
 .controls .board-info .cred {
   padding: 10px 12px; }
 .controls .users-box .users .user {
-  min-height: 57px; }
+  min-height: 57px; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;}
   .controls .users-box .users .user.infant {
     height: 28px; }
   .controls .users-box .users .user .info {
-    padding: 0 12px; }
+    padding: 5px 12px; }
     .controls .users-box .users .user .info .name {
-      padding: 6px 0; }
+      padding: 5px 0 5px; }
+    .controls .users-box .users .user .info .role {
+      padding: 5px 0 0px; }
+    .controls .users-box .users .user.infant .info .role {
+      padding: 0px 0 5px; }
     .controls .users-box .users .user .info .status tr {
-      height: 14px; }
+      max-height: 20px; }
     .controls .users-box .users .user .info .status .place {
       display: table-row; }
+
+    .controls .users-box .users .user .info .status .place td div,
+    .controls .users-box .users .user .info .status .parent td div,
+    .controls .users-box .users .user .info .status .child td div {
+      display: inline-block;
+    }
+    .controls .users-box .users .user .info .status .parent td .field,
+    .controls .users-box .users .user .info .status .child td .field {
+      width: 30%;
+    }
+    .controls .users-box .users .user .info .status .parent td .field {
+      padding-right: 0;
+      float: left;
+    }
+    .controls .users-box .users .user .info .status .parent td .value {
+      width: 70%;
+      float: right;
+    }
+    .controls .users-box .users .user .info .status .parent select{
+      width: 100%;
+      text-transform: capitalize;
+      outline: none;
+    }
+    .controls .users-box .users .user .info .status .child td .list-child div {
+      display: block;
+    }
+    .controls .users-box .users .user .info .status .place td div.value {
+      min-width: 20px;
+    }
     .controls .users-box .users .user .info .status .message td {
       padding-bottom: 4px; }
     .controls .users-box .users .user .info .status .car,
@@ -98,7 +135,7 @@ body {
       height: 18px;
       line-height: 22px; }
     .controls .users-box .users .user .place .value {
-      height: 24px; }
+     /* height: 20px;*/ }
   .controls .users-box .users .user .ok {
 
     width: 37px;

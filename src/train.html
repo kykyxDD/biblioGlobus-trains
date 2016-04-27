@@ -83,40 +83,45 @@
 							<span data-bind="text: parent.name" class="value"></span>
 						</span>
 					</div>
+					<div class='role'>
+						<span class='field'>Статус: </span><span class="value" data-bind="text: role"></span>
+					</div>
 
 					<table class="status" cellspacing=0 cellpadding=0>
 						<tbody>
 							<tr class="place">
-								<td class="field">место: </td>
-								<td data-bind="text: seat_name" class="value"></td>
-							</tr>
-
-							<tr class="car">
-								<td class="field">вагон №: </td>
-								<td class="value" data-bind="text: id_car"></td>
-								
-							</tr>
-							<tr class="sc">
-								<td class="field">класс обслуживания: </td>
-								<td class="value" data-bind="text: fclass_name"></td>
+								<td>
+									<div class="field">Вагон №: </div>
+									<div class="value" data-bind="text: id_car"></div>
+									<div class="field">Место: </div>
+									<div data-bind="text: seat_name" class="value"></div>
+									<div class="value" data-bind="text: fclass_name"></div>
+								</td>
 							</tr>
 							<tr class="class">
 								<td class="field">класс: </td>
 								<td data-bind="text: fclass" class="value"></td>
 							</tr>
 							<!-- ko if: child -->
-							<tr class="child" >
-								<td class='field'> Дети: </td>
-								<td data-bind="foreach: child">
-									<div data-bind='text: name' class='value'></div>
+							<tr class="child" data-bind='if: child().length > 0'>
+								<td>
+									<div class='field'> Дети: </div>
+									<div data-bind="foreach: child" class='list-child'>
+										<div data-bind='text: name' class='value'></div>
+									</div>
 								</td>
 							</tr>
 							<!-- /ko -->
 							<!-- ko if: parent -->
 							<tr class="parent" >
-								<td class='field'> Родитель: </td>
-								<td class='value'>
-									<div data-bind='text: parent.name'  class='value'></div>
+								<td>
+									<div class='field'> Родитель: </div>
+									<div class='value' >
+										<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
+											<option data-bind=' attr: { selected: id == $parent.parent.id}, text: name'></option>
+										</select>
+										<!-- <div data-bind='text: parent.name'  class='value'></div> -->
+									</div>
 								</td>
 							</tr>
 							<!-- /ko -->
@@ -313,7 +318,7 @@
 				</table>
 			</div>
 			<div class="airline-logo"></div>
-			<div data-bind="event: { tap: submit }, css: { disabled: !placedUsers().length || (error_seat && error_len)}" class="button confirm static-confirm">
+			<div data-bind="event: { tap: submit }, css: { disabled: disable_submite}" class="button confirm static-confirm">
 				<div class="confirm-tick static-tick"></div>
 				<div data-bind="text: confirm_caption" class="confirm-caption"></div>
 			</div>

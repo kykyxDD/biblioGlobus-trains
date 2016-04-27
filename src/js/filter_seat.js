@@ -29,9 +29,11 @@ FilterSeat.checkGroup = function(groups,seat, user){
 		var itm = arr[i];
 
 		if((!itm.user && !seat) || 
+		  (itm.info && itm.info.infant) || 
 		  (seat && !itm.user && itm.id != seat.id)|| 
 		  (user && user.seat && itm.id == user.seat.id)) continue
 		var num = (+itm.name)%2;
+
 		if(seat && itm.id == seat.id) {
 			num = (+seat.name)%2;
 		}
