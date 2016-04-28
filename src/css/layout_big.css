@@ -134,8 +134,7 @@ body {
     .controls .users-box .users .user .place .label {
       height: 18px;
       line-height: 22px; }
-    .controls .users-box .users .user .place .value {
-     /* height: 20px;*/ }
+
   .controls .users-box .users .user .ok {
 
     width: 37px;
@@ -201,14 +200,14 @@ body {
       height: 67px; }
       .popup .register .actions .action.button-print-all {
         width: 237px; }
-.popup .register-error {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 600px;
-  height: 300px;
-  margin-left: -300px;
-  margin-top: -150px; }
+  .popup .register-error {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    height: 300px;
+    margin-left: -300px;
+    margin-top: -150px;}
   .popup .register-error .message {
     padding: 30px; }
   .popup .register-error .close {
@@ -408,7 +407,6 @@ body {
     }
     .group .list_group .btn_create_group {
       height: 25px;
-      /*width: 100%;*/
       padding: 5px 0 ;
       font-size: 20px;
       text-align: center;
