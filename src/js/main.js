@@ -203,12 +203,12 @@ var C = {
 }
 
 
-location.search.substr(1).split('&').filter(Boolean).some(store_pair, params)
-document.cookie.split(/; ?/).some(store_pair, cookie)
-function store_pair(pair) {
-	pair = pair.split('=')
-	this[pair[0]] = pair[1]
-}
+// location.search.substr(1).split('&').filter(Boolean).some(store_pair, params)
+// document.cookie.split(/; ?/).some(store_pair, cookie)
+// function store_pair(pair) {
+// 	pair = pair.split('=')
+// 	this[pair[0]] = pair[1]
+// }
 window.addEventListener('load', ready, false)
 
 function ready() {
@@ -234,7 +234,6 @@ function ready() {
 
 	document.body.style.display = 'block'
 	view.groups_users = ko.observableArray();
-	// view.show_popup_group = ko.observable(false)
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -314,7 +313,7 @@ function start() {
 		Seat.link(user, seats.select('num', user.curseat()))
 	})
 	groups.some(method('draw'))
-	load_session()
+	// load_session()
 
 	view.loading('done')
 	setTimeout(view.loading, 500, 'void')
@@ -440,8 +439,11 @@ function load_session() {
 	}
 	if(cookie.seats) {
 		users.some(function(user, index) {
-			Seat.unlink(user)
-			Seat.link(user, seats.select('num', this[index]))
+			var seat = seats.select('num', this[index]);
+			if(!seat.user) {
+				Seat.unlink(user)
+				Seat.link(user, seats.select('num', this[index]))
+			}
 		}, cookie.seats.split(':').map(function(seat, index, seats) {
 			return seats.indexOf(seat) === index ? seat : ''
 		}))
@@ -540,6 +542,7 @@ function setup_viewmodel() {
 			}
 			updateDisable()
 
+
 			return true
 		}
 	}
@@ -564,13 +567,6 @@ function setup_viewmodel() {
 			} 
 		}
 	}
-	// view.popupGroup = function(){
-	// 	if(view.show_popup_group() == false) {
-	// 		view.show_popup_group(true)	
-	// 	} else {
-	// 		view.show_popup_group(false)
-	// 	}
-	// }
 	view.changeSelectParent = function(data){
 		if(data.id !== view.user())
 		var user = view.user();
@@ -592,6 +588,7 @@ function setup_viewmodel() {
 			user.curseat('');
 			user.id_car('');
 			C.DEMO || select_next_user() // переключение на следующего user
+			view.usersbox_scroll.refresh()
 		} else {
 			user.block(false)
 			if(!user.seat || user.seat.id.split('-')[0] !== val.seat.id.split('-')[0]) {
@@ -599,6 +596,7 @@ function setup_viewmodel() {
 				user.curseat('')
 				user.id_car('')
 			}
+
 		}
 		updateDisable()
 	}
@@ -673,7 +671,6 @@ function setup_viewmodel() {
 	GroupsUsers.createGroup();
 
 	ko.applyBindings(view)
-
 	view.register_scroll = new iScroll('confirm-users')
 	view.usersbox_scroll = new iScroll('users-scroll')
 
@@ -1185,7 +1182,7 @@ Seat.unlink = function(user) {
 			user.child().forEach(function(child){
 				child.block(true)
 			})
-			view.usersbox_scroll._resize(); 
+			view.usersbox_scroll.refresh(); 
 		}
 
 		updateDisable()
@@ -1202,12 +1199,13 @@ Seat.link = function(user, seat) {
 		seat.info = user
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
-		seat.user = user.face[seat.sid]
+		seat.user = !user.infant ? user.face[seat.sid] : user.parent.face[seat.sid]
 		seat.group.draw()
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(false)
 			})
+			view.usersbox_scroll.refresh();
 		}
 		updateDisable()
 	}
@@ -1458,7 +1456,6 @@ Seat.prototype = {
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')
-		clearTimeout(Seat.highlightTimer)
 
 		if(Seat.highlightTimer) {
 			add_class(el.fly, 'void')
@@ -1466,6 +1463,8 @@ Seat.prototype = {
 		} else {
 			position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
 							 coor ? coor[1] : this.y + this.sprite.offset.center[1])
+
+			clearTimeout(Seat.highlightTimer)
 			// rem_class(el.fly, 'animate')
 			rem_class(el.fly, 'void')
 			setTimeout(function(){add_class(el.fly, 'animate')}, 0 )

@@ -30,9 +30,10 @@
 
 .train_nav {
     position: absolute;
-    left: 50%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     top: 15px;
-    margin-left: -375px;    
     font-family: Arial, sans-serif;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
@@ -43,9 +44,7 @@
 .train_nav thead {
   text-align: center;
 }
-.portrait .train_nav {
-    margin-left: -160px;
-}
+
 .train_nav td.hide {
     visibility: hidden;
 }
@@ -73,28 +72,20 @@
   border-top: 1px solid #000;
   text-align: left;
 }
-
-.train_nav .info .text,
-.train_nav .info .name{
-    display: inline-block;
+.train_nav .info td{
+    vertical-align: top;
 }
+
 .train_nav .info .price,
 .train_nav .info .descr,
 .train_nav .info .carrier {
-  display: inline-flex;
   width: 100%;
   margin-top: 10px;
 }
 
-
 .train_nav .info .name {
-  width: 25%;
   font-weight: bold;
 } 
-.train_nav .info .text {
-  width: 75%;
-}
-
 
 .view .plane .deck .selection .wrap {
   -webkit-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
