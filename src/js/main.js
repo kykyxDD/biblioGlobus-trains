@@ -514,7 +514,9 @@ function setup_viewmodel() {
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
-		return view.users().filter(method('curseat'))
+		return view.users().filter(function(user){
+			return method('curseat') && !user.disabled
+		})
 	}, view)
 	view.selectUser = function(user, e) {
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled) {
@@ -746,11 +748,10 @@ function update_users(users) {
         if(seat) seat.user = user.face[seat.sid]
 
 		user.copy(make_selection_label())
-		if(!user.disabled) {
-			view.user(user)
-		}
 	})
+
 	view.users(users)
+	view.selectUser(view.list_parent()[0])
 	view.group_ticket(model.group_ticket)
 }
 function setup_navigation() {
