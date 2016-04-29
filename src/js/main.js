@@ -1146,8 +1146,9 @@ Seat.findByPosition = function(x, y) {
 
 	while(seat = seats[--remains]) {
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO) &&
-			(!seat.user || seat === user.seat || (user.infant &&  user.parent.seat && seat.id == user.parent.seat.id)) &&
+			(!seat.user || seat === user.seat) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			// (!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
 			seat.contains(x, y)){
 			return seat
 		}
@@ -1169,12 +1170,6 @@ Seat.unlink = function(user) {
 		user.seat.user = null
 		user.seat.group.draw()
 
-
-		if(user.infant && user.parent.seat && user.parent.seat.id == user.seat.id){
-			var seat = seats.select('id',user.parent.seat.id)
-			Seat.link(user.parent, seat)
-			seat.user = !user.infant ? user.face[seat.sid] : user.parent.face[seat.sid]
-		}
 		user.seat = null
 		
 		user.curseat('')
@@ -1200,7 +1195,7 @@ Seat.link = function(user, seat) {
 		seat.info = user
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
-		seat.user = !user.infant ? user.face[seat.sid] : user.parent.face[seat.sid]
+		seat.user = user.face[seat.sid]
 		seat.group.draw()
 		if(user.child) {
 			user.child().forEach(function(child){
@@ -1304,11 +1299,6 @@ Seat.prototype = {
 				this.drawLabel(this.name.toUpperCase())	
 			}
 		}
-		if(user){
-			if(user.infant && !user.seat && user.parent.seat && this.id == user.parent.seat.id){ 
-				this.drawLabelInfant(this.name.toUpperCase());
-			}
-		}
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1383,34 +1373,6 @@ Seat.prototype = {
 		ctx.textAlign = 'center';
 		ctx.restore()
 		
-	},
-	drawLabelInfant: function(text){
-		var ctx  = this.group.context
-        var size = this.labelSize
-        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
-        var dy = this.sprite.offset.label[1]
-
-		ctx.save()
-		ctx.fillStyle =
-			debug.enabled && this.over ? 'orangered' :
-			debug.enabled && this.low  ? 'crimson'   :
-			this === model.taken       ? '#19cf00'   :
-			                             'rgba(0,0,0,0.5)'
-
-		ctx.translate(this.X + dx + size, this.Y + dy)
-		ctx.transform.apply(ctx, this.labelTransform)
-		ctx.fillRect(0, 0, size, size)
-		ctx.strokeText(text, size / 2, size / 2)
-		if(this.type.indexOf('right') !== -1) {
-			ctx.textAlign = 'right';
-			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2)	
-		} else {
-			ctx.textAlign = 'left';
-			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)	
-		}
-		
-		ctx.textAlign = 'center';
-		ctx.restore()
 	},
 	drawCheck: function(str) {
 		var ctx  = this.group.context
