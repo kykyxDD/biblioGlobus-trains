@@ -71,7 +71,7 @@
 			try { var FLASH = new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('$version') } catch(e) {}
 			try { var FLASH = navigator.plugins['Shockwave Flash'].description && navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin } catch(e) {}
             FLASH = FLASH && get_params.no_flash == null
-            
+
 			all(FLASH ? scripts.flash : scripts.mobile, add_script)
 			all(FLASH ? styles.flash  : styles.mobile , add_style)
 		</script>
@@ -124,10 +124,15 @@
 								<td>
 									<div class='field'> Родитель: </div>
 									<div class='value' >
-										<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
-											<option data-bind=' attr: { selected: id == $parent.parent.id}, text: name'></option>
-										</select>
-										<!-- <div data-bind='text: parent.name'  class='value'></div> -->
+										<div data-bind='if: $root.list_parent().length > 1 '>
+											<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
+												<option data-bind=' attr: { selected: id == $parent.parent.id}, text: name'></option>
+											</select>
+										</div>
+
+										<div data-bind=' ifnot: $root.list_parent().length > 1'>
+											<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div>
+										</div> 
 									</div>
 								</td>
 							</tr>

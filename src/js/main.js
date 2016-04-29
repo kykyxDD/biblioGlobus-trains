@@ -386,6 +386,7 @@ function update_view()
     var ind = calc_current_car_index()
     
     var cars = model.ticket.TRAIN.CAR
+    if(!cars)return
     var car = cars[ind]
     var car_info = model.planes.bus_parts[car.type]
 
@@ -1146,10 +1147,9 @@ Seat.findByPosition = function(x, y) {
 		user = view.user();
 
 	while(seat = seats[--remains]) {
-		if(((seat.match_service_class && seat.match_sex) || C.DEMO || user.infant) &&
-			(!seat.user || seat === user.seat || (user.infant && seat.id == user.parent.seat.id)) &&
+		if(((seat.match_service_class && seat.match_sex) || C.DEMO) &&
+			(!seat.user || seat === user.seat || (user.infant &&  user.parent.seat && seat.id == user.parent.seat.id)) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-			// (!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
 			seat.contains(x, y)){
 			return seat
 		}
