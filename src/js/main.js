@@ -1306,7 +1306,7 @@ Seat.prototype = {
 			}
 		}
 		if(user){
-			if(user.infant && !user.seat && this.id == user.parent.seat.id){ 
+			if(user.infant && !user.seat && user.parent.seat && this.id == user.parent.seat.id){ 
 				this.drawLabelInfant(this.name.toUpperCase());
 			}
 		}
