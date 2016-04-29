@@ -17,7 +17,7 @@
   top: 110px;
 }
 .controls .board-info {
-    top: 15px !important;
+    top: 15px;
 }
 
 .controls .board-info .route {
@@ -25,7 +25,7 @@
 }
 
 .landscape .controls .users-box {
-    top: 150px !important;
+    top: 150px;
 }
 
 .train_nav {

@@ -30,7 +30,7 @@ function add_class(elem, name) {
 	if(!has_class(elem, name)) elem.className += ' '+ name
 }
 function rem_class(elem, name) {
-	elem.className = elem.className.replace(name, '').replace(/\s+/g, ' ')
+	return elem.className = elem.className.replace(name, '').replace(/\s+/g, ' ')
 }
 function has_class(elem, name) {
 	return ~elem.className.indexOf(name)
@@ -1148,7 +1148,7 @@ Seat.findByPosition = function(x, y) {
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO || user.infant) &&
 			(!seat.user || seat === user.seat || (user.infant && seat.id == user.parent.seat.id)) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-			(!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
+			// (!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
 			seat.contains(x, y)){
 			return seat
 		}
@@ -1167,14 +1167,16 @@ Seat.unlink = function(user) {
 		user.selection.className = "selection"
 
 		user.seat.info = null
-
-    	user.seat.user = null
+		user.seat.user = null
 		user.seat.group.draw()
-		user.seat = null
-		if(user.infant && user.parent.seat){
+
+
+		if(user.infant && user.parent.seat && user.parent.seat.id == user.seat.id){
 			var seat = seats.select('id',user.parent.seat.id)
 			Seat.link(user.parent, seat)
+			seat.user = !user.infant ? user.face[seat.sid] : user.parent.face[seat.sid]
 		}
+		user.seat = null
 		
 		user.curseat('')
 		user.id_car('')
@@ -1289,36 +1291,25 @@ Seat.prototype = {
             }
 		}
 
-		if(user && user.infant){
-			if(this.user) {
-				this.drawUnit(this.user,
+		if(this.user) {
+			this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
-			}
-
-			if(user.parent.seat && this.id == user.parent.seat.id){
-				if(user.parent && user.parent.seat && this.id == user.parent.seat.id && !user.seat) {
-					this.drawLabelInfant(this.name.toUpperCase());
-					this.user = user.parent.face[this.sid];
+		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
+			if(view.user().parent && view.user().parent.seat){
+				var res = FilterSeat.seatChild(this, view.user().parent)
+				if(res) {
+					this.drawLabel(this.name.toUpperCase())
 				}
-			}
-		} else {
-			if(this.user) {
-				this.drawUnit(this.user,
-						this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
-						this.Y + this.sprite.offset.user[1])
-			} else if((this.match_service_class && this.match_sex) || C.DEMO) {
-				if(view.user().parent && view.user().parent.seat){
-					var res = FilterSeat.seatChild(this, view.user().parent)
-					if(res) {
-						this.drawLabel(this.name.toUpperCase())
-					}
-				} else {
-					this.drawLabel(this.name.toUpperCase())	
-				}
+			} else {
+				this.drawLabel(this.name.toUpperCase())	
 			}
 		}
-
+		if(user){
+			if(user.infant && !user.seat && this.id == user.parent.seat.id){ 
+				this.drawLabelInfant(this.name.toUpperCase());
+			}
+		}
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1456,20 +1447,18 @@ Seat.prototype = {
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')
+		position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
+						 coor ? coor[1] : this.y + this.sprite.offset.center[1])
 
-		if(Seat.highlightTimer) {
+		clearTimeout(Seat.highlightTimer)
+		var finish = rem_class(el.fly, 'void');
+
+		setTimeout(function(){add_class(el.fly, 'animate')}, 10 )
+		Seat.highlightTimer =  setTimeout(function() {
+			Seat.highlightTimer = undefined	
+			rem_class(el.fly, 'animate')
 			add_class(el.fly, 'void')
-			Seat.highlightTimer = undefined
-		} else {
-			position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
-							 coor ? coor[1] : this.y + this.sprite.offset.center[1])
-
-			clearTimeout(Seat.highlightTimer)
-			// rem_class(el.fly, 'animate')
-			rem_class(el.fly, 'void')
-			setTimeout(function(){add_class(el.fly, 'animate')}, 0 )
-			Seat.highlightTimer =  setTimeout(function(seat) { seat.highlight() }, 500, this)
-		}
+		}, 500)
 	},
 	take: function(user, coor) {
 		if(debug.enabled) console.log(this)

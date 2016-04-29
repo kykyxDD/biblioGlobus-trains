@@ -202,12 +202,13 @@ body {
         width: 237px; }
   .popup .register-error {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
     width: 600px;
-    height: 300px;
-    margin-left: -300px;
-    margin-top: -150px;}
+    height: 300px;}
   .popup .register-error .message {
     padding: 30px; }
   .popup .register-error .close {
@@ -252,13 +253,13 @@ body {
   .landscape .controls .board-info {
     position: absolute;
     left: 3px;
-    top: 244px;
-    width: 324px;
+    /*top: 244px;*/
+    width: 100%;
     height: 80px; }
   .landscape .controls .users-box {
     position: absolute;
     left: 3px;
-    top: 327px;
+    /*top: 327px;*/
     right: 3px;
     bottom: 86px; }
   .landscape .controls .airline-logo {
@@ -269,11 +270,11 @@ body {
     bottom: 86px; }
   .landscape .controls .confirm {
     position: absolute;
-    left: auto;
+    left: 3px;
     top: auto;
     right: 3px;
     bottom: 3px;
-    width: 324px;
+    
     height: 80px; }
 
 .portrait .view {
@@ -298,9 +299,14 @@ body {
   .portrait .controls .board-info {
     position: absolute;
     left: 12px;
-    top: 262px;
+    top: 210px;
     width: 324px;
     height: 80px; }
+  .portrait .controls .num_seat {
+    top: auto;
+    bottom: 10px;
+    padding: 0 25px;
+  } 
   .portrait .controls .users-box {
     position: absolute;
     left: 360px;

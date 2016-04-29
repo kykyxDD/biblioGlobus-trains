@@ -1,0 +1,81 @@
+.landscape .view .switch-deck {
+	width: 110px;
+	height: 50px;
+	font-size: 12px;
+	padding-top: 17px;
+}
+.landscape .view .switch-deck.one {
+	top: 150px;
+}
+.landscape .view .switch-deck.two {
+	top: 100px;
+}
+.landscape .train_nav {
+	left: auto;
+	right: 260px;
+	margin: inherit;
+}
+.landscape .train_nav .info .name,
+.landscape .train_nav .info .text {
+	font-size: 12px;
+}
+.landscape .logo {
+	width: 200px;
+	background-size: 160px;
+}
+.landscape .controls {
+	width: 260px;
+}
+.landscape .view {
+	right: 260px;
+}
+.landscape .controls .board-info .route {
+	font-size: 15px;
+	margin: 0 0 0.5em;
+}
+.landscape .controls .board-info .cred {
+	font-size: 0.8em;
+	padding: 5px 12px;
+}
+.landscape .controls .num_seat {
+	top: 90px;
+	font-size: 10px;
+
+} 
+.landscape .controls .users-box {
+	top: 120px;
+	bottom: 65px;
+}
+.landscape .controls .confirm {
+	height: 60px;
+}
+.landscape .users-box .users {
+	font: 0.66em/1 Arial, sans-serif;
+}
+.landscape .controls .users-box .users .user .info {
+	padding: 3px 10px;
+}
+.landscape .controls .users-box .users .user .info .name {
+	padding:  3px 0;
+}
+.landscape .controls .confirm .confirm-tick {
+	background-size: 25px 25px;
+}  
+.landscape .controls .confirm .confirm-caption {
+	font-size: 18px;
+	padding-top: 34px;
+}
+.landscape .popup .register-error {
+	width: 400px;
+	height: 200px;
+}
+.landscape .popup .register-error .message {
+	padding: 20px;
+	font-size: 15px;
+}
+.landscape .popup .register-error .close {
+	width: 160px;
+	height: 40px;
+	padding-top: 13px;
+	margin-left: -80px;
+}
