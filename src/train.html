@@ -45,9 +45,14 @@
 			var styles = {
 				mobile: [
 					{ href: 'css/common.css' },
-					{ href: 'css/layout_small.css', media: 'screen and (max-width: 600px)' },
-					{ href: 'css/layout_big.css',   media: 'screen and (min-width: 601px)' },
-					{ href: 'css/left-to-right.css'}
+					{ href: 'css/left-to-right.css'},
+
+					{ href: 'css/layout_small.css', media: 'screen and (max-width: 640px)' },
+
+					{ href: 'css/layout_big.css',   media: 'screen and (min-width: 641px)' },
+					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 640px)' 
+					}
+
 				],
 				flash: []
 			}

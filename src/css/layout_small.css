@@ -27,6 +27,21 @@ body {
     left: -3px;
     top: 96px; }
 
+.train_nav .current {
+  font-size: 15px;
+}
+
+.train_nav .neighbors {
+  font-size: 10px;
+}
+.train_nav .current .type,
+.train_nav .neighbors .type {
+  font-size: 9px;
+}
+.train_nav .info {
+  margin-top: 5px;
+}
+
 .controls .screen {
   display: none; }
   .controls .screen .board-num {
@@ -59,6 +74,11 @@ body {
     line-height: 1;
     display: block;
     float: none; }
+.controls .num_seat {
+  top: 50px;
+  padding: 0 3px;
+  font-size: 7px;
+}
 .controls .users-box .users .user {
   height: 29px; }
   .controls .users-box .users .user.infant {

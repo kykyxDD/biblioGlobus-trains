@@ -30,7 +30,7 @@ function add_class(elem, name) {
 	if(!has_class(elem, name)) elem.className += ' '+ name
 }
 function rem_class(elem, name) {
-	elem.className = elem.className.replace(name, '').replace(/\s+/g, ' ')
+	return elem.className = elem.className.replace(name, '').replace(/\s+/g, ' ')
 }
 function has_class(elem, name) {
 	return ~elem.className.indexOf(name)
@@ -1456,20 +1456,18 @@ Seat.prototype = {
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')
+		position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
+						 coor ? coor[1] : this.y + this.sprite.offset.center[1])
 
-		if(Seat.highlightTimer) {
+		clearTimeout(Seat.highlightTimer)
+		var finish = rem_class(el.fly, 'void');
+
+		setTimeout(function(){add_class(el.fly, 'animate')}, 10 )
+		Seat.highlightTimer =  setTimeout(function() {
+			Seat.highlightTimer = undefined	
+			rem_class(el.fly, 'animate')
 			add_class(el.fly, 'void')
-			Seat.highlightTimer = undefined
-		} else {
-			position(el.fly, coor ? coor[0] : this.x + this.sprite.offset.center[0],
-							 coor ? coor[1] : this.y + this.sprite.offset.center[1])
-
-			clearTimeout(Seat.highlightTimer)
-			// rem_class(el.fly, 'animate')
-			rem_class(el.fly, 'void')
-			setTimeout(function(){add_class(el.fly, 'animate')}, 0 )
-			Seat.highlightTimer =  setTimeout(function(seat) { seat.highlight() }, 500, this)
-		}
+		}, 500)
 	},
 	take: function(user, coor) {
 		if(debug.enabled) console.log(this)
