@@ -233,7 +233,7 @@ var self = window.model = {
 		function(data) {
 			if('ERROR' in data) {
 				var error = self.locale.error.select('code', data['ERROR'])
-				fail(error ? error.message : 'Unknown error')
+				fail(error ? data.COMMENT || error.message : 'Unknown error')
 			} else {
 				self.compareTRS(data)
 				self.applyTRS(data)
