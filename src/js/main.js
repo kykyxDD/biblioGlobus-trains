@@ -1148,7 +1148,7 @@ Seat.findByPosition = function(x, y) {
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO || user.infant) &&
 			(!seat.user || seat === user.seat || (user.infant && seat.id == user.parent.seat.id)) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-			(!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
+			// (!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
 			seat.contains(x, y)){
 			return seat
 		}
@@ -1167,14 +1167,16 @@ Seat.unlink = function(user) {
 		user.selection.className = "selection"
 
 		user.seat.info = null
-
-    	user.seat.user = null
+		user.seat.user = null
 		user.seat.group.draw()
-		user.seat = null
-		if(user.infant && user.parent.seat){
+
+
+		if(user.infant && user.parent.seat && user.parent.seat.id == user.seat.id){
 			var seat = seats.select('id',user.parent.seat.id)
 			Seat.link(user.parent, seat)
+			seat.user = !user.infant ? user.face[seat.sid] : user.parent.face[seat.sid]
 		}
+		user.seat = null
 		
 		user.curseat('')
 		user.id_car('')
@@ -1289,36 +1291,25 @@ Seat.prototype = {
             }
 		}
 
-		if(user && user.infant){
-			if(this.user) {
-				this.drawUnit(this.user,
+		if(this.user) {
+			this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
-			}
-
-			if(user.parent.seat && this.id == user.parent.seat.id){
-				if(user.parent && user.parent.seat && this.id == user.parent.seat.id && !user.seat) {
-					this.drawLabelInfant(this.name.toUpperCase());
-					this.user = user.parent.face[this.sid];
+		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
+			if(view.user().parent && view.user().parent.seat){
+				var res = FilterSeat.seatChild(this, view.user().parent)
+				if(res) {
+					this.drawLabel(this.name.toUpperCase())
 				}
-			}
-		} else {
-			if(this.user) {
-				this.drawUnit(this.user,
-						this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
-						this.Y + this.sprite.offset.user[1])
-			} else if((this.match_service_class && this.match_sex) || C.DEMO) {
-				if(view.user().parent && view.user().parent.seat){
-					var res = FilterSeat.seatChild(this, view.user().parent)
-					if(res) {
-						this.drawLabel(this.name.toUpperCase())
-					}
-				} else {
-					this.drawLabel(this.name.toUpperCase())	
-				}
+			} else {
+				this.drawLabel(this.name.toUpperCase())	
 			}
 		}
-
+		if(user){
+			if(user.infant && !user.seat && this.id == user.parent.seat.id){ 
+				this.drawLabelInfant(this.name.toUpperCase());
+			}
+		}
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
