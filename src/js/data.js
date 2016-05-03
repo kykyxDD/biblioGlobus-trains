@@ -210,7 +210,9 @@ var self = window.model = {
 				add[0] = 'p' + user.id;
 				var arr = []
 				user.child().forEach(function(child){
-					arr.push(child.id)
+					if(child.seat) {
+						arr.push(child.id)
+					}
 				})
 				add[1] = arr.join(',')
 			}
