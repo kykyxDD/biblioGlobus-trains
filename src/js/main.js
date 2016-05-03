@@ -341,6 +341,8 @@ function prepare_train_view() {
     view.next_car_item = ko.observable(false)
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
+    view.regul_seat = ko.observable('');
+    view.scroll_regul_seat = ko.observable(false)
 
     navigation.position = V(0.2, 0.2)
     var update_nav_interval = setInterval(update_view, 200)
@@ -522,7 +524,6 @@ function setup_viewmodel() {
 				arr.push(user)
 			}
 		}
-		// console.log(arr)
 		return arr
 	}, view)
 	view.selectUser = function(user, e) {
@@ -614,8 +615,7 @@ function setup_viewmodel() {
 			view.selectUser(data)
 		}
 	}
-
-
+	view.regul_seat(model.locale.message)
 	view.airline = ko.observable(model.airline)
 	view.classes = ko.observableArray([view.orient, view.decker, view.airline])
 	if(debug.enabled) view.classes.push(function() { return 'debug'})
@@ -625,6 +625,8 @@ function setup_viewmodel() {
 	view.root_class = ko.computed(function() {
 		return this.classes().map(method('call')).join(' ')
 	}, view)
+
+	view.scroll_regul_seat = new iScroll('regul_seat')
 
 	view.list_parent 	= ko.observableArray()
 	view.display_result = ko.observable(false)
@@ -637,6 +639,7 @@ function setup_viewmodel() {
 	view.error_seat  	= ko.observable(true);
 	view.error_len 		= ko.observable(true);
 	view.disable_submite = ko.observable(true);
+	view.show_regul_seat = ko.observable(false);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -677,11 +680,20 @@ function setup_viewmodel() {
 		view.selectUser(view.users()[0])
 		setTimeout(view.loading, 500, 'void')
 	}
-	GroupsUsers.createGroup();
+	view.funRegusSeat = function(){
+		if(view.show_regul_seat()) {
+			view.show_regul_seat(false)	
+		} else {
+			view.show_regul_seat(true)
+		}
+		view.scroll_regul_seat.refresh()
+	}
+	// GroupsUsers.createGroup();
 
 	ko.applyBindings(view)
 	view.register_scroll = new iScroll('confirm-users')
 	view.usersbox_scroll = new iScroll('users-scroll')
+
 
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
