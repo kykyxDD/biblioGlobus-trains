@@ -210,7 +210,9 @@ body {
     width: 600px;
     height: 300px;}
   .popup .register-error .message {
-    padding: 30px; }
+    margin: 30px 30px 80px;
+    max-height: 190px;
+    overflow: auto; }
   .popup .register-error .close {
     position: absolute;
     left: 50%;
