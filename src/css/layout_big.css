@@ -25,7 +25,15 @@ body {
     position: absolute;
     left: -5px;
     top: 184px; }
-
+.view .btn_regul_seat {
+  position: absolute;
+  top: 270px;
+  left: -5px;
+  width: 120px;
+  height: 55px;
+  padding-top: 13px;
+  font-size: 12px;
+}
 .controls .screen .board-num {
   padding: 10px 14px; }
 .controls .screen .airline-logo-small {
@@ -224,6 +232,7 @@ body {
     margin-left: -100px;
     padding-top: 16px; }
 
+
 .background .center {
   position: absolute;
   left: 50%;
@@ -339,6 +348,53 @@ body {
     bottom: 104px;
     background-size: auto 100%; }
 
+.popup.regul-seat .cont_regul_seat {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  height: 600px;
+  background: #fff;
+    -moz-user-select: -moz-none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.popup.regul-seat #regul_seat {
+  position: absolute;
+  margin: 0 5px;
+  top: 60px;
+  left: 0px;
+  right: 0px;
+  bottom: 30px;
+}
+.popup.regul-seat .title_regul_seat {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 50px;
+  margin: auto;
+  font-size: 25px;
+  text-align: center;
+
+}
+.popup.regul-seat .close_regul_seat {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.popup.regul-seat .cont_regul_seat .text{
+  cursor: pointer;
+  padding: 0 20px;
+}
 
 .group {
   position: absolute;
