@@ -231,7 +231,7 @@ var self = window.model = {
 		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
-		self.get.xml(SEAT_REQUEST + join + seats,
+		self.get.xml(SEAT_REQUEST + join + 'airline=' + get_params.airline+'&' +  seats,
 		function(data) {
 			if('ERROR' in data) {
 				var error = self.locale.error.select('code', data['ERROR'])
