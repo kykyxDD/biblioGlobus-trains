@@ -515,7 +515,15 @@ function setup_viewmodel() {
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
-		return view.users().filter(method('curseat'))
+		var arr = [];
+		for(var u = 0; u < view.users().length; u++) {
+			var user = view.users()[u];
+			if(user.curseat() && !user.disabled) {
+				arr.push(user)
+			}
+		}
+		// console.log(arr)
+		return arr
 	}, view)
 	view.selectUser = function(user, e) {
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled) {
