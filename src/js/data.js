@@ -182,7 +182,15 @@ var self = window.model = {
 			}
 		})
 	},
+	valAirline: function(){
+		var str = self.ticket[Const.tripInfoTag].NUM
+		var index = str.search(/[0-9]/);
+		var air =  index != -1 ? str.substring(0, index) : false;
+		return get_params && get_params.airline ? get_params.airline : air;
+	},
 	seatRequest: function(done, fail) {
+
+
 
         var schemas = {
             hash: {},
@@ -231,7 +239,7 @@ var self = window.model = {
 		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
-		self.get.xml(SEAT_REQUEST + join + 'airline=' + get_params.airline+'&' +  seats,
+		self.get.xml(SEAT_REQUEST + join + 'airline=' + self.valAirline()+'&' +  seats,
 		function(data) {
 			if('ERROR' in data) {
 				var error = self.locale.error.select('code', data['ERROR'])
@@ -360,13 +368,14 @@ var self = window.model = {
             for (j=0; j<vert_tiles_count; j++) {
                 
                 for (i=0; i<hor_tiles_count; i++) {
-                    
-                    var tile = tiles[i][j]
+
+                    var tile = tiles[i][j], n, n2;
+
                     if (tile.length == 0) {
                         deck.parts.push(empty_tile)
                     }
                     else if (tile.length == 1) {
-                        var n = tile[0]
+                        n = tile[0]
                         deck.parts.push(make_tile_obj(n.t + "_" + (n.ind > 9 ? n.ind : "0"+n.ind)))
                     }
                     else if (tile.length == 2) {

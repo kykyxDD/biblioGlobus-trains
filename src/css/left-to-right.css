@@ -14,7 +14,10 @@
   font-size: 12px;
   right: 0px;
   left: 0px;
-  top: 110px;
+  top: 100px;
+}
+.controls .num_seat p {
+  margin: 0;
 }
 .controls .board-info {
     top: 15px;
@@ -73,7 +76,7 @@
   text-align: left;
 }
 .train_nav .info td{
-    vertical-align: top;
+  vertical-align: top;
 }
 
 .train_nav .info .price,

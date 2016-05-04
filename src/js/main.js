@@ -388,8 +388,8 @@ function update_view()
     var ind = calc_current_car_index()
     
     var cars = model.ticket.TRAIN.CAR
-    if(!cars)return
     var car = cars[ind]
+    if(!cars || !car) return
     var car_info = model.planes.bus_parts[car.type]
 
     view.current_car_type(car_info.desc)
