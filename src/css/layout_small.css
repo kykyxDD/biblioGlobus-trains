@@ -26,17 +26,34 @@ body {
     position: absolute;
     left: -3px;
     top: 96px; }
-
+.view .btn_regul_seat {
+  position: absolute;
+  top: 140px;
+  left: -5px;
+  width: 70px;
+  height: 35px;
+  padding-top: 9px;
+  font-size: 7px;
+}
+.train_nav {
+  padding: 5px;
+}
 .train_nav .current {
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .train_nav .neighbors {
-  font-size: 10px;
-}
-.train_nav .current .type,
-.train_nav .neighbors .type {
   font-size: 9px;
+}
+.train_nav .current .type {
+  font-size: 11px;
+}
+
+.train_nav .neighbors .type {
+  font-size: 8px;
+}
+.train_nav .type {
+  /*font-size: 9px;*/
 }
 .train_nav .info {
   margin-top: 5px;
@@ -78,6 +95,20 @@ body {
   top: 50px;
   padding: 0 3px;
   font-size: 7px;
+}
+.landscape .controls .num_seat {
+  top: 35px;
+}
+.portrait .controls .num_seat {
+  top: 38px;
+  padding: 0 5px;
+}
+.portrait .controls .num_seat {
+
+}
+.portrait .controls .num_seat p {
+  display: inline-block;
+  margin: 0 5px 0 0;
 }
 .controls .users-box .users .user {
   height: 29px; }
@@ -248,7 +279,7 @@ body {
   .landscape .controls .users-box {
     position: absolute;
     left: 1px;
-    top: 42px;
+    top: 55px;
     right: 1px;
     bottom: 42px; }
   .landscape .controls .confirm {
@@ -366,3 +397,57 @@ body {
     bottom: 4px;
     width: auto;
     height: 40px; }
+
+.popup.regul-seat .cont_regul_seat {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  height: 70%;
+  background: #fff;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.portrait .popup.regul-seat .cont_regul_seat {
+  height: auto;
+  top: 10%;
+  bottom: 135px;
+}
+.popup.regul-seat #regul_seat {
+  position: absolute;
+  margin: 0 5px;
+  top: 35px;
+  left: 0px;
+  right: 0px;
+  bottom: 20px;
+}
+.popup.regul-seat .title_regul_seat {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 50px;
+  margin: auto;
+  font-size: 125%;
+  text-align: center;
+
+}
+.popup.regul-seat .close_regul_seat {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  text-align: right;
+  font-size: 150%;
+  cursor: pointer;
+}
+.popup.regul-seat .cont_regul_seat .text{
+  cursor: pointer;
+  padding: 0 15px;
+}

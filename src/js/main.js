@@ -388,8 +388,8 @@ function update_view()
     var ind = calc_current_car_index()
     
     var cars = model.ticket.TRAIN.CAR
-    if(!cars)return
     var car = cars[ind]
+    if(!cars || !car) return
     var car_info = model.planes.bus_parts[car.type]
 
     view.current_car_type(car_info.desc)
@@ -527,7 +527,7 @@ function setup_viewmodel() {
 		return arr
 	}, view)
 	view.selectUser = function(user, e) {
-		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled) {
+		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
 			var previous = view.user()
 			if(previous) {
 				previous.selected(false)
@@ -592,7 +592,7 @@ function setup_viewmodel() {
 		user.parent = val;
 		user.fclass_name(val.fclass_name());
 		val.child.push(user);
-		if(!val.seat) {
+		if(!val.seat || !view.list_parent().length) {
 			user.block(true);
 			user.seat = null;
 			user.curseat('');
@@ -743,27 +743,39 @@ function update_users(users) {
 	}
 
 	view.list_parent([])
+	users.forEach(function(user) {
+		if(!user.parent && !user.infant && !user.disabled) {
+			view.list_parent().push(user)
+		}
+	})
 
 	users.forEach(function(user, index) {
 		var seat = seats.select('num', user.curseat)
+		if(user.parent){
+			if(user.parent.disabled) {
+				user.parent.child.remove(user);	
+				if(view.list_parent().length) {
+					user.parent = view.list_parent()[0];	
+					view.list_parent()[0].child.push(user)	
+				} else {
+					user.parent = undefined;
+				}
+			}
+		}
 
 		user.d_check  = ko.observable(user.d_check  || false)
 		user.id_group = ko.observable(user.id_group || false)
 		user.seat     = seat
 		user.selected = ko.observable(false)
-		user.block    = ko.observable(!user.parent ? false : true)
+		user.block    = ko.observable((user.title).toLowerCase() != 'chld' && (user.title).toLowerCase() != 'inf'? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
 		user.fclass_name  = ko.observable(user.fclass  || '')
-		if(!user.parent && !user.infant) {
-			view.list_parent().push(user)
-		}
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
         })
-
         if(seat) seat.user = user.face[seat.sid]
 
 		user.copy(make_selection_label())
