@@ -190,8 +190,6 @@ var self = window.model = {
 	},
 	seatRequest: function(done, fail) {
 
-
-
         var schemas = {
             hash: {},
             collect: function(car) {

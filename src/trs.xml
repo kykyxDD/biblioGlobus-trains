@@ -61,6 +61,9 @@
             <CURSEAT></CURSEAT>
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
+            <DISABLED>
+            <MESSAGE>Место уже выбрано</MESSAGE>
+            </DISABLED>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
             <ID>102300000841148101</ID>
