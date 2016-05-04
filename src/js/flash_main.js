@@ -18,6 +18,7 @@ function insert_flash()
     var flashvars = {}
     flashvars.demo_mode = "demo" in get_params ? get_params.demo : null;
     flashvars.view_mode = "tourid" in get_params ? get_params.tourid == 'SEATMAP' : null;
+    flashvars.airline = get_params.airline;
     flashvars.seats_info_url = escape(SEATS_INFO_URL) || "trs.xml?" // - откуда загружается xml
     flashvars.seat_request = escape(SEAT_REQUEST) || "trs.xml?" // - куда шлется запрос
     
