@@ -97,7 +97,6 @@
 	"sed_f_5": {"w": 82, "x": 1631, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 367},
 	"sed_m_5": {"w": 82, "x": 1631, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 491},
 	"sed_g_7": {"w": 82, "x": 1795, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 367},
-	"sedentary": {"w": 82, "x": 1303, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 614},
 	"sed_f_6": {"w": 82, "x": 1713, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 367},
 	"sed_m_1": {"w": 82, "x": 1303, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 491},
 	"sed_m_4": {"w": 82, "x": 1549, "h": 121, "offset": {"label": [-52, 7], "size": [82, 139], "user": [0, 0], "areas": [], "center": [0, 0]}, "y": 491},
