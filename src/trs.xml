@@ -59,7 +59,7 @@
             <NAME>VZROSLYI</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
             <DISABLED>
             <MESSAGE>Место уже выбрано</MESSAGE>
@@ -75,7 +75,7 @@
             <IS_INF>false</IS_INF>
             <PARENTID>102300000841148001</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
@@ -87,7 +87,7 @@
             <NAME>VZROSLYI</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -100,7 +100,7 @@
             <IS_INF>false</IS_INF>
             <PARENTID>102300000841148301</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -113,7 +113,7 @@
             <IS_INF>false</IS_INF>
             <PARENTID>102300000841148301</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
@@ -125,7 +125,7 @@
             <NAME>VZROSLYI</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
 
@@ -139,7 +139,7 @@
             <IS_INF>true</IS_INF>
             <PARENTID>102300000841148001</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="INF">
@@ -152,7 +152,7 @@
             <IS_INF>true</IS_INF>
             <PARENTID>102300000841148001</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>C</SC>
+            <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
     </PASSENGERS>    <MESSAGE> Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>

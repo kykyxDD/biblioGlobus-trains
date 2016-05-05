@@ -337,7 +337,15 @@ function prepare_train_view() {
     view.current_car_carrier = ko.observable('')
     view.current_car_prime_from = ko.observable('')
     view.current_car_prime_to = ko.observable('')
-    
+    var obj = {
+    	ELREG: ko.observable(false),
+    	EAT: ko.observable(false),
+		COND: ko.observable(false),
+		BED: ko.observable(false),
+		SAN: ko.observable(false)
+    };
+    view.current_car_info = ko.observable(obj);
+
     view.next_car_item = ko.observable(false)
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
@@ -401,6 +409,22 @@ function update_view()
     	view.current_car_prime_to(car.PRICE.to)
     } else {
     	view.current_car_prime_to(false)
+    }
+
+    var info = view.current_car_info();
+    var arr_info = car.SRV.short.split(',');
+
+    if(car.elreg) {
+    	arr_info.push('ELREG')
+    }
+    
+    for(var key in info){
+    	var index = arr_info.indexOf(key)
+    	if(index >= 0){
+    		info[key](true)
+    	} else {
+    		info[key](false)
+    	}
     }
 
     current_car.type = car_info.desc
@@ -1467,7 +1491,6 @@ Seat.prototype = {
 			if(user.child && +index[0] != +this.num.split('-')[0]) {
 				user.child().forEach(function(child){
 					if(child.seat){
-						console.log('seat unlink')
 						Seat.unlink(child);	
 					}
 				})

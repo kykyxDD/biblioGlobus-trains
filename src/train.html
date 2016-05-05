@@ -273,6 +273,19 @@
 		            	<td class="name">Цена: </td> 
 		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> руб <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> руб</span></td>
 		            </tr>	
+		            <tr>
+		            	<td class="name">Услуги:</td>
+		            	<td>
+		            		<div class='list_info_icon'>
+		            			<div data-bind='visible: current_car_info().ELREG' class="info_icon ELREG" title="Электронная регистрация"></div>
+				            	<div data-bind='visible: current_car_info().EAT' class="info_icon EAT" title='Питание'></div>
+				            	<div data-bind='visible: current_car_info().COND' class="info_icon COND" title="Кондиционер"></div>
+				            	<div data-bind='visible: current_car_info().BED' class="info_icon BED" title="Постельное белье"></div>
+				            	<div data-bind='visible: current_car_info().SAN' class="info_icon SAN" title="Санитарно-гигиенический набор"></div>
+		            		</div>
+		            	</td>
+		            	
+		            </tr>
             	</table>
 	            
             </div> 
