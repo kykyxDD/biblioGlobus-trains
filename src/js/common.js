@@ -4,5 +4,4 @@
 //= ./nav.js
 //= ./data.js
 //= ./main.js
-//= ./group_user.js
 //= ./filter_seat.js

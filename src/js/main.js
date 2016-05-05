@@ -688,7 +688,6 @@ function setup_viewmodel() {
 		}
 		view.scroll_regul_seat.refresh()
 	}
-	// GroupsUsers.createGroup();
 
 	ko.applyBindings(view)
 	view.register_scroll = new iScroll('confirm-users')
@@ -715,7 +714,7 @@ function select_next_user() {
 		index = users.indexOf(view.user()),
 
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
-			if(!item.curseat() && !item.block()) return item
+			return !item.curseat() && !item.block() && !item.disabled
 		})
 	if(await.length) view.selectUser(await[0])
 }
@@ -1251,7 +1250,10 @@ function numInfant(){
 }
 function updateDisable(seat, user){
 	var num = numInfant();
-	if((view.placedUsers().length + num) < (view.users().length)){
+	var arr_user = view.users().filter(function(item){
+		return !item.disabled
+	})
+	if((view.placedUsers().length + num) < arr_user.length){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
@@ -1458,11 +1460,18 @@ Seat.prototype = {
 
 		var already_placed = user.seat === this;
 
-		Seat.unlink(user);
-		if(user.child) {
-			user.child().forEach(function(child){
-				Seat.unlink(child);
-			})
+		if(user.seat && user.seat.num){
+			var index = user.seat.num.split('-');
+
+			Seat.unlink(user);
+			if(user.child && +index[0] != +this.num.split('-')[0]) {
+				user.child().forEach(function(child){
+					if(child.seat){
+						console.log('seat unlink')
+						Seat.unlink(child);	
+					}
+				})
+			}
 		}
 
 		if(!already_placed) {
