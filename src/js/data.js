@@ -90,6 +90,7 @@ var self = window.model = {
 				data.parent.child.push(data)
 			}
 		})
+
 		self.users = users.map(function(data, index) {
 			var user = {
 				id        : data['ID'],
@@ -135,7 +136,7 @@ var self = window.model = {
 			if(user.parent){ 
 				user.parent = self.users.select('id', user.parent.ID)
 			}
-			
+
 			if(user.child) {
 				var childs = user.child();
 				childs.forEach(function(data, index){
@@ -277,10 +278,10 @@ var self = window.model = {
 		})
 	},
 	selectPassenger: function(sid, opt) {
+		
 		var type  = self.planes['seat_types'][sid]
 		var crowd = type.people.filter(function(guy) {
-				return !!opt.child == guy.child
-					&&   opt.sex   == guy.sex
+				return opt.sex   == guy.sex
 					&&   opt.age   >= guy.age[0]
 					&&   opt.age   <= guy.age[1]
 			})
@@ -289,7 +290,7 @@ var self = window.model = {
             var image = crowd[rand(crowd.length)]
             return self.struct['sprite']['info'][image.ref]
         }
-        else {
+        else { 
             console.log(sid, "image not found: child->", opt.child, "sex->", opt.sex, "age->", opt.age)
             return null
         }
