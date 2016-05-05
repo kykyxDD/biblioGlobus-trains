@@ -15,14 +15,16 @@
             {"ref":"sed_f_4","child":false,"sex":"f","age":[12,999]},
             {"ref":"sed_f_5","child":false,"sex":"f","age":[12,999]},
             {"ref":"sed_f_6","child":false,"sex":"f","age":[12,999]},
-            {"ref":"sed_g_7","child":true,"sex":"f","age":[0,999]},
+            {"ref":"sed_g_7","child":false,"sex":"f","age":[0,12]},
             {"ref":"sed_m_1","child":false,"sex":"m","age":[12,999]},
             {"ref":"sed_m_2","child":false,"sex":"m","age":[12,999]},
             {"ref":"sed_m_3","child":false,"sex":"m","age":[12,999]},
             {"ref":"sed_m_4","child":false,"sex":"m","age":[12,999]},
             {"ref":"sed_m_5","child":false,"sex":"m","age":[12,999]},
             {"ref":"sed_m_6","child":false,"sex":"m","age":[12,999]},
-            {"ref":"sed_b_1","child":true,"sex":"m","age":[0,999]}
+            {"ref":"sed_b_1","child":false,"sex":"m","age":[0,12]},
+            {"ref":"sed_f_1","child":true,"sex":"m","age":[0,999]},
+            {"ref":"sed_m_1","child":true,"sex":"m","age":[0,999]}
         ],
         "name": "сидячий",
         "code":"S"
