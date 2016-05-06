@@ -170,7 +170,7 @@
 				<!-- ko if: disabled-->
 				<td colspan="3" class="info">
 					<div class="name">
-						<span data-bind="text: name" class="value"></span> <span data-bind="text: fclass" class="value"></span> <span data-bind="text: curseat" class="value"></span>
+						<span data-bind="text: fclass" class="value"></span> <span data-bind="text: curseat" class="value"></span>
 					</div>
 					<div data-bind="text: disabled" class="reason"></div>
 				</td>
@@ -339,6 +339,11 @@
 						<span class="field">Отбытие: </span>
 						<span data-bind="text: board.time" class="value"></span>,
 						<span data-bind="text: board.date" class="value"></span>
+					</div>
+					<div class="date">
+						<span class="field">Прибытие: </span>
+						<span data-bind="text: board.arrival_time" class="value"></span>,
+						<span data-bind="text: board.arrival_date" class="value"></span>
 					</div>
 				</div>
 			</div>

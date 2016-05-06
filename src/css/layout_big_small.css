@@ -25,11 +25,9 @@
 }
 .landscape .train_nav .info {
     margin-top: 5px;
+    font-size: 0.7em;
 }
-.landscape .train_nav .info .name,
-.landscape .train_nav .info .text {
-	font-size: 12px;
-}
+
 .landscape .train_nav .current {
 	font-size: 15px;
 }
@@ -43,9 +41,19 @@
 .landscape .train_nav .neighbors .type {
 	font-size: 8px;
 }
+.landscape .train_nav .info .info_icon {
+	background-size: 230px;
+	height: 17px;
+	width: 24px;
+}
+.landscape .train_nav .info .info_icon.ELREG {
+	width: 21px;
+	background-position: -75px 0;
+}
 .landscape .logo {
-	width: 200px;
-	background-size: 160px;
+	height: 60px;
+	width: 175px;
+	background-size: 140px;
 }
 .landscape .controls {
 	width: 260px;

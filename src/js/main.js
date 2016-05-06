@@ -301,9 +301,10 @@ function start() {
 	}
 
 	setup_viewmodel()
+	setup_navigation()
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
-	setup_navigation()
+
 	resize()
 	register_events()
 
@@ -532,8 +533,11 @@ function setup_viewmodel() {
 
 	view.decker(model.struct.double_decker ? 'double-decker' : 'single-decker')
 
+
 	view.board = model.boardinfo
 	view.board.time = /(\d+?)(\d\d)$/.exec(view.board.takeoff_time).slice(1).join(':')
+	view.board.arrival_time = /(\d+?)(\d\d)$/.exec(view.board.arrival_time).slice(1).join(':')
+	// view.board.arrival_date = view.board.takeoff_time).slice(1).join(':')
 	view.formatAirport = function(data) {
 		return data.port_rus + " " + data.port
 	}
@@ -541,14 +545,7 @@ function setup_viewmodel() {
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
-		var arr = [];
-		for(var u = 0; u < view.users().length; u++) {
-			var user = view.users()[u];
-			if(user.curseat() && !user.disabled) {
-				arr.push(user)
-			}
-		}
-		return arr
+		return view.users().filter(method('curseat'))
 	}, view)
 	view.selectUser = function(user, e) {
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
@@ -579,6 +576,14 @@ function setup_viewmodel() {
 
 			return true
 		}
+		if(user && user.disabled){
+			console.log('user click disabled')
+			// frames.view.move(user.seat.x, user.seat.y, true)
+			// if(model.struct.double_decker) {
+			// 		upper_deck_visible(user.seat.deck > 1)
+			// 	}
+				// frames.view.move(user.seat.x, user.seat.y, true)
+		}
 	}
 	view.clickGroup = function(str, index, data){
 		if (str == 'rem') {
@@ -602,7 +607,9 @@ function setup_viewmodel() {
 		}
 	}
 	view.changeSelectParent = function(data){
-		if(data.id !== view.user())
+		if(data.id !== view.user()) {
+
+		}
 		var user = view.user();
 		var select = event.target || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
@@ -616,7 +623,7 @@ function setup_viewmodel() {
 		user.parent = val;
 		user.fclass_name(val.fclass_name());
 		val.child.push(user);
-		if(!val.seat || !view.list_parent().length) {
+		if(!val.seat && !val.disabled) {
 			user.block(true);
 			user.seat = null;
 			user.curseat('');
@@ -635,7 +642,7 @@ function setup_viewmodel() {
 		updateDisable()
 	}
 	view.clickSelectParent = function(data){
-		if(data.id !== view.user().id) {
+		if(!view.user() || data.id !== view.user().id) {
 			view.selectUser(data)
 		}
 	}
@@ -767,30 +774,18 @@ function update_users(users) {
 
 	view.list_parent([])
 	users.forEach(function(user) {
-		if(!user.parent && !user.infant && !user.disabled) {
+		if(!user.parent && !user.infant) {
 			view.list_parent().push(user)
 		}
 	})
 
 	users.forEach(function(user, index) {
 		var seat = seats.select('num', user.curseat)
-		if(user.parent){
-			if(user.parent.disabled) {
-				user.parent.child.remove(user);	
-				if(view.list_parent().length) {
-					user.parent = view.list_parent()[0];	
-					view.list_parent()[0].child.push(user)	
-				} else {
-					user.parent = undefined;
-				}
-			}
-		}
-
 		user.d_check  = ko.observable(user.d_check  || false)
 		user.id_group = ko.observable(user.id_group || false)
 		user.seat     = seat
 		user.selected = ko.observable(false)
-		user.block    = ko.observable((user.title).toLowerCase() != 'chld' && (user.title).toLowerCase() != 'inf'? false : true)
+		user.block    = ko.observable(((user.title).toLowerCase() != 'chld' && (user.title).toLowerCase() != 'inf') || (user.parent && user.parent.disabled)? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
@@ -803,9 +798,12 @@ function update_users(users) {
 
 		user.copy(make_selection_label())
 	})
+	var select_user = users.filter(function(itm){
+		return !itm.disabled
+	})
 
 	view.users(users)
-	view.selectUser(view.list_parent()[0])
+	view.selectUser(select_user[0])
 	view.group_ticket(model.group_ticket)
 }
 function setup_navigation() {
@@ -1274,10 +1272,7 @@ function numInfant(){
 }
 function updateDisable(seat, user){
 	var num = numInfant();
-	var arr_user = view.users().filter(function(item){
-		return !item.disabled
-	})
-	if((view.placedUsers().length + num) < arr_user.length){
+	if((view.placedUsers().length + num) < view.users().length){
 		view.error_len(true)
 	} else {
 		view.error_len(false)

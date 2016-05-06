@@ -8,5 +8,7 @@ Const = {
     boardingTimeTag: 'TAKEOFF_TIME',
     depatureTimeTag: 'DEPARTURE_TIME',
     depatureCityTag: 'CITYRUS_FROM',
-    arrivalCityTag: 'CITYRUS_TO'
+    arrivalCityTag: 'CITYRUS_TO',
+    arrivalDate: 'ARRIVAL_DATE',
+	arrivalTime: 'ARRIVAL_TIME'
 };

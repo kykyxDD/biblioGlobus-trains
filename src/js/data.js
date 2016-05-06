@@ -84,8 +84,14 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-			if(data['IS_INF'] || data['PARENTID']) {
+			if(data['TITLE'].toLowerCase() == "inf"  || data['TITLE'].toLowerCase() == "chld" ) {
 				data.parent = users.select('ID', data['PARENTID'])
+				if(!data['PARENTID']) {
+					var arr = users.filter(function(itm){
+						return itm['TITLE'].toLowerCase() !== "inf" && itm['TITLE'].toLowerCase() !== "chld"  && !itm["DISABLED"]
+					})
+					data.parent = arr[0];
+				}
 				if(!data.parent.child) data.parent.child = ko.observableArray();
 				data.parent.child.push(data)
 			}
@@ -108,7 +114,7 @@ var self = window.model = {
 				infant	  : data['IS_INF'],
 				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
-				role 	  : data['PARENTID'] ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
+				role 	  : data.parent ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
 
 				curseat   : '',
 				face      : {}
@@ -287,8 +293,10 @@ var self = window.model = {
 			})
 		
         if (crowd.length > 0) {
-            var image = crowd[rand(crowd.length)]
-            return self.struct['sprite']['info'][image.ref]
+        	var num = rand(crowd.length)
+            var image = crowd[num]
+            var obj = self.struct['sprite']['info'][image.ref]
+            return obj
         }
         else { 
             console.log(sid, "image not found: child->", opt.child, "sex->", opt.sex, "age->", opt.age)
@@ -303,6 +311,9 @@ var self = window.model = {
 			num           :board['NUM'            ],
 			boardnum      :board[Const.typeTag    ],
 			boarding_time :board[Const.boardingTimeTag],
+			boardnum      :board[Const.typeTag    ],
+			arrival_date  :board[Const.arrivalDate],
+			arrival_time  :board[Const.arrivalTime],
 			takeoff_time  :board[Const.depatureTimeTag],
 			from: {
 				port      :board['AIRP_FROM'] ? "(" + board['AIRP_FROM'] + ")" : "",

@@ -6,6 +6,8 @@
         <CONFIG_UID>TRAIN2</CONFIG_UID>
         <BOARDING_TIME>1330</BOARDING_TIME>
         <DEPARTURE_TIME>1330</DEPARTURE_TIME>
+        <ARRIVAL_DATE>19.05.2016</ARRIVAL_DATE>
+        <ARRIVAL_TIME>1442</ARRIVAL_TIME>
         <CITYRUS_FROM>МОСКВА КАЗАНСКАЯ</CITYRUS_FROM>
         <CITYRUS_TO>АДЛЕР</CITYRUS_TO>
         <CITYEN_FROM>Moscow</CITYEN_FROM>
@@ -58,7 +60,7 @@
             <SURNAME>PERVYI</SURNAME>
             <NAME>VZROSLYI</NAME>
             <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
+            <CURSEAT>7-31</CURSEAT>
             <SC>S</SC>
             <BOARDINGPASS></BOARDINGPASS>
             <DISABLED>

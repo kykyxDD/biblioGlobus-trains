@@ -39,24 +39,32 @@ body {
   padding: 5px;
 }
 .train_nav .current {
-  font-size: 12px;
-}
-
-.train_nav .neighbors {
-  font-size: 9px;
-}
-.train_nav .current .type {
   font-size: 11px;
 }
 
+.train_nav .neighbors {
+  font-size: 7px;
+}
+
 .train_nav .neighbors .type {
+  font-size: 6px;
+}
+.train_nav .current .type {
   font-size: 8px;
 }
-.train_nav .type {
-  /*font-size: 9px;*/
-}
+
 .train_nav .info {
   margin-top: 5px;
+  font-size: 0.9em;
+}
+.train_nav .info .info_icon {
+  background-size: 175px;
+  height: 13px;
+  width: 18px;
+}
+.train_nav .info .info_icon.ELREG {
+  width: 18px;
+  background-position: -56px 0;
 }
 
 .controls .screen {
@@ -356,7 +364,7 @@ body {
     right: 4px;
     bottom: auto; }
 .portrait .users-box .users .user {
-  font-size: 2.2em; }
+  font-size: 2em; }
   .portrait .users-box .users .user .print div, .portrait .users-box .users .user .class div, .portrait .users-box .users .user .place div {
     display: inline-block; }
   .portrait .users-box .users .user .print {

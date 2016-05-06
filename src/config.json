@@ -21,7 +21,6 @@
             {"ref":"sed_m_3","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_4","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_5","child":false,"sex":"m","age":[13,999]},
-            {"ref":"sed_m_6","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_b_1","child":true,"sex":"m","age":[0,12]}
         ],
         "name": "сидячий",
