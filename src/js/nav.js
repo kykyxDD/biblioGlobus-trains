@@ -170,15 +170,17 @@ window.navigation = {
 		return V(x, y).rot(invert)
 	},
 	move: function(position, timed) {
-		var bounded = this._bound(position),
-			delta   = bounded.sub(this.position)
+        if (position && !isNaN(position.x) && !isNaN(position.y)) {
+            var bounded = this._bound(position),
+                delta   = bounded.sub(this.position)
 
-		if(timed) {
-			this._glide(delta.div(this.accelPrecisionLimit))
-		} else {
-			this.position = bounded
-			this.frames.some(function(frame) { frame._set(bounded) })
-		}
+            if(timed) {
+                this._glide(delta.div(this.accelPrecisionLimit))
+            } else {
+                this.position = bounded
+                this.frames.some(function(frame) { frame._set(bounded) })
+            }
+        }
 	},
     stop_glide: function() {
         delete this.glide
