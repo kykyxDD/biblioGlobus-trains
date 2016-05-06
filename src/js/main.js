@@ -606,14 +606,12 @@ function setup_viewmodel() {
 			} 
 		}
 	}
-	view.changeSelectParent = function(data){
-		if(data.id !== view.user()) {
 
-		}
+	view.changeSelectParent = function(data, event){
 		var user = view.user();
-		var select = event.target || event.srcElement;
+		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
-
+        
 		if(val.child && val.child.indexOf(user) >= 0) return
 
 		if(user.parent && user.parent.child) {
