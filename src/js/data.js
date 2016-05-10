@@ -84,7 +84,7 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-            console.log(data)
+
 			if(data['TITLE'].toLowerCase() == "inf"  || data['TITLE'].toLowerCase() == "chld" ) {
 				data.parent = users.select('ID', data['PARENTID'])
 				if(!data['PARENTID']) {

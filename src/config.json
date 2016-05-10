@@ -15,13 +15,13 @@
             {"ref":"sed_f_4","child":false,"sex":"f","age":[13,999]},
             {"ref":"sed_f_5","child":false,"sex":"f","age":[13,999]},
             {"ref":"sed_f_6","child":false,"sex":"f","age":[13,999]},
-            {"ref":"sed_g_7","child":true,"sex":"f","age":[0,12]},
+            {"ref":"sed_g_7","child":false,"sex":"f","age":[0,12]},
             {"ref":"sed_m_1","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_2","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_3","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_4","child":false,"sex":"m","age":[13,999]},
             {"ref":"sed_m_5","child":false,"sex":"m","age":[13,999]},
-            {"ref":"sed_b_1","child":true,"sex":"m","age":[0,12]}
+            {"ref":"sed_b_1","child":false,"sex":"m","age":[0,12]}
         ],
         "name": "сидячий",
         "code":"S"
@@ -33,16 +33,16 @@
             {"ref":"kup_l_l_w2","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_l_w3","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_l_w4","child":false,"sex":"f","age":[13,999]},
-            {"ref":"kup_l_l_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_l_l_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"kup_l_l_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_l_l_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_l_l_i1","child":false,"sex":"f","age":[0,4]},
             {"ref":"kup_l_l_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_l_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_l_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_l_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"kup_l_l_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"kup_l_l_b2","child":false,"sex":"m","age":[0,12]},
-            {"ref":"kup_l_l_w1","child":true,"sex":"f","age":[0,12]},
-            {"ref":"kup_l_l_m1","child":true,"sex":"m","age":[0,12]}
+            {"ref":"kup_l_l_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_l_l_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_l_l_i1","child":false,"sex":"m","age":[0,4]}
         ],
         "name": "купе",
         "code":"C"
@@ -54,16 +54,16 @@
             {"ref":"kup_u_r_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_r_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_r_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"kup_u_r_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"kup_u_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_r_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_u_r_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_u_r_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"kup_u_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_r_w2","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_r_w3","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_r_w4","child":false,"sex":"f","age":[13,999]},
-            {"ref":"kup_u_r_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_u_r_g2","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_u_r_m1","child":true,"sex":"m","age":[0,12]},
-            {"ref":"kup_u_r_w1","child":true,"sex":"f","age":[0,12]}
+            {"ref":"kup_u_r_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_u_r_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_u_r_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "купе",
         "code":"C"
@@ -75,16 +75,16 @@
             {"ref":"kup_u_l_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_l_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_l_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"kup_u_l_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"kup_u_l_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_u_l_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_u_l_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_u_l_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"kup_u_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_l_w2","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_l_w3","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_u_l_w4","child":false,"sex":"f","age":[13,999]},
-            {"ref":"kup_u_l_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_u_l_g2","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_u_l_m1","child":true,"sex":"m","age":[0,12]},
-            {"ref":"kup_u_l_w1","child":true,"sex":"f","age":[0,12]}
+            {"ref":"kup_u_l_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_u_l_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_u_l_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "купе",
         "code":"C"
@@ -96,16 +96,16 @@
             {"ref":"kup_l_r_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_r_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_r_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"kup_l_r_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"kup_l_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"kup_l_r_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_l_r_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"kup_l_r_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"kup_l_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_r_w2","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_r_w3","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_r_w4","child":false,"sex":"f","age":[13,999]},
-            {"ref":"kup_l_r_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_l_r_g2","child":false,"sex":"f","age":[0,12]},
-            {"ref":"kup_l_r_m1","child":true,"sex":"m","age":[0,12]},
-            {"ref":"kup_l_r_w1","child":true,"sex":"f","age":[0,12]}
+            {"ref":"kup_l_r_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_l_r_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"kup_l_r_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "купе",
         "code":"C"
@@ -116,16 +116,16 @@
         "people":[
             {"ref":"u_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_l_w2","child":false,"sex":"f","age":[13,999]},
-            {"ref":"u_l_w2","child":true,"sex":"f","age":[0,12]},
-            {"ref":"u_l_g2","child":false,"sex":"f","age":[0,12]},
-            {"ref":"u_l_g1","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_l_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_l_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_l_i1","child":false,"sex":"f","age":[0,4]},
             {"ref":"u_l_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_l_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_l_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_l_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"u_l_m4","child":true,"sex":"m","age":[0,12]},
-            {"ref":"u_l_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"u_l_b2","child":false,"sex":"m","age":[0,12]}
+            {"ref":"u_l_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_l_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_l_i1","child":false,"sex":"m","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
@@ -136,14 +136,14 @@
             {"ref":"b_t_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_t_w2","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_t_w3","child":false,"sex":"f","age":[13,999]},
-            {"ref":"b_t_w3","child":true,"sex":"f","age":[0,12]},
-            {"ref":"b_t_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"b_t_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_t_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_t_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_t_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"b_t_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"b_t_m2","child":false,"sex":"m","age":[13,999]},
-            {"ref":"b_t_m2","child":true,"sex":"m","age":[0,12]},
-            {"ref":"b_t_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"b_t_g2","child":false,"sex":"f","age":[0,12]}
+            {"ref":"b_t_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_t_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_t_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
@@ -153,14 +153,14 @@
         "people":[
             {"ref":"b_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_r_w2","child":false,"sex":"f","age":[13,999]},
-            {"ref":"b_r_w2","child":true,"sex":"f","age":[0,12]},
-            {"ref":"b_r_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"b_r_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_r_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_r_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_r_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"b_r_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"b_r_m2","child":false,"sex":"m","age":[13,999]},
-            {"ref":"b_r_m2","child":true,"sex":"m","age":[0,12]},
-            {"ref":"b_r_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"b_r_g2","child":false,"sex":"f","age":[0,12]}
+            {"ref":"b_r_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_r_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_r_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
@@ -170,14 +170,14 @@
         "people":[
             {"ref":"b_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_l_w2","child":false,"sex":"f","age":[13,999]},
-            {"ref":"b_l_w2","child":true,"sex":"f","age":[0,12]},
-            {"ref":"b_l_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"b_l_b2","child":false,"sex":"m","age":[0,12]},
+            {"ref":"b_l_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_l_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"b_l_i1","child":false,"sex":"m","age":[0,4]},
             {"ref":"b_l_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"b_l_m1","child":false,"sex":"m","age":[13,999]},
-            {"ref":"b_l_m1","child":true,"sex":"m","age":[0,12]},
-            {"ref":"b_l_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"b_l_g2","child":false,"sex":"f","age":[0,12]}
+            {"ref":"b_l_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_l_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"b_l_i1","child":false,"sex":"f","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
@@ -189,16 +189,16 @@
         "people": [
             {"ref":"u_t_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_t_w2","child":false,"sex":"f","age":[13,999]},
-            {"ref":"u_t_w2","child":true,"sex":"f","age":[0,12]},
-            {"ref":"u_t_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"u_t_g2","child":false,"sex":"f","age":[0,12]},
+            {"ref":"u_t_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_t_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_t_i1","child":false,"sex":"f","age":[0,4]},
             {"ref":"u_t_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_t_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_t_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_t_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"u_t_m4","child":true,"sex":"m","age":[0,12]},
-            {"ref":"u_t_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"u_t_b2","child":false,"sex":"m","age":[0,12]}
+            {"ref":"u_t_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_t_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_t_i1","child":false,"sex":"m","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
@@ -208,16 +208,16 @@
         "people": [
             {"ref":"u_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_r_w2","child":false,"sex":"f","age":[13,999]},
-            {"ref":"u_r_g1","child":false,"sex":"f","age":[0,12]},
-            {"ref":"u_r_g2","child":false,"sex":"f","age":[0,12]},
-            {"ref":"u_r_w1","child":true,"sex":"f","age":[0,12]},
+            {"ref":"u_r_g1","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_r_g2","child":false,"sex":"f","age":[5,12]},
+            {"ref":"u_r_i1","child":false,"sex":"f","age":[0,4]},
             {"ref":"u_r_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_r_m2","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_r_m3","child":false,"sex":"m","age":[13,999]},
             {"ref":"u_r_m4","child":false,"sex":"m","age":[13,999]},
-            {"ref":"u_r_m4","child":true,"sex":"m","age":[0,12]},
-            {"ref":"u_r_b1","child":false,"sex":"m","age":[0,12]},
-            {"ref":"u_r_b2","child":false,"sex":"m","age":[0,12]}
+            {"ref":"u_r_b1","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_r_b2","child":false,"sex":"m","age":[5,12]},
+            {"ref":"u_r_i1","child":false,"sex":"m","age":[0,4]}
         ],
         "name": "плацкарт",
         "code":"Y"
