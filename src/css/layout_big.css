@@ -3,9 +3,6 @@ body {
   font-size: 100%; }
 
 .logo {
-  position: absolute;
-  left: 0;
-  top: 12px;
   width: 264px;
   height: 71px;
   border-radius: 0 35px 35px 0;
@@ -13,22 +10,20 @@ body {
   background-position: 12px; }
 
 .view .switch-deck {
+  position: absolute;
+  right: -5px;
   width: 140px;
   height: 65px;
   background-repeat: no-repeat;
   padding-top: 22px; }
-  .view .switch-deck.two {
-    position: absolute;
-    left: -5px;
-    top: 120px; }
-  .view .switch-deck.one {
-    position: absolute;
-    left: -5px;
-    top: 184px; }
+  .view .switch-deck.two {    
+    bottom: 164px; }
+  .view .switch-deck.one {    
+    bottom: 100px; }
 .view .btn_regul_seat {
   position: absolute;
-  top: 270px;
-  left: -5px;
+  bottom: 30px;
+  right: -5px;
   width: 120px;
   height: 55px;
   padding-top: 13px;
@@ -47,7 +42,7 @@ body {
 .controls .board-info-table {
   display: none; }
 .controls .board-info .route {
-  margin: 0.5em 0px; }
+  margin: 0.5em 0px 0px; }
 .controls .board-info .cred {
   padding: 10px 12px; }
 .controls .users-box .users .user {
@@ -271,9 +266,6 @@ body {
     width: 324px;
     height: 238px; }
   .landscape .controls .board-info {
-    position: absolute;
-    left: 3px;
-    /*top: 244px;*/
     width: 100%;
     height: 80px; }
   .landscape .controls .users-box {
@@ -303,6 +295,7 @@ body {
   top: 0;
   right: 0;
   bottom: 354px; }
+
 .portrait .controls {
   position: absolute;
   left: 0;
@@ -326,10 +319,7 @@ body {
     width: 100%;
     }    
   .controls .board-info .cred .date {
-    padding-top: 5px;
-    display: inline-block;
-    float: left;
-    width: 50%; }
+    display: inline-block;}
   .portrait .controls .users-box {
     position: absolute;
     left: 360px;

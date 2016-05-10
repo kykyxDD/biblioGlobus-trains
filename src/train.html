@@ -252,7 +252,6 @@
 			</div>
 		</script>
 		<div data-bind="text: debug.pos_view" class="corner view-info"></div>
-		<div class="logo static-biblioglobus_logo"></div>
 		<div id="plane-scroll" class="view center">
 			<div class="plane">
 				<div class="fly">
@@ -264,7 +263,7 @@
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхняя палуба</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
 			data-bind='click: funRegusSeat'>Правила <br>бронирования</div>
-		</div>
+
         <table class="train_nav">
 	        <thead>
 	            <tr>
@@ -304,15 +303,12 @@
 		            	
 		            </tr>
             	</table>
-	            
             </div> 
-
            </td></tr>
-            
-           
-            
         </table>
+        </div>
 		<div class="controls">
+			<div class="logo static-biblioglobus_logo"></div>
 			<div class="screen">
 				<div class="board-num">
 					<div data-bind="text: board.name"     class="name" ></div>
@@ -356,12 +352,12 @@
 					</div>
 					<div class='cont_date'>
 						<div class="date">
-							<span class="field">Отправление: </span><br>
+							<span class="field">Отправление: </span>
 							<span data-bind="text: board.time" class="value"></span>,
 							<span data-bind="text: board.date" class="value"></span>
 						</div>
 						<div class="date">
-							<span class="field">Прибытие: </span><br>
+							<span class="field">Прибытие: </span>
 							<span data-bind="text: board.arrival_time" class="value"></span>,
 							<span data-bind="text: board.arrival_date" class="value"></span>
 						</div>

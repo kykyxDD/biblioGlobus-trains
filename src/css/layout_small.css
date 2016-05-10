@@ -13,23 +13,21 @@ body {
   background-position: 6px; }
 
 .view .switch-deck {
+  position: absolute;
+  right: -3px;
   width: 80px;
   height: 37px;
   background-repeat: no-repeat;
   padding-top: 12px;
   font-size: 1.1em; }
   .view .switch-deck.two {
-    position: absolute;
-    left: -3px;
-    top: 60px; }
+    bottom: 126px; }
   .view .switch-deck.one {
-    position: absolute;
-    left: -3px;
-    top: 96px; }
+    bottom: 90px; }
 .view .btn_regul_seat {
   position: absolute;
-  top: 140px;
-  left: -5px;
+  bottom: 10px;
+  right: -3px;
   width: 70px;
   height: 35px;
   padding-top: 9px;
@@ -37,9 +35,6 @@ body {
 }
 .train_nav {
   padding: 5px;
-}
-.portrait .train_nav {
-  top: 30px;
 }
 .train_nav .current {
   font-size: 9px;
@@ -59,9 +54,6 @@ body {
 .train_nav .info {
   margin-top: 5px;
   font-size: 0.9em;
-}
-.train_nav .info .descr {
-  display: none;
 }
 .train_nav .info .info_icon {
   background-size: 175px;
