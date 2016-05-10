@@ -37,12 +37,7 @@
     </TRAIN>
     <PASSENGERS>        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
         <PASSENGER ageGroup="ADT">
-        <DISABLED>
-           <MESSAGE>
-Фамилия пассажира (IVANOVA) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Имя пассажира (RAISA) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Отчество пассажира указано в неправильном формате! Можно использовать только русские буквы, символ - </MESSAGE>
-        </DISABLED>
+        
             <ID>102300000876737400</ID>
             <TITLE>Mrs</TITLE>
             <SEX>F</SEX>
@@ -50,11 +45,9 @@
             <SURNAME>IVANOVA</SURNAME>
             <NAME>RAISA</NAME>
             <IS_INF>false</IS_INF>
-            <CURSEAT>6-27</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
@@ -65,20 +58,13 @@
             <SURNAME>PETROV</SURNAME>
             <NAME>PETR</NAME>
             <IS_INF>false</IS_INF>
-            <CURSEAT>6-32</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
-        <DISABLED>
-           <MESSAGE>
-Фамилия пассажира (PETROVA) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Имя пассажира (DARIA) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Отчество пассажира указано в неправильном формате! Можно использовать только русские буквы, символ - </MESSAGE>
-        </DISABLED>
+
             <ID>102300000876737800</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
@@ -86,20 +72,13 @@
             <SURNAME>PETROVA</SURNAME>
             <NAME>DARIA</NAME>
             <IS_INF>false</IS_INF>
-            <CURSEAT>6-31</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
-        <DISABLED>
-           <MESSAGE>
-Фамилия пассажира (IVANOV) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Имя пассажира (IVAN) указана в неправильном формате! Можно использовать только русские буквы, символ - 
-Отчество пассажира указано в неправильном формате! Можно использовать только русские буквы, символ - </MESSAGE>
-        </DISABLED>
+
             <ID>102300000876737300</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
@@ -107,11 +86,9 @@
             <SURNAME>IVANOV</SURNAME>
             <NAME>IVAN</NAME>
             <IS_INF>false</IS_INF>
-            <CURSEAT>6-28</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -123,11 +100,9 @@
             <NAME>REBENOK</NAME>
             <IS_INF>false</IS_INF>
             <PARENTID>102300000876737400</PARENTID>
-            <CURSEAT>6-25</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -139,11 +114,8 @@
             <NAME>REBENOK</NAME>
             <IS_INF>false</IS_INF>
             <PARENTID>102300000876737400</PARENTID>
-            <CURSEAT>6-30</CURSEAT>
-            <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+            <CURSEAT></CURSEAT>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="INF">
@@ -155,11 +127,9 @@
             <NAME>INFANTA</NAME>
             <IS_INF>true</IS_INF>
             <PARENTID>102300000876737400</PARENTID>
-            <CURSEAT>6-29</CURSEAT>
+            <CURSEAT></CURSEAT>
             <SC>C</SC>
-            <DISABLED>
-            <MESSAGE>Место уже выбрано</MESSAGE>
-            </DISABLED>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="INF">

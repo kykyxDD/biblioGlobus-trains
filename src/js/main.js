@@ -165,6 +165,7 @@ var view = {
 	decker : '',
 	upper  : false,
 	user   : null,
+	click_select: null,
 	passengers_visible: false,
 	small  : false,
 	lower_deck_class: '',
@@ -602,12 +603,10 @@ function setup_viewmodel() {
 		}
 	}
 
-	view.changeSelectParent = function(data, parent, event){
-		console.log(data, parent,event)
-		var user = view.user();
+	view.changeSelectParent = function(data, event){
+		var user = view.click_select();
 		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
-        
 		if(val.child && val.child.indexOf(user) >= 0) return
 
 		if(user.parent && user.parent.child) {
@@ -615,6 +614,7 @@ function setup_viewmodel() {
 		}
 		user.sc = val.sc;
 		user.parent = val;
+		user.parent_name(val.name);
 		user.fclass_name(val.fclass_name());
 		val.child.push(user);
 		if(!val.seat && !val.disabled) {
@@ -639,6 +639,7 @@ function setup_viewmodel() {
 		if(!view.user() || data.id !== view.user().id) {
 			view.selectUser(data)
 		}
+		view.click_select(data)
 	}
 	view.regul_seat(model.locale.message)
 	view.airline = ko.observable(model.airline)
@@ -774,6 +775,7 @@ function update_users(users) {
 		var seat = seats.select('num', user.curseat)
 		user.d_check  = ko.observable(user.d_check  || false)
 		user.id_group = ko.observable(user.id_group || false)
+		user.parent_name = ko.observable(user.parent ? user.parent.name : '')
 		user.seat     = seat
 		user.selected = ko.observable(false)
 		user.block    = ko.observable(((user.title).toLowerCase() != 'chld' && (user.title).toLowerCase() != 'inf') || (user.parent && user.parent.disabled)? false : true)

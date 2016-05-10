@@ -85,7 +85,7 @@
 						<span data-bind="text: name" class="value"></span>
 						<span data-bind='if: parent && block'>
 							<span style="text-transform: lowercase;"> вместе с </span>
-							<span data-bind="text: parent.name" class="value"></span>
+							<span data-bind="text: parent_name" class="value"></span>
 							<br>
 							<span style="text-transform: none; font-weight: normal;">Выберите место родителю</span>
 						</span>
@@ -94,7 +94,7 @@
 						<span class="text_role" data-bind="text: role"></span>
 						<span>(пол <span data-bind='text: sex_text'></span>)</span>
 					</div>
-					<div data-bind='if: parent && block'>
+					<div data-bind='if: parent && block' class='select_child'>
 						<div class='field'> Родитель: </div>
 						<div class='value' >
 							<div data-bind='if: $root.list_parent().length > 1 '>
@@ -118,6 +118,7 @@
 									<div class="value" data-bind="text: id_car"></div>
 									<div class="field">Место: </div>
 									<div data-bind="text: seat_name" class="value"></div>
+									<div class="field">Тип: </div>
 									<div class="value" data-bind="text: fclass_name"></div>
 								</td>
 							</tr>
@@ -130,7 +131,7 @@
 								<td>
 									<div class='field'> Дети: </div>
 									<div data-bind="foreach: child" class='list-child'>
-										<div data-bind='text: name' class='value'></div>
+										<div data-bind='text: name' ></div>
 									</div>
 								</td>
 							</tr>
@@ -367,6 +368,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div id="users-scroll" class="users-box static-user-bg">
 				<table class="users" cellpadding=0>
 					<tbody data-bind="template: { name: 'user-select', foreach: users }"></tbody>

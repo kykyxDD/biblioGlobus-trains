@@ -60,6 +60,9 @@ body {
     height: 28px; }
   .controls .users-box .users .user .info {
     padding: 5px 12px; }
+    .controls .users-box .users .user .info .select_child > div{
+      float: left;
+    }
     .controls .users-box .users .user .info .name {
       padding: 5px 0 5px; }
     .controls .users-box .users .user .info .role {
@@ -83,6 +86,9 @@ body {
     .controls .users-box .users .user .info .status .child td .field {
       width: 30%;
     }
+    .controls .users-box .users .user .info option,
+    .controls .users-box .users .user .info select{
+      text-transform: capitalize;}
     .controls .users-box .users .user .info .status .parent td .field {
       padding-right: 0;
       float: left;
@@ -121,8 +127,8 @@ body {
       vertical-align: top;
     }
 
-    .controls .users-box .users .user .info .status .child .value,
-    .controls .users-box .users .user .info .status .parent .value {
+    .controls .users-box .users .user .info .status .child ,
+    .controls .users-box .users .user .info .status .parent  {
       text-transform: capitalize;
     }
     .controls .users-box .users .user .info .status .parent .value,
