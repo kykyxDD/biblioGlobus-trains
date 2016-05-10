@@ -84,6 +84,7 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
+            console.log(data)
 			if(data['TITLE'].toLowerCase() == "inf"  || data['TITLE'].toLowerCase() == "chld" ) {
 				data.parent = users.select('ID', data['PARENTID'])
 				if(!data['PARENTID']) {
@@ -223,7 +224,7 @@ var self = window.model = {
 				add[0] = 'p' + user.id;
 				var arr = []
 				user.child().forEach(function(child){
-					if(child.seat) {
+					if(child.seat || child.infant) {
 						arr.push(child.id)
 					}
 				})
