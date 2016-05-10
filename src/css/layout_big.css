@@ -17,12 +17,12 @@ body {
   background-repeat: no-repeat;
   padding-top: 22px; }
   .view .switch-deck.two {    
-    bottom: 164px; }
+    bottom: 94px; }
   .view .switch-deck.one {    
-    bottom: 100px; }
+    bottom: 30px; }
 .view .btn_regul_seat {
   position: absolute;
-  bottom: 30px;
+  bottom: 170px;
   right: -5px;
   width: 120px;
   height: 55px;

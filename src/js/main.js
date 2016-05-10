@@ -616,6 +616,7 @@ function setup_viewmodel() {
 		user.parent = val;
 		user.parent_name(val.name);
 		user.fclass_name(val.fclass_name());
+		console.log(val.fclass_name())
 		val.child.push(user);
 		if(!val.seat && !val.disabled) {
 			user.block(true);
