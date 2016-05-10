@@ -84,7 +84,6 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-
 			if(data['TITLE'].toLowerCase() == "inf"  || data['TITLE'].toLowerCase() == "chld" ) {
 				data.parent = users.select('ID', data['PARENTID'])
 				if(!data['PARENTID']) {
@@ -103,6 +102,7 @@ var self = window.model = {
 				id        : data['ID'],
 				age       : +data['AGE'],
 				sex       : data['SEX'].toLowerCase(),
+				sex_text  : data['SEX'].toLowerCase() == 'f' ? 'женский' : 'мужской',
 				disabled  : data['DISABLED'] && data['DISABLED']['MESSAGE'] || '',
 				message   : data['MESSAGE'],
 				title     : data['TITLE'],
@@ -113,7 +113,7 @@ var self = window.model = {
 				parent    : data.parent,
 				child     : data.child ? data.child : ko.observableArray(),
 				infant	  : data['IS_INF'],
-				name      : (data['NAME'] +' '+ data['SURNAME']).toLowerCase(),
+				name      : (data['SURNAME'] +' '+ data['NAME']).toLowerCase(),
 				fclass    : self.locale['flightClass'+ data['SC']] || 'n/a',
 				role 	  : data.parent ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
 
@@ -312,7 +312,6 @@ var self = window.model = {
 			num           :board['NUM'            ],
 			boardnum      :board[Const.typeTag    ],
 			boarding_time :board[Const.boardingTimeTag],
-			boardnum      :board[Const.typeTag    ],
 			arrival_date  :board[Const.arrivalDate],
 			arrival_time  :board[Const.arrivalTime],
 			takeoff_time  :board[Const.depatureTimeTag],

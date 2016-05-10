@@ -13,23 +13,21 @@ body {
   background-position: 6px; }
 
 .view .switch-deck {
+  position: absolute;
+  right: -3px;
   width: 80px;
   height: 37px;
   background-repeat: no-repeat;
   padding-top: 12px;
   font-size: 1.1em; }
   .view .switch-deck.two {
-    position: absolute;
-    left: -3px;
-    top: 60px; }
+    bottom: 126px; }
   .view .switch-deck.one {
-    position: absolute;
-    left: -3px;
-    top: 96px; }
+    bottom: 90px; }
 .view .btn_regul_seat {
   position: absolute;
-  top: 140px;
-  left: -5px;
+  bottom: 10px;
+  right: -3px;
   width: 70px;
   height: 35px;
   padding-top: 9px;
@@ -39,7 +37,7 @@ body {
   padding: 5px;
 }
 .train_nav .current {
-  font-size: 11px;
+  font-size: 9px;
 }
 
 .train_nav .neighbors {
@@ -99,25 +97,7 @@ body {
     line-height: 1;
     display: block;
     float: none; }
-.controls .num_seat {
-  top: 50px;
-  padding: 0 3px;
-  font-size: 7px;
-}
-.landscape .controls .num_seat {
-  top: 35px;
-}
-.portrait .controls .num_seat {
-  top: 38px;
-  padding: 0 5px;
-}
-.portrait .controls .num_seat {
 
-}
-.portrait .controls .num_seat p {
-  display: inline-block;
-  margin: 0 5px 0 0;
-}
 .controls .users-box .users .user {
   height: 29px; }
   .controls .users-box .users .user.infant {
@@ -346,7 +326,7 @@ body {
     top: 4px;
     width: auto;
     height: 40px;
-    right: 42px; }
+    right: 55px; }
   .portrait .controls .board-info {
     display: none; }
   .portrait .controls .users-box {

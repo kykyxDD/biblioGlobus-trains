@@ -3,9 +3,6 @@ body {
   font-size: 100%; }
 
 .logo {
-  position: absolute;
-  left: 0;
-  top: 12px;
   width: 264px;
   height: 71px;
   border-radius: 0 35px 35px 0;
@@ -13,22 +10,20 @@ body {
   background-position: 12px; }
 
 .view .switch-deck {
+  position: absolute;
+  right: -5px;
   width: 140px;
   height: 65px;
   background-repeat: no-repeat;
   padding-top: 22px; }
-  .view .switch-deck.two {
-    position: absolute;
-    left: -5px;
-    top: 120px; }
-  .view .switch-deck.one {
-    position: absolute;
-    left: -5px;
-    top: 184px; }
+  .view .switch-deck.two {    
+    bottom: 164px; }
+  .view .switch-deck.one {    
+    bottom: 100px; }
 .view .btn_regul_seat {
   position: absolute;
-  top: 270px;
-  left: -5px;
+  bottom: 30px;
+  right: -5px;
   width: 120px;
   height: 55px;
   padding-top: 13px;
@@ -47,7 +42,7 @@ body {
 .controls .board-info-table {
   display: none; }
 .controls .board-info .route {
-  margin: 0.5em 0px; }
+  margin: 0.5em 0px 0px; }
 .controls .board-info .cred {
   padding: 10px 12px; }
 .controls .users-box .users .user {
@@ -60,10 +55,16 @@ body {
     height: 28px; }
   .controls .users-box .users .user .info {
     padding: 5px 12px; }
+    .controls .users-box .users .user .info .select_child > div{
+      float: left;
+    }
     .controls .users-box .users .user .info .name {
       padding: 5px 0 5px; }
     .controls .users-box .users .user .info .role {
       padding: 5px 0 0px; }
+    .controls .users-box .users .user.disabled .info .role{
+      padding: 0px;
+    }
     .controls .users-box .users .user.infant .info .role {
       padding: 0px 0 5px; }
     .controls .users-box .users .user .info .status tr {
@@ -80,6 +81,9 @@ body {
     .controls .users-box .users .user .info .status .child td .field {
       width: 30%;
     }
+    .controls .users-box .users .user .info option,
+    .controls .users-box .users .user .info select{
+      text-transform: capitalize;}
     .controls .users-box .users .user .info .status .parent td .field {
       padding-right: 0;
       float: left;
@@ -118,8 +122,8 @@ body {
       vertical-align: top;
     }
 
-    .controls .users-box .users .user .info .status .child .value,
-    .controls .users-box .users .user .info .status .parent .value {
+    .controls .users-box .users .user .info .status .child ,
+    .controls .users-box .users .user .info .status .parent  {
       text-transform: capitalize;
     }
     .controls .users-box .users .user .info .status .parent .value,
@@ -262,9 +266,6 @@ body {
     width: 324px;
     height: 238px; }
   .landscape .controls .board-info {
-    position: absolute;
-    left: 3px;
-    /*top: 244px;*/
     width: 100%;
     height: 80px; }
   .landscape .controls .users-box {
@@ -294,6 +295,7 @@ body {
   top: 0;
   right: 0;
   bottom: 354px; }
+
 .portrait .controls {
   position: absolute;
   left: 0;
@@ -313,11 +315,11 @@ body {
     top: 210px;
     width: 324px;
     height: 80px; }
-  .portrait .controls .num_seat {
-    top: auto;
-    bottom: 10px;
-    padding: 0 25px;
-  } 
+  .controls .board-info .cred .cont_date {
+    width: 100%;
+    }    
+  .controls .board-info .cred .date {
+    display: inline-block;}
   .portrait .controls .users-box {
     position: absolute;
     left: 360px;

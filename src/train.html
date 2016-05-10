@@ -85,13 +85,29 @@
 						<span data-bind="text: name" class="value"></span>
 						<span data-bind='if: parent && block'>
 							<span style="text-transform: lowercase;"> вместе с </span>
-							<span data-bind="text: parent.name" class="value"></span>
+							<span data-bind="text: parent_name" class="value"></span>
 							<br>
 							<span style="text-transform: none; font-weight: normal;">Выберите место родителю</span>
 						</span>
 					</div>
 					<div class='role'>
-						<span class='field'>Статус: </span><span class="value" data-bind="text: role"></span>
+						<span class="text_role" data-bind="text: role"></span>
+						<span>(пол <span data-bind='text: sex_text'></span>)</span>
+					</div>
+					<div data-bind='if: parent && block' class='select_child'>
+						<div class='field'> Родитель: </div>
+						<div class='value' >
+							<div data-bind='if: $root.list_parent().length > 1 '>
+							
+								<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
+									<option data-bind=' attr: { selected: id == $parent.parent.id}, text: name'></option>
+								</select>
+							</div>
+
+							<div data-bind=' ifnot: $root.list_parent().length > 1'>
+								<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div>
+							</div> 
+						</div>
 					</div>
 
 					<table class="status" cellspacing=0 cellpadding=0>
@@ -102,6 +118,7 @@
 									<div class="value" data-bind="text: id_car"></div>
 									<div class="field">Место: </div>
 									<div data-bind="text: seat_name" class="value"></div>
+									<div class="field">Тип: </div>
 									<div class="value" data-bind="text: fclass_name"></div>
 								</td>
 							</tr>
@@ -114,7 +131,7 @@
 								<td>
 									<div class='field'> Дети: </div>
 									<div data-bind="foreach: child" class='list-child'>
-										<div data-bind='text: name' class='value'></div>
+										<div data-bind='text: name' ></div>
 									</div>
 								</td>
 							</tr>
@@ -235,7 +252,6 @@
 			</div>
 		</script>
 		<div data-bind="text: debug.pos_view" class="corner view-info"></div>
-		<div class="logo static-biblioglobus_logo"></div>
 		<div id="plane-scroll" class="view center">
 			<div class="plane">
 				<div class="fly">
@@ -247,7 +263,7 @@
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхняя палуба</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
 			data-bind='click: funRegusSeat'>Правила <br>бронирования</div>
-		</div>
+
         <table class="train_nav">
 	        <thead>
 	            <tr>
@@ -287,15 +303,12 @@
 		            	
 		            </tr>
             	</table>
-	            
             </div> 
-
            </td></tr>
-            
-           
-            
         </table>
+        </div>
 		<div class="controls">
+			<div class="logo static-biblioglobus_logo"></div>
 			<div class="screen">
 				<div class="board-num">
 					<div data-bind="text: board.name"     class="name" ></div>
@@ -314,12 +327,14 @@
 					<tbody>
 						<tr>
 							<td data-bind="text: board.boardnum" rowspan="2"></td>
-							<td data-bind="text: formatAirport(board.from)"></td>
-							<td data-bind="text: formatAirport(board.to)"></td>
+							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
+							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
 						</tr>
 						<tr>
 							<td data-bind="text: board.time"></td>
 							<td data-bind="text: board.date"></td>
+							<td data-bind="text: board.arrival_time"></td>,
+							<td data-bind="text: board.arrival_date"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -335,22 +350,21 @@
 						<span class="field">Рейс №: </span>
 						<span data-bind="text: board.num" class="value big"></span>
 					</div>
-					<div class="date">
-						<span class="field">Отбытие: </span>
-						<span data-bind="text: board.time" class="value"></span>,
-						<span data-bind="text: board.date" class="value"></span>
-					</div>
-					<div class="date">
-						<span class="field">Прибытие: </span>
-						<span data-bind="text: board.arrival_time" class="value"></span>,
-						<span data-bind="text: board.arrival_date" class="value"></span>
+					<div class='cont_date'>
+						<div class="date">
+							<span class="field">Отправление: </span>
+							<span data-bind="text: board.time" class="value"></span>,
+							<span data-bind="text: board.date" class="value"></span>
+						</div>
+						<div class="date">
+							<span class="field">Прибытие: </span>
+							<span data-bind="text: board.arrival_time" class="value"></span>,
+							<span data-bind="text: board.arrival_date" class="value"></span>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="num_seat">
-				<p> Количество верхних мест:<span class="num_even" data-bind='text: num_even'></span></p>
-				<p> Количество нижних мест:<span class="num_odd" data-bind='text: num_odd'></span></p>
-			</div>
+
 			<div id="users-scroll" class="users-box static-user-bg">
 				<table class="users" cellpadding=0>
 					<tbody data-bind="template: { name: 'user-select', foreach: users }"></tbody>

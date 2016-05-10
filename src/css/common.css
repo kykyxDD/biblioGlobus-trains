@@ -258,10 +258,7 @@ audio {
     font-size: 0.87em; }
     .controls .board-info .cred .number {
       display: inline-block;
-      float: left; }
-    .controls .board-info .cred .date {
-      display: inline-block;
-      float: right; }
+ }
     .controls .board-info .cred .field {
       color: #6d6d6d; }
     .controls .board-info .cred .left .value {
@@ -337,7 +334,8 @@ audio {
       .users-box .users .user.disabled {
         background-color: #b0b0b0;
         height: auto !important; }
-        .users-box .users .user.disabled .info .name {
+        .users-box .users .user.disabled .info .name,
+        .users-box .users .user.disabled .info .role {
           color: white; }
         .users-box .users .user.disabled .info .status {
           display: none; }
@@ -354,6 +352,9 @@ audio {
       .users-box .users .user .info .name {
         font-weight: bold;
         text-transform: capitalize; }
+      .users-box .users .user .info .role .text_role {
+        text-transform: capitalize;
+      }
       .users-box .users .user .info .message {
         color: #c00; }
       .users-box .users .user .print {
