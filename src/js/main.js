@@ -616,8 +616,9 @@ function setup_viewmodel() {
 		user.parent = val;
 		user.parent_name(val.name);
 		user.fclass_name(val.fclass_name());
-		console.log(val.fclass_name())
+		user.index = user.parent.index + user.parent.child().length + 1;
 		val.child.push(user);
+		sortUsers()
 		if(!val.seat && !val.disabled) {
 			user.block(true);
 			user.seat = null;
@@ -632,7 +633,6 @@ function setup_viewmodel() {
 				user.curseat('')
 				user.id_car('')
 			}
-
 		}
 		updateDisable()
 	}
@@ -767,7 +767,8 @@ function update_users(users) {
 
 	view.list_parent([])
 	users.forEach(function(user) {
-		if(!user.parent && !user.infant) {
+		if(user.ageGroup == 'adt') {
+			user.index = (view.list_parent().length + 1)*100;
 			view.list_parent().push(user)
 		}
 	})
@@ -784,6 +785,7 @@ function update_users(users) {
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '')
 		user.fclass_name  = ko.observable(user.fclass  || '')
+		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -792,6 +794,7 @@ function update_users(users) {
 
 		user.copy(make_selection_label())
 	})
+
 	var select_user = users.filter(function(itm){
 		return !itm.disabled
 	})
@@ -799,6 +802,12 @@ function update_users(users) {
 	view.users(users)
 	view.selectUser(select_user[0])
 	view.group_ticket(model.group_ticket)
+	sortUsers()
+}
+function sortUsers(){
+	view.users(view.users.sort(function(a,b){
+		return a.index > b.index ? 1 : -1;
+	}))
 }
 function setup_navigation() {
 	frames.view = navigation.addFrame(model.struct.plane.size)

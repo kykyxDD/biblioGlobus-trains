@@ -109,13 +109,14 @@ var self = window.model = {
 				ticket    : data['BOARDINGPASS'],
 				error     : data['ERROR'],
 				sc        : data['SC'],
-
+				ageGroup  : data['ageGroup'].toLowerCase() ,
 				parent    : data.parent,
 				child     : data.child ? data.child : ko.observableArray(),
 				infant	  : data['IS_INF'],
+
 				name      : (data['SURNAME'] +' '+ data['NAME']).toLowerCase(),
 				fclass    : data['SC'] != '*' ? self.locale['flightClass'+ data['SC']] : 'любой' || 'любой',
-				role 	  : data.parent ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
+				role 	  : data['ageGroup'].toLowerCase() !== 'adt' ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
 
 				curseat   : '',
 				face      : {}
