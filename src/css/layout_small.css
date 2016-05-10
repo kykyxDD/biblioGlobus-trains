@@ -38,8 +38,11 @@ body {
 .train_nav {
   padding: 5px;
 }
+.portrait .train_nav {
+  top: 30px;
+}
 .train_nav .current {
-  font-size: 11px;
+  font-size: 9px;
 }
 
 .train_nav .neighbors {
@@ -56,6 +59,9 @@ body {
 .train_nav .info {
   margin-top: 5px;
   font-size: 0.9em;
+}
+.train_nav .info .descr {
+  display: none;
 }
 .train_nav .info .info_icon {
   background-size: 175px;
@@ -99,25 +105,7 @@ body {
     line-height: 1;
     display: block;
     float: none; }
-.controls .num_seat {
-  top: 50px;
-  padding: 0 3px;
-  font-size: 7px;
-}
-.landscape .controls .num_seat {
-  top: 35px;
-}
-.portrait .controls .num_seat {
-  top: 38px;
-  padding: 0 5px;
-}
-.portrait .controls .num_seat {
 
-}
-.portrait .controls .num_seat p {
-  display: inline-block;
-  margin: 0 5px 0 0;
-}
 .controls .users-box .users .user {
   height: 29px; }
   .controls .users-box .users .user.infant {
@@ -346,7 +334,7 @@ body {
     top: 4px;
     width: auto;
     height: 40px;
-    right: 42px; }
+    right: 55px; }
   .portrait .controls .board-info {
     display: none; }
   .portrait .controls .users-box {

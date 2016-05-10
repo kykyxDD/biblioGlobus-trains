@@ -64,6 +64,9 @@ body {
       padding: 5px 0 5px; }
     .controls .users-box .users .user .info .role {
       padding: 5px 0 0px; }
+    .controls .users-box .users .user.disabled .info .role{
+      padding: 0px;
+    }
     .controls .users-box .users .user.infant .info .role {
       padding: 0px 0 5px; }
     .controls .users-box .users .user .info .status tr {
@@ -313,11 +316,14 @@ body {
     top: 210px;
     width: 324px;
     height: 80px; }
-  .portrait .controls .num_seat {
-    top: auto;
-    bottom: 10px;
-    padding: 0 25px;
-  } 
+  .controls .board-info .cred .cont_date {
+    width: 100%;
+    }    
+  .controls .board-info .cred .date {
+    padding-top: 5px;
+    display: inline-block;
+    float: left;
+    width: 50%; }
   .portrait .controls .users-box {
     position: absolute;
     left: 360px;

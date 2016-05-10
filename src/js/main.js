@@ -386,15 +386,17 @@ function prepare_train_view() {
 function calc_current_car_index()
 {
     var cars = model.ticket.TRAIN.CAR
+    var pos = navigation.position.x
     
-    var ind = Math.floor(navigation.position.x * cars.length)
+    var ind = Math.floor(pos * cars.length)
     
     return ind
 }
 
 function update_view()
 {
-    var ind = calc_current_car_index()
+    var index = calc_current_car_index()
+    var ind = index
     
     var cars = model.ticket.TRAIN.CAR
     var car = cars[ind]
@@ -537,7 +539,6 @@ function setup_viewmodel() {
 	view.board = model.boardinfo
 	view.board.time = /(\d+?)(\d\d)$/.exec(view.board.takeoff_time).slice(1).join(':')
 	view.board.arrival_time = /(\d+?)(\d\d)$/.exec(view.board.arrival_time).slice(1).join(':')
-	// view.board.arrival_date = view.board.takeoff_time).slice(1).join(':')
 	view.formatAirport = function(data) {
 		return data.port_rus + " " + data.port
 	}
@@ -573,16 +574,10 @@ function setup_viewmodel() {
 			}
 			updateDisable()
 
-
 			return true
 		}
-		if(user && user.disabled){
-			console.log('user click disabled')
-			// frames.view.move(user.seat.x, user.seat.y, true)
-			// if(model.struct.double_decker) {
-			// 		upper_deck_visible(user.seat.deck > 1)
-			// 	}
-				// frames.view.move(user.seat.x, user.seat.y, true)
+		if(user && user.disabled && user.seat){
+			frames.view.move(user.seat.x, user.seat.y, true)
 		}
 	}
 	view.clickGroup = function(str, index, data){
@@ -607,7 +602,8 @@ function setup_viewmodel() {
 		}
 	}
 
-	view.changeSelectParent = function(data, event){
+	view.changeSelectParent = function(data, parent, event){
+		console.log(data, parent,event)
 		var user = view.user();
 		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
@@ -663,9 +659,6 @@ function setup_viewmodel() {
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
 	view.error_message  = ko.observable('')
-	view.num_odd   		= ko.observable(0);
-	view.num_even  		= ko.observable(0);
-	view.error_seat  	= ko.observable(true);
 	view.error_len 		= ko.observable(true);
 	view.disable_submite = ko.observable(true);
 	view.show_regul_seat = ko.observable(false);
@@ -675,7 +668,7 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length && !view.error_len() && !view.error_seat()) {
+		if(view.placedUsers().length && !view.error_len()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
@@ -1276,12 +1269,7 @@ function updateDisable(seat, user){
 		view.error_len(false)
 	}
 
-	var check = FilterSeat.checkSeat(seat, user);
-	var val = check.res == false?  true : false;
-	view.num_odd(check.odd);
-	view.num_even(check.even);
-	view.error_seat(val)
-	view.disable_submite(view.error_seat() || view.error_len())
+	view.disable_submite(view.error_len())
 }
 
 Seat.prototype = {

@@ -8,17 +8,7 @@
 .controls .screen {
     display: none !important;
 }
-.controls .num_seat {
-  position: absolute;
-  padding: 0 15px;
-  font-size: 12px;
-  right: 0px;
-  left: 0px;
-  top: 100px;
-}
-.controls .num_seat p {
-  margin: 0;
-}
+
 .controls .board-info {
     top: 15px;
 }
@@ -28,7 +18,7 @@
 }
 
 .landscape .controls .users-box {
-    top: 150px;
+    top: 130px;
 }
 
 .train_nav {

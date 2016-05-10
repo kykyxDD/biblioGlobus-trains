@@ -41,6 +41,9 @@
 .landscape .train_nav .neighbors .type {
 	font-size: 8px;
 }
+.landscape .train_nav .info .descr {
+	display: none;
+}
 .landscape .train_nav .info .info_icon {
 	background-size: 230px;
 	height: 17px;
@@ -69,11 +72,11 @@
 	font-size: 0.8em;
 	padding: 5px 12px;
 }
-.landscape .controls .num_seat {
-	top: 90px;
-	font-size: 10px;
 
-} 
+.landscape .controls .board-info .cred .field{
+	font-size: 0.75em;
+}
+
 .landscape .controls .users-box {
 	top: 120px;
 	bottom: 65px;
