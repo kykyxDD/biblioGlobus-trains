@@ -282,18 +282,16 @@
             <tr><td colspan="5">
             <div class="info">
             	<table>
-            		<tr class="modifier">
-		            	<td class="name">Признак категории<br> вагона: </td> 
-		            	<td class="text" data-bind="text: current_car_modifier"></td>
-		            </tr>
-					<tr class="descr">
-		            	<td class="name">Класс <br>обслуживания: </td> 
-		            	<td class="text" data-bind="text: current_car_descr_short"></td>
-		            </tr>
             		<tr class="descr">
 		            	<td class="name">Описание: </td> 
-		            	<td class="text" ><span data-bind="text: current_car_descr"></span>
-		            	<span data-bind='visible:current_car_spec_conds'><br><span data-bind='text: current_car_spec_conds'><br></span></span></td>
+		            	<td class="text" >
+		            		Класс обслуживания
+		            		<span class="text" data-bind="text: current_car_descr_short"></span>.<br>
+		            		
+		            		<span data-bind="text: current_car_descr"></span>
+		            		<span data-bind='visible:current_car_modifier'><br><span data-bind='text: current_car_modifier'></span><br></span>
+		            		<span data-bind='visible:current_car_spec_conds'><br><span data-bind='text: current_car_spec_conds'></span></span>
+		            	</td>
 		            </tr>
 		            <tr class="carrier">
 		            	<td class="name">Перевозчик: </td> 
