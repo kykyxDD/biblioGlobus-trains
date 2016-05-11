@@ -20,10 +20,12 @@
     <CAR type="coupe2x" num="7" gender="Ц" elreg="true" twostorey="false" schema="FPK_2/4_V1">
         <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
         <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
         <PRICE from="6040.80" to="7646" srv="667"/>
     </CAR>    <CAR type="coupe2x" num="8" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
         <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
         <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
         <SPEC_CONDS>Vivamus vitae maximus arcu. Morbi luctus tortor id mollis ornare. Sed urna elit, consequat at neque at, vehicula faucibus quam. Suspendisse lorem metus, consequat at lorem sed, aliquam vestibulum mauris. In imperdiet massa vel dui eleifend, in mattis felis feugiat. Nulla sagittis metus lacus, auctor consequat arcu euismod sed. Pellentesque quis nisl maximus, varius elit a, venenatis est. Proin commodo sem odio, et tincidunt orci accumsan non.</SPEC_CONDS>
         <PRICE from="6040.80" to="7646" srv="667"/>
     </CAR>    <CAR type="coupe" num="9" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
