@@ -77,6 +77,7 @@ var self = window.model = {
         self.applyTRS(self.ticket)
     },
 	applyTRS: function(data) {
+
 		var users = [].concat(data['PASSENGERS']['PASSENGER']),
 			types = Object.keys(self.planes['seat_types']),
 			taken = []
@@ -84,7 +85,7 @@ var self = window.model = {
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 
 		users.some(function(data) {
-			if(data['TITLE'].toLowerCase() == "inf"  || data['TITLE'].toLowerCase() == "chld" ) {
+			if(data['PARENTID'] || data["IS_INF"]) {
 				data.parent = users.select('ID', data['PARENTID'])
 				if(!data['PARENTID']) {
 					var arr = users.filter(function(itm){
@@ -116,7 +117,7 @@ var self = window.model = {
 
 				name      : (data['SURNAME'] +' '+ data['NAME']).toLowerCase(),
 				fclass    : data['SC'] != '*' ? self.locale['flightClass'+ data['SC']] : 'любой' || 'любой',
-				role 	  : data['ageGroup'].toLowerCase() !== 'adt' ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
+				role 	  : data['PARENTID'] || data["IS_INF"] ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
 
 				curseat   : '',
 				face      : {}
@@ -256,7 +257,7 @@ var self = window.model = {
 				self.applyTRS(data)
 
 				done({
-					head: self.locale['resultsPopupHeader'].replace('__val__', data[Const.tripInfoTag][Const.typeTag]),
+					head: self.locale['resultsPopupHeader'].replace('__val__', self.boardinfo.num),
 					body: self.locale['resultsPopupText1']
 				})
 			}
@@ -311,6 +312,7 @@ var self = window.model = {
 			name          :self.name,
 			date          :board['DATE'           ],
 			num           :board['NUM'            ],
+			train_name 	  :board['TRAIN_NAME'] ? board['TRAIN_NAME'] : false, 
 			boardnum      :board[Const.typeTag    ],
 			boarding_time :board[Const.boardingTimeTag],
 			arrival_date  :board[Const.arrivalDate],

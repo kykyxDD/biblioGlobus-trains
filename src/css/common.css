@@ -348,10 +348,16 @@ audio {
         padding-right: 3px;
         color: #6d6d6d; }
       .users-box .users .user .info table {
-        margin: 0; }
+        margin: 0;
+        width: 100%; }
       .users-box .users .user .info .name {
         font-weight: bold;
         text-transform: capitalize; }
+      .users-box .users .user .info .name .error_seat_child {
+        line-height: 1.5em;
+        text-transform: none;
+        font-weight: normal;
+      }
       .users-box .users .user .info .role .text_role {
         text-transform: capitalize;
       }
@@ -466,6 +472,10 @@ audio {
       color: white;
       text-shadow: 0 -1px rgba(31, 31, 31, 0.5);
       cursor: default; }
+  .popup.fail {
+    z-index: 5;
+    background-color: rgba(0,0,0,0.3);
+  }
 
 /********************************** DEMO MODE *********************************/
 .demo .board-info, .demo .users-box, .demo .confirm, .demo .board-num .board, .demo .back, .demo .airline-logo-small {

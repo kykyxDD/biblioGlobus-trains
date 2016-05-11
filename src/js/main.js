@@ -262,9 +262,6 @@ function ready() {
 		clearInterval(refresh.interval)
 		el.progress.textContent = error.message
 	}
-	
-
-	
 }
 function start() {
 
@@ -333,12 +330,17 @@ function prepare_train_view() {
     view.prev_car_type = ko.observable('')
     view.prev_car_num = ko.observable('')
 
+    
+
     view.current_car_type = ko.observable('')
     view.current_car_num = ko.observable('')
     view.current_car_descr = ko.observable('')
+    view.current_car_descr_short = ko.observable('')
     view.current_car_carrier = ko.observable('')
     view.current_car_prime_from = ko.observable('')
     view.current_car_prime_to = ko.observable('')
+    view.current_car_modifier = ko.observable('') 
+    view.current_car_spec_conds = ko.observable('') 
     var obj = {
     	ELREG: ko.observable(false),
     	EAT: ko.observable(false),
@@ -406,9 +408,12 @@ function update_view()
 
     view.current_car_type(car_info.desc)
     view.current_car_num("Вагон №" + car.num)
+    view.current_car_descr_short(car.DESCR.SHORT)
     view.current_car_descr(car.DESCR.text)
     view.current_car_carrier(car.CARRIER)
     view.current_car_prime_from(car.PRICE.from)
+    view.current_car_modifier(car.CAT_MODIFIER.text)
+    view.current_car_spec_conds(car.SPEC_CONDS)
     if(car.PRICE.to !== '') {
     	view.current_car_prime_to(car.PRICE.to)
     } else {
@@ -547,7 +552,9 @@ function setup_viewmodel() {
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.placedUsers = ko.computed(function() {
-		return view.users().filter(method('curseat'))
+		return view.users().filter(function(user){
+			return user.curseat() && !user.disabled
+		})
 	}, view)
 	view.selectUser = function(user, e) {
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
@@ -618,20 +625,16 @@ function setup_viewmodel() {
 		user.fclass_name(val.fclass_name());
 		user.index = user.parent.index + user.parent.child().length + 1;
 		val.child.push(user);
-		sortUsers()
+		sortUsers();
 		if(!val.seat && !val.disabled) {
 			user.block(true);
-			user.seat = null;
-			user.curseat('');
-			user.id_car('');
-			C.DEMO || select_next_user() // переключение на следующего user
-			view.usersbox_scroll.refresh()
+			Seat.unlink(user);
+			C.DEMO || select_next_user();
+			view.usersbox_scroll.refresh();
 		} else {
-			user.block(false)
-			if(!user.seat || user.seat.id.split('-')[0] !== val.seat.id.split('-')[0]) {
-				user.seat = null;
-				user.curseat('')
-				user.id_car('')
+			user.block(false);
+			if(user.seat && user.seat.id.split('-')[0] !== val.seat.id.split('-')[0]) {
+				Seat.unlink(user);
 			}
 		}
 		updateDisable()
@@ -660,6 +663,7 @@ function setup_viewmodel() {
 	view.result_header  = ko.observable('')
 	view.result_text    = ko.observable('')
 	view.display_error  = ko.observable(false)
+	view.opacity_error  = ko.observable(true)
 	view.error_message  = ko.observable('')
 	view.error_len 		= ko.observable(true);
 	view.disable_submite = ko.observable(true);
@@ -691,10 +695,12 @@ function setup_viewmodel() {
 	}
 	view.error = function(message) {
 		view.display_error(true)
+		view.opacity_error(false)
 		view.error_message(message)
 	}
 	view.hide_error = function() {
 		view.display_error(false)
+		view.opacity_error(true)
 		view.loading('done')
 		setTimeout(view.loading, 500, 'void')
 	}
@@ -767,7 +773,7 @@ function update_users(users) {
 
 	view.list_parent([])
 	users.forEach(function(user) {
-		if(user.ageGroup == 'adt') {
+		if(!user.parent) {
 			user.index = (view.list_parent().length + 1)*100;
 			view.list_parent().push(user)
 		}
@@ -780,10 +786,10 @@ function update_users(users) {
 		user.parent_name = ko.observable(user.parent ? user.parent.name : '')
 		user.seat     = seat
 		user.selected = ko.observable(false)
-		user.block    = ko.observable(((user.title).toLowerCase() != 'chld' && (user.title).toLowerCase() != 'inf') || (user.parent && user.parent.disabled)? false : true)
+		user.block    = ko.observable(!user.parent || (user.parent && user.parent.disabled)? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
-		user.id_car   = ko.observable(user.id_car  || '')
+		user.id_car   = ko.observable(user.id_car  || '-')
 		user.fclass_name  = ko.observable(user.fclass  || '')
 		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
 
@@ -805,7 +811,8 @@ function update_users(users) {
 	sortUsers()
 }
 function sortUsers(){
-	view.users(view.users.sort(function(a,b){
+	var users = view.users() 
+	view.users(users.sort(function(a,b){
 		return a.index > b.index ? 1 : -1;
 	}))
 }
@@ -1000,7 +1007,7 @@ function register_events() {
 
 			if(seat && parent){
 				updateDisable(seat, view.user())
-				
+
 				if(view.user().parent) {
 					var seat_parent = view.user().parent.seat;
 				}
@@ -1091,7 +1098,7 @@ function Deck(item, index, elem) {
 			var x = i % item.tiles[0],
 				y = i / item.tiles[0] |0,
 				cvs, tile
-                
+
 			cvs = document.createElement('canvas')
 			cvs.width  = item.width
 			cvs.height = item.height
@@ -1204,7 +1211,6 @@ Seat.findByPosition = function(x, y) {
 		if(((seat.match_service_class && seat.match_sex) || C.DEMO) &&
 			(!seat.user || seat === user.seat) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
-			// (!user.infant || (user.infant && user.parent.seat.id == seat.id)) && 
 			seat.contains(x, y)){
 			return seat
 		}
@@ -1229,10 +1235,11 @@ Seat.unlink = function(user) {
 		user.seat = null
 		
 		user.curseat('')
-		user.id_car('')
+		user.id_car('-')
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(true)
+				Seat.unlink(child);
 			})
 			view.usersbox_scroll.refresh(); 
 		}
@@ -1266,16 +1273,26 @@ function numInfant(){
 	var num = 0;
 	view.users().forEach(function(user){
 		if(user.infant){ 
-			if(!user.seat){
+			if(!user.seat && !user.disabled){
 				num += 1
 			}
 		}
 	})
 	return num
 }
+function numNoDisable(){
+	var num = 0;
+	view.users().forEach(function(user){
+		if(!user.infant && user.disabled){
+			num += 1
+		}
+	})
+	return num
+}
 function updateDisable(seat, user){
-	var num = numInfant();
-	if((view.placedUsers().length + num) < view.users().length){
+	var num_infant = numInfant();
+	var num_no_disable = numNoDisable();
+	if(!view.placedUsers().length || (view.placedUsers().length + num_infant) < (view.users().length - num_no_disable)){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
@@ -1314,12 +1331,9 @@ Seat.prototype = {
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = this.sex && this.sex === user.sex || !this.sex;
-            // if (user.child) {
-            //     this.match_service_class = this.match_service_class && this.has_child_cradle
-            //     this.match_sex = this.match_sex && this.has_child_cradle
-            // }
+            this.match_sex = (this.sex && this.sex === user.sex) || !this.sex || user.infant;
         }
+
 	},
 	draw: function() {
 		this.updateState()
@@ -1424,38 +1438,6 @@ Seat.prototype = {
 		ctx.textAlign = 'center';
 		ctx.restore()
 		
-	},
-	drawCheck: function(str) {
-		var ctx  = this.group.context
-        var size = this.labelSize
-        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
-        var dy = this.sprite.offset.label[1]
-           
-		ctx.save()
-		ctx.fillStyle =
-		this.marker_check && this.marker_check.check ? 'rgba(255,255,0,0.5)':
-			                             'rgba(255,255,255,0.5)'
-
-		if(!this.marker_check) {
-			this.marker_check = {
-	        	x: this.X + dx + size,
-	        	y: this.Y + dy,
-	        	check: false
-	        };	
-		} else {
-        	this.marker_check.x = this.X + dx + size
-        	this.marker_check.y = this.Y + dy
-		}
-
-		ctx.translate(this.marker_check.x,this.marker_check.y)
-		ctx.transform.apply(ctx, this.labelTransform)
-		ctx.fillRect(0, 0, size, size)
-		if(this.marker_check.check == true){
-			ctx.strokeText('T', size / 2, size / 2)
-        } else {
-        	ctx.strokeText('F', size / 2, size / 2)	
-        }
-		ctx.restore()
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')
