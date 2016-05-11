@@ -18,7 +18,7 @@
 }
 
 .landscape .controls .users-box {
-    top: 180px;
+    top: 175px;
 }
 
 .train_nav {
@@ -62,8 +62,10 @@
 }
 .train_nav .info {
   margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid #000;
   text-align: left;
+  font-size: 0.85em;
 }
 .train_nav .info td{
   vertical-align: top;
@@ -75,12 +77,12 @@
   width: 100%;
   margin-top: 10px;
 }
-
 .train_nav .info .name {
-  font-weight: bold;
-} 
-.train_nav .info .list_info_icon {
-  
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.train_nav .info .text {
+  vertical-align: middle;
 }
 .train_nav .info .info_icon {
   width: 30px;

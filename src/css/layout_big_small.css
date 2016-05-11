@@ -5,22 +5,19 @@
 	padding-top: 17px;
 }
 .landscape .view .switch-deck.one {
-	top: 150px;
+	bottom: 124px;
 }
 .landscape .view .switch-deck.two {
-	top: 100px;
+	bottom: 75px;
 }
 .landscape .view .btn_regul_seat {
-  top: 210px;
+  bottom: 10px;
   width: 95px;
   height: 55px;
   padding-top: 10px;
   font-size: 10px;
 }
 .landscape .train_nav {
-	left: auto;
-	right: 260px;
-	margin: inherit;
 	padding: 5px;
 }
 .landscape .train_nav .info {
@@ -41,9 +38,7 @@
 .landscape .train_nav .neighbors .type {
 	font-size: 8px;
 }
-.landscape .train_nav .info .descr {
-	display: none;
-}
+
 .landscape .train_nav .info .info_icon {
 	background-size: 230px;
 	height: 17px;
@@ -70,7 +65,7 @@
 }
 .landscape .controls .board-info .cred {
 	font-size: 0.8em;
-	padding: 5px 12px;
+	padding: 0px 12px;
 }
 
 .landscape .controls .board-info .cred .field{
@@ -78,7 +73,7 @@
 }
 
 .landscape .controls .users-box {
-	top: 120px;
+	top: 145px;
 	bottom: 65px;
 }
 .landscape .controls .confirm {

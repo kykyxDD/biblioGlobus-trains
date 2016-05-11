@@ -11,6 +11,9 @@ body {
   border-radius: 0 35px 35px 0;
   background-size: 115px;
   background-position: 6px; }
+.portrait .logo {
+  top: -45px;
+}
 
 .view .switch-deck {
   position: absolute;

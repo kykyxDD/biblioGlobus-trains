@@ -60,13 +60,16 @@ body {
     }
     .controls .users-box .users .user .info .name {
       padding: 5px 0 5px; }
+    .controls .users-box .users .user.infant .info .name {
+      padding: 5px 0 0;
+    }
     .controls .users-box .users .user .info .role {
-      padding: 5px 0 0px; }
+      padding: 3px 0px; }
     .controls .users-box .users .user.disabled .info .role{
       padding: 0px;
     }
     .controls .users-box .users .user.infant .info .role {
-      padding: 0px 0 5px; }
+      padding: 3px 0; }
     .controls .users-box .users .user .info .status tr {
       max-height: 20px; }
     .controls .users-box .users .user .info .status .place {
@@ -80,6 +83,10 @@ body {
     .controls .users-box .users .user .info .status .parent td .field,
     .controls .users-box .users .user .info .status .child td .field {
       width: 30%;
+    }
+    .controls .users-box .users .user .info .status .child td > div,
+    .controls .users-box .users .user .info .status .parent td > div {
+      padding-top: 3px;
     }
     .controls .users-box .users .user .info option,
     .controls .users-box .users .user .info select{
@@ -102,6 +109,7 @@ body {
     }
     .controls .users-box .users .user .info .status .place td div.value {
       min-width: 20px;
+      line-height: 1.5em;
     }
     .controls .users-box .users .user .info .status .message td {
       padding-bottom: 4px; }
@@ -182,7 +190,9 @@ body {
       margin-top: 8px; }
   .popup .register .users-container {
     width: 100%;
-    height: 265px; }
+    height: 265px; 
+    border-bottom:1px solid #a2a7a8;
+  }
   .popup .register .list td {
     padding: 0 13px; }
     .popup .register .list td:nth-child(1) {

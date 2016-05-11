@@ -87,7 +87,7 @@
 							<span style="text-transform: lowercase;"> вместе с </span>
 							<span data-bind="text: parent_name" class="value"></span>
 							<br>
-							<span style="text-transform: none; font-weight: normal;">Выберите место родителю</span>
+							<span class='error_seat_child' style="text-transform: none; font-weight: normal;">Выберите место родителю</span>
 						</span>
 					</div>
 					<div class='role'>
@@ -114,12 +114,18 @@
 						<tbody>
 							<tr class="place">
 								<td>
+									<div>
 									<div class="field">Вагон №: </div>
 									<div class="value" data-bind="text: id_car"></div>
+									</div>
+									<div>
 									<div class="field">Место: </div>
-									<div data-bind="text: seat_name" class="value"></div>
-									<div class="field">Тип: </div>
-									<div class="value" data-bind="text: fclass_name"></div>
+									<div data-bind="text: seat_name() !== '' ? seat_name : '-'" class="value"></div>
+									</div>
+									<div>
+										<div class="field">Тип: </div>
+										<div class="value" data-bind="text: fclass_name"></div>
+									</div>
 								</td>
 							</tr>
 							<tr class="class">
@@ -239,7 +245,6 @@
 							<tbody>
 								<tr>
 									<td>
-										<div class="action button-change static-button-change" data-bind="event: { tap: complete }"></div>
 									</td>
 									<td>
 										<a target="_blank"gclass="action button-print-all static-button-print-all" data-bind="attr: { href: group_ticket }, visible: group_ticket"></a>
@@ -259,8 +264,8 @@
 					<div class="outer"></div>
 				</div>
 			</div>
-			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижняя палуба</div>
-			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхняя палуба</div>
+			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
+			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
 			data-bind='click: funRegusSeat'>Правила <br>бронирования</div>
 
@@ -277,9 +282,18 @@
             <tr><td colspan="5">
             <div class="info">
             	<table>
+            		<tr class="modifier">
+		            	<td class="name">Признак категории<br> вагона: </td> 
+		            	<td class="text" data-bind="text: current_car_modifier"></td>
+		            </tr>
+					<tr class="descr">
+		            	<td class="name">Класс <br>обслуживания: </td> 
+		            	<td class="text" data-bind="text: current_car_descr_short"></td>
+		            </tr>
             		<tr class="descr">
 		            	<td class="name">Описание: </td> 
-		            	<td class="text" data-bind="text: current_car_descr"></td>
+		            	<td class="text" ><span data-bind="text: current_car_descr"></span>
+		            	<span data-bind='visible:current_car_spec_conds'><br><span data-bind='text: current_car_spec_conds'><br></span></span></td>
 		            </tr>
 		            <tr class="carrier">
 		            	<td class="name">Перевозчик: </td> 
@@ -287,7 +301,7 @@
 		            </tr>
 		            <tr class="price">
 		            	<td class="name">Цена: </td> 
-		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> руб <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> руб</span></td>
+		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> </span>рублей </td>
 		            </tr>	
 		            <tr>
 		            	<td class="name">Услуги:</td>
@@ -326,14 +340,14 @@
 				<table>
 					<tbody>
 						<tr>
-							<td data-bind="text: board.boardnum" rowspan="2"></td>
+							<td data-bind="text: board.num" rowspan="2"></td>
 							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
 							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
 						</tr>
 						<tr>
 							<td data-bind="text: board.time"></td>
 							<td data-bind="text: board.date"></td>
-							<td data-bind="text: board.arrival_time"></td>,
+							<td data-bind="text: board.arrival_time"></td>
 							<td data-bind="text: board.arrival_date"></td>
 						</tr>
 					</tbody>
@@ -348,7 +362,10 @@
 				<div class="cred clearfix">
 					<div class="number">
 						<span class="field">Рейс №: </span>
-						<span data-bind="text: board.num" class="value big"></span>
+						<span data-bind="text: board.num" class="value big"></span> 
+						<span data-bind="if: board.train_name" class="value">+
+						<span data-bind="text: board.train_name" class='value'> </span>
+						</span>
 					</div>
 					<div class='cont_date'>
 						<div class="date">
