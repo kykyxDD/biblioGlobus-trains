@@ -1,27 +1,28 @@
 .landscape .view .switch-deck {
-	width: 110px;
+	width: 100px;
 	height: 50px;
-	font-size: 12px;
+	font-size: 10px;
 	padding-top: 17px;
 }
 .landscape .view .switch-deck.one {
-	bottom: 124px;
+	bottom: 15px;
 }
 .landscape .view .switch-deck.two {
-	bottom: 75px;
+	bottom: 60px;
 }
 .landscape .view .btn_regul_seat {
-  bottom: 10px;
-  width: 95px;
-  height: 55px;
-  padding-top: 10px;
-  font-size: 10px;
+  bottom: 120px;
+  width: 80px;
+  height: 37px;
+  padding-top: 8px;
+  font-size: 9px;
 }
 .landscape .train_nav {
 	padding: 5px;
 }
 .landscape .train_nav .info {
     margin-top: 5px;
+    padding-top: 5px;
     font-size: 0.7em;
 }
 
@@ -36,7 +37,7 @@
     font-size: 12px;
 }
 .landscape .train_nav .neighbors .type {
-	font-size: 8px;
+	font-size: 9px;
 }
 
 .landscape .train_nav .info .info_icon {
@@ -100,13 +101,17 @@
 	height: 200px;
 }
 .landscape .popup .register-error .message {
+	font-size: 12px;
+	margin: 20px 20px 65px;
+	max-height: 115px;
 	font-size: 15px;
 }
 .landscape .popup .register-error .close {
-	width: 160px;
-	height: 40px;
-	padding-top: 13px;
-	margin-left: -80px;
+	bottom: 15px;
+	width: 140px;
+	height: 35px;
+	padding-top: 9px;
+	margin-left: -70px;
 }
 .landscape .popup.regul-seat .title_regul_seat {
 	font-size: 1.2em;

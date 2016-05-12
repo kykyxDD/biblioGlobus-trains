@@ -14,6 +14,12 @@ body {
 .portrait .logo {
   top: -45px;
 }
+.landscape .logo {
+  top: 0;
+  width: 27px;
+  height: 30px;
+  background-size: 95px;
+}
 
 .view .switch-deck {
   position: absolute;
@@ -55,8 +61,9 @@ body {
 }
 
 .train_nav .info {
-  margin-top: 5px;
+  margin-top: 0px;
   font-size: 0.9em;
+  padding-top: 0px;
 }
 .train_nav .info .info_icon {
   background-size: 175px;
@@ -94,13 +101,16 @@ body {
     width: 100%; }
 .controls .board-info .route {
   margin: 3px 0px; }
+.landscape .controls .board-info .route {
+  min-height: 25px;
+  margin: 3px 0 3px 30px;
+}
 .controls .board-info .cred {
   padding: 2px; }
   .controls .board-info .cred .number, .controls .board-info .cred .date {
     line-height: 1;
     display: block;
     float: none; }
-
 .controls .users-box .users .user {
   height: 29px; }
   .controls .users-box .users .user.infant {
@@ -225,7 +235,9 @@ body {
   margin-left: -150px;
   margin-top: -75px; }
   .popup .register-error .message {
-    padding: 15px; }
+    margin: 15px 15px 75px;
+    max-height: 60%;
+    overflow: auto;}
   .popup .register-error .close {
     position: absolute;
     left: 50%;
@@ -351,11 +363,12 @@ body {
   .portrait .users-box .users .user .print div, .portrait .users-box .users .user .class div, .portrait .users-box .users .user .place div {
     display: inline-block; }
   .portrait .users-box .users .user .print {
-    width: 110px; }
+    width: 60px; }
   .portrait .users-box .users .user .class {
     width: 100px; }
-  .portrait .users-box .users .user .place {
-    width: 64px; }
+  .users-box .users .user.disabled .place {
+    display: none;}
+
 .portrait.demo .view {
   position: absolute;
   left: 0;

@@ -141,7 +141,8 @@ audio {
             position: absolute;
             font: 10px/2 Arial;
             width: 100%; }
-    .view .plane .fly {
+    .view .plane .fly,
+    .view .plane .popup_seat {
       position: absolute;
       pointer-events: none;
       z-index: 5; }
@@ -192,7 +193,14 @@ audio {
         margin-left: -15px;
         margin-top: -15px;
         opacity: 0; }
-
+    .view .plane .popup_seat {
+      color: #fff;
+      padding: 5px;
+      font-size: 0.7em;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: rgba(0,0,0,0.5);
+    }
 /************************************ CONTROLS ********************************/
 .controls {
   position: absolute;
@@ -295,6 +303,7 @@ audio {
     display: none; }
 
 /************************************ USER-BOX *******************************/
+
 .users-box {
   border: 1px solid #606568; }
   .users-box .users {
@@ -363,6 +372,12 @@ audio {
       }
       .users-box .users .user .info .message {
         color: #c00; }
+      .users-box .users .user .info .status .child, 
+      .users-box .users .user .info .status .parent,
+      .users-box .users .user .info option, 
+      .users-box .users .user .info select {
+        text-transform: capitalize;
+      }
       .users-box .users .user .print {
         background-image: -webkit-linear-gradient(top, #f3f4f4, #e4e2e2);
         background-image: -moz-linear-gradient(top, #f3f4f4, #e4e2e2);
@@ -376,6 +391,7 @@ audio {
           width: 22px;
           height: 23px;
           margin: 3px auto; }
+          
       .users-box .users .user .place .value {
         font: bold 1em/2 Arial, sans-serif; }
       .users-box .users .user .ok {
@@ -473,7 +489,6 @@ audio {
       text-shadow: 0 -1px rgba(31, 31, 31, 0.5);
       cursor: default; }
   .popup.fail {
-    z-index: 5;
     background-color: rgba(0,0,0,0.3);
   }
 

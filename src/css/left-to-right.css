@@ -91,7 +91,7 @@
   background: url(../img/icons.png) no-repeat;
   background-color: #fff;
   border-radius: 5px;
-
+  position: relative;
 }
 .train_nav .info .info_icon.ELREG {
   width: 28px;

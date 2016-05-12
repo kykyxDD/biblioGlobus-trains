@@ -88,16 +88,13 @@ body {
     .controls .users-box .users .user .info .status .parent td > div {
       padding-top: 3px;
     }
-    .controls .users-box .users .user .info option,
-    .controls .users-box .users .user .info select{
-      text-transform: capitalize;}
     .controls .users-box .users .user .info .status .parent td .field {
       padding-right: 0;
       float: left;
     }
     .controls .users-box .users .user .info .status .parent td .value {
-      width: 70%;
-      float: right;
+/*      width: 70%;
+      float: right;*/
     }
     .controls .users-box .users .user .info .status .parent select{
       width: 100%;
@@ -128,11 +125,6 @@ body {
     .controls .users-box .users .user .info .status .child .field,
     .controls .users-box .users .user .info .status .parent .field {
       vertical-align: top;
-    }
-
-    .controls .users-box .users .user .info .status .child ,
-    .controls .users-box .users .user .info .status .parent  {
-      text-transform: capitalize;
     }
     .controls .users-box .users .user .info .status .parent .value,
     .controls .users-box .users .user .info .status .child .value:last-child{

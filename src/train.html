@@ -263,6 +263,10 @@
 					<div class="inner"></div>
 					<div class="outer"></div>
 				</div>
+				<div class="popup_seat" data-bind='visible: hind'>
+					Разрешена посадка пассажира<br> только 
+					<span data-bind='text:hind'></span> пола и <br> младенца любого пола
+				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
@@ -361,7 +365,7 @@
 					<div class="number">
 						<span class="field">Рейс №: </span>
 						<span data-bind="text: board.num" class="value big"></span> 
-						<span data-bind="if: board.train_name" class="value">+
+						<span data-bind="if: board.train_name" class="value">
 						<span data-bind="text: board.train_name" class='value'> </span>
 						</span>
 					</div>

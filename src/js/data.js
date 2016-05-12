@@ -178,6 +178,7 @@ var self = window.model = {
 				seat.sc   = info['sc']
 				seat.sex  = info['sex'].toLowerCase() || false;
                 seat.status = status
+                seat.sex_text = {'f' : ['Ж', 'женского'], 'm' : ['М', "мужского"]}
                 seat.has_child_cradle = status === 'i'
 			} else if(duplicate){
 				console.log('Повторение значения места: ', info['no'])
