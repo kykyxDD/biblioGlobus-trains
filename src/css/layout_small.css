@@ -139,7 +139,8 @@ body {
       width: 9px;
       height: 9px; }
     .controls .users-box .users .user .select_child .field, 
-    .controls .users-box .users .user .info .child .field {
+    .controls .users-box .users .user .info .child .field,
+    .controls .users-box .users .user .info .parent .field {
       float:left;
     }
     .controls .users-box .users .user .select_child .value {
