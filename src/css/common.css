@@ -488,8 +488,12 @@ audio {
       color: white;
       text-shadow: 0 -1px rgba(31, 31, 31, 0.5);
       cursor: default; }
-  .popup.fail {
+  .popup.fail,
+  .popup.regul-seat {
     background-color: rgba(0,0,0,0.3);
+  }
+  .popup.regul-seat {
+    font-family: Arial, sans-serif;
   }
 
 /********************************** DEMO MODE *********************************/

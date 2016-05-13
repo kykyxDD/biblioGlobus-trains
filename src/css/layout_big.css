@@ -369,6 +369,7 @@ body {
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+
 }
 .popup.regul-seat #regul_seat {
   position: absolute;
@@ -378,6 +379,7 @@ body {
   right: 0px;
   bottom: 30px;
   text-align: justify;
+  font-size: 0.8em;
 }
 .popup.regul-seat .title_regul_seat {
   position: absolute;
@@ -385,7 +387,7 @@ body {
   left: 20px;
   right: 50px;
   margin: auto;
-  font-size: 25px;
+  font-size: 1.5em;
   text-align: center;
 
 }

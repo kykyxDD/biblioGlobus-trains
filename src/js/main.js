@@ -978,9 +978,14 @@ function register_events() {
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
 		if(!touch && e.type.indexOf('move') >= 0 && seat && seat.sex && !seat.user) {
-			view.hind(seat.sex_text[seat.sex][1])
-			position(el.hind,x / frames.view.scale + 20,
-					    	 y / frames.view.scale + 30)
+			var parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
+			if(parent) {
+				view.hind(seat.sex_text[seat.sex][1])
+				position(el.hind,x / frames.view.scale + 20,
+					    	 y / frames.view.scale + 30)	
+			} else {
+				view.hind('')	
+			}
 		} else {
 			view.hind('')
 		}
