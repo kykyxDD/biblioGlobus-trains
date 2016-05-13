@@ -57,6 +57,7 @@ body {
     padding: 5px 12px; }
     .controls .users-box .users .user .info .select_child > div{
       float: left;
+      text-transform: capitalize;
     }
     .controls .users-box .users .user .info .name {
       padding: 5px 0 5px; }

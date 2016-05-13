@@ -917,58 +917,58 @@ function resize() {
 }
 
 function register_events() {
-	var touch = 'ontouchstart' in window
-
-	var ptr = {
-		start : touch ? 'touchstart' : 'mousedown',
-		move  : touch ? 'touchmove'  : 'mousemove',
-		end   : touch ? 'touchend'   : 'mouseup',
-		out   : 'mouseout',
-		click : 'tap'
-	}
 
 	var plane = document.querySelector('.plane'),
 		nav   = document.querySelector('.nav')
 
 	var events = [
-	//  event order matters!
-	//  [ element , event type , handler  ]
-		[ nav     , ptr.start  , moveMap  ],
-		[ nav     , ptr.start  , dragMap  ],
-		[ nav     , ptr.move   , dragMap  ],
-		[ nav     , ptr.end    , dragMap  ],
-		[ plane   , ptr.start  , dragView ],
-		[ plane   , ptr.move   , dragView ],
-		[ plane   , ptr.end    , dragView ],
-		[ plane   , ptr.out    , hideHind ],
-		[ plane   , ptr.click  , click    ],
-		[ window  ,'resize'    , resize   ],
+		[ nav     , 'touchstart' , moveMap  ],
+		[ nav     , 'mousedown'  , moveMap  ],
+		[ nav     , 'touchstart' , dragMap  ],
+		[ nav     , 'mousedown'  , dragMap  ],
+		[ nav     , 'touchmove'  , dragMap  ],
+		[ nav     , 'mousemove'  , dragMap  ],
+		[ nav     , 'touchend'   , dragMap  ],
+		[ nav     , 'mouseup'    , dragMap  ],
+		[ plane   , 'touchstart' , dragView ],
+		[ plane   , 'mousedown'  , dragView ],
+		[ plane   , 'touchmove'  , dragView ],
+		[ plane   , 'mousemove'  , dragView ],
+		[ plane   , 'touchend'   , dragView ],
+		[ plane   , 'mouseup'    , dragView ],
+		[ plane   , 'mouseout'   , hideHind ],
+		[ plane   , 'tap'        , click    ],
+		[ plane   , 'tap'        , click    ],
+		[ window  , 'resize'     , resize   ],
 	]
 
 	if(debug.enabled) events.unshift(
-		[ window  ,'keypress'  , debug.hotkey   ],
-		[ nav     , ptr.click  , debug.click_map],
-		[ plane   , ptr.start  , debug.mousedown],
-		[ plane   , ptr.move   , debug.mousemove],
-		[ plane   , ptr.end    , debug.mouseup  ])
+		[ window  , 'keypress'   , debug.hotkey   ],
+		[ nav     , 'tap'        , debug.click_map],
+		[ plane   , 'touchstart' , debug.mousedown],
+		[ plane   , 'mousedown'  , debug.mousedown],
+		[ plane   , 'touchmove'  , debug.mousemove],
+		[ plane   , 'mousemove'  , debug.mousemove],
+		[ plane   , 'touchend'   , debug.mouseup  ],
+		[ plane   , 'mouseup'    , debug.mouseup  ])
 
 	events.some(function(ev) { ev[0].addEventListener(ev[1], ev[2], false) })
 
 	function dragView(e) {
-
 		var now = e.touches,
 			was = e.changedTouches,
-			two = touch && now.length + (e.type === ptr.end ? was.length : 0) === 2
+			touch = now || was ? true : false,
+			two = touch && now.length + (e.type === 'touchend' ? was.length : 0) === 2
 
 		var stage =
-			e.type === ptr.start ? two ? 'capture' : 'grip' :
-			e.type === ptr.move  ? two ? 'stretch' : 'pull' :
-			e.type === ptr.end   ? two ? 'release' : 'free' :
+			e.type === 'touchstart' || e.type === 'mousedown' ? two ? 'capture' : 'grip' :
+			e.type === 'touchmove'  || e.type === 'mousemove' ? two ? 'stretch' : 'pull' :
+			e.type === 'touchend'   || e.type === 'mouseup'   ? two ? 'release' : 'free' :
 			null
 
-		var point1 = touch ? now[0] || {} : e,
+		var point1 = now && was ? now[0] || {} : e,
 			point2 = two
-				? e.type === ptr.end ? was[0] : now[1]
+				? e.type === 'touchend' || e.type === 'mouseup' ? was[0] : now[1]
 				: { pageX: true }
 
 		frames.view[stage](point1.pageX, point1.pageY, point2.pageX, point2.pageY)
@@ -977,7 +977,7 @@ function register_events() {
 				y      = (point1.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
-		if(!touch && e.type.indexOf('move') >= 0 && seat && seat.sex && !seat.user) {
+		if(!touch && e.type.indexOf('mousemove') >= 0 && seat && seat.sex && !seat.user) {
 			var parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
 			if(parent) {
 				view.hind(seat.sex_text[seat.sex][1])
@@ -997,7 +997,7 @@ function register_events() {
 		e.preventDefault()
 	}
 	function moveMap(e) {
-		var point = touch ? e.touches[0] : e,
+		var point = e.touches ? e.touches[0] : e,
 			scale = view.small() ? 0.5 : 1,
 			box   = nav.getBoundingClientRect(),
 			x     = point.pageX - box.left,
@@ -1006,15 +1006,15 @@ function register_events() {
 		frames.map.move(x / scale, y / scale)
 	}
 	function dragMap(e) {
-		var point = touch ? e.touches[0] || e.changedTouches[0] : e,
+		var point = e.touches ? e.touches[0] || e.changedTouches[0] : e,
 			scale = view.small() ? 0.5 : 1,
 			x     = point.pageX,
 			y     = point.pageY
 
 		var stage =
-			e.type === ptr.start ? 'grip' :
-			e.type === ptr.move  ? 'pull' :
-			e.type === ptr.end   ? 'free' :
+			e.type === 'touchstart' || e.type === 'mousedown' ? 'grip' :
+			e.type === 'touchmove'  || e.type === 'mousemove' ? 'pull' :
+			e.type === 'touchend'   || e.type === 'mouseup'   ? 'free' :
 			null
 
 		frames.map[stage](x / scale, y / scale, false)
@@ -1247,7 +1247,7 @@ Seat.togglePassengers = function(show) {
 	})
 	groups.some(method('draw'))
 }
-Seat.unlink = function(user) {
+Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
 		user.selection.className = "selection"
@@ -1259,7 +1259,7 @@ Seat.unlink = function(user) {
 		
 		user.curseat('')
 		user.id_car('-')
-		if(user.child) {
+		if(user.child && !unlink_child ) {
 			user.child().forEach(function(child){
 				child.block(true)
 				Seat.unlink(child);
@@ -1495,13 +1495,14 @@ Seat.prototype = {
 		if(user.seat && user.seat.num){
 			var index = user.seat.num.split('-');
 
-			Seat.unlink(user);
+			Seat.unlink(user, !already_placed);
 			if(user.child && +index[0] != +this.num.split('-')[0]) {
 				user.child().forEach(function(child){
 					if(child.seat){
 						Seat.unlink(child);	
 					}
 				})
+				view.usersbox_scroll.refresh(); 
 			}
 		}
 

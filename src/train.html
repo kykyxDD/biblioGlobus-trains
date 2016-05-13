@@ -104,8 +104,8 @@
 								</select>
 							</div>
 
-							<div data-bind=' ifnot: $root.list_parent().length > 1'>
-								<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div>
+							<div data-bind=' if: $root.list_parent().length == 1'>
+								<div data-bind='text: $root.list_parent()[0].name'  class='value'></div>
 							</div> 
 						</div>
 					</div>

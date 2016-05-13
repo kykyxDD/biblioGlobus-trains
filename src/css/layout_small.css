@@ -138,6 +138,13 @@ body {
     .controls .users-box .users .user .ok svg {
       width: 9px;
       height: 9px; }
+    .controls .users-box .users .user .select_child .field, 
+    .controls .users-box .users .user .info .child .field {
+      float:left;
+    }
+    .controls .users-box .users .user .select_child .value {
+      text-transform: capitalize;
+    }
 .controls .confirm .confirm-caption {
   padding-top: 22px; }
 .controls .confirm .confirm-tick {
