@@ -50,7 +50,7 @@
 					{ href: 'css/layout_small.css', media: 'screen and (max-width: 640px)' },
 
 					{ href: 'css/layout_big.css',   media: 'screen and (min-width: 641px)' },
-					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 640px)' 
+					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 641px)' 
 					}
 
 				],
@@ -105,8 +105,8 @@
 							</div>
 
 							<div data-bind=' ifnot: $root.list_parent().length > 1'>
-								<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div>
-							</div> 
+								<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div> 
+							</div>
 						</div>
 					</div>
 
@@ -133,7 +133,7 @@
 								<td data-bind="text: fclass" class="value"></td>
 							</tr>
 							<!-- ko if: child -->
-							<tr class="child" data-bind='if: child().length > 0'>
+							<tr class="child" data-bind='visible: child().length > 0'>
 								<td>
 									<div class='field'> Дети: </div>
 									<div data-bind="foreach: child" class='list-child'>
@@ -263,6 +263,10 @@
 					<div class="inner"></div>
 					<div class="outer"></div>
 				</div>
+				<div class="popup_seat" data-bind='visible: hind'>
+					Разрешена посадка пассажира<br> только 
+					<span data-bind='text:hind'></span> пола и <br> младенца любого пола.
+				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
@@ -282,18 +286,16 @@
             <tr><td colspan="5">
             <div class="info">
             	<table>
-            		<tr class="modifier">
-		            	<td class="name">Признак категории<br> вагона: </td> 
-		            	<td class="text" data-bind="text: current_car_modifier"></td>
-		            </tr>
-					<tr class="descr">
-		            	<td class="name">Класс <br>обслуживания: </td> 
-		            	<td class="text" data-bind="text: current_car_descr_short"></td>
-		            </tr>
             		<tr class="descr">
 		            	<td class="name">Описание: </td> 
-		            	<td class="text" ><span data-bind="text: current_car_descr"></span>
-		            	<span data-bind='visible:current_car_spec_conds'><br><span data-bind='text: current_car_spec_conds'><br></span></span></td>
+		            	<td class="text" >
+		            		Класс обслуживания
+		            		<span class="text" data-bind="text: current_car_descr_short"></span>.<br>
+		            		
+		            		<span data-bind="text: current_car_descr"></span>
+		            		<span data-bind='visible:current_car_modifier'><br><span data-bind='text: current_car_modifier'></span><br></span>
+		            		<span data-bind='visible:current_car_spec_conds'><br><span data-bind='text: current_car_spec_conds'></span></span>
+		            	</td>
 		            </tr>
 		            <tr class="carrier">
 		            	<td class="name">Перевозчик: </td> 
@@ -340,7 +342,7 @@
 				<table>
 					<tbody>
 						<tr>
-							<td data-bind="text: board.num" rowspan="2"></td>
+							<td data-bind="text: board.num +' '+ board.train_name" rowspan="2"></td>
 							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
 							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
 						</tr>
@@ -363,7 +365,7 @@
 					<div class="number">
 						<span class="field">Рейс №: </span>
 						<span data-bind="text: board.num" class="value big"></span> 
-						<span data-bind="if: board.train_name" class="value">+
+						<span data-bind="if: board.train_name" class="value">
 						<span data-bind="text: board.train_name" class='value'> </span>
 						</span>
 					</div>

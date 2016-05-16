@@ -36,11 +36,12 @@ var m = Math,
 	isTouchPad = (/hp-tablet/gi).test(navigator.appVersion),
 
     has3d = prefixStyle('perspective') in dummyStyle,
-    hasTouch = 'ontouchstart' in window && !isTouchPad,
+    hasSafari = (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0),
+    hasTouch = ((navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || hasSafari) && 'ontouchstart' in window ) && !isTouchPad,
     hasTransform = !!vendor,
     hasTransitionEnd = prefixStyle('transition') in dummyStyle,
 
-	RESIZE_EV = 'onorientationchange' in window ? 'orientationchange' : 'resize',
+	RESIZE_EV = hasTouch && 'onorientationchange' in window ? 'orientationchange' : 'resize',
 	START_EV = hasTouch ? 'touchstart' : 'mousedown',
 	MOVE_EV = hasTouch ? 'touchmove' : 'mousemove',
 	END_EV = hasTouch ? 'touchend' : 'mouseup',
@@ -552,12 +553,11 @@ iScroll.prototype = {
 						target = point.target;
 						while (target.nodeType != 1) target = target.parentNode;
 
-						if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA') {
+						if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA' && !has_class(target, 'place')) {
 							ev = doc.createEvent('MouseEvents');
 							ev.initMouseEvent('click', true, true, e.view, 1,
 								point.screenX, point.screenY, point.clientX, point.clientY,
-								e.ctrlKey, e.altKey, e.shiftKey, e.metaKey,
-								0, null);
+								e.ctrlKey, e.altKey, e.shiftKey, e.metaKey,	0, null);
 							ev._fake = true;
 							target.dispatchEvent(ev);
 						}

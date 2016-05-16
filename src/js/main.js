@@ -193,7 +193,8 @@ var el = {
 	error    : '.popup.fail',
 	progress : '.background .caption',
 	current  : '.selection',
-	label    : '.selection .label'
+	label    : '.selection .label',
+	hind     : '.popup_seat'
 }
 
 var C = {
@@ -330,8 +331,6 @@ function prepare_train_view() {
     view.prev_car_type = ko.observable('')
     view.prev_car_num = ko.observable('')
 
-    
-
     view.current_car_type = ko.observable('')
     view.current_car_num = ko.observable('')
     view.current_car_descr = ko.observable('')
@@ -340,7 +339,7 @@ function prepare_train_view() {
     view.current_car_prime_from = ko.observable('')
     view.current_car_prime_to = ko.observable('')
     view.current_car_modifier = ko.observable('') 
-    view.current_car_spec_conds = ko.observable('') 
+    view.current_car_spec_conds = ko.observable('')
     var obj = {
     	ELREG: ko.observable(false),
     	EAT: ko.observable(false),
@@ -355,6 +354,7 @@ function prepare_train_view() {
     view.next_car_num = ko.observable('')
     view.regul_seat = ko.observable('');
     view.scroll_regul_seat = ko.observable(false)
+    view.hind = ko.observable('') 
 
     navigation.position = V(0.2, 0.2)
     var update_nav_interval = setInterval(update_view, 200)
@@ -412,7 +412,7 @@ function update_view()
     view.current_car_descr(car.DESCR.text)
     view.current_car_carrier(car.CARRIER)
     view.current_car_prime_from(car.PRICE.from)
-    view.current_car_modifier(car.CAT_MODIFIER.text)
+    view.current_car_modifier((car.CAT_MODIFIER && car.CAT_MODIFIER.text) || '')
     view.current_car_spec_conds(car.SPEC_CONDS)
     if(car.PRICE.to !== '') {
     	view.current_car_prime_to(car.PRICE.to)
@@ -580,6 +580,7 @@ function setup_viewmodel() {
 					user.seat && user.seat.take(user);
 				}
 			}
+
 			updateDisable()
 
 			return true
@@ -612,6 +613,7 @@ function setup_viewmodel() {
 
 	view.changeSelectParent = function(data, event){
 		var user = view.click_select();
+
 		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
 		if(val.child && val.child.indexOf(user) >= 0) return
@@ -917,12 +919,14 @@ function resize() {
 }
 
 function register_events() {
-	var touch = 'ontouchstart' in window
+	var isSafari = (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
+	var touch = (navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || isSafari) && 'ontouchstart' in window ;
 
 	var ptr = {
 		start : touch ? 'touchstart' : 'mousedown',
 		move  : touch ? 'touchmove'  : 'mousemove',
 		end   : touch ? 'touchend'   : 'mouseup',
+		out   : 'mouseout',
 		click : 'tap'
 	}
 
@@ -939,6 +943,7 @@ function register_events() {
 		[ plane   , ptr.start  , dragView ],
 		[ plane   , ptr.move   , dragView ],
 		[ plane   , ptr.end    , dragView ],
+		[ plane   , ptr.out    , hideHind ],
 		[ plane   , ptr.click  , click    ],
 		[ window  ,'resize'    , resize   ],
 	]
@@ -953,6 +958,7 @@ function register_events() {
 	events.some(function(ev) { ev[0].addEventListener(ev[1], ev[2], false) })
 
 	function dragView(e) {
+
 		var now = e.touches,
 			was = e.changedTouches,
 			two = touch && now.length + (e.type === ptr.end ? was.length : 0) === 2
@@ -969,7 +975,28 @@ function register_events() {
 				: { pageX: true }
 
 		frames.view[stage](point1.pageX, point1.pageY, point2.pageX, point2.pageY)
+		var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
+				x      = (point1.pageX + frames.view.center.x),
+				y      = (point1.pageY + frames.view.center.y),
+				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
+		if(!touch && e.type.indexOf('move') >= 0 && seat && seat.sex && !seat.user) {
+			var parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
+			if(parent) {
+				view.hind(seat.sex_text[seat.sex][1])
+				position(el.hind,x / frames.view.scale + 20,
+					    	 y / frames.view.scale + 30)	
+			} else {
+				view.hind('')	
+			}
+		} else {
+			view.hind('')
+		}
+
+		e.preventDefault()
+	}
+	function hideHind(e) {
+		view.hind('')
 		e.preventDefault()
 	}
 	function moveMap(e) {
@@ -1223,7 +1250,7 @@ Seat.togglePassengers = function(show) {
 	})
 	groups.some(method('draw'))
 }
-Seat.unlink = function(user) {
+Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
 		user.selection.className = "selection"
@@ -1231,12 +1258,12 @@ Seat.unlink = function(user) {
 		user.seat.info = null
 		user.seat.user = null
 		user.seat.group.draw()
-
 		user.seat = null
 		
 		user.curseat('')
 		user.id_car('-')
-		if(user.child) {
+
+		if(user.child && !unlink_child ) {
 			user.child().forEach(function(child){
 				child.block(true)
 				Seat.unlink(child);
@@ -1411,32 +1438,42 @@ Seat.prototype = {
 			area[3])
 	},
 	drawLabel: function(text) {
-		var ctx  = this.group.context
-        var size = this.labelSize
-        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0]
-        var dy = this.sprite.offset.label[1]
+		var ctx  = this.group.context;
+        var size = this.labelSize;
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+        var dy = this.sprite.offset.label[1];
 
-		ctx.save()
+		ctx.save();
 		ctx.fillStyle =
 			debug.enabled && this.over ? 'orangered' :
 			debug.enabled && this.low  ? 'crimson'   :
 			this === model.taken       ? '#19cf00'   :
-			                             'rgba(0,0,0,0.5)'
+			                             'rgba(0,0,0,0.5)';
 
-		ctx.translate(this.X + dx, this.Y + dy)
-		ctx.transform.apply(ctx, this.labelTransform)
-		ctx.fillRect(0, 0, size, size)
-		ctx.strokeText(text, size / 2, size / 2)
+		ctx.translate(this.X + dx, this.Y + dy);
+		ctx.transform.apply(ctx, this.labelTransform);
+		ctx.fillRect(0, 0, size, size);
+		ctx.strokeText(text, size / 2, size / 2);
+		var cy = this.sex ? 7: 0;
+
 		if(this.type.indexOf('right') !== -1) {
 			ctx.textAlign = 'right';
-			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2)
+			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2 - cy);
+			if(this.sex){
+				ctx.textAlign = 'center';
+				ctx.strokeText("( "+this.sex_text[this.sex][0]+" )", (size/2) - size*0.75 - (ctx.measureText(this.sc_name).width/2), size / 2  + size/2 - cy)
+			}
 		} else {
 			ctx.textAlign = 'left';
-			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2)
+			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2 - cy);
+			if(this.sex){
+				ctx.textAlign = 'center';
+				ctx.strokeText("( "+this.sex_text[this.sex][0]+" )", (size/2) + size*0.75 + (ctx.measureText(this.sc_name).width/2), size / 2 + size/2 - cy )
+			}
 		}
 		
 		ctx.textAlign = 'center';
-		ctx.restore()
+		ctx.restore();
 		
 	},
 	highlight: function(coor) {
@@ -1462,13 +1499,14 @@ Seat.prototype = {
 		if(user.seat && user.seat.num){
 			var index = user.seat.num.split('-');
 
-			Seat.unlink(user);
+			Seat.unlink(user, !already_placed);
 			if(user.child && +index[0] != +this.num.split('-')[0]) {
 				user.child().forEach(function(child){
 					if(child.seat){
 						Seat.unlink(child);	
 					}
 				})
+				view.usersbox_scroll.refresh(); 
 			}
 		}
 
