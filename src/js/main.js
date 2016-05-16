@@ -580,6 +580,7 @@ function setup_viewmodel() {
 					user.seat && user.seat.take(user);
 				}
 			}
+
 			updateDisable()
 
 			return true
@@ -612,6 +613,7 @@ function setup_viewmodel() {
 
 	view.changeSelectParent = function(data, event){
 		var user = view.click_select();
+
 		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
 		if(val.child && val.child.indexOf(user) >= 0) return
@@ -917,7 +919,8 @@ function resize() {
 }
 
 function register_events() {
-	var touch = 'ontouchstart' in window
+	var isSafari = (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0)
+	var touch = (navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || isSafari) && 'ontouchstart' in window ;
 
 	var ptr = {
 		start : touch ? 'touchstart' : 'mousedown',

@@ -50,7 +50,7 @@
 					{ href: 'css/layout_small.css', media: 'screen and (max-width: 640px)' },
 
 					{ href: 'css/layout_big.css',   media: 'screen and (min-width: 641px)' },
-					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 640px)' 
+					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 641px)' 
 					}
 
 				],
@@ -133,7 +133,7 @@
 								<td data-bind="text: fclass" class="value"></td>
 							</tr>
 							<!-- ko if: child -->
-							<tr class="child" data-bind='if: child().length > 0'>
+							<tr class="child" data-bind='visible: child().length > 0'>
 								<td>
 									<div class='field'> Дети: </div>
 									<div data-bind="foreach: child" class='list-child'>
@@ -342,7 +342,7 @@
 				<table>
 					<tbody>
 						<tr>
-							<td data-bind="text: board.num" rowspan="2"></td>
+							<td data-bind="text: board.num +' '+ board.train_name" rowspan="2"></td>
 							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
 							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
 						</tr>

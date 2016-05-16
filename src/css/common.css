@@ -356,6 +356,12 @@ audio {
       .users-box .users .user .info .field {
         padding-right: 3px;
         color: #6d6d6d; }
+      .users-box .users .user .info .child td > div,
+      .users-box .users .user .select_child > div, 
+      .users-box .users .user .info .parent > div {
+        display: inline-block;
+        vertical-align: top;
+      }
       .users-box .users .user .info table {
         margin: 0;
         width: 100%; }

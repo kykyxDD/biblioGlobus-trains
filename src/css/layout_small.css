@@ -117,6 +117,10 @@ body {
     height: 14px; }
   .controls .users-box .users .user .info {
     padding-left: 6px; }
+    .users-box .users .user .info option, 
+    .users-box .users .user .info select {
+      font-size: 1em;
+    }
     .controls .users-box .users .user .info .name {
       padding: 1px 0; }
     .controls .users-box .users .user .info .status tr {
@@ -138,10 +142,9 @@ body {
     .controls .users-box .users .user .ok svg {
       width: 9px;
       height: 9px; }
-    .controls .users-box .users .user .select_child .field, 
-    .controls .users-box .users .user .info .child .field,
-    .controls .users-box .users .user .info .parent .field {
-      float:left;
+    .controls .users-box .users .user .info .child td > div{
+      display: inline-block;
+      vertical-align: top;
     }
     .controls .users-box .users .user .select_child .value {
       text-transform: capitalize;
@@ -451,8 +454,8 @@ body {
 }
 .popup.regul-seat .close_regul_seat {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 13px;
+  right: 13px;
   width: 20px;
   height: 20px;
   text-align: right;
