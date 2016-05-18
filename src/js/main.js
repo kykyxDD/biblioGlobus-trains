@@ -235,7 +235,7 @@ function ready() {
 	debug.enabled = hash(params.debug) === debug.token
 
 	document.body.style.display = 'block'
-	view.groups_users = ko.observableArray();
+	view.groups_seat = ko.observable();
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -301,6 +301,7 @@ function start() {
 
 	setup_viewmodel()
 	setup_navigation()
+	update_group_seat()
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 
@@ -554,6 +555,7 @@ function setup_viewmodel() {
 
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
+	view.group_seat = ko.observable()
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(function(user){
 			return user.curseat() && !user.disabled
@@ -766,6 +768,43 @@ function update_seats() {
 			seat.user = null;
 		}
 	})
+}
+function update_group_seat(){
+	var groups_seat = {};
+
+	seats.forEach(function(seat){
+		var arr = seat.num.split('-');
+		var num = arr[0];
+		var id = +arr[1];
+		var id_group = Math.floor((id-1)/4);
+		var obj_g = groups_seat[num], obj;
+
+		if(!obj_g){
+			groups_seat[num] = {};
+			obj_g = groups_seat[num]
+			obj_g.groups = [];
+			obj = {
+				sex: seat.sex == 'c' ? true : false,
+				seats: [seat]
+			}
+			obj_g.groups[id_group] = obj;
+			seat.group_seat = obj
+		} else {
+			obj = obj_g.groups[id_group]
+			if(obj) {
+				obj_g.groups[id_group].seats.push(seat)
+			} else {
+				obj = {
+					sex: seat.sex == 'c' ? true : false,
+					seats: [seat]
+				}
+				obj_g.groups[id_group] = obj
+				seat.group_seat = obj;
+			}
+		}
+		seat.group_seat = obj
+	})
+	view.groups_seat(groups_seat)
 }
 function update_users(users) {
 	view.user(null)
@@ -985,7 +1024,10 @@ function register_events() {
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
 		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user) {
-			if(seat.sex){
+			var user = view.user();
+			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
+			
+			if(seat.sex && res){
 				view.hind(seat.sex_text[seat.sex][1])
 				position(el.hind,x / frames.view.scale + 20,
 					    	 y / frames.view.scale + 30)
@@ -1257,9 +1299,28 @@ Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
 		user.selection.className = "selection"
+		var prev_seat = user.seat
 
 		user.seat.info = null
 		user.seat.user = null
+
+		if(prev_seat.group_seat.sex) {
+			var last_user = true
+			prev_seat.group_seat.seats.forEach(function(_seat){
+				if(_seat.user && !_seat.info.infant) {
+					last_user = false
+				}
+			})
+
+			if(last_user){
+				prev_seat.group_seat.sex = true
+				prev_seat.group_seat.seats.forEach(function(_seat){
+					_seat.sex = 'c'
+					_seat.match_sex = (_seat.sex && (_seat.sex === user.sex || _seat.sex =='c')) || !_seat.sex || user.infant;
+				})
+			}
+		}
+
 		user.seat.group.draw()
 		user.seat = null
 		
@@ -1295,6 +1356,12 @@ Seat.link = function(user, seat) {
 				child.block(false)
 			})
 			view.usersbox_scroll.refresh();
+		}
+		if(seat.group_seat.sex && !user.infant){
+			seat.group_seat.sex = user.sex;
+			seat.group_seat.seats.forEach(function(g_seat){
+				g_seat.sex = user.sex
+			})
 		}
 		updateDisable()
 	}
@@ -1361,7 +1428,7 @@ Seat.prototype = {
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = (this.sex && this.sex === user.sex) || !this.sex || user.infant;
+            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c')) || !this.sex || user.infant;
         }
 
 	},
