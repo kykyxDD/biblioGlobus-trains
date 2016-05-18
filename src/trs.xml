@@ -1,41 +1,36 @@
 <ROOT>
-    <TRIP ID="103128042941" idTour="104400000876737200">
-        <DATE>18.05.2016</DATE>
-        <NUM>102М</NUM>
+    <TRIP ID="103128233057" idTour="104400000870448628">
+        <DATE>31.05.2016</DATE>
+        <NUM>030А</NUM>
         <CONFIG_UID>TRAIN2</CONFIG_UID>
-        <BOARDING_TIME>1330</BOARDING_TIME>
-        <DEPARTURE_TIME>1330</DEPARTURE_TIME>
-        <ARRIVAL_DATE>19.05.2016</ARRIVAL_DATE>
-        <ARRIVAL_TIME>1442</ARRIVAL_TIME>
-        <CITYRUS_FROM>МОСКВА КАЗАНСКАЯ</CITYRUS_FROM>
-        <CITYRUS_TO>АДЛЕР</CITYRUS_TO>
+        <BOARDING_TIME>0115</BOARDING_TIME>
+        <DEPARTURE_TIME>0115</DEPARTURE_TIME>
+        <ARRIVAL_DATE>31.05.2016</ARRIVAL_DATE>
+        <ARRIVAL_TIME>1028</ARRIVAL_TIME>
+        <CITYRUS_FROM>МОСКВА</CITYRUS_FROM>
+        <CITYRUS_TO>САНКТ-ПЕТЕРБУРГ</CITYRUS_TO>
         <CITYEN_FROM>Moscow</CITYEN_FROM>
-        <CITYEN_TO></CITYEN_TO>
-        <CODE_FROM>2000003</CODE_FROM>
-        <CODE_TO>2064150</CODE_TO>
-        <TRAIN_NAME>Премиум</TRAIN_NAME>
+        <CITYEN_TO>St. Petersburg</CITYEN_TO>
+        <CODE_FROM>2000000</CODE_FROM>
+        <CODE_TO>2004000</CODE_TO>
+        <TRAIN_NAME></TRAIN_NAME>
     </TRIP>
     <TRAIN>
-    <CAR type="coupe" num="5" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
-        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
+    <CAR type="coupe" num="1" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="2Л">Спальный вагон с четырехместными купе без услуг. Наличие установки кондиционирования воздуха гарантировано только для фирменных поездов. В стоимость входит: комплект постельного белья.        </DESCR>        <SRV short="BED">Постельное белье        </SRV>
         <CARRIER>ФПК</CARRIER>
-        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
-        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="5145.80" to="6409" srv="667"/>
-    </CAR>    <CAR type="coupe" num="6" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
-        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2261" to="2791" srv="141"/>
+    </CAR>    <CAR type="coupe" num="7" gender="" elreg="false" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="2Л">Спальный вагон с четырехместными купе без услуг. Наличие установки кондиционирования воздуха гарантировано только для фирменных поездов. В стоимость входит: комплект постельного белья.        </DESCR>        <SRV >Постельное белье        </SRV>
         <CARRIER>ФПК</CARRIER>
-        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
-        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="5145.80" to="6409" srv="667"/>
-    </CAR>    <CAR type="coupe" num="7" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
-        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2261" to="2791" srv="141"/>
+    </CAR>    <CAR type="coupe" num="12" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="2Л">Спальный вагон с четырехместными купе без услуг. Наличие установки кондиционирования воздуха гарантировано только для фирменных поездов. В стоимость входит: комплект постельного белья.        </DESCR>        <SRV short="BED">Постельное белье        </SRV>
         <CARRIER>ФПК</CARRIER>
-        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
-        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="5145.80" to="6409" srv="667"/>
-    </CAR>    <CAR type="coupe" num="8" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
-        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
-        <CARRIER>ФПК</CARRIER>
-        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
-        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="5145.80" to="6409" srv="667"/>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2261" to="2791" srv="141"/>
     </CAR>    <INTERNATIONAL dirGroup="0">false</INTERNATIONAL>
     <IsSuburbanTrain>false</IsSuburbanTrain>
     </TRAIN>
@@ -130,7 +125,7 @@
         <PASSENGER ageGroup="INF">
             <ID>102300000876737600</ID>
             <TITLE>Inf</TITLE>
-            <SEX>F</SEX>
+            <SEX>M</SEX>
             <AGE>1</AGE>
             <SURNAME>ИВАНОВА</SURNAME>
             <NAME>ИНФАНТА</NAME>
@@ -200,4 +195,3 @@
         <SEAT no="8-34" status="*" sc="C"  sex="" srvClass="2Э"/>
         <SEAT no="8-35" status="*" sc="C"  sex="" srvClass="2Э"/>
         <SEAT no="8-36" status="*" sc="C"  sex="" srvClass="2Э"/>    </SEATS></ROOT>
-

@@ -235,7 +235,7 @@ function ready() {
 	debug.enabled = hash(params.debug) === debug.token
 
 	document.body.style.display = 'block'
-	view.groups_users = ko.observableArray();
+	view.groups_seat = ko.observable();
 
 	model.loadConfig(loading_error)
 	model.resourcesProgress = progress
@@ -301,6 +301,7 @@ function start() {
 
 	setup_viewmodel()
 	setup_navigation()
+	update_group_seat()
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 
@@ -341,6 +342,7 @@ function prepare_train_view() {
     view.current_car_modifier = ko.observable('') 
     view.current_car_spec_conds = ko.observable('')
     var obj = {
+    	len: ko.observable(false),
     	ELREG: ko.observable(false),
     	EAT: ko.observable(false),
 		COND: ko.observable(false),
@@ -421,13 +423,15 @@ function update_view()
     }
 
     var info = view.current_car_info();
-    var arr_info = car.SRV.short.split(',');
+    var arr_info = car.SRV && car.SRV.short ? car.SRV.short.split(',') : [];
 
     if(car.elreg) {
     	arr_info.push('ELREG')
     }
-    
+    info['len'](!arr_info.length ? false : true)
+
     for(var key in info){
+    	if(key == 'len') continue
     	var index = arr_info.indexOf(key)
     	if(index >= 0){
     		info[key](true)
@@ -551,6 +555,7 @@ function setup_viewmodel() {
 
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
+	view.group_seat = ko.observable()
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(function(user){
 			return user.curseat() && !user.disabled
@@ -670,6 +675,7 @@ function setup_viewmodel() {
 	view.error_len 		= ko.observable(true);
 	view.disable_submite = ko.observable(true);
 	view.show_regul_seat = ko.observable(false);
+	view.show_disable_seat = ko.observable(false);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -763,6 +769,43 @@ function update_seats() {
 		}
 	})
 }
+function update_group_seat(){
+	var groups_seat = {};
+
+	seats.forEach(function(seat){
+		var arr = seat.num.split('-');
+		var num = arr[0];
+		var id = +arr[1];
+		var id_group = Math.floor((id-1)/4);
+		var obj_g = groups_seat[num], obj;
+
+		if(!obj_g){
+			groups_seat[num] = {};
+			obj_g = groups_seat[num]
+			obj_g.groups = [];
+			obj = {
+				sex: seat.sex == 'c' ? true : false,
+				seats: [seat]
+			}
+			obj_g.groups[id_group] = obj;
+			seat.group_seat = obj
+		} else {
+			obj = obj_g.groups[id_group]
+			if(obj) {
+				obj_g.groups[id_group].seats.push(seat)
+			} else {
+				obj = {
+					sex: seat.sex == 'c' ? true : false,
+					seats: [seat]
+				}
+				obj_g.groups[id_group] = obj
+				seat.group_seat = obj;
+			}
+		}
+		seat.group_seat = obj
+	})
+	view.groups_seat(groups_seat)
+}
 function update_users(users) {
 	view.user(null)
 	if(view.users().length){
@@ -837,7 +880,7 @@ function setup_navigation() {
 		x = hround(x)
 		y = hround(y)
 
-		position(el.plane, -x, -y, scale)
+		position(el.plane, -x, -y, scale)	
 
 		var w = frames.view.size.x / scale,
 			h = frames.view.size.y / scale
@@ -980,12 +1023,14 @@ function register_events() {
 				y      = (point1.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
-		if(!touch && e.type.indexOf('move') >= 0 && seat && seat.sex && !seat.user) {
-			var parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
-			if(parent) {
+		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user) {
+			var user = view.user();
+			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
+			
+			if(seat.sex && res){
 				view.hind(seat.sex_text[seat.sex][1])
 				position(el.hind,x / frames.view.scale + 20,
-					    	 y / frames.view.scale + 30)	
+					    	 y / frames.view.scale + 30)
 			} else {
 				view.hind('')	
 			}
@@ -1254,9 +1299,28 @@ Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
 		user.selection.className = "selection"
+		var prev_seat = user.seat
 
 		user.seat.info = null
 		user.seat.user = null
+
+		if(prev_seat.group_seat.sex) {
+			var last_user = true
+			prev_seat.group_seat.seats.forEach(function(_seat){
+				if(_seat.user && !_seat.info.infant) {
+					last_user = false
+				}
+			})
+
+			if(last_user){
+				prev_seat.group_seat.sex = true
+				prev_seat.group_seat.seats.forEach(function(_seat){
+					_seat.sex = 'c'
+					_seat.match_sex = (_seat.sex && (_seat.sex === user.sex || _seat.sex =='c')) || !_seat.sex || user.infant;
+				})
+			}
+		}
+
 		user.seat.group.draw()
 		user.seat = null
 		
@@ -1292,6 +1356,12 @@ Seat.link = function(user, seat) {
 				child.block(false)
 			})
 			view.usersbox_scroll.refresh();
+		}
+		if(seat.group_seat.sex && !user.infant){
+			seat.group_seat.sex = user.sex;
+			seat.group_seat.seats.forEach(function(g_seat){
+				g_seat.sex = user.sex
+			})
 		}
 		updateDisable()
 	}
@@ -1358,7 +1428,7 @@ Seat.prototype = {
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = (this.sex && this.sex === user.sex) || !this.sex || user.infant;
+            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c')) || !this.sex || user.infant;
         }
 
 	},
@@ -1388,9 +1458,9 @@ Seat.prototype = {
 					this.drawLabel(this.name.toUpperCase())
 				}
 			} else {
-				this.drawLabel(this.name.toUpperCase())	
+				this.drawLabel(this.name.toUpperCase())
 			}
-		}
+		} 
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1474,7 +1544,31 @@ Seat.prototype = {
 		
 		ctx.textAlign = 'center';
 		ctx.restore();
-		
+	},
+	drawMaskSeat: function(){
+		var ctx  = this.group.context;
+        var size = this.labelSize;
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+        var dy = this.sprite.offset.label[1];
+
+		ctx.save();
+		ctx.fillStyle ='rgba(0,0,0,0.4)';
+		var poly = this.polygon.vertices;
+
+		ctx.translate(this.X - this.sprite.offset.label[0] + size, this.Y  + size);
+		ctx.transform.apply(ctx, this.labelTransform);
+
+		ctx.beginPath();
+		for(var i = 0; i < poly.length; i++){
+			if(i == 0) {
+				ctx.moveTo(poly[i].x, poly[i].y)
+			} else {
+				ctx.lineTo(poly[i].x, poly[i].y)
+			}
+		}
+		ctx.closePath();
+		ctx.fill();
+		ctx.restore();
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')

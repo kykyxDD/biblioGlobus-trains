@@ -265,7 +265,7 @@
 				</div>
 				<div class="popup_seat" data-bind='visible: hind'>
 					Разрешена посадка пассажира<br> только 
-					<span data-bind='text:hind'></span> пола и <br> младенца любого пола.
+					<span class='hind' data-bind='html:hind'></span> <br> и младенца любого пола.
 				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
@@ -305,7 +305,7 @@
 		            	<td class="name">Цена: </td> 
 		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> </span>рублей </td>
 		            </tr>	
-		            <tr>
+		            <tr data-bind='visible: current_car_info().len'>
 		            	<td class="name">Услуги:</td>
 		            	<td>
 		            		<div class='list_info_icon'>
@@ -342,7 +342,9 @@
 				<table>
 					<tbody>
 						<tr>
-							<td data-bind="text: board.num +' '+ board.train_name" rowspan="2"></td>
+							<td rowspan="2">
+								<span data-bind="text: board.num"></span> <span data-bind="visible: board.train_name, text: board.train_name"></span>
+							</td>
 							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
 							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
 						</tr>
@@ -413,6 +415,7 @@
 				
 			</div>
 		</div>
+		
 		<div class="popup fail" data-bind="visible: display_error" style="display: none;">
 			<div class="register-error">
 				<div class="message" data-bind="text: error_message"></div>
