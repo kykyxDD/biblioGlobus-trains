@@ -341,6 +341,7 @@ function prepare_train_view() {
     view.current_car_modifier = ko.observable('') 
     view.current_car_spec_conds = ko.observable('')
     var obj = {
+    	len: ko.observable(false),
     	ELREG: ko.observable(false),
     	EAT: ko.observable(false),
 		COND: ko.observable(false),
@@ -421,13 +422,15 @@ function update_view()
     }
 
     var info = view.current_car_info();
-    var arr_info = car.SRV.short.split(',');
+    var arr_info = car.SRV && car.SRV.short ? car.SRV.short.split(',') : [];
 
     if(car.elreg) {
     	arr_info.push('ELREG')
     }
-    
+    info['len'](!arr_info.length ? false : true)
+
     for(var key in info){
+    	if(key == 'len') continue
     	var index = arr_info.indexOf(key)
     	if(index >= 0){
     		info[key](true)
@@ -670,6 +673,7 @@ function setup_viewmodel() {
 	view.error_len 		= ko.observable(true);
 	view.disable_submite = ko.observable(true);
 	view.show_regul_seat = ko.observable(false);
+	view.show_disable_seat = ko.observable(false);
 
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -837,7 +841,11 @@ function setup_navigation() {
 		x = hround(x)
 		y = hround(y)
 
-		position(el.plane, -x, -y, scale)
+		// if(x < 0 && y < 0) {
+		// 	console.log(x,y)
+		// } else {
+			position(el.plane, -x, -y, scale)	
+		// }
 
 		var w = frames.view.size.x / scale,
 			h = frames.view.size.y / scale
@@ -980,12 +988,12 @@ function register_events() {
 				y      = (point1.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
-		if(!touch && e.type.indexOf('move') >= 0 && seat && seat.sex && !seat.user) {
-			var parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
-			if(parent) {
+		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user) {
+			if(seat.sex){
 				view.hind(seat.sex_text[seat.sex][1])
 				position(el.hind,x / frames.view.scale + 20,
-					    	 y / frames.view.scale + 30)	
+					    	 y / frames.view.scale + 30)
+				// view.hind('')	
 			} else {
 				view.hind('')	
 			}
@@ -1376,6 +1384,7 @@ Seat.prototype = {
                 this.drawPath(this.sprite.offset.polygon)
             }
 		}
+		// this.texts = false
 
 		if(this.user) {
 			this.drawUnit(this.user,
@@ -1386,11 +1395,28 @@ Seat.prototype = {
 				var res = FilterSeat.seatChild(this, view.user().parent)
 				if(res) {
 					this.drawLabel(this.name.toUpperCase())
+				// } else {
+				// 	var str = 'Посадка ребенка только <br>в одном вагоне с родителем.';
+				// 	this.texts = str;
+				// 	this.drawMaskSeat()
 				}
 			} else {
-				this.drawLabel(this.name.toUpperCase())	
+				this.drawLabel(this.name.toUpperCase())
 			}
-		}
+		} 
+		// console.log(this.num,this.texts)
+		// if((this.sc !== undefined ) && !this.user){
+		// 	var str = !this.texts ? '' : this.texts + '<br>';
+		// 	if(!this.match_sex){
+		// 		this.texts = str + 'Разрешена посадка пассажирам только <br>' + this.sex_text[this.sex][1] + ' пола и младенцам любого пола.' ;
+		// 		this.drawMaskSeat()
+		// 	} else if(!this.match_service_class) {
+		// 		this.texts = str + 'Не соответствует класс обслуживания.';
+		// 		this.drawMaskSeat()
+		// 	}
+			
+		// }
+		// console.log(this.texts)
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1438,6 +1464,7 @@ Seat.prototype = {
 			area[3])
 	},
 	drawLabel: function(text) {
+		// console.log('drawLabel')
 		var ctx  = this.group.context;
         var size = this.labelSize;
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
@@ -1474,7 +1501,32 @@ Seat.prototype = {
 		
 		ctx.textAlign = 'center';
 		ctx.restore();
-		
+	},
+	drawMaskSeat: function(){
+		// console.log(this.num)
+		var ctx  = this.group.context;
+        var size = this.labelSize;
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+        var dy = this.sprite.offset.label[1];
+
+		ctx.save();
+		ctx.fillStyle ='rgba(0,0,0,0.4)';
+		var poly = this.polygon.vertices;
+
+		ctx.translate(this.X - this.sprite.offset.label[0] + size, this.Y  + size);
+		ctx.transform.apply(ctx, this.labelTransform);
+
+		ctx.beginPath();
+		for(var i = 0; i < poly.length; i++){
+			if(i == 0) {
+				ctx.moveTo(poly[i].x, poly[i].y)
+			} else {
+				ctx.lineTo(poly[i].x, poly[i].y)
+			}
+		}
+		ctx.closePath();
+		ctx.fill();
+		ctx.restore();
 	},
 	highlight: function(coor) {
 		rem_class(el.fly, 'animate')
