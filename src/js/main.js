@@ -1350,7 +1350,7 @@ Seat.link = function(user, seat) {
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
-		seat.group.draw()
+		
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(false)
@@ -1363,6 +1363,7 @@ Seat.link = function(user, seat) {
 				g_seat.sex = user.sex
 			})
 		}
+		seat.group.draw()
 		updateDisable()
 	}
 }
