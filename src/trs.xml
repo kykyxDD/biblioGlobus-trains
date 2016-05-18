@@ -140,5 +140,64 @@
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
-    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="5-2" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-4" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-6" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-8" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-14" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-16" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-20" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-22" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-24" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-26" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-27" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-28" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-32" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-33" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-34" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-35" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="5-36" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-1" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-2" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-4" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-6" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-8" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-12" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-14" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-16" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-18" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-20" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-26" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-28" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-33" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-34" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-35" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="6-36" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-6" status="*" sc="C"  sex="M" srvClass="2Э"/>        <SEAT no="7-7" status="*" sc="C"  sex="M" srvClass="2Э"/>        <SEAT no="7-12" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-13" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-14" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-16" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-18" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-20" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-24" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-28" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-30" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-31" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-32" status="*" sc="C"  sex="F" srvClass="2Э"/>        <SEAT no="7-33" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-34" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-35" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-36" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-22" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-24" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-25" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-26" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-33" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-34" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-35" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="8-36" status="*" sc="C"  sex="" srvClass="2Э"/>    </SEATS></ROOT>
+    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>
+    <SEATS>
+      <SEAT no="5-2" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-4" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-6" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-8" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-14" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-16" status="*" sc="C"  sex="m" srvClass="2Э"/>
+        <SEAT no="5-20" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-22" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-24" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-26" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-27" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-28" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-32" status="*" sc="C"  sex="f" srvClass="2Э"/>
+        <SEAT no="5-33" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="5-34" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="5-35" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="5-36" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-1" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-2" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-4" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-6" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-8" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-12" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-14" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-16" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-18" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-20" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-26" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-28" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-33" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-34" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-35" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="6-36" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="7-6" status="*" sc="C"  sex="M" srvClass="2Э"/>
+        <SEAT no="7-7" status="*" sc="C"  sex="M" srvClass="2Э"/>
+        <SEAT no="7-12" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-13" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-14" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-16" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-18" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-20" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-24" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-28" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="7-30" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-31" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-32" status="*" sc="C"  sex="F" srvClass="2Э"/>
+        <SEAT no="7-33" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="7-34" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="7-35" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="7-36" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-22" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-24" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-25" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-26" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-33" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-34" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-35" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="8-36" status="*" sc="C"  sex="" srvClass="2Э"/>    </SEATS></ROOT>
 
