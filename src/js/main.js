@@ -841,11 +841,7 @@ function setup_navigation() {
 		x = hround(x)
 		y = hround(y)
 
-		// if(x < 0 && y < 0) {
-		// 	console.log(x,y)
-		// } else {
-			position(el.plane, -x, -y, scale)	
-		// }
+		position(el.plane, -x, -y, scale)	
 
 		var w = frames.view.size.x / scale,
 			h = frames.view.size.y / scale
@@ -993,7 +989,6 @@ function register_events() {
 				view.hind(seat.sex_text[seat.sex][1])
 				position(el.hind,x / frames.view.scale + 20,
 					    	 y / frames.view.scale + 30)
-				// view.hind('')	
 			} else {
 				view.hind('')	
 			}
@@ -1384,7 +1379,6 @@ Seat.prototype = {
                 this.drawPath(this.sprite.offset.polygon)
             }
 		}
-		// this.texts = false
 
 		if(this.user) {
 			this.drawUnit(this.user,
@@ -1395,28 +1389,11 @@ Seat.prototype = {
 				var res = FilterSeat.seatChild(this, view.user().parent)
 				if(res) {
 					this.drawLabel(this.name.toUpperCase())
-				// } else {
-				// 	var str = 'Посадка ребенка только <br>в одном вагоне с родителем.';
-				// 	this.texts = str;
-				// 	this.drawMaskSeat()
 				}
 			} else {
 				this.drawLabel(this.name.toUpperCase())
 			}
 		} 
-		// console.log(this.num,this.texts)
-		// if((this.sc !== undefined ) && !this.user){
-		// 	var str = !this.texts ? '' : this.texts + '<br>';
-		// 	if(!this.match_sex){
-		// 		this.texts = str + 'Разрешена посадка пассажирам только <br>' + this.sex_text[this.sex][1] + ' пола и младенцам любого пола.' ;
-		// 		this.drawMaskSeat()
-		// 	} else if(!this.match_service_class) {
-		// 		this.texts = str + 'Не соответствует класс обслуживания.';
-		// 		this.drawMaskSeat()
-		// 	}
-			
-		// }
-		// console.log(this.texts)
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1464,7 +1441,6 @@ Seat.prototype = {
 			area[3])
 	},
 	drawLabel: function(text) {
-		// console.log('drawLabel')
 		var ctx  = this.group.context;
         var size = this.labelSize;
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
@@ -1503,7 +1479,6 @@ Seat.prototype = {
 		ctx.restore();
 	},
 	drawMaskSeat: function(){
-		// console.log(this.num)
 		var ctx  = this.group.context;
         var size = this.labelSize;
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
