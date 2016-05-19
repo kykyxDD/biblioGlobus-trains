@@ -947,7 +947,7 @@ function resize() {
 		plane = model.struct.plane,
 		map   = model.struct.map
 
-	view.small(window.innerWidth < 601)
+	view.small(window.innerWidth < 640)
 	view.orient(orient ? 'portrait' : 'landscape')
 	frames.view.scaleMin = view.small() ? 0.5 : 1
 
@@ -960,6 +960,7 @@ function resize() {
 
 	var box = el.view.getBoundingClientRect()
 	frames.view.resize(box.width, box.height)
+	frames.view.zoom(frames.view.scaleMin)
 }
 
 function register_events() {

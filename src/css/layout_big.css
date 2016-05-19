@@ -75,9 +75,9 @@ body {
     .controls .users-box .users .user .info .status .place {
       display: table-row; }
 
-    .controls .users-box .users .user .info .status .place td div,
-    .controls .users-box .users .user .info .status .parent td div,
-    .controls .users-box .users .user .info .status .child td div {
+    .controls .users-box .users .user .info .place td div,
+    .controls .users-box .users .user .info .parent td div,
+    .controls .users-box .users .user .info .child td div {
       display: inline-block;
     }
     .controls .users-box .users .user .info .status .child td > div,
