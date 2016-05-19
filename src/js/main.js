@@ -633,7 +633,7 @@ function setup_viewmodel() {
 		user.index = user.parent.index + user.parent.child().length + 1;
 		val.child.push(user);
 		sortUsers();
-		if(!val.seat && !val.disabled) {
+		if(!val.seat) {
 			user.block(true);
 			Seat.unlink(user);
 			C.DEMO || select_next_user();
@@ -754,6 +754,7 @@ function select_next_user() {
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
 			return !item.curseat() && !item.block() && !item.disabled
 		})
+
 	if(await.length) view.selectUser(await[0])
 }
 function update_seats() {
@@ -831,7 +832,7 @@ function update_users(users) {
 		user.parent_name = ko.observable(user.parent ? user.parent.name : '')
 		user.seat     = seat
 		user.selected = ko.observable(false)
-		user.block    = ko.observable(!user.parent || (user.parent && user.parent.disabled)? false : true)
+		user.block    = ko.observable(!user.parent || (user.parent && user.parent.disabled && user.parent.seat)? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '-')
@@ -851,9 +852,9 @@ function update_users(users) {
 	})
 
 	view.users(users)
-	view.selectUser(select_user[0])
-	view.group_ticket(model.group_ticket)
 	sortUsers()
+	select_next_user()
+	view.group_ticket(model.group_ticket)
 }
 function sortUsers(){
 	var users = view.users() 
@@ -880,7 +881,7 @@ function setup_navigation() {
 		x = hround(x)
 		y = hround(y)
 
-		position(el.plane, -x, -y, scale)	
+		position(el.plane, -x, -y, scale)
 
 		var w = frames.view.size.x / scale,
 			h = frames.view.size.y / scale
