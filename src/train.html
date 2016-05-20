@@ -271,7 +271,7 @@
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
-			data-bind='click: funRegusSeat'>Правила <br>бронирования</div>
+			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила <br>бронирования</div>
 
         <table class="train_nav">
 	        <thead>
@@ -407,7 +407,7 @@
 		</div>
 		<a class="button back" href="demo/planes2.html"></a>
 		<div class="popup done" data-bind="visible: display_result, template: 'register-confirmation'" style="display: none;"></div>
-		<div class='popup regul-seat' data-bind='visible: show_regul_seat' style='display: none;'>
+		<div class='popup regul-seat' data-bind='visible: show_regul_seat, css: {"vis-regul-seat": display_result}' style='display: none;'>
 			<div class='cont_regul_seat' >
 				<div class='title_regul_seat'>Правила бронирования билетов</div>
 				<div data-bind='click: funRegusSeat' class="close_regul_seat"> &#10006;</div>

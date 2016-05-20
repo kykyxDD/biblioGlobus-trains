@@ -29,6 +29,18 @@ body {
   padding-top: 13px;
   font-size: 12px;
 }
+.view .btn_regul_seat.vis-regul-seat {
+  z-index: 999;
+  right: 0;
+  bottom: 30px;
+}
+.portrait .view .btn_regul_seat.vis-regul-seat {
+  z-index: 999;
+  right: 0;
+  bottom: auto;
+  top: 40px;
+}
+
 .controls .screen .board-num {
   padding: 10px 14px; }
 .controls .screen .airline-logo-small {

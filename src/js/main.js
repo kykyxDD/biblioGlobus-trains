@@ -686,7 +686,7 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length && !view.error_len()) {
+		if(!view.disable_submite()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
@@ -1402,7 +1402,7 @@ function updateDisable(seat, user){
 		view.error_len(false)
 	}
 
-	view.disable_submite((view.users().length === (num_disable + num_infant)) ? false : view.error_len())
+	view.disable_submite(view.error_len())
 }
 
 Seat.prototype = {
