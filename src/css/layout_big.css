@@ -50,6 +50,8 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
   user-select: none;}
   .controls .users-box .users .user.infant {
     height: 28px; }
@@ -355,11 +357,12 @@ body {
   max-width: 80%;
   max-height: 80%;
   background: #fff;
-  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   -o-user-select: none;
   -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+  user-select: none;;
 
 }
 .popup.regul-seat #regul_seat {
@@ -475,10 +478,11 @@ body {
       font-size: 20px;
       text-align: center;
       cursor: pointer;
-      -moz-user-select: -moz-none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
       -o-user-select: none;
       -khtml-user-select: none;
-      -webkit-user-select: none;
       user-select: none;
       border: 1px solid #000;
       border-radius: 5px;
@@ -496,10 +500,11 @@ body {
       width: 100%;
       min-height: 20px;
       cursor: pointer;
-      -moz-user-select: -moz-none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
       -o-user-select: none;
       -khtml-user-select: none;
-      -webkit-user-select: none;
       user-select: none;
     }
     .group .item_group.item {

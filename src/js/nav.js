@@ -282,6 +282,8 @@ FrameOfReference.prototype = {
 	},
 	_set: function(position) {
 		this.position = position.mul(this.dimension)
+		this.position.x = this.position.x < 0 ? 0 : this.position.x > this.dimension.x ? this.dimension.x : this.position.x ; 
+		this.position.y = this.position.y < 0 ? 0 : this.position.y > this.dimension.y ? this.dimension.y : this.position.y ; 
 		this.center   = this.position.sub(this.size.div(2))
 		this.updatePosition(this.center.x, this.center.y, this.scale)
 	}

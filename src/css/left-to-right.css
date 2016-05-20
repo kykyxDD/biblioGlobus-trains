@@ -24,18 +24,35 @@
 .train_nav {
     position: absolute;
     margin: 0 auto;
-    right: 0;
-    left: 0;
+    right: 25%;
+    left: 25%;
     top: 15px;
     font-family: Arial, sans-serif;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 10px;
     width: 50%;
+    pointer-events: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .train_nav thead {
   text-align: center;
+  pointer-events: auto;
+}
+.train_nav .info {
+  pointer-events: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .train_nav td.hide {

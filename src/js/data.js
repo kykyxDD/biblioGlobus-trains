@@ -22,6 +22,9 @@ var self = window.model = {
 		self.get.ready(function() {
 			if('ERROR' in self.ticket) {
 				var error = self.locale.error.select('code', self.ticket['ERROR'])
+				if(!error && self.ticket['COMMENT']) {
+					error = self.ticket['COMMENT']
+				}
 				fail_callback(error)
 			} else {
 				var pre = decodeURIComponent(REGISTRATION_NUMBER),

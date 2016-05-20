@@ -261,7 +261,7 @@ function ready() {
 	}
 	function loading_error(error) {
 		clearInterval(refresh.interval)
-		el.progress.textContent = error.message
+		el.progress.textContent = typeof error == 'string' ? error: error.message
 	}
 }
 function start() {
@@ -365,6 +365,8 @@ function prepare_train_view() {
         var cars = model.ticket.TRAIN.CAR
         var ind = calc_current_car_index() - 1
         if (ind < 0) ind = 0
+        if(ind === calc_current_car_index()) return
+
         var pos = (ind + 0.5) / cars.length
 
         navigation.stop_glide()
@@ -378,8 +380,10 @@ function prepare_train_view() {
         var cars = model.ticket.TRAIN.CAR
         var ind = calc_current_car_index() + 1
         if (ind >= cars.length) ind = cars.length - 1
+        if(ind === calc_current_car_index()) return
+
         var pos = (ind + 0.5) / cars.length
-        
+
         navigation.stop_glide()
         navigation.move(V(pos, pos))
         
@@ -1380,10 +1384,10 @@ function numInfant(){
 	})
 	return num
 }
-function numNoDisable(){
+function numDisable(){
 	var num = 0;
 	view.users().forEach(function(user){
-		if(!user.infant && user.disabled){
+		if(!user.infant && user.disabled && user.seat){
 			num += 1
 		}
 	})
@@ -1391,14 +1395,14 @@ function numNoDisable(){
 }
 function updateDisable(seat, user){
 	var num_infant = numInfant();
-	var num_no_disable = numNoDisable();
-	if(!view.placedUsers().length || (view.placedUsers().length + num_infant) < (view.users().length - num_no_disable)){
+	var num_disable = numDisable();
+	if(!view.placedUsers().length || (view.placedUsers().length + num_infant) < (view.users().length - num_disable)){
 		view.error_len(true)
 	} else {
 		view.error_len(false)
 	}
 
-	view.disable_submite(view.error_len())
+	view.disable_submite((view.users().length === (num_disable + num_infant)) ? false : view.error_len())
 }
 
 Seat.prototype = {
