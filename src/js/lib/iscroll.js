@@ -347,7 +347,9 @@ iScroll.prototype = {
 		if (!that.enabled) return;
 		// console.log(this.options)
 
-		// if (that.options.onBeforeScrollStart) that.options.onBeforeScrollStart.call(that, e);
+		if (that.options.onBeforeScrollStart) {
+			// that.options.onBeforeScrollStart.call(that, e);
+		}
 
 		if (that.options.useTransition || that.options.zoom) that._transitionTime(0);
 
@@ -510,7 +512,9 @@ iScroll.prototype = {
 		that._unbind(END_EV, window);
 		that._unbind(CANCEL_EV, window);
 
-		if (that.options.onBeforeScrollEnd) that.options.onBeforeScrollEnd.call(that, e);
+		if (that.options.onBeforeScrollEnd) {
+			that.options.onBeforeScrollEnd.call(that, e);
+		}
 
 		if (that.zoomed) {
 			scale = that.scale * that.lastScale;

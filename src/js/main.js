@@ -163,6 +163,7 @@ var view = {
 	loading: '',
 	orient : '',
 	decker : '',
+	item_seat: false,
 	upper  : false,
 	user   : null,
 	click_select: null,
@@ -182,19 +183,20 @@ var view = {
 }
 
 var el = {
-	view     : '.view',
-	plane    : '.plane',
-	nav      : '.nav',
-	logo     : '.airline-logo',
-	nav_logo : '.airline-logo-small',
-	frame    : '.frame',
-	fly      : '.fly',
-	result   : '.popup.done',
-	error    : '.popup.fail',
-	progress : '.background .caption',
-	current  : '.selection',
-	label    : '.selection .label',
-	hind     : '.popup_seat'
+	view      : '.view',
+	plane     : '.plane',
+	nav       : '.nav',
+	logo      : '.airline-logo',
+	nav_logo  : '.airline-logo-small',
+	frame     : '.frame',
+	fly       : '.fly',
+	result    : '.popup.done',
+	error     : '.popup.fail',
+	progress  : '.background .caption',
+	current   : '.selection',
+	label     : '.selection .label',
+	hind      : '.popup_seat',
+	popup_sex : '.popup_selected_sex'
 }
 
 var C = {
@@ -261,7 +263,7 @@ function ready() {
 	}
 	function loading_error(error) {
 		clearInterval(refresh.interval)
-		el.progress.textContent = typeof error == 'string' ? error: error.message
+		el.progress.textContent = error.message
 	}
 }
 function start() {
@@ -301,9 +303,10 @@ function start() {
 
 	setup_viewmodel()
 	setup_navigation()
-	update_group_seat()
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
+	create_group_seat()
+	update_group_seat()
 
 	resize()
 	register_events()
@@ -355,8 +358,9 @@ function prepare_train_view() {
     view.next_car_type = ko.observable('')
     view.next_car_num = ko.observable('')
     view.regul_seat = ko.observable('');
-    view.scroll_regul_seat = ko.observable(false)
-    view.hind = ko.observable('') 
+    view.scroll_regul_seat = ko.observable(false);
+    view.hind = ko.observable('');
+    view.show_popup_select_sex = ko.observable(false);
 
     navigation.position = V(0.2, 0.2)
     var update_nav_interval = setInterval(update_view, 200)
@@ -598,33 +602,13 @@ function setup_viewmodel() {
 			frames.view.move(user.seat.x, user.seat.y, true)
 		}
 	}
-	view.clickGroup = function(str, index, data){
-		if (str == 'rem') {
-			GroupsUsers.remGroup(data, index)
-		} else if (str == 'set'){
-			GroupsUsers.setGroup(data, index)
-		}
-	}
-	view.addGroup = function(){
-		GroupsUsers.createGroup();
-	}
-	view.clickUser = function(data, parent){
-		if(view.item_group() == false) return
-		
-		if(data.d_check() == false)  {
-			GroupsUsers.addUser(data)
-		} else if(data.d_check() == true) {
-			if(data.id_group() == view.item_group().id) {
-				GroupsUsers.addUser(data) 
-			} 
-		}
-	}
 
 	view.changeSelectParent = function(data, event){
 		var user = view.click_select();
 
 		var select = event.currentTarget || event.srcElement;
 		var val = view.list_parent()[select.selectedIndex];
+
 		if(val.child && val.child.indexOf(user) >= 0) return
 
 		if(user.parent && user.parent.child) {
@@ -656,6 +640,38 @@ function setup_viewmodel() {
 		}
 		view.click_select(data)
 	}
+	view.changeSex = function(item, event){
+		var group = view.item_group();
+		var seat = view.item_seat();
+		var user = view.user();
+		var target = event.target || event.srcElement;
+
+		if(group) {
+			position(group.select, group.center)
+
+			el.plane.appendChild(group.select)
+			group.seats.forEach(function(s_itm){
+				if(s_itm.user && !s_itm.info.infant && (target.value !== 'a' || target.sex !== 'c') && s_itm.info.sex !== target.value ){
+					Seat.unlink(s_itm.info)
+				}
+			})
+			group.sex = target.value;
+			group.seats.forEach(function(g_seat){
+				g_seat.sex = target.value
+			})
+
+			if(user.child || (user.parent && user.parent().seat)){
+				if(target.value == view.user().sex || target.value == 'a'){
+					Seat.link(view.user(), seat)
+					C.DEMO || select_next_user()
+				}
+			}
+
+			groups.some(method('draw'))
+		}
+		
+		hidePopupSex()
+	}
 	view.regul_seat(model.locale.message)
 	view.airline = ko.observable(model.airline)
 	view.classes = ko.observableArray([view.orient, view.decker, view.airline])
@@ -680,7 +696,12 @@ function setup_viewmodel() {
 	view.disable_submite = ko.observable(true);
 	view.show_regul_seat = ko.observable(false);
 	view.show_disable_seat = ko.observable(false);
-
+	view.sex_text 		= {
+		'f' : ['Ж', ' <br> только женского пола'], 
+		'm' : ['М', " <br> только мужского пола"], 
+		'c' : ['Ц', ', <br> совпадающего с полом <br> первого посаженного пассажира в секции,'],
+		'a' : ['C', 'любого пола']
+	};
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
 	})
@@ -759,7 +780,7 @@ function select_next_user() {
 			return !item.curseat() && !item.block() && !item.disabled
 		})
 
-	if(await.length) view.selectUser(await[0])
+	if(await.length){ view.selectUser(await[0]) }
 }
 function update_seats() {
 	var mod = model.struct['seats'];
@@ -774,7 +795,7 @@ function update_seats() {
 		}
 	})
 }
-function update_group_seat(){
+function create_group_seat(){
 	var groups_seat = {};
 
 	seats.forEach(function(seat){
@@ -811,6 +832,54 @@ function update_group_seat(){
 	})
 	view.groups_seat(groups_seat)
 }
+function update_group_seat() {
+	var train = view.groups_seat();
+
+	for(var s in train) {
+		var g = train[s].groups;
+		for(var i = 0; i < g.length; i++){
+			if(g[i].sex) {
+				var seats = g[i].seats;
+				var min_x = 10000000,
+					min_y = 10000000,
+					max_x = 0,
+					max_y = 0
+				for(var g_s = 0; g_s < seats.length; g_s++) {
+					var seat = seats[g_s]
+					var pos = [seat.x, seat.y];
+					min_x = Math.min(min_x, pos[0])
+					max_x = Math.max(max_x, pos[0])
+					min_y = Math.min(min_y, pos[1])
+					max_y = Math.max(max_y, pos[1])
+				}
+				g[i].center = {
+					x: min_x + (max_x - min_x)/2,
+					y: min_y + (max_y - min_y)/2
+				}
+				g[i].select = createSelectGroup(g[i])
+			}
+		}
+	}
+}
+function createSelectGroup(group) {
+	var elem = document.createElement('div');
+	elem.className = 'change_sex';
+	elem.addEventListener('click', function(){
+		changeSexGroup(group)
+	})
+	return elem
+}
+function changeSexGroup(group){
+	if(!view.show_popup_select_sex()){
+		view.item_seat(false);
+		view.item_group(group)
+		view.show_popup_select_sex(true);
+	} else {
+		hidePopupSex();
+	}
+	
+}
+
 function update_users(users) {
 	view.user(null)
 	if(view.users().length){
@@ -865,6 +934,15 @@ function sortUsers(){
 	view.users(users.sort(function(a,b){
 		return a.index > b.index ? 1 : -1;
 	}))
+}
+function showPopupSex(group){
+	view.item_group(group)
+	position(el.popup_sex, group.center.x, group.center.y)
+	view.show_popup_select_sex(true);
+} 
+function hidePopupSex(){
+	view.item_group(false)
+	view.show_popup_select_sex(false);
 }
 function setup_navigation() {
 	frames.view = navigation.addFrame(model.struct.plane.size)
@@ -1029,12 +1107,12 @@ function register_events() {
 				y      = (point1.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
-		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user) {
+		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user && !view.show_popup_select_sex()) {
 			var user = view.user();
 			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
 			
 			if(seat.sex && res){
-				view.hind(seat.sex_text[seat.sex][1])
+				view.hind(view.sex_text[seat.sex][1])
 				position(el.hind,x / frames.view.scale + 20,
 					    	 y / frames.view.scale + 30)
 			} else {
@@ -1076,23 +1154,39 @@ function register_events() {
 		e.preventDefault()
 	}
 	function click(e) {
+
+		var target = e.target || e.srcElement
+
+		if(target.tagName == 'INPUT' || has_class(target,'change_sex')) return
 		if(view.user() && !C.VIEWONLY) {
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),
 				y      = (point.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
 				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
+			if(seat) {
+				view.item_seat(seat);
 
-			if(seat && parent){
-				updateDisable(seat, view.user())
+				if(seat.group_seat.sex == true){
+					showPopupSex(seat.group_seat)
+				} else if(seat && parent){
+					updateDisable(seat, view.user())
 
-				if(view.user().parent) {
-					var seat_parent = view.user().parent.seat;
+					if(view.user().parent) {
+						var seat_parent = view.user().parent.seat;
+					}
+					seat && seat.take(view.user(), [x,y])
 				}
-				seat && seat.take(view.user(), [x,y])
 			}
 		}
 	}
+}
+function numUserGroup(group){
+	var num = 0
+	group.seats.forEach(function(seat){
+		if(seat.user) num++
+	})
+	return num
 }
 
 function position(elem, x, y, s) {
@@ -1309,7 +1403,7 @@ Seat.unlink = function(user, unlink_child) {
 
 		user.seat.info = null
 		user.seat.user = null
-
+/*
 		if(prev_seat.group_seat.sex) {
 			var last_user = true
 			prev_seat.group_seat.seats.forEach(function(_seat){
@@ -1322,10 +1416,10 @@ Seat.unlink = function(user, unlink_child) {
 				prev_seat.group_seat.sex = true
 				prev_seat.group_seat.seats.forEach(function(_seat){
 					_seat.sex = 'c'
-					_seat.match_sex = (_seat.sex && (_seat.sex === user.sex || _seat.sex =='c')) || !_seat.sex || user.infant;
+					_seat.match_sex = (_seat.sex && (_seat.sex === user.sex || _seat.sex =='c' || _seat.sex =='a')) || !_seat.sex || user.infant;
 				})
 			}
-		}
+		}*/
 
 		user.seat.group.draw()
 		user.seat = null
@@ -1346,10 +1440,11 @@ Seat.unlink = function(user, unlink_child) {
 }
 Seat.link = function(user, seat) {
 	if(user && seat) {
+		view.item_seat(false);
 		position(user.selection, seat)
 		user.label.textContent = seat.name
 		seat.deckElement.appendChild(user.selection)
-        add_class(user.selection, seat.type)
+		add_class(user.selection, seat.type)
 
 		user.seat = seat
 		seat.info = user
@@ -1363,12 +1458,7 @@ Seat.link = function(user, seat) {
 			})
 			view.usersbox_scroll.refresh();
 		}
-		if(seat.group_seat.sex && !user.infant){
-			seat.group_seat.sex = user.sex;
-			seat.group_seat.seats.forEach(function(g_seat){
-				g_seat.sex = user.sex
-			})
-		}
+
 		seat.group.draw()
 		updateDisable()
 	}
@@ -1435,9 +1525,8 @@ Seat.prototype = {
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c')) || !this.sex || user.infant;
+            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c' || this.sex == 'a')) || !this.sex || user.infant;
         }
-
 	},
 	draw: function() {
 		this.updateState()
@@ -1538,14 +1627,14 @@ Seat.prototype = {
 			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2 - cy);
 			if(this.sex){
 				ctx.textAlign = 'center';
-				ctx.strokeText("( "+this.sex_text[this.sex][0]+" )", (size/2) - size*0.75 - (ctx.measureText(this.sc_name).width/2), size / 2  + size/2 - cy)
+				ctx.strokeText("( "+view.sex_text[this.sex][0]+" )", (size/2) - size*0.75 - (ctx.measureText(this.sc_name).width/2), size / 2  + size/2 - cy)
 			}
 		} else {
 			ctx.textAlign = 'left';
 			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2 - cy);
 			if(this.sex){
 				ctx.textAlign = 'center';
-				ctx.strokeText("( "+this.sex_text[this.sex][0]+" )", (size/2) + size*0.75 + (ctx.measureText(this.sc_name).width/2), size / 2 + size/2 - cy )
+				ctx.strokeText("( "+view.sex_text[this.sex][0]+" )", (size/2) + size*0.75 + (ctx.measureText(this.sc_name).width/2), size / 2 + size/2 - cy )
 			}
 		}
 		
@@ -1613,7 +1702,10 @@ Seat.prototype = {
 
 		if(!already_placed) {
 			Seat.link(user, this);
-			C.DEMO || select_next_user() // переключение на следующего user
+			C.DEMO || select_next_user() // переключение на следующего user	
+		}
+		if(view.show_popup_select_sex()){
+			hidePopupSex()
 		}
 
 		this.highlight(coor)

@@ -267,6 +267,12 @@
 					Разрешена посадка пассажира
 					<span class='hind' data-bind='html:hind'></span> <br> и младенца любого пола.
 				</div>
+				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex'>
+					Есть посможность выбрать пол пассажиров, с которым хотите ехать.
+					<div class="input_m"><input type='radio' name='sex' value="m" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "m" }'>Мужской</div>
+					<div class="input_f"><input type='radio' name='sex' value="f" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "f" }'>Женский</div>
+					<div class="input_a"><input type='radio' name='sex' value="a" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "a" }'>Смешанный</div>
+				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
@@ -332,9 +338,7 @@
 				</div>
 
 				<div class="airline-logo-small"></div>
-				<div class="nav">
-					<div class="frame center"></div>
-				</div>
+				<div class="nav"><div class="frame center"></div></div>
 				<div class="overlay"></div>
 				<div data-bind="text: debug.pos_nav" class="corner nav-info"></div>
 			</div>
