@@ -647,14 +647,18 @@ function setup_viewmodel() {
 		var target = event.target || event.srcElement;
 
 		if(group) {
+
 			position(group.select, group.center)
 
 			el.plane.appendChild(group.select)
-			group.seats.forEach(function(s_itm){
-				if(s_itm.user && !s_itm.info.infant && (target.value !== 'a' || target.sex !== 'c') && s_itm.info.sex !== target.value ){
-					Seat.unlink(s_itm.info)
-				}
-			})
+			var next_sex = target.value == 'a' || target.value == 'c';
+			if(!next_sex) {
+				group.seats.forEach(function(s_itm){
+					if(s_itm.user && !s_itm.info.infant && s_itm.info.sex !== target.value){
+						Seat.unlink(s_itm.info)
+					}
+				})
+			}
 			group.sex = target.value;
 			group.seats.forEach(function(g_seat){
 				g_seat.sex = target.value
@@ -665,6 +669,9 @@ function setup_viewmodel() {
 					Seat.link(view.user(), seat)
 					C.DEMO || select_next_user()
 				}
+			}
+			if(user.parent && !user.parent.seat && !user.seat) {
+				select_next_user()
 			}
 
 			groups.some(method('draw'))
@@ -699,8 +706,8 @@ function setup_viewmodel() {
 	view.sex_text 		= {
 		'f' : ['Ж', ' <br> только женского пола'], 
 		'm' : ['М', " <br> только мужского пола"], 
-		'c' : ['Ц', ', <br> совпадающего с полом <br> первого посаженного пассажира в секции,'],
-		'a' : ['C', 'любого пола']
+		'c' : ['Ц', '<br> по выбору пола пользователем'],
+		'a' : ['C', ' ']
 	};
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -772,15 +779,17 @@ function make_selection_label() {
 
 	return { selection: root, label: root.querySelector('.label') }
 }
-function select_next_user() {
+function select_next_user(get_index) {
 	var users = view.users(),
-		index = users.indexOf(view.user()),
+		index = get_index >= 0 ? users.indexOf(view.user()) : get_index,
 
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
 			return !item.curseat() && !item.block() && !item.disabled
 		})
 
-	if(await.length){ view.selectUser(await[0]) }
+	if(await.length){ 
+		view.selectUser(await[0]) 
+	}
 }
 function update_seats() {
 	var mod = model.struct['seats'];
@@ -864,20 +873,19 @@ function update_group_seat() {
 function createSelectGroup(group) {
 	var elem = document.createElement('div');
 	elem.className = 'change_sex';
-	elem.addEventListener('click', function(){
-		changeSexGroup(group)
-	})
+	(function(g){elem.addEventListener('click', function(){
+			changeSexGroup(g)
+	})})(group);
 	return elem
 }
 function changeSexGroup(group){
-	if(!view.show_popup_select_sex()){
+	if(!view.show_popup_select_sex() || 
+	   (view.item_group() && (view.item_group().center.x !== group.center.x || view.item_group().center.y !== group.center.y))){
 		view.item_seat(false);
-		view.item_group(group)
-		view.show_popup_select_sex(true);
+		showPopupSex(group)
 	} else {
 		hidePopupSex();
 	}
-	
 }
 
 function update_users(users) {
@@ -939,6 +947,15 @@ function showPopupSex(group){
 	view.item_group(group)
 	position(el.popup_sex, group.center.x, group.center.y)
 	view.show_popup_select_sex(true);
+	if(group.sex !== true){
+		el.popup_sex.querySelector('input[value="'+group.sex+'"]').checked = true
+	} else {
+		var all_input = el.popup_sex.querySelectorAll('input[name="sex"]')
+		for(var i = 0; i < all_input.length; i++){
+			if(all_input[i].checked) all_input[i].checked = false
+		}
+	}
+	
 } 
 function hidePopupSex(){
 	view.item_group(false)
@@ -1154,10 +1171,9 @@ function register_events() {
 		e.preventDefault()
 	}
 	function click(e) {
-
 		var target = e.target || e.srcElement
 
-		if(target.tagName == 'INPUT' || has_class(target,'change_sex')) return
+		if(target.tagName == 'INPUT' || has_class(target,'change_sex') || has_class(target,'input_m')) return
 		if(view.user() && !C.VIEWONLY) {
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),
@@ -1177,6 +1193,8 @@ function register_events() {
 					}
 					seat && seat.take(view.user(), [x,y])
 				}
+			} else if(view.show_popup_select_sex()){
+				hidePopupSex()
 			}
 		}
 	}
