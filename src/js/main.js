@@ -779,9 +779,9 @@ function make_selection_label() {
 
 	return { selection: root, label: root.querySelector('.label') }
 }
-function select_next_user(get_index) {
+function select_next_user() {
 	var users = view.users(),
-		index = get_index >= 0 ? users.indexOf(view.user()) : get_index,
+		index = users.indexOf(view.user()),
 
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
 			return !item.curseat() && !item.block() && !item.disabled
