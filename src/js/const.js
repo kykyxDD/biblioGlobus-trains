@@ -1,6 +1,6 @@
 Const = {
 
-    labelSize: 26,
+    labelSize: 24,
     labelTransform: [1, 0, 0, 1, -13, -25],
 
     tripInfoTag: 'TRIP',

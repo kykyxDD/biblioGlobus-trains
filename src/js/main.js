@@ -159,6 +159,7 @@ var debug = {
 		}
 	}
 }
+
 var view = {
 	loading: '',
 	orient : '',
@@ -265,6 +266,7 @@ function ready() {
 		clearInterval(refresh.interval)
 		el.progress.textContent = error.message
 	}
+	
 }
 function start() {
 
@@ -303,6 +305,8 @@ function start() {
 
 	setup_viewmodel()
 	setup_navigation()
+	loadImageIcon()
+	
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 	create_group_seat()
@@ -326,6 +330,71 @@ function start() {
         view.error(model.ticket.MESSAGE)
     }
 }
+
+function loadImageIcon(loader){
+	var loader = new Loader;
+	
+	var obj_url = {
+		'no_seat': {
+			src: 'img/01.png',
+			seats: [],
+			img: false
+		},
+		'seat_l_na': {
+			src: 'img/02.png',
+			seats: [],
+			img: false	
+		},
+		'seat_l_a': {
+			src: 'img/02.png',
+			seats: [],
+			img: false	
+		},
+		'seat_r_na': {
+			src: 'img/04.png',
+			seats: [],
+			img: false	
+		},
+		'seat_r_a': {
+			src: 'img/06.png',
+			seats: [],
+			img: false	
+		},
+		'icon_f' : {
+			src: 'img/09.png',
+			seats: [],
+			img: false
+		},
+		'icon_m' : {
+			src: 'img/08.png',
+			seats: [],
+			img: false	
+		},
+		'icon_a' : {
+			src: 'img/10.png',
+			seats: [],
+			img: false
+		},
+		'icon_c' : {
+			src: 'img/05.png',
+			seats: [],
+			img: false	
+		}
+	}
+	view.objIconSeat = obj_url;
+	// var num = 0;
+	for(var key in obj_url){
+		(function(obj){
+			loader.image(obj.src, function(img) {
+				obj.img = img;
+				obj.seats.forEach(function(seat, index){
+					seat.draw()
+				})
+			})
+		})(obj_url[key])
+	}
+}
+
 
 function prepare_train_view() {
     
@@ -560,7 +629,7 @@ function setup_viewmodel() {
 	view.formatAirport = function(data) {
 		return data.port_rus + " " + data.port
 	}
-
+	view.objIconSeat = {}
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.group_seat = ko.observable()
@@ -572,11 +641,16 @@ function setup_viewmodel() {
 	view.selectUser = function(user, e) {
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
 			var previous = view.user()
+
 			if(previous) {
+				console.log(previous.selection)
+				rem_class(previous.selection, 'active')
 				previous.selected(false)
 			}
 			view.user(user)
 			user.selected(true)
+			console.log(user.selection)
+			add_class(user.selection, 'active')
 			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
 				|| user.child || user.parent || (previous.parent || (!user.child))) {
 				groups.some(method('draw'))
@@ -766,15 +840,14 @@ function setup_viewmodel() {
 
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
-function make_selection_label() {
-	var root = document.createElement('div')
-	root.className = 'selection'
+function make_selection_label(sex) {
+	var root = document.createElement('div');
+	root.className = 'selection ' +sex;
+	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
-			'<div data-bind="text: user.curseat" class="label"></div>'+
-            '<svg viewBox="0 0 26 26">'+
- 				'<path d="M0,0 L26,0 L26,18 L13,26 L0,18 L0,0" />'+
- 			'</svg>'+
+			'<img height="100%">'+
+			'<div class="label"></div>'+
  		'</div>'
 
 	return { selection: root, label: root.querySelector('.label') }
@@ -925,7 +998,7 @@ function update_users(users) {
         })
         if(seat) seat.user = user.face[seat.sid]
 
-		user.copy(make_selection_label())
+		user.copy(make_selection_label(user.sex))
 	})
 
 	var select_user = users.filter(function(itm){
@@ -1009,7 +1082,7 @@ function setup_navigation() {
                             o.c.getContext('2d').fillStyle = "black"
                             o.c.getContext('2d').fillRect(0, 0, 300, 100)
                             o.c.getContext('2d').fillStyle = "white"
-                            o.c.getContext('2d').font = "10px Verdana";
+                            o.c.getContext('2d').font = "12px Verdana";
                             o.c.getContext('2d').fillText(o.x + " " + o.y + " " + o.url, 10, 50)
                         }
 					})
@@ -1173,7 +1246,7 @@ function register_events() {
 	function click(e) {
 		var target = e.target || e.srcElement
 
-		if(target.tagName == 'INPUT' || has_class(target,'change_sex') || has_class(target,'input_m')) return
+		if(target.tagName == 'INPUT' || target.tagName == 'LABEL' || has_class(target,'change_sex') || has_class(target,'input_m')) return
 		if(view.user() && !C.VIEWONLY) {
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),
@@ -1416,7 +1489,7 @@ Seat.togglePassengers = function(show) {
 Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
-		user.selection.className = "selection"
+		user.selection.className = "selection "+user.sex
 		var prev_seat = user.seat
 
 		user.seat.info = null
@@ -1462,7 +1535,15 @@ Seat.link = function(user, seat) {
 		position(user.selection, seat)
 		user.label.textContent = seat.name
 		seat.deckElement.appendChild(user.selection)
-		add_class(user.selection, seat.type)
+		if(has_class(user.selection)) {
+			add_class(user.selection, seat.type)	
+		} else  {
+			add_class(user.selection, seat.type + ' active')	
+		}
+
+		var img = user.selection.querySelector('img');
+		console.log(img)
+		img.src = view.objIconSeat['seat_r_a'].img.src
 
 		user.seat = seat
 		seat.info = user
@@ -1574,6 +1655,8 @@ Seat.prototype = {
 			} else {
 				this.drawLabel(this.name.toUpperCase())
 			}
+		} else {
+			this.drawLabelNoSeat(this.name.toUpperCase())
 		} 
 	},
 	drawUnit: function(img, x, y) {
@@ -1626,39 +1709,75 @@ Seat.prototype = {
         var size = this.labelSize;
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
         var dy = this.sprite.offset.label[1];
+        var obj_img = view.objIconSeat
 
 		ctx.save();
 		ctx.fillStyle =
 			debug.enabled && this.over ? 'orangered' :
 			debug.enabled && this.low  ? 'crimson'   :
 			this === model.taken       ? '#19cf00'   :
-			                             'rgba(0,0,0,0.5)';
+			                             'rgb(0,0,0)';
 
-		ctx.translate(this.X + dx, this.Y + dy);
+		ctx.translate(this.X + dx, this.Y + dy - 7);
 		ctx.transform.apply(ctx, this.labelTransform);
-		ctx.fillRect(0, 0, size, size);
-		ctx.strokeText(text, size / 2, size / 2);
-		var cy = this.sex ? 7: 0;
+		// var cy = this.sex ? 7: 0;
+		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
+		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
+		var w = right ? Math.floor(img_s.img.width/size) -1 : 0;
 
-		if(this.type.indexOf('right') !== -1) {
-			ctx.textAlign = 'right';
-			ctx.strokeText(this.sc_name, (size/2) - size*0.75 , size / 2 - cy);
-			if(this.sex){
-				ctx.textAlign = 'center';
-				ctx.strokeText("( "+view.sex_text[this.sex][0]+" )", (size/2) - size*0.75 - (ctx.measureText(this.sc_name).width/2), size / 2  + size/2 - cy)
-			}
+		if(img_s.img) {
+			ctx.drawImage(img_s.img, 0-size*w, 0, img_s.img.width, img_s.img.height)	
 		} else {
-			ctx.textAlign = 'left';
-			ctx.strokeText(this.sc_name, (size/2) + size*0.75 , size / 2 - cy);
-			if(this.sex){
-				ctx.textAlign = 'center';
-				ctx.strokeText("( "+view.sex_text[this.sex][0]+" )", (size/2) + size*0.75 + (ctx.measureText(this.sc_name).width/2), size / 2 + size/2 - cy )
-			}
+    		img_s.seats.push(this)
 		}
+
+		if(img_sex.img) {
+			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
+			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
+			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)	
+		} else {
+			img_sex.seats.push(this)
+		}
+		this.coor_popup = right ? [this.x, this.y] : [this.x + size, this.y];
+		ctx.strokeStyle = "rgb(0,0,0)";
+		ctx.fillText(text, size / 2, size / 2);
 		
 		ctx.textAlign = 'center';
 		ctx.restore();
 	},
+	drawLabelNoSeat: function(text){
+		var ctx  = this.group.context;
+        var size = this.labelSize;
+        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+        var dy = this.sprite.offset.label[1];
+
+        ctx.save();
+		ctx.fillStyle =
+			debug.enabled && this.over ? 'orangered' :
+			debug.enabled && this.low  ? 'crimson'   :
+			this === model.taken       ? '#19cf00'   :
+			                             'rgba(255, 255, 255, 0.5)';
+			                             // console.log(dx, dy)
+		
+		var obj = view.objIconSeat['no_seat']
+		if(obj.img) {
+			ctx.translate(this.X + dx , this.Y + dy - size/2 );
+			ctx.transform.apply(ctx, this.labelTransform);
+			// ctx.fillRect(0, 0, size, size);
+			ctx.strokeText(text, size / 2, size / 2);
+			var cy = this.sex ? 7: 0;
+
+			ctx.drawImage(obj.img, 0, 0, obj.img.width, obj.img.height)		
+			ctx.restore();
+		} else {
+			if(!obj.seats) {
+				obj.seats = []
+			}
+			obj.seats.push(this)
+		}
+	},
+	
 	drawMaskSeat: function(){
 		var ctx  = this.group.context;
         var size = this.labelSize;
