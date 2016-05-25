@@ -555,6 +555,7 @@ function setup_viewmodel() {
 
 
 	view.board = model.boardinfo
+	view.id_idt = view.board.idt
 	view.board.time = /(\d+?)(\d\d)$/.exec(view.board.takeoff_time).slice(1).join(':')
 	view.board.arrival_time = /(\d+?)(\d\d)$/.exec(view.board.arrival_time).slice(1).join(':')
 	view.formatAirport = function(data) {
@@ -564,6 +565,10 @@ function setup_viewmodel() {
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
 	view.group_seat = ko.observable()
+
+	view.idt_href = ko.observable()
+	view.idt_href("/tozata&tourid="+ (params.tourid || view.board.tourid) + "&idt="+ view.id_idt);
+
 	view.placedUsers = ko.computed(function() {
 		return view.users().filter(function(user){
 			return user.curseat() && !user.disabled

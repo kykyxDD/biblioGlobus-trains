@@ -309,6 +309,7 @@ var self = window.model = {
 	collectBoardInfo: function() {
 		var board = self.ticket[Const.tripInfoTag]
 		self.boardinfo = {
+			idt			  :self.ticket['IDT'],
 			name          :self.name,
 			date          :board['DATE'           ],
 			num           :board['NUM'            ],
@@ -318,6 +319,7 @@ var self = window.model = {
 			arrival_date  :board[Const.arrivalDate],
 			arrival_time  :board[Const.arrivalTime],
 			takeoff_time  :board[Const.depatureTimeTag],
+			tourid		  :get_params && get_params.tourid,
 			from: {
 				port      :board['AIRP_FROM'] ? "(" + board['AIRP_FROM'] + ")" : "",
 				port_rus  :board[Const.depatureCityTag],
