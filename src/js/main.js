@@ -305,12 +305,11 @@ function start() {
 
 	setup_viewmodel()
 	setup_navigation()
-	loadImageIcon()
-	
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 	create_group_seat()
 	update_group_seat()
+	loadImageIcon()
 
 	resize()
 	register_events()
@@ -320,7 +319,7 @@ function start() {
 	view.users().forEach(function(user) {
 		Seat.link(user, seats.select('num', user.curseat()))
 	})
-	groups.some(method('draw'))
+	// groups.some(method('draw'))
 	// load_session()
 
 	view.loading('done')
@@ -331,7 +330,7 @@ function start() {
     }
 }
 
-function loadImageIcon(loader){
+function loadImageIcon(){
 	var loader = new Loader;
 	
 	var obj_url = {
@@ -382,14 +381,16 @@ function loadImageIcon(loader){
 		}
 	}
 	view.objIconSeat = obj_url;
-	// var num = 0;
+	var num = 0;
 	for(var key in obj_url){
+		num++
 		(function(obj){
 			loader.image(obj.src, function(img) {
 				obj.img = img;
-				obj.seats.forEach(function(seat, index){
-					seat.draw()
-				})
+				num--
+				if(!num) {
+					groups.some(method('draw'))
+				}
 			})
 		})(obj_url[key])
 	}
@@ -643,13 +644,11 @@ function setup_viewmodel() {
 			var previous = view.user()
 
 			if(previous) {
-				console.log(previous.selection)
 				rem_class(previous.selection, 'active')
 				previous.selected(false)
 			}
 			view.user(user)
 			user.selected(true)
-			console.log(user.selection)
 			add_class(user.selection, 'active')
 			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
 				|| user.child || user.parent || (previous.parent || (!user.child))) {
@@ -719,36 +718,32 @@ function setup_viewmodel() {
 		var seat = view.item_seat();
 		var user = view.user();
 		var target = event.target || event.srcElement;
+		var sex = target.value
 
 		if(group) {
-
-			position(group.select, group.center)
-
-			el.plane.appendChild(group.select)
-			var next_sex = target.value == 'a' || target.value == 'c';
+			var next_sex = sex == 'a' || sex == 'c';
 			if(!next_sex) {
 				group.seats.forEach(function(s_itm){
-					if(s_itm.user && !s_itm.info.infant && s_itm.info.sex !== target.value){
+					if(s_itm.user && !s_itm.info.infant && s_itm.info.sex !== sex){
 						Seat.unlink(s_itm.info)
 					}
 				})
 			}
-			group.sex = target.value;
+			group.sex = sex;
 			group.seats.forEach(function(g_seat){
-				g_seat.sex = target.value
+				g_seat.sex = sex
 			})
-
-			if(user.child || (user.parent && user.parent().seat)){
-				if(target.value == view.user().sex || target.value == 'a'){
-					Seat.link(view.user(), seat)
+			if(((user.parent && user.parent.curseat()) || !user.parent)) {
+				if(sex == view.user().sex || sex == 'a'){
+					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
 			}
 			if(user.parent && !user.parent.seat && !user.seat) {
 				select_next_user()
 			}
-
-			groups.some(method('draw'))
+			
+			seat.group.draw()
 		}
 		
 		hidePopupSex()
@@ -800,7 +795,7 @@ function setup_viewmodel() {
 	view.success = function(text) {
 		update_seats()
 		update_users(model.users)
-		groups.some(method('draw'))
+		// groups.some(method('draw'))
 		view.display_result(true)
 		view.result_header(text.head)
 		view.result_text(text.body)
@@ -846,7 +841,7 @@ function make_selection_label(sex) {
 	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
-			'<img height="100%">'+
+			'<img height="100%" src="img/06.png">'+
 			'<div class="label"></div>'+
  		'</div>'
 
@@ -910,9 +905,25 @@ function create_group_seat(){
 				seat.group_seat = obj;
 			}
 		}
+		if(obj.sex) {
+			create_label(seat)
+		}
+
 		seat.group_seat = obj
 	})
 	view.groups_seat(groups_seat)
+}
+function create_label(seat) {
+	var div = document.createElement('div');
+	div.className = 'label_group';
+	seat.deckElement.appendChild(div);
+	var dx = seat.X + seat.sprite.offset.label[0] + seat.sprite.offset.size[0];
+    var dy = seat.Y + seat.sprite.offset.label[1] -7;
+
+	div.addEventListener('click', function(){
+		showPopupSex(seat)
+	})
+	seat.labels = div
 }
 function update_group_seat() {
 	var train = view.groups_seat();
@@ -920,6 +931,7 @@ function update_group_seat() {
 	for(var s in train) {
 		var g = train[s].groups;
 		for(var i = 0; i < g.length; i++){
+			if(!g[i]) continue
 			if(g[i].sex) {
 				var seats = g[i].seats;
 				var min_x = 10000000,
@@ -938,7 +950,7 @@ function update_group_seat() {
 					x: min_x + (max_x - min_x)/2,
 					y: min_y + (max_y - min_y)/2
 				}
-				g[i].select = createSelectGroup(g[i])
+				// g[i].select = createSelectGroup(g[i])
 			}
 		}
 	}
@@ -1016,9 +1028,14 @@ function sortUsers(){
 		return a.index > b.index ? 1 : -1;
 	}))
 }
-function showPopupSex(group){
+function showPopupSex(seat){
+	var group = seat.group_seat;
 	view.item_group(group)
-	position(el.popup_sex, group.center.x, group.center.y)
+	view.item_seat(seat)
+	var right = seat.seat_right ? seat.labelSize*2 : 0;
+	// seat.labels.appendChild(el.popup_sex)
+	position(el.popup_sex, seat.labels_pos.x - right, seat.labels_pos.y)
+
 	view.show_popup_select_sex(true);
 	if(group.sex !== true){
 		el.popup_sex.querySelector('input[value="'+group.sex+'"]').checked = true
@@ -1033,6 +1050,10 @@ function showPopupSex(group){
 function hidePopupSex(){
 	view.item_group(false)
 	view.show_popup_select_sex(false);
+	// if(el.popup_sex.parent){
+	// 	el.popup_sex.parent.removeChild(el.popup_sex)	
+	// }
+	
 }
 function setup_navigation() {
 	frames.view = navigation.addFrame(model.struct.plane.size)
@@ -1246,7 +1267,7 @@ function register_events() {
 	function click(e) {
 		var target = e.target || e.srcElement
 
-		if(target.tagName == 'INPUT' || target.tagName == 'LABEL' || has_class(target,'change_sex') || has_class(target,'input_m')) return
+		if(target.tagName == 'INPUT' || target.tagName == 'LABEL' || has_class(target,'change_sex') || has_class(target,'label_group')) return
 		if(view.user() && !C.VIEWONLY) {
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),
@@ -1257,7 +1278,7 @@ function register_events() {
 				view.item_seat(seat);
 
 				if(seat.group_seat.sex == true){
-					showPopupSex(seat.group_seat)
+					// showPopupSex(seat)
 				} else if(seat && parent){
 					updateDisable(seat, view.user())
 
@@ -1297,7 +1318,16 @@ function click_sound() {
 	catch(e) { 'hello, my name is iOS' }
 	el.sound.play()
 }
-
+function showLabels(seat){
+	seat.show_labels = true;
+	var elem = seat.labels;
+	rem_class(elem, 'hide')
+}
+function hideLabels(seat){
+	seat.show_labels = false;
+	var elem = seat.labels;
+	add_class(elem, 'hide')
+}
 
 function Tile(elem) {
 
@@ -1530,27 +1560,23 @@ Seat.unlink = function(user, unlink_child) {
 	}
 }
 Seat.link = function(user, seat) {
-	if(user && seat) {
+	if(user && seat && !seat.user) {
 		view.item_seat(false);
 		position(user.selection, seat)
 		user.label.textContent = seat.name
 		seat.deckElement.appendChild(user.selection)
 		if(has_class(user.selection)) {
-			add_class(user.selection, seat.type)	
+			add_class(user.selection, seat.type)
 		} else  {
-			add_class(user.selection, seat.type + ' active')	
+			add_class(user.selection, seat.type + ' active')
 		}
-
-		var img = user.selection.querySelector('img');
-		console.log(img)
-		img.src = view.objIconSeat['seat_r_a'].img.src
 
 		user.seat = seat
 		seat.info = user
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
-		
+
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(false)
@@ -1651,6 +1677,8 @@ Seat.prototype = {
 				var res = FilterSeat.seatChild(this, view.user().parent)
 				if(res) {
 					this.drawLabel(this.name.toUpperCase())
+				} else {
+					this.drawLabelNoSeat(this.name.toUpperCase())
 				}
 			} else {
 				this.drawLabel(this.name.toUpperCase())
@@ -1720,10 +1748,15 @@ Seat.prototype = {
 
 		ctx.translate(this.X + dx, this.Y + dy - 7);
 		ctx.transform.apply(ctx, this.labelTransform);
-		// var cy = this.sex ? 7: 0;
+
 		var right = this.type.indexOf('right') !== -1 ? true : false;
 		var img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
 		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
+
+		if(!img_s || !img_sex) {
+			ctx.restore()
+			return
+		}
 		var w = right ? Math.floor(img_s.img.width/size) -1 : 0;
 
 		if(img_s.img) {
@@ -1735,14 +1768,26 @@ Seat.prototype = {
 		if(img_sex.img) {
 			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
 			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
-			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)	
-		} else {
-			img_sex.seats.push(this)
+			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
+			if(this.group_seat.sex){
+				if(!this.labels_pos) {
+					this.labels_pos = {
+						x: this.X + dx + i_dx - (size*0.7) + this.group.size.left, 
+						y: this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
+					}
+					this.show_labels = true
+					this.seat_right = right;
+					position(this.labels, this.labels_pos.x, this.labels_pos.y)
+				}
+			}
+		}
+		if(this.group_seat.sex && !this.show_labels) {
+			showLabels(this)
 		}
 		this.coor_popup = right ? [this.x, this.y] : [this.x + size, this.y];
 		ctx.strokeStyle = "rgb(0,0,0)";
 		ctx.fillText(text, size / 2, size / 2);
-		
+
 		ctx.textAlign = 'center';
 		ctx.restore();
 	},
@@ -1751,6 +1796,7 @@ Seat.prototype = {
         var size = this.labelSize;
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
         var dy = this.sprite.offset.label[1];
+        var obj_img = view.objIconSeat
 
         ctx.save();
 		ctx.fillStyle =
@@ -1758,24 +1804,60 @@ Seat.prototype = {
 			debug.enabled && this.low  ? 'crimson'   :
 			this === model.taken       ? '#19cf00'   :
 			                             'rgba(255, 255, 255, 0.5)';
-			                             // console.log(dx, dy)
 		
-		var obj = view.objIconSeat['no_seat']
-		if(obj.img) {
-			ctx.translate(this.X + dx , this.Y + dy - size/2 );
-			ctx.transform.apply(ctx, this.labelTransform);
-			// ctx.fillRect(0, 0, size, size);
-			ctx.strokeText(text, size / 2, size / 2);
-			var cy = this.sex ? 7: 0;
+		var obj = obj_img['no_seat']
+		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
 
-			ctx.drawImage(obj.img, 0, 0, obj.img.width, obj.img.height)		
-			ctx.restore();
-		} else {
-			if(!obj.seats) {
-				obj.seats = []
-			}
-			obj.seats.push(this)
+		if(!obj || !img_sex) {
+			ctx.restore()
+			return
 		}
+		if(obj.img) {
+			ctx.translate(this.X + dx , this.Y + dy - size/4 -1);
+			ctx.transform.apply(ctx, this.labelTransform);
+			ctx.strokeText(text, size / 2, size / 2);
+
+			ctx.drawImage(obj.img, -1, 0, obj.img.width, obj.img.height)		
+			
+		}
+		
+		if(img_sex.img) {
+			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
+			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
+			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
+			this.drawLine(right)
+		}
+		ctx.restore();
+
+		if(this.group_seat.sex && this.show_labels) {
+			hideLabels(this)
+		}
+	},
+	drawLine: function(side){
+		var ctx = this.group.context;
+		var size = this.labelSize;
+
+	    ctx.beginPath();
+
+	    if(!side) {
+	    	ctx.moveTo(size - size/8,0.5);
+	    	ctx.lineTo(size*2 - size/8, 0.5)
+	    	ctx.quadraticCurveTo(size*2, 0.5,size*2, size/8);
+	    	ctx.lineTo(size*2, size - size/8)
+	    	ctx.quadraticCurveTo(size*2, size, size*2 - size/8, size-1);
+	    	ctx.lineTo(size-3, size-1)
+	    } else {
+	    	ctx.moveTo(0,0.5)
+	    	ctx.lineTo(-size + size/8, 0.5)
+	    	ctx.quadraticCurveTo(-size, 1,-size, size/8);
+	    	ctx.lineTo(-size, size - size/8)
+	    	ctx.quadraticCurveTo(-size, size-1, -size + size/8, size -1);
+	    	ctx.lineTo(0, size-1)
+	    }
+	    ctx.lineWidth = 1
+		ctx.stroke()
+		    
 	},
 	
 	drawMaskSeat: function(){

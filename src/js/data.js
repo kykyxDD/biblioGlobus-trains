@@ -464,6 +464,8 @@ var self = window.model = {
         
         var left = 1437
         var top = 810
+
+        //убрать места, которых нет в xml
         
         for (var i=0; i<cars.length; i++) {
             var car = cars[i]

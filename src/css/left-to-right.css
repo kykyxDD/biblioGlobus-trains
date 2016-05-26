@@ -132,11 +132,11 @@
 }
 
 .view .plane .deck .selection .wrap {
-  -webkit-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -moz-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -ms-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -o-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  -webkit-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -moz-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -ms-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -o-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
   position: relative;
   
 }
@@ -184,18 +184,18 @@
   transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
 }
 .kupe_upper_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-74px, 116px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-74px, 116px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-74px, 116px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-74px, 116px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-74px, 116px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
 }
 .kupe_upper_right .wrap {
-  -webkit-transform: rotate(0deg) translate(-111px, 130px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-111px, 130px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-111px, 130px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-111px, 130px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-111px, 130px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
 }
 .kupe_lower_left  .wrap {
   -webkit-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
