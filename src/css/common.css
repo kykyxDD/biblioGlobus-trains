@@ -93,6 +93,18 @@ audio {
       backface-visibility: hidden;
       opacity: 1;
       z-index: 4; }
+      .view .plane .label_group {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        /*background: gray;*/
+        visibility: visible;
+        z-index: 10;
+        cursor: pointer;
+      }
+      .view .plane .label_group.hide {
+        /*visibility: hidden;*/
+      }
       .view .plane .change_sex {
         position: absolute;
         width: 30px;
@@ -134,12 +146,12 @@ audio {
         position: absolute;
         left: 0;
         top: 0;
-        width: 26px;
-        height: 26px;
+        width: 72px;
+        height: 28px;
         margin-left: -40px;
         margin-top: -30px;
-        pointer-events: none;
-        text-align: center; }
+        pointer-events: none;}
+
         .view .plane .deck .selection .wrap {
           width: 100%;
           height: 100%;
@@ -153,8 +165,46 @@ audio {
             fill: rgba(64, 255, 64, 0.8); }
           .view .plane .deck .selection .wrap .label {
             position: absolute;
-            font: 10px/2 Arial;
-            width: 100%; }
+            font: 11px/2 Arial;
+            line-height: 22px;
+            width: 26px; 
+            text-align: center;
+          }
+
+          .selection .wrap:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            left: 26px;
+          }
+          .selection.f .wrap:after {
+            background: url('../img/09_1.png') no-repeat center;
+          }
+          .selection.m .wrap:after {
+            background: url('../img/08_1.png') no-repeat center;  
+          }
+          .selection.a .wrap:after {
+            background: url('../img/10_1.png') no-repeat center;  
+          }
+          .selection.platz_lower_right .wrap:after,
+          .selection.platz_upper_right .wrap:after,
+          .selection.kupe_upper_right .wrap:after,
+          .selection.kupe_lower_right .wrap:after {
+            right: 26px;
+            left: auto;
+          }
+          .selection.platz_lower_top  .wrap:after,
+          .selection.platz_upper_top  .wrap:after,
+          .selection.platz_upper_left .wrap:after,
+          .selection.platz_lower_left .wrap:after,
+          .selection.platz_upper_left .wrap:after,
+          .selection.kupe_upper_left .wrap:after,
+          .selection.kupe_lower_left .wrap:after {
+            left: 26px;
+          }
+
     .view .plane .fly,
     .view .plane .popup_seat {
       position: absolute;
@@ -162,24 +212,59 @@ audio {
       z-index: 5; }
       .view .popup_selected_sex {
         position: absolute;
+        margin-top: 1px;
         z-index: 5;
-        width: 200px;
+        width: 72px;
+        height: 22px;
         background: rgba(255,255,255, 0.7);
         font-family: Arial, sans-serif;
-        padding: 10px;
-        font-size: 0.8em;
+        /*padding: 10px;*/
+        /*font-size: 0.8em;*/
         border-radius: 5px;
         }
         .view .popup_selected_sex p {
-          margin: 5px 0;
+          /*margin: 5px 0;*/
         }
         .view .popup_selected_sex input {
           vertical-align: bottom;
           margin: 0 5px;
+          display: none;
         }
         .view .popup_selected_sex.item_f .input_m,
         .view .popup_selected_sex.item_m .input_f{
           /*color: gray;*/
+        }
+        .view .popup_selected_sex .input_icon {
+          width: 24px;
+          height: 100%;
+          float: left;
+          background-color: rgba(0,0,0,0.8);
+        }
+        .view .popup_selected_sex .radio_label {
+          width: 24px;
+          height: 24px;
+          display: block;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .view .popup_selected_sex label[for='label_a'] {
+          background-image: url('../img/10.png');
+        }
+        .view .popup_selected_sex label[for='label_f'] {
+          background-image: url('../img/09.png');
+        }
+        .view .popup_selected_sex label[for='label_m'] {
+          background-image: url('../img/08.png');
+        }
+
+        .view .popup_selected_sex input:checked ~ label[for='label_a'] {
+          background-image: url('../img/10_1.png');
+        }
+        .view .popup_selected_sex input:checked ~ label[for='label_f'] {
+          background-image: url('../img/09_1.png');
+        }
+        .view .popup_selected_sex input:checked ~ label[for='label_m'] {
+          background-image: url('../img/08_1.png');
         }
 
       .view .plane .fly .inner, .view .plane .fly .outer {

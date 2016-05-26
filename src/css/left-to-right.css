@@ -132,11 +132,11 @@
 }
 
 .view .plane .deck .selection .wrap {
-  -webkit-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -moz-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -ms-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  -o-transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
-  transform: rotate(-30deg) translate(-39px, -6px) skew(-15deg);
+  -webkit-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -moz-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -ms-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -o-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
   position: relative;
   
 }
@@ -184,30 +184,75 @@
   transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
 }
 .kupe_upper_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-74px, 126px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
 }
 .kupe_upper_right .wrap {
-  -webkit-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-69px, 138px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
 }
 .kupe_lower_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-32px, 56px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
 }
 .kupe_lower_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
-  transform: rotate(0deg) translate(12px, 88px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+}
+
+.platz_lower_right img ,
+.platz_upper_right img ,
+.kupe_upper_right img ,
+.kupe_lower_right img {
+  position: absolute;
+  right: 0;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.platz_lower_left img ,
+.platz_upper_left img ,
+.kupe_upper_left img ,
+.kupe_lower_left img {
+  position: absolute;
+  left: 0;
+}
+.platz_lower_right,
+.platz_upper_right,
+.kupe_upper_right,
+.kupe_lower_right {
+  text-align: right;
+}
+
+.platz_lower_left,
+.platz_upper_left,
+.kupe_upper_left,
+.kupe_lower_left {
+  text-align: left;
+}
+.platz_lower_left .wrap .label,
+.platz_upper_left .wrap .label,
+.kupe_upper_left .wrap .label,
+.kupe_lower_left .wrap .label {
+  left: 0;
+}
+.platz_lower_right .wrap .label,
+.platz_upper_right .wrap .label,
+.kupe_upper_right .wrap .label,
+.kupe_lower_right .wrap .label {
+  right: 0;
 }

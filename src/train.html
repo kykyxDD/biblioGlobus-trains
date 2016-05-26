@@ -268,10 +268,19 @@
 					<span class='hind' data-bind='html:hind'></span> <br> и младенца любого пола.
 				</div>
 				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex'>
-					Выберите тип купе (по полу пассажиров):
-					<div class="input_m"><input type='radio' name='sex' value="m" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "m" }'>Мужской</div>
-					<div class="input_f"><input type='radio' name='sex' value="f" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "f" }'>Женский</div>
-					<div class="input_a"><input type='radio' name='sex' value="a" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "a" }'>Смешанный</div>
+					
+					<div class="input_icon input_m">
+						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
+						<label for='label_m' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_f">
+						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
+						<label for='label_f' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_a">
+						<input type='radio' id='label_a' name='sex' value="a" data-bind='event: { change: changeSex }'>
+						<label for='label_a' class='radio_label'></label>
+					</div>
 				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
