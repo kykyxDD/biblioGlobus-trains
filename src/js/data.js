@@ -22,9 +22,6 @@ var self = window.model = {
 		self.get.ready(function() {
 			if('ERROR' in self.ticket) {
 				var error = self.locale.error.select('code', self.ticket['ERROR'])
-				if(!error && self.ticket['COMMENT']) {
-					error = self.ticket['COMMENT']
-				}
 				fail_callback(error)
 			} else {
 				var pre = decodeURIComponent(REGISTRATION_NUMBER),
@@ -181,7 +178,6 @@ var self = window.model = {
 				seat.sc   = info['sc']
 				seat.sex  = info['sex'].toLowerCase() || false;
                 seat.status = status
-                seat.sex_text = {'f' : ['Ж', ' <br> только женского пола'], 'm' : ['М', " <br> только мужского пола"], 'c':['C', ', <br> совпадающего с полом <br> первого посаженного пассажира в секции,']}
                 seat.has_child_cradle = status === 'i'
 			} else if(duplicate){
 				console.log('Повторение значения места: ', info['no'])
@@ -255,7 +251,7 @@ var self = window.model = {
 		function(data) {
 			if('ERROR' in data) {
 				var error = self.locale.error.select('code', data['ERROR'])
-				fail(error ? data.COMMENT || error.message : 'Unknown error')
+				fail(error ? error.message : 'Unknown error')
 			} else {
 				self.compareTRS(data)
 				self.applyTRS(data)
@@ -313,6 +309,7 @@ var self = window.model = {
 	collectBoardInfo: function() {
 		var board = self.ticket[Const.tripInfoTag]
 		self.boardinfo = {
+			idt			  :self.ticket['IDT'],
 			name          :self.name,
 			date          :board['DATE'           ],
 			num           :board['NUM'            ],
@@ -322,6 +319,7 @@ var self = window.model = {
 			arrival_date  :board[Const.arrivalDate],
 			arrival_time  :board[Const.arrivalTime],
 			takeoff_time  :board[Const.depatureTimeTag],
+			tourid		  :get_params && get_params.tourid,
 			from: {
 				port      :board['AIRP_FROM'] ? "(" + board['AIRP_FROM'] + ")" : "",
 				port_rus  :board[Const.depatureCityTag],

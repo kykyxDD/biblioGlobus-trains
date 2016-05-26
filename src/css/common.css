@@ -93,6 +93,18 @@ audio {
       backface-visibility: hidden;
       opacity: 1;
       z-index: 4; }
+      .view .plane .change_sex {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        z-index: 5;
+        margin-top: -30px;
+        margin-left: -30px;
+        background-color: #3dbbe7;
+        background-repeat: no-repeat;
+        background-position:  center;
+        background-image: url('../img/icon_change.png');
+      }
       .view .plane .deck .background {
         position: absolute;
         left: 0;
@@ -148,6 +160,28 @@ audio {
       position: absolute;
       pointer-events: none;
       z-index: 5; }
+      .view .popup_selected_sex {
+        position: absolute;
+        z-index: 5;
+        width: 200px;
+        background: rgba(255,255,255, 0.7);
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        font-size: 0.8em;
+        border-radius: 5px;
+        }
+        .view .popup_selected_sex p {
+          margin: 5px 0;
+        }
+        .view .popup_selected_sex input {
+          vertical-align: bottom;
+          margin: 0 5px;
+        }
+        .view .popup_selected_sex.item_f .input_m,
+        .view .popup_selected_sex.item_m .input_f{
+          /*color: gray;*/
+        }
+
       .view .plane .fly .inner, .view .plane .fly .outer {
         -webkit-transition: all 0.4s ease-out 0s;
         -moz-transition: all 0.4s ease-out 0s;
