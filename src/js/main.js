@@ -261,7 +261,7 @@ function ready() {
 	}
 	function loading_error(error) {
 		clearInterval(refresh.interval)
-		el.progress.textContent = error.message
+		el.progress.textContent = typeof error == 'string' ? error: error.message
 	}
 }
 function start() {
@@ -365,6 +365,8 @@ function prepare_train_view() {
         var cars = model.ticket.TRAIN.CAR
         var ind = calc_current_car_index() - 1
         if (ind < 0) ind = 0
+        if(ind === calc_current_car_index()) return
+
         var pos = (ind + 0.5) / cars.length
 
         navigation.stop_glide()
@@ -378,8 +380,10 @@ function prepare_train_view() {
         var cars = model.ticket.TRAIN.CAR
         var ind = calc_current_car_index() + 1
         if (ind >= cars.length) ind = cars.length - 1
+        if(ind === calc_current_car_index()) return
+
         var pos = (ind + 0.5) / cars.length
-        
+
         navigation.stop_glide()
         navigation.move(V(pos, pos))
         
@@ -633,7 +637,7 @@ function setup_viewmodel() {
 		user.index = user.parent.index + user.parent.child().length + 1;
 		val.child.push(user);
 		sortUsers();
-		if(!val.seat && !val.disabled) {
+		if(!val.seat) {
 			user.block(true);
 			Seat.unlink(user);
 			C.DEMO || select_next_user();
@@ -682,7 +686,7 @@ function setup_viewmodel() {
 	})
 
 	view.submit = function() {
-		if(view.placedUsers().length && !view.error_len()) {
+		if(!view.disable_submite()) {
 			view.loading('done')
 			setTimeout(view.loading, 0, 'half')
 
@@ -754,6 +758,7 @@ function select_next_user() {
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
 			return !item.curseat() && !item.block() && !item.disabled
 		})
+
 	if(await.length) view.selectUser(await[0])
 }
 function update_seats() {
@@ -831,7 +836,7 @@ function update_users(users) {
 		user.parent_name = ko.observable(user.parent ? user.parent.name : '')
 		user.seat     = seat
 		user.selected = ko.observable(false)
-		user.block    = ko.observable(!user.parent || (user.parent && user.parent.disabled)? false : true)
+		user.block    = ko.observable(!user.parent || (user.parent && user.parent.disabled && user.parent.seat)? false : true)
 		user.error    = ko.observable(user.error   || '')
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '-')
@@ -851,9 +856,9 @@ function update_users(users) {
 	})
 
 	view.users(users)
-	view.selectUser(select_user[0])
-	view.group_ticket(model.group_ticket)
 	sortUsers()
+	select_next_user()
+	view.group_ticket(model.group_ticket)
 }
 function sortUsers(){
 	var users = view.users() 
@@ -880,7 +885,7 @@ function setup_navigation() {
 		x = hround(x)
 		y = hround(y)
 
-		position(el.plane, -x, -y, scale)	
+		position(el.plane, -x, -y, scale)
 
 		var w = frames.view.size.x / scale,
 			h = frames.view.size.y / scale
@@ -946,7 +951,7 @@ function resize() {
 		plane = model.struct.plane,
 		map   = model.struct.map
 
-	view.small(window.innerWidth < 601)
+	view.small(window.innerWidth < 640)
 	view.orient(orient ? 'portrait' : 'landscape')
 	frames.view.scaleMin = view.small() ? 0.5 : 1
 
@@ -959,6 +964,7 @@ function resize() {
 
 	var box = el.view.getBoundingClientRect()
 	frames.view.resize(box.width, box.height)
+	frames.view.zoom(frames.view.scaleMin)
 }
 
 function register_events() {
@@ -1350,7 +1356,7 @@ Seat.link = function(user, seat) {
 		user.id_car(seat.id.split('-')[0])
 		user.curseat(seat.num)
 		seat.user = user.face[seat.sid]
-		seat.group.draw()
+		
 		if(user.child) {
 			user.child().forEach(function(child){
 				child.block(false)
@@ -1363,6 +1369,7 @@ Seat.link = function(user, seat) {
 				g_seat.sex = user.sex
 			})
 		}
+		seat.group.draw()
 		updateDisable()
 	}
 }
@@ -1377,10 +1384,10 @@ function numInfant(){
 	})
 	return num
 }
-function numNoDisable(){
+function numDisable(){
 	var num = 0;
 	view.users().forEach(function(user){
-		if(!user.infant && user.disabled){
+		if(!user.infant && user.disabled && user.seat){
 			num += 1
 		}
 	})
@@ -1388,8 +1395,8 @@ function numNoDisable(){
 }
 function updateDisable(seat, user){
 	var num_infant = numInfant();
-	var num_no_disable = numNoDisable();
-	if(!view.placedUsers().length || (view.placedUsers().length + num_infant) < (view.users().length - num_no_disable)){
+	var num_disable = numDisable();
+	if(!view.placedUsers().length || (view.placedUsers().length + num_infant) < (view.users().length - num_disable)){
 		view.error_len(true)
 	} else {
 		view.error_len(false)

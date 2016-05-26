@@ -95,6 +95,7 @@
             <CURSEAT></CURSEAT>
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
+
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
             <ID>102300000876737900</ID>

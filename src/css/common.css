@@ -129,6 +129,8 @@ audio {
         pointer-events: none;
         text-align: center; }
         .view .plane .deck .selection .wrap {
+          width: 100%;
+          height: 100%;
           -webkit-transform: rotate(30deg) translate(18px, -6px) skew(15deg);
           -moz-transform: rotate(30deg) translate(18px, -6px) skew(15deg);
           -ms-transform: rotate(30deg) translate(18px, -6px) skew(15deg);
@@ -204,8 +206,8 @@ audio {
 /************************************ CONTROLS ********************************/
 .controls {
   position: absolute;
-  left: auto;
-  top: auto;
+  left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
   text-align: left;
@@ -318,11 +320,11 @@ audio {
           border-top: 1px solid #94cadd;
           border-bottom: 1px solid #94cadd; }
         .users-box .users .user.selected .print {
-          background-image: -webkit-linear-gradient(top, #61d3fc, #2fb8e8);
-          background-image: -moz-linear-gradient(top, #61d3fc, #2fb8e8);
-          background-image: -ms-linear-gradient(top, #61d3fc, #2fb8e8);
-          background-image: -o-linear-gradient(top, #61d3fc, #2fb8e8);
-          background-image: linear-gradient(top, #61d3fc, #2fb8e8);
+          background: #61d3fc; /* Old browsers */
+          background: -moz-linear-gradient(top, #61d3fc 0%, #2fb8e8 100%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(top, #61d3fc 0%,#2fb8e8 100%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to bottom, #61d3fc 0%,#2fb8e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#61d3fc', endColorstr='#2fb8e8',GradientType=0 ); /* IE6-9 */
           border-top: 1px solid #3dbbe7;
           border-bottom: 1px solid #3dbbe7;
           color: white; }
@@ -385,11 +387,11 @@ audio {
         text-transform: capitalize;
       }
       .users-box .users .user .print {
-        background-image: -webkit-linear-gradient(top, #f3f4f4, #e4e2e2);
-        background-image: -moz-linear-gradient(top, #f3f4f4, #e4e2e2);
-        background-image: -ms-linear-gradient(top, #f3f4f4, #e4e2e2);
-        background-image: -o-linear-gradient(top, #f3f4f4, #e4e2e2);
-        background-image: linear-gradient(top, #f3f4f4, #e4e2e2);
+        background: #f3f4f4; /* Old browsers */
+        background: -moz-linear-gradient(top, #f3f4f4 0%, #e4e2e2 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #f3f4f4 0%,#e4e2e2 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #f3f4f4 0%,#e4e2e2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f4f4', endColorstr='#e4e2e2',GradientType=0 ); /* IE6-9 */
         font-size: 0.8em;
         text-align: center;
         color: #362727; }
@@ -457,11 +459,11 @@ audio {
           font-size: 0.7em;
           background-color: #ff957b; }
       .popup .register .list.headers {
-        background-image: -webkit-linear-gradient(top, #75a6c4 0%, #5e849b 100%);
-        background-image: -moz-linear-gradient(top, #75a6c4 0%, #5e849b 100%);
-        background-image: -ms-linear-gradient(top, #75a6c4 0%, #5e849b 100%);
-        background-image: -o-linear-gradient(top, #75a6c4 0%, #5e849b 100%);
-        background-image: linear-gradient(top, #75a6c4 0%, #5e849b 100%);
+        background: #75a6c4; /* Old browsers */
+        background: -moz-linear-gradient(top, #75a6c4 0%, #5e849b 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #75a6c4 0%,#5e849b 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #75a6c4 0%,#5e849b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75a6c4', endColorstr='#5e849b',GradientType=0 ); /* IE6-9 */
         font: bold 0.94em "Myriad Pro", sans-serif;
         color: white;
         border: 0 solid #a2a7a8;
