@@ -268,26 +268,37 @@
 					<span class='hind' data-bind='html:hind'></span> <br> и младенца любого пола.
 				</div>
 				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex'>
-					Выберите тип купе (по полу пассажиров):
-					<div class="input_m"><input type='radio' name='sex' value="m" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "m" }'>Мужской</div>
-					<div class="input_f"><input type='radio' name='sex' value="f" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "f" }'>Женский</div>
-					<div class="input_a"><input type='radio' name='sex' value="a" data-bind='event: { change: changeSex }, attr: {selected: item_group.sex == "a" }'>Смешанный</div>
+					
+					<div class="input_icon input_m">
+						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
+						<label for='label_m' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_f">
+						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
+						<label for='label_f' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_a">
+						<input type='radio' id='label_a' name='sex' value="a" data-bind='event: { change: changeSex }'>
+						<label for='label_a' class='radio_label'></label>
+					</div>
 				</div>
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
-			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила <br>бронирования</div>
-			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:id_idt'><a data-bind='attr: {href: idt_href}'>Вернуться <br>в заявку</a></div>
+			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила бронирования</div>
+			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:idt_href'><a data-bind='attr: {href: idt_href}'>Вернуться в заявку</a></div>
 
         <table class="train_nav">
 	        <thead>
 	            <tr>
-	            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
-	            <td class="" data-bind="css: { 'hide': !prev_car_item()}">←</td>
-	            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div><div class="type" data-bind="text: current_car_type">купейный</div></td>
-	            <td class="" data-bind="css: { 'hide': !next_car_num()}">→</td>
-	            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
+	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}">←</td>
+	            <td class="neighbors prev" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="visible: prev_car_type">(<span class="type" data-bind="text: prev_car_type"></span>)</div></td>
+
+	            <td class="current"><span  data-bind="text: current_car_num">Вагон №</span><span class="type" > (<span data-bind="text: current_car_type">купейный</span>)</span></td>
+
+	            <td class="neighbors next" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="visible: next_car_type">(<span data-bind="text: next_car_type"></span>)</div></td>
+	            <td class="arror next" data-bind="css: { 'hide': !next_car_num()}">→</td>
 	            </tr>
 	        </thead>
             <tr><td colspan="5">
@@ -310,9 +321,9 @@
 		            </tr>
 		            <tr class="price">
 		            	<td class="name">Цена: </td> 
-		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> </span>рублей </td>
+		            	<td class="text">от <span class='price' data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span class='price' data-bind='text: current_car_prime_to'></span> </span>руб </td>
 		            </tr>	
-		            <tr data-bind='visible: current_car_info().len'>
+		            <tr class='services' data-bind='visible: current_car_info().len'>
 		            	<td class="name">Услуги:</td>
 		            	<td>
 		            		<div class='list_info_icon'>
