@@ -87,18 +87,18 @@
 }
 
 .train_nav .current .type {
-    font-size: 14px;
+    font-size: 15px;
     padding: 0 5px;
 }
 
 .train_nav .neighbors {
-    font-size: 16px;
+    font-size: 15px;
     width: 140px;
     cursor: pointer;
 }
 
 .train_nav .neighbors .type {
-    font-size: 12px;
+    font-size: 11px;
 }
 .train_nav .neighbors.prev {
   text-align: left;
