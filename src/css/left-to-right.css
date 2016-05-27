@@ -28,61 +28,88 @@
     left: 25%;
     top: 15px;
     font-family: Arial, sans-serif;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
     width: 50%;
     pointer-events: none;
     -ms-user-select: none;
     -moz-user-select: none;
-    -o-user-select: none;
+    -o-user-select: none;s
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+    border-spacing: 0;
 }
 
 .train_nav thead {
   text-align: center;
   pointer-events: auto;
+  background: #0161a2;
+  color: #fff;
+  height: 58px;
+  font-weight: bold;
+}
+.train_nav thead .type {
+  text-transform: lowercase;
+  font-weight: normal;
 }
 .train_nav .info {
-  pointer-events: none;
-  -ms-user-select: none;
+  /*pointer-events: none;*/
+/*  -ms-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
-  user-select: none;
+  user-select: none;*/
+}
+.train_nav thead td {
+  height: 58px
 }
 
 .train_nav td.hide {
-    visibility: hidden;
+  opacity: 0;
 }
-
+.train_nav .arror {
+  font-size: 25px;
+}
+.train_nav .arror.prev {
+  padding: 0 5px 0 10px;
+}
+.train_nav .arror.next {
+  padding: 0 10px 0 5px;
+}
 .train_nav .current {
     font-size: 20px;
     width: 180px;
+    text-transform: uppercase;
+}
+.train_nav .current div {
+  display: inline-block;
 }
 
 .train_nav .current .type {
-    font-size: 14px;
+    font-size: 15px;
+    padding: 0 5px;
 }
 
 .train_nav .neighbors {
-    font-size: 16px;
+    font-size: 15px;
     width: 140px;
     cursor: pointer;
 }
 
 .train_nav .neighbors .type {
-    font-size: 12px;
+    font-size: 11px;
+}
+.train_nav .neighbors.prev {
+  text-align: left;
+}
+.train_nav .neighbors.next {
+  text-align: right;
 }
 .train_nav .info {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #000;
   text-align: left;
   font-size: 0.85em;
+  padding: 5px 10px;
 }
 .train_nav .info td{
   vertical-align: top;
@@ -97,25 +124,46 @@
 .train_nav .info .name {
   padding-right: 10px;
   white-space: nowrap;
+  text-align: right;
+  color: #575858;
+}
+.train_nav .info .price,
+.train_nav .info .price .name {
+  color: #ff6600;
+
+}
+.train_nav .info .price .name{
+  vertical-align: bottom;
+  padding-bottom: 3px;
+}
+.train_nav .info .price span.price {
+  font-size: 20px;
+  font-weight: bold;
+}
+.train_nav .info .carrier .text {
+  font-weight: bold;
 }
 .train_nav .info .text {
   vertical-align: middle;
 }
+.train_nav .info .services .name {
+  padding-bottom: 5px;
+  vertical-align: bottom;
+}
 .train_nav .info .info_icon {
   width: 30px;
-  height: 22px;
+  height: 20px;
   display: inline-block;
-  background: url(../img/icons.png) no-repeat;
+  /*background: url(../img/icons.png) no-repeat;*/
   background-color: #fff;
   border-radius: 5px;
   position: relative;
 }
 .train_nav .info .info_icon.ELREG {
-  width: 28px;
-  background-position: -98px 0;
+  background: url(../img/icon_elreg.png) no-repeat center;
 }
 .train_nav .info .info_icon.EAT {
-  background-position: 0 0;
+  background: url(../img/icon_eat.png) no-repeat center;
 }
 .train_nav .info .info_icon.COND {
   height: 28px;
@@ -129,6 +177,9 @@
 .train_nav .info .info_icon.SAN {
   background-position: -96px 0;
   display: none;
+}
+.train_nav .info .info_icon.WIFI {
+ background: url(../img/wifi.png) no-repeat center; 
 }
 
 .view .plane .deck .selection .wrap {

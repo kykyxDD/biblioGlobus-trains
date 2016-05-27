@@ -335,7 +335,12 @@ function loadImageIcon(){
 	
 	var obj_url = {
 		'no_seat': {
-			src: BASE_URL + 'img/01.png',
+			src: BASE_URL + 'img/04_no.png',
+			seats: [],
+			img: false
+		},
+		'no_seat_r': {
+			src: BASE_URL + 'img/02_no.png',
 			seats: [],
 			img: false
 		},
@@ -1806,10 +1811,11 @@ Seat.prototype = {
 			debug.enabled && this.over ? 'orangered' :
 			debug.enabled && this.low  ? 'crimson'   :
 			this === model.taken       ? '#19cf00'   :
-			                             'rgba(255, 255, 255, 0.5)';
+			                             'rgba(255, 255, 255)';
 		
-		var obj = obj_img['no_seat']
+		
 		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var obj = right ? obj_img['no_seat_r'] : obj_img['no_seat'];
 		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
 
 		if(!obj || !img_sex) {
@@ -1819,9 +1825,9 @@ Seat.prototype = {
 		if(obj.img) {
 			ctx.translate(this.X + dx , this.Y + dy - size/4 -1);
 			ctx.transform.apply(ctx, this.labelTransform);
-			ctx.strokeText(text, size / 2, size / 2);
+			ctx.fillText(text, size / 2, size / 2);
 
-			ctx.drawImage(obj.img, -1, 0, obj.img.width, obj.img.height)		
+			ctx.drawImage(obj.img, 0 - (right ? size : 0), 0, obj.img.width, obj.img.height)		
 			
 		}
 		
@@ -1829,7 +1835,7 @@ Seat.prototype = {
 			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
 			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
 			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
-			this.drawLine(right)
+			// this.drawLine(right)
 		}
 		ctx.restore();
 
