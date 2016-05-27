@@ -1757,7 +1757,7 @@ Seat.prototype = {
 		ctx.translate(this.X + dx, this.Y + dy - 7);
 		ctx.transform.apply(ctx, this.labelTransform);
 
-		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var right = this.num_side !== 'right' ? true : false;
 		var img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
 		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
 
@@ -1814,7 +1814,7 @@ Seat.prototype = {
 			                             'rgba(255, 255, 255)';
 		
 		
-		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var right = this.num_side !== 'right' ? true : false;
 		var obj = right ? obj_img['no_seat_r'] : obj_img['no_seat'];
 		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
 
