@@ -8,6 +8,7 @@
 	"seat_types": {
     "sedentary":{
         "img":{"ref":"sedentary"},
+        "indicator_style": "right",
         "people":[
             {"ref":"sed_f_1","child":false,"sex":"f","age":[13,999]},
             {"ref":"sed_f_2","child":false,"sex":"f","age":[13,999]},
@@ -28,6 +29,7 @@
     },
     "kupe_lower_left":{
         "img":{"ref":"kupe_lower_left"},
+        "indicator_style": "right",
         "people":[
             {"ref":"kup_l_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"kup_l_l_w2","child":false,"sex":"f","age":[13,999]},
@@ -49,6 +51,7 @@
     },
     "kupe_upper_right":{
         "img":{"ref":"kupe_upper_right"},
+        "indicator_style": "left",
         "people":[
             {"ref":"kup_u_r_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_r_m2","child":false,"sex":"m","age":[13,999]},
@@ -70,6 +73,7 @@
     },
     "kupe_upper_left":{
         "img":{"ref":"kupe_upper_left"},
+        "indicator_style": "right",
         "people":[
             {"ref":"kup_u_l_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_u_l_m2","child":false,"sex":"m","age":[13,999]},
@@ -91,6 +95,7 @@
     },
     "kupe_lower_right":{
         "img":{"ref":"kupe_lower_right"},
+        "indicator_style": "left",
         "people":[
             {"ref":"kup_l_r_m1","child":false,"sex":"m","age":[13,999]},
             {"ref":"kup_l_r_m2","child":false,"sex":"m","age":[13,999]},
@@ -113,6 +118,7 @@
 
     "platz_upper_left":{
         "img":{"ref":"platz_upper_left"},
+        "indicator_style": "right",
         "people":[
             {"ref":"u_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_l_w2","child":false,"sex":"f","age":[13,999]},
@@ -132,6 +138,7 @@
     },
     "platz_lower_top":{
         "img":{"ref":"platz_lower_top"},
+        "indicator_style": "right",
         "people":[
             {"ref":"b_t_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_t_w2","child":false,"sex":"f","age":[13,999]},
@@ -150,6 +157,7 @@
     },
     "platz_lower_right":{
         "img":{"ref":"platz_lower_right"},
+        "indicator_style": "left",
         "people":[
             {"ref":"b_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_r_w2","child":false,"sex":"f","age":[13,999]},
@@ -167,6 +175,7 @@
     },
     "platz_lower_left": {
         "img":{"ref":"platz_lower_left"},
+        "indicator_style": "right",
         "people":[
             {"ref":"b_l_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"b_l_w2","child":false,"sex":"f","age":[13,999]},
@@ -186,6 +195,7 @@
         "img":{
             "ref":"platz_upper_top"
         },
+        "indicator_style": "right",
         "people": [
             {"ref":"u_t_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_t_w2","child":false,"sex":"f","age":[13,999]},
@@ -205,6 +215,7 @@
     },
     "platz_upper_right":{
         "img":{"ref":"platz_upper_right"},
+        "indicator_style": "left",
         "people": [
             {"ref":"u_r_w1","child":false,"sex":"f","age":[13,999]},
             {"ref":"u_r_w2","child":false,"sex":"f","age":[13,999]},
