@@ -844,7 +844,7 @@ function make_selection_label(sex) {
 	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
-			'<img height="100%" src='+ BASE_URL + '"img/06.png">'+
+			'<img height="100%" src="'+ BASE_URL + 'img/06.png">'+
 			'<div class="label"></div>'+
  		'</div>'
 
