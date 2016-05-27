@@ -335,47 +335,47 @@ function loadImageIcon(){
 	
 	var obj_url = {
 		'no_seat': {
-			src: 'img/01.png',
+			src: BASE_URL + 'img/01.png',
 			seats: [],
 			img: false
 		},
 		'seat_l_na': {
-			src: 'img/02.png',
+			src: BASE_URL + 'img/02.png',
 			seats: [],
 			img: false	
 		},
 		'seat_l_a': {
-			src: 'img/02.png',
+			src: BASE_URL + 'img/02.png',
 			seats: [],
 			img: false	
 		},
 		'seat_r_na': {
-			src: 'img/04.png',
+			src: BASE_URL + 'img/04.png',
 			seats: [],
 			img: false	
 		},
 		'seat_r_a': {
-			src: 'img/06.png',
+			src: BASE_URL + 'img/06.png',
 			seats: [],
 			img: false	
 		},
 		'icon_f' : {
-			src: 'img/09.png',
+			src: BASE_URL + 'img/09.png',
 			seats: [],
 			img: false
 		},
 		'icon_m' : {
-			src: 'img/08.png',
+			src: BASE_URL + 'img/08.png',
 			seats: [],
 			img: false	
 		},
 		'icon_a' : {
-			src: 'img/10.png',
+			src: BASE_URL + 'img/10.png',
 			seats: [],
 			img: false
 		},
 		'icon_c' : {
-			src: 'img/05.png',
+			src: BASE_URL + 'img/05.png',
 			seats: [],
 			img: false	
 		}
@@ -844,7 +844,7 @@ function make_selection_label(sex) {
 	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
-			'<img height="100%" src="img/06.png">'+
+			'<img height="100%" src='+ BASE_URL + '"img/06.png">'+
 			'<div class="label"></div>'+
  		'</div>'
 
