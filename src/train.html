@@ -286,19 +286,19 @@
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
-			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила <br>бронирования</div>
-			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:id_idt'><a data-bind='attr: {href: idt_href}'>Вернуться <br>в заявку</a></div>
+			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правилабронирования</div>
+			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:id_idt'><a data-bind='attr: {href: idt_href}'>Вернуться в заявку</a></div>
 
         <table class="train_nav">
 	        <thead>
 	            <tr>
-	            <td class="" data-bind="css: { 'hide': !prev_car_item()}">←</td>
-	            <td class="neighbors" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="text: prev_car_type"></div></td>
+	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}">←</td>
+	            <td class="neighbors prev" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="visible: prev_car_type">(<span class="type" data-bind="text: prev_car_type"></span>)</div></td>
 
-	            <td class="current"><div  data-bind="text: current_car_num">Вагон №</div>(<div class="type" data-bind="text: current_car_type">купейный</div>)</td>
+	            <td class="current"><span  data-bind="text: current_car_num">Вагон №</span><span class="type" > (<span data-bind="text: current_car_type">купейный</span>)</span></td>
 
-	            <td class="neighbors" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="text: next_car_type"></div></td>
-	            	            <td class="" data-bind="css: { 'hide': !next_car_num()}">→</td>
+	            <td class="neighbors next" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="visible: next_car_type">(<span data-bind="text: next_car_type"></span>)</div></td>
+	            <td class="arror next" data-bind="css: { 'hide': !next_car_num()}">→</td>
 	            </tr>
 	        </thead>
             <tr><td colspan="5">
@@ -321,9 +321,9 @@
 		            </tr>
 		            <tr class="price">
 		            	<td class="name">Цена: </td> 
-		            	<td class="text">от <span data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span data-bind='text: current_car_prime_to'></span> </span>рублей </td>
+		            	<td class="text">от <span class='price' data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span class='price' data-bind='text: current_car_prime_to'></span> </span>руб </td>
 		            </tr>	
-		            <tr data-bind='visible: current_car_info().len'>
+		            <tr class='services' data-bind='visible: current_car_info().len'>
 		            	<td class="name">Услуги:</td>
 		            	<td>
 		            		<div class='list_info_icon'>
