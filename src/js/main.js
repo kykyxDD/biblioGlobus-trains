@@ -657,7 +657,6 @@ function setup_viewmodel() {
 		return data.port_rus + " " + data.port
 	}
 
-	// console.log(view.board.date)
 	_date(view.board.date)
 	view.board.date = _date(view.board.date)
 	view.board.arrival_date = _date(view.board.arrival_date)
@@ -788,7 +787,7 @@ function setup_viewmodel() {
 				g_seat.sex = sex
 			})
 			if(((user.parent && user.parent.curseat() && FilterSeat.seatChild(seat, user.parent)) || !user.parent)) {
-				if(sex == view.user().sex || sex == 's'){
+				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
@@ -864,6 +863,7 @@ function setup_viewmodel() {
 	view.success = function(text) {
 		update_seats()
 		update_users(model.users)
+		view.idt_href(view.board.idt)
 		// groups.some(method('draw'))
 		view.display_result(true)
 		view.result_header(text.head)
@@ -1331,9 +1331,9 @@ function register_events() {
 				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
 				view.text_hind('')
 			} else if(!seat.match_sex) {
-				console.log(seat)
+				// console.log(seat)
 			} else {
-				console.log(seat)
+				// console.log(seat)
 			}
 		} else {
 			view.hind(false)
@@ -1668,9 +1668,6 @@ Seat.link = function(user, seat) {
 		view.item_seat(false);
 		position(user.selection, seat)
 		user.label.textContent = seat.name;
-		// user.popup_seat.textContent = seat.name;
-		// user.popup_sc.textContent = seat.sc_name;
-		// console.log(seat)
 		seat.deckElement.appendChild(user.selection)
 		if(has_class(user.selection)) {
 			add_class(user.selection, seat.type)

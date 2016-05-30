@@ -84,6 +84,7 @@ var self = window.model = {
 			taken = []
 
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
+		self.boardinfo.idt = data['IDT']
 
 		users.some(function(data) {
 			if(data['PARENTID'] || data["IS_INF"]) {
@@ -261,6 +262,7 @@ var self = window.model = {
 					head: self.locale['resultsPopupHeader'].replace('__val__', self.boardinfo.num),
 					body: self.locale['resultsPopupText1']
 				})
+				// self.boardinfo.idt
 			}
 		},
 		function() {

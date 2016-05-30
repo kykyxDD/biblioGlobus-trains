@@ -326,6 +326,10 @@ audio {
         background-repeat: no-repeat;
         background-position: center; 
         background-size: 100%;
+        cursor: pointer;
+        }
+        .view .popup_selected_sex label {
+          cursor: pointer;
         }
         .view .popup_selected_sex:before {
           position: absolute;
@@ -363,6 +367,9 @@ audio {
           background-repeat: no-repeat;
           background-position: center;
         }
+
+          
+
         .view .popup_selected_sex label[for='label_s'] {
           background-image: url('../img/sex_s.png');
         }

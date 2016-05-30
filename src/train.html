@@ -255,6 +255,21 @@
 					<div class="inner"></div>
 					<div class="outer"></div>
 				</div>
+				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
+					
+					<div class="input_icon input_m">
+						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
+						<label for='label_m' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_f">
+						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
+						<label for='label_f' class='radio_label'></label>
+					</div>
+					<div class="input_icon input_s">
+						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { change: changeSex }'>
+						<label for='label_s' class='radio_label'></label>
+					</div>
+				</div>
 				<div class="popup_seat" data-bind='css: {user : popup_user, show:hind}, click: hidePopupSex'>
 					<div class="user_seat" data-bind='visible:popup_user'>
 						<div class='name_user' data-bind='text: popup_user_name'></div>
@@ -277,21 +292,7 @@
 						<span data-bind='text:error_seat'></span>
 					</div>
 				</div>
-				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
-					
-					<div class="input_icon input_m">
-						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
-						<label for='label_m' class='radio_label'></label>
-					</div>
-					<div class="input_icon input_f">
-						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
-						<label for='label_f' class='radio_label'></label>
-					</div>
-					<div class="input_icon input_s">
-						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { change: changeSex }'>
-						<label for='label_s' class='radio_label'></label>
-					</div>
-				</div>
+				
 			</div>
 			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
 			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
