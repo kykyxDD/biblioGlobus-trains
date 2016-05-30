@@ -78,7 +78,7 @@
 	</head>
 	<body style="display: none" data-bind="attr: { class: root_class }">
 		<script type="text/html" id="user-select">
-			<tr class="user" data-bind="click: $root.selectUser, css: { selected: selected, placed: curseat, infant: block, disabled: disabled }">
+			<tr class="user" data-bind="click: $root.selectUser, css: { selected: selected, placed: curseat, infant: block, disabled: disabled, p_selected: p_selected, user_parent: child().length }">
 				
 				<td class="info">
 					<div class="name">
@@ -169,12 +169,6 @@
 						</tbody>
 					</table>
 				</td>
-				<td class="print">
-					<a target="_blank" data-bind="attr: { href: ticket }, css: { void: !ticket }">
-						<div class="icon" data-bind="css: { 'static-print-a': selected, 'static-print-i': !selected() }"></div>
-						<span class="label">Посадочный талон</span>
-					</a>
-				</td>
 				<td class="class">
 					<div class="label">класс: </div>
 					<div data-bind="text: fclass" class="value"></div>
@@ -184,9 +178,7 @@
 					<div data-bind="text: curseat" class="value"></div>
 				</td>
 				<td class="ok">
-					<svg viewBox="0 0 18 18">
-					<path d="M18,0l0,7l-11,11l-7,-7l0,-7l7,7l11,-11z" />
-					</svg>
+					<div class='check'></div>
 				</td>
 
 
@@ -263,11 +255,29 @@
 					<div class="inner"></div>
 					<div class="outer"></div>
 				</div>
-				<div class="popup_seat" data-bind='visible: hind'>
-					Разрешена посадка пассажира
-					<span class='hind' data-bind='html:hind'></span> <br> и младенца любого пола.
+				<div class="popup_seat" data-bind='css: {user : popup_user, show:hind}, click: hidePopupSex'>
+					<div class="user_seat" data-bind='visible:popup_user'>
+						<div class='name_user' data-bind='text: popup_user_name'></div>
+						
+					</div>
+					<div class="num">
+						<div class="field">Место:</div> 
+						<div class='value' data-bind='text:popup_user_num'></div>
+					</div>
+					<div class="sc">
+						<div class="field">Тип:</div> 
+						<div class='value' data-bind='text:popup_user_sc'></div>
+					</div>
+					<div class='text_hind' data-bind='visible:text_hind'>
+						Разрешена посадка пассажира
+						<span class='hind' data-bind='html:text_hind'></span> или младенца любого пола.
+					</div>
+					<div class="popup_error_seat" data-bind='visible:error_seat'>
+						Нельзя посадить выбранного пассажира.<br>
+						<span data-bind='text:error_seat'></span>
+					</div>
 				</div>
-				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex'>
+				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
 					
 					<div class="input_icon input_m">
 						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
@@ -277,9 +287,9 @@
 						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
 						<label for='label_f' class='radio_label'></label>
 					</div>
-					<div class="input_icon input_a">
-						<input type='radio' id='label_a' name='sex' value="a" data-bind='event: { change: changeSex }'>
-						<label for='label_a' class='radio_label'></label>
+					<div class="input_icon input_s">
+						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { change: changeSex }'>
+						<label for='label_s' class='radio_label'></label>
 					</div>
 				</div>
 			</div>
@@ -288,8 +298,27 @@
 			<div class='button btn_regul_seat switch-deck static-deck_ina'
 			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила бронирования</div>
 			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:idt_href'><a data-bind='attr: {href: idt_href}'>Вернуться в заявку</a></div>
-
-        <table class="train_nav">
+			<div class="popup popup_help" data-bind='css: { show: show_popup_help}'>
+				<div class="help_close" data-bind='click: showPopupHelp'></div>
+				<div class="info_help">
+					<div class="list sex">
+						<ul>
+							<li class="sex_f">Только мужской пол</li>
+							<li class="sex_m">Только женский пол</li>
+							<li class="sex_s">Любой</li>
+						</ul>
+					</div>
+					<div class="list seat">
+						<ul>
+							<li class="seat_u">Выбранные места</li>
+							<li class="seat">Доступные места</li>
+							<li class="seat_no">Недоступные места</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="icon_help" data-bind='click: showPopupHelp, css: {show: show_popup_help}'>помощь </div>
+		<table class="train_nav">
 	        <thead>
 	            <tr>
 	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}">←</td>
@@ -339,8 +368,8 @@
             	</table>
             </div> 
            </td></tr>
-        </table>
-        </div>
+		</table>
+		</div>
 		<div class="controls">
 			<div class="logo static-biblioglobus_logo"></div>
 			<div class="screen">
@@ -374,29 +403,39 @@
 				</table>
 			</div>
 			<div class="board-info">
-				<div class="route">
-					<span data-bind="text: formatAirport(board.from)" class="from"></span>
-					<span> ― </span>
-					<span data-bind="text: formatAirport(board.to)" class="to"></span>
-				</div>
 				<div class="cred clearfix">
-					<div class="number">
-						<span class="field">Рейс №: </span>
-						<span data-bind="text: board.num" class="value big"></span> 
-						<span data-bind="if: board.train_name" class="value">
-						<span data-bind="text: board.train_name" class='value'> </span>
-						</span>
-					</div>
-					<div class='cont_date'>
-						<div class="date">
-							<span class="field">Отправление: </span>
-							<span data-bind="text: board.time" class="value"></span>,
-							<span data-bind="text: board.date" class="value"></span>
+					<div class="train_info number">
+						<div class="field">Рейс №: </div>
+						<div class="cont_val">
+							<span data-bind="text: board.num" class="value big"></span> 
+							<span data-bind="if: board.train_name, text: board.train_name" class='value'> </span>
 						</div>
-						<div class="date">
-							<span class="field">Прибытие: </span>
-							<span data-bind="text: board.arrival_time" class="value"></span>,
-							<span data-bind="text: board.arrival_date" class="value"></span>
+					</div>
+					<div class="train_info city">
+						<div class="field">Откуда: </div>
+						<div class="cont_val" data-bind="text: formatAirport(board.from)" class="from"></div>
+					</div>
+					<div class="train_info city">
+						<div class="field">Куда: </div>
+						<div class="cont_val" data-bind="text: formatAirport(board.to)" class="to"></div>
+					</div>
+					<div class="train_info ">
+						<div class="field">Отправление: </div>
+						<div class="cont_val">
+							<span data-bind="text: board.date.date"></span> 
+							<span data-bind="text: board.date.month"></span> 
+							(<span data-bind="text: board.date.day"></span>) в
+							<span data-bind="text: board.time"></span>
+							
+						</div>
+					</div>
+					<div class="train_info ">
+						<div class="field">Прибытие: </div>
+						<div class="cont_val">
+							<span data-bind="text: board.arrival_date.date"></span> 
+							<span data-bind="text: board.arrival_date.month"></span> 
+							(<span data-bind="text: board.arrival_date.day"></span>) в
+							<span data-bind="text: board.arrival_time"></span>
 						</div>
 					</div>
 				</div>
@@ -431,7 +470,6 @@
 				
 			</div>
 		</div>
-		
 		<div class="popup fail" data-bind="visible: display_error" style="display: none;">
 			<div class="register-error">
 				<div class="message" data-bind="text: error_message"></div>

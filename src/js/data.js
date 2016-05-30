@@ -57,6 +57,7 @@ var self = window.model = {
             seat.num = seat['id'].toUpperCase()
             seat.ref = self.planes['seat_types'][seat.sid].img.ref
             seat.sc_name = self.planes['seat_types'][seat.sid].name
+            seat.num_side = self.planes['seat_types'][seat.sid].indicator_style
         })
 
         ;[].concat(

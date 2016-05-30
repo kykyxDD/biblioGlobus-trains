@@ -165,6 +165,7 @@ var view = {
 	orient : '',
 	decker : '',
 	item_seat: false,
+	showPopupHelp : false,
 	upper  : false,
 	user   : null,
 	click_select: null,
@@ -308,7 +309,7 @@ function start() {
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 	create_group_seat()
-	update_group_seat()
+	// update_group_seat()
 	loadImageIcon()
 
 	resize()
@@ -365,22 +366,22 @@ function loadImageIcon(){
 			img: false	
 		},
 		'icon_f' : {
-			src: BASE_URL + 'img/09.png',
+			src: BASE_URL + 'img/sex_f.png',
 			seats: [],
 			img: false
 		},
 		'icon_m' : {
-			src: BASE_URL + 'img/08.png',
+			src: BASE_URL + 'img/sex_m.png',
 			seats: [],
 			img: false	
 		},
-		'icon_a' : {
-			src: BASE_URL + 'img/10.png',
+		'icon_s' : {
+			src: BASE_URL + 'img/sex_s.png',
 			seats: [],
 			img: false
 		},
 		'icon_c' : {
-			src: BASE_URL + 'img/05.png',
+			src: BASE_URL + 'img/sex_c.png',
 			seats: [],
 			img: false	
 		}
@@ -403,71 +404,77 @@ function loadImageIcon(){
 
 
 function prepare_train_view() {
-    
-    view.current_car = ko.observable(current_car)
-    
-    view.prev_car_item = ko.observable(false)
-    view.prev_car_type = ko.observable('')
-    view.prev_car_num = ko.observable('')
 
-    view.current_car_type = ko.observable('')
-    view.current_car_num = ko.observable('')
-    view.current_car_descr = ko.observable('')
-    view.current_car_descr_short = ko.observable('')
-    view.current_car_carrier = ko.observable('')
-    view.current_car_prime_from = ko.observable('')
-    view.current_car_prime_to = ko.observable('')
-    view.current_car_modifier = ko.observable('') 
-    view.current_car_spec_conds = ko.observable('')
-    var obj = {
-    	len: ko.observable(false),
-    	ELREG: ko.observable(false),
-    	EAT: ko.observable(false),
+	view.current_car = ko.observable(current_car)
+
+	view.prev_car_item = ko.observable(false)
+	view.prev_car_type = ko.observable('')
+	view.prev_car_num = ko.observable('')
+
+	view.current_car_type = ko.observable('')
+	view.current_car_num = ko.observable('')
+	view.current_car_descr = ko.observable('')
+	view.current_car_descr_short = ko.observable('')
+	view.current_car_carrier = ko.observable('')
+	view.current_car_prime_from = ko.observable('')
+	view.current_car_prime_to = ko.observable('')
+	view.current_car_modifier = ko.observable('') 
+	view.current_car_spec_conds = ko.observable('')
+	var obj = {
+		len: ko.observable(false),
+		ELREG: ko.observable(false),
+		EAT: ko.observable(false),
 		COND: ko.observable(false),
 		BED: ko.observable(false),
 		SAN: ko.observable(false)
-    };
-    view.current_car_info = ko.observable(obj);
+	};
+	view.current_car_info = ko.observable(obj);
 
-    view.next_car_item = ko.observable(false)
-    view.next_car_type = ko.observable('')
-    view.next_car_num = ko.observable('')
-    view.regul_seat = ko.observable('');
-    view.scroll_regul_seat = ko.observable(false);
-    view.hind = ko.observable('');
-    view.show_popup_select_sex = ko.observable(false);
+	view.next_car_item = ko.observable(false)
+	view.next_car_type = ko.observable('')
+	view.next_car_num = ko.observable('')
+	view.regul_seat = ko.observable('');
+	view.scroll_regul_seat = ko.observable(false);
+	view.hind = ko.observable('');
+	view.text_hind = ko.observable(false);
+	view.error_seat = ko.observable(false);
+	view.popup_user = ko.observable('');
+	view.popup_user_name = ko.observable('');
+	view.popup_user_num = ko.observable('');
+	view.popup_user_sc = ko.observable('');
+	view.show_popup_select_sex = ko.observable(false);
 
-    navigation.position = V(0.2, 0.2)
-    var update_nav_interval = setInterval(update_view, 200)
-    view.scroll_prev_to_car = function() {
-        
-        var cars = model.ticket.TRAIN.CAR
-        var ind = calc_current_car_index() - 1
-        if (ind < 0) ind = 0
-        if(ind === calc_current_car_index()) return
+	navigation.position = V(0.2, 0.2)
+	var update_nav_interval = setInterval(update_view, 200)
+	view.scroll_prev_to_car = function() {
+	    
+	    var cars = model.ticket.TRAIN.CAR
+	    var ind = calc_current_car_index() - 1
+	    if (ind < 0) ind = 0
+	    if(ind === calc_current_car_index()) return
 
-        var pos = (ind + 0.5) / cars.length
+	    var pos = (ind + 0.5) / cars.length
 
-        navigation.stop_glide()
-        navigation.move(V(pos, pos))
-        
-        update_view()
-    }
+	    navigation.stop_glide()
+	    navigation.move(V(pos, pos))
+	    
+	    update_view()
+	}
 
-    view.scroll_next_to_car = function() {
-        
-        var cars = model.ticket.TRAIN.CAR
-        var ind = calc_current_car_index() + 1
-        if (ind >= cars.length) ind = cars.length - 1
-        if(ind === calc_current_car_index()) return
+	view.scroll_next_to_car = function() {
+	    
+	    var cars = model.ticket.TRAIN.CAR
+	    var ind = calc_current_car_index() + 1
+	    if (ind >= cars.length) ind = cars.length - 1
+	    if(ind === calc_current_car_index()) return
 
-        var pos = (ind + 0.5) / cars.length
+	    var pos = (ind + 0.5) / cars.length
 
-        navigation.stop_glide()
-        navigation.move(V(pos, pos))
-        
-        update_view()
-    }
+	    navigation.stop_glide()
+	    navigation.move(V(pos, pos))
+	    
+	    update_view()
+	}
 
 }
 
@@ -591,6 +598,18 @@ function load_session() {
 	updateDisable()
 
 }
+function _date (str){
+	var arr_month = ['января' , 'февраля' , 'марта' , 'апреля' , 'мая' , 'июня' , 'июля' , 'августа' , 'сентября' , 'октября' , 'ноября' , 'декабря '];
+	var arr_day = ['понедельник' , 'вторник' , 'среда' , 'четверг' , 'пятница' , 'суббота' , 'воскресение']
+	var arr = str.split('.').reverse();
+	var date = new Date(arr)
+	return {
+		date: date.getDate(),
+		month: arr_month[date.getMonth()], 
+		day: arr_day[date.getDay()],
+		year: date.getFullYear()
+	}
+}
 function setup_viewmodel() {
 	document.title = model.boardinfo.name
 
@@ -637,6 +656,11 @@ function setup_viewmodel() {
 	view.formatAirport = function(data) {
 		return data.port_rus + " " + data.port
 	}
+
+	// console.log(view.board.date)
+	_date(view.board.date)
+	view.board.date = _date(view.board.date)
+	view.board.arrival_date = _date(view.board.arrival_date)
 	view.objIconSeat = {}
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
@@ -654,9 +678,31 @@ function setup_viewmodel() {
 			if(previous) {
 				rem_class(previous.selection, 'active')
 				previous.selected(false)
+				if(previous.child) {
+					previous.child().forEach(function(child){
+						child.p_selected(false)
+					})
+				}
+				if(previous.parent) {
+					previous.parent.p_selected(false)
+					previous.parent.child().forEach(function(child){
+						child.p_selected(false)
+					})
+				}
 			}
 			view.user(user)
 			user.selected(true)
+			if(user.child) {
+				user.child().forEach(function(child){
+					child.p_selected(true)
+				})
+			} 
+			if(user.parent) {
+				user.parent.p_selected(true)
+				user.parent.child().forEach(function(child){
+					child.p_selected(true)
+				})
+			}
 			add_class(user.selection, 'active')
 			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
 				|| user.child || user.parent || (previous.parent || (!user.child))) {
@@ -729,7 +775,7 @@ function setup_viewmodel() {
 		var sex = target.value
 
 		if(group) {
-			var next_sex = sex == 'a' || sex == 'c';
+			var next_sex = sex == 's' || sex == 'c';
 			if(!next_sex) {
 				group.seats.forEach(function(s_itm){
 					if(s_itm.user && !s_itm.info.infant && s_itm.info.sex !== sex){
@@ -741,8 +787,8 @@ function setup_viewmodel() {
 			group.seats.forEach(function(g_seat){
 				g_seat.sex = sex
 			})
-			if(((user.parent && user.parent.curseat()) || !user.parent)) {
-				if(sex == view.user().sex || sex == 'a'){
+			if(((user.parent && user.parent.curseat() && FilterSeat.seatChild(seat, user.parent)) || !user.parent)) {
+				if(sex == view.user().sex || sex == 's'){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
@@ -755,6 +801,13 @@ function setup_viewmodel() {
 		}
 		
 		hidePopupSex()
+	}
+	view.showPopupHelp = function(){
+		if(view.show_popup_help()) {
+			view.show_popup_help(false)
+		} else {
+			view.show_popup_help(true)
+		}
 	}
 	view.regul_seat(model.locale.message)
 	view.airline = ko.observable(model.airline)
@@ -780,12 +833,20 @@ function setup_viewmodel() {
 	view.disable_submite = ko.observable(true);
 	view.show_regul_seat = ko.observable(false);
 	view.show_disable_seat = ko.observable(false);
+	view.show_popup_help = ko.observable(false)
+	view.popup_right     = ko.observable(false)
 	view.sex_text 		= {
-		'f' : ['Ж', ' <br> только женского пола'], 
-		'm' : ['М', " <br> только мужского пола"], 
-		'c' : ['Ц', '<br> по выбору пола пользователем'],
-		'a' : ['C', ' ']
+		'f' : ['Ж', '  только женского пола'], 
+		'm' : ['М', "  только мужского пола"], 
+		'c' : ['Ц', ' по выбору пола пользователем'],
+		's' : ['C', ' ']
 	};
+	view.error_texts = {
+		sc: "Не совпадает класс обслуживания пассажира и места.", 
+		sex: "Не совпадает пол.",
+		parent: 'Ребенок должен сидеть в одном вагоне с родителем.',
+		no_seat: 'Нет доступа к посадке на это место.'
+	}
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
 	})
@@ -843,17 +904,21 @@ function setup_viewmodel() {
 
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
-function make_selection_label(sex) {
+function make_selection_label(user) {
 	var root = document.createElement('div');
-	root.className = 'selection ' +sex;
+	root.className = 'selection ' +user.sex;
 	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
 			'<img height="100%" src="'+ BASE_URL + 'img/06.png">'+
 			'<div class="label"></div>'+
- 		'</div>'
 
-	return { selection: root, label: root.querySelector('.label') }
+ 		'</div>'
+ 	root.user = user
+	return { 
+		selection: root, 
+		label: root.querySelector('.label')
+	}
 }
 function select_next_user() {
 	var users = view.users(),
@@ -919,6 +984,8 @@ function create_group_seat(){
 
 		seat.group_seat = obj
 	})
+
+
 	view.groups_seat(groups_seat)
 }
 function create_label(seat) {
@@ -958,7 +1025,6 @@ function update_group_seat() {
 					x: min_x + (max_x - min_x)/2,
 					y: min_y + (max_y - min_y)/2
 				}
-				// g[i].select = createSelectGroup(g[i])
 			}
 		}
 	}
@@ -967,7 +1033,7 @@ function createSelectGroup(group) {
 	var elem = document.createElement('div');
 	elem.className = 'change_sex';
 	(function(g){elem.addEventListener('click', function(){
-			changeSexGroup(g)
+		changeSexGroup(g)
 	})})(group);
 	return elem
 }
@@ -1011,6 +1077,7 @@ function update_users(users) {
 		user.curseat  = ko.observable(user.curseat || '')
 		user.id_car   = ko.observable(user.id_car  || '-')
 		user.fclass_name  = ko.observable(user.fclass  || '')
+		user.p_selected = ko.observable(false)
 		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
 
         user.seat_name = ko.computed(function() {
@@ -1018,7 +1085,7 @@ function update_users(users) {
         })
         if(seat) seat.user = user.face[seat.sid]
 
-		user.copy(make_selection_label(user.sex))
+		user.copy(make_selection_label(user))
 	})
 
 	var select_user = users.filter(function(itm){
@@ -1040,9 +1107,10 @@ function showPopupSex(seat){
 	var group = seat.group_seat;
 	view.item_group(group)
 	view.item_seat(seat)
-	var right = seat.seat_right ? seat.labelSize*2 : 0;
-	// seat.labels.appendChild(el.popup_sex)
+	var right = seat.seat_right ? seat.labelSize*2 : seat.labelSize;
+
 	position(el.popup_sex, seat.labels_pos.x - right, seat.labels_pos.y)
+	view.popup_right(seat.seat_right)
 
 	view.show_popup_select_sex(true);
 	if(group.sex !== true){
@@ -1055,13 +1123,9 @@ function showPopupSex(seat){
 	}
 	
 } 
-function hidePopupSex(){
+function hidePopupSex(e){
 	view.item_group(false)
 	view.show_popup_select_sex(false);
-	// if(el.popup_sex.parent){
-	// 	el.popup_sex.parent.removeChild(el.popup_sex)	
-	// }
-	
 }
 function setup_navigation() {
 	frames.view = navigation.addFrame(model.struct.plane.size)
@@ -1221,30 +1285,62 @@ function register_events() {
 				: { pageX: true }
 
 		frames.view[stage](point1.pageX, point1.pageY, point2.pageX, point2.pageY)
-		var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
-				x      = (point1.pageX + frames.view.center.x),
-				y      = (point1.pageY + frames.view.center.y),
-				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale)
 
-		if(!touch && e.type.indexOf('move') >= 0 && seat && (seat.sex || seat.texts) && !seat.user && !view.show_popup_select_sex()) {
-			var user = view.user();
-			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
-			
-			if(seat.sex && res){
-				view.hind(view.sex_text[seat.sex][1])
-				position(el.hind,x / frames.view.scale + 20,
-					    	 y / frames.view.scale + 30)
-			} else {
-				view.hind('')	
-			}
+		if(!touch && e.type.indexOf('move') >= 0) { 
+			dragMove(e, point1)
 		} else {
-			view.hind('')
+			view.popup_user(false)
+			view.hind(false)
 		}
 
 		e.preventDefault()
 	}
+	function dragMove(e, point1){
+
+		var x    = (point1.pageX + frames.view.center.x),
+			y    = (point1.pageY + frames.view.center.y),
+			seat = Seat.findByPositionMove(x / frames.view.scale, y / frames.view.scale)
+
+		var target = e.target || e.srcElement;
+		view.popup_user(false)
+		view.error_seat(false)
+		view.text_hind(false)
+		view.popup_user_num(false)
+		view.popup_user_sc(false)
+
+		if(seat){
+			view.hind(true)
+			position(el.hind, seat.popup_pos.x, seat.popup_pos.y)
+			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
+			view.popup_user_num(seat.name)
+			view.popup_user_sc(seat.sc_name)
+			if(seat.user) {
+				var elem_parent = target.parentNode;
+				var user = seat.info;
+				view.popup_user(true)
+				view.popup_user_name(user.name)
+				view.popup_user_num(seat.name)
+				view.popup_user_sc(seat.sc_name)
+			} else if(!res){
+				view.error_seat(view.error_texts.parent)
+			} else if(seat.sex){
+				view.text_hind(view.sex_text[seat.sex][1])
+			} else if(seat.match_service_class && seat.match_sex) {
+				view.text_hind(view.sex_text['s'][1])
+			} else if(!seat.match_service_class){
+				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
+				view.text_hind('')
+			} else if(!seat.match_sex) {
+				console.log(seat)
+			} else {
+				console.log(seat)
+			}
+		} else {
+			view.hind(false)
+		}
+	}
 	function hideHind(e) {
-		view.hind('')
+		view.hind(false)
 		e.preventDefault()
 	}
 	function moveMap(e) {
@@ -1517,6 +1613,17 @@ Seat.findByPosition = function(x, y) {
 		}
 	}
 }
+Seat.findByPositionMove = function(x, y) {
+	var remains = seats.length, seat,
+		user = view.user();
+
+	while(seat = seats[--remains]) {
+		if((view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			seat.contains(x, y)){
+			return seat
+		}
+	}
+}
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
 	seats.some(function(seat) {
@@ -1528,27 +1635,11 @@ Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
 		user.selection.className = "selection "+user.sex
+
 		var prev_seat = user.seat
 
 		user.seat.info = null
 		user.seat.user = null
-/*
-		if(prev_seat.group_seat.sex) {
-			var last_user = true
-			prev_seat.group_seat.seats.forEach(function(_seat){
-				if(_seat.user && !_seat.info.infant) {
-					last_user = false
-				}
-			})
-
-			if(last_user){
-				prev_seat.group_seat.sex = true
-				prev_seat.group_seat.seats.forEach(function(_seat){
-					_seat.sex = 'c'
-					_seat.match_sex = (_seat.sex && (_seat.sex === user.sex || _seat.sex =='c' || _seat.sex =='a')) || !_seat.sex || user.infant;
-				})
-			}
-		}*/
 
 		user.seat.group.draw()
 		user.seat = null
@@ -1569,9 +1660,17 @@ Seat.unlink = function(user, unlink_child) {
 }
 Seat.link = function(user, seat) {
 	if(user && seat && !seat.user) {
+
+		if(user.seat) {
+			Seat.unlink(user)
+		}
+
 		view.item_seat(false);
 		position(user.selection, seat)
-		user.label.textContent = seat.name
+		user.label.textContent = seat.name;
+		// user.popup_seat.textContent = seat.name;
+		// user.popup_sc.textContent = seat.sc_name;
+		// console.log(seat)
 		seat.deckElement.appendChild(user.selection)
 		if(has_class(user.selection)) {
 			add_class(user.selection, seat.type)
@@ -1658,7 +1757,7 @@ Seat.prototype = {
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c' || this.sex == 'a')) || !this.sex || user.infant;
+            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c' || this.sex == 's')) || !this.sex || user.infant;
         }
 	},
 	draw: function() {
@@ -1757,9 +1856,9 @@ Seat.prototype = {
 		ctx.translate(this.X + dx, this.Y + dy - 7);
 		ctx.transform.apply(ctx, this.labelTransform);
 
-		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var right = this.num_side !== 'right' ? true : false;
 		var img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
-		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
+		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
 
 		if(!img_s || !img_sex) {
 			ctx.restore()
@@ -1773,15 +1872,18 @@ Seat.prototype = {
     		img_s.seats.push(this)
 		}
 
+		var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
+		var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
+		var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
+		var l_dy = this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
+
 		if(img_sex.img) {
-			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
-			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
 			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
 			if(this.group_seat.sex){
 				if(!this.labels_pos) {
 					this.labels_pos = {
-						x: this.X + dx + i_dx - (size*0.7) + this.group.size.left, 
-						y: this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
+						x: l_dx, 
+						y: l_dy
 					}
 					this.show_labels = true
 					this.seat_right = right;
@@ -1789,6 +1891,13 @@ Seat.prototype = {
 				}
 			}
 		}
+		if(!this.popup_pos) {
+			this.popup_pos = {
+				x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
+				y: l_dy + size*1.5
+			}
+		}
+
 		if(this.group_seat.sex && !this.show_labels) {
 			showLabels(this)
 		}
@@ -1814,9 +1923,9 @@ Seat.prototype = {
 			                             'rgba(255, 255, 255)';
 		
 		
-		var right = this.type.indexOf('right') !== -1 ? true : false;
+		var right = this.num_side !== 'right' ? true : false;
 		var obj = right ? obj_img['no_seat_r'] : obj_img['no_seat'];
-		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_a'];
+		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
 
 		if(!obj || !img_sex) {
 			ctx.restore()
@@ -1841,6 +1950,14 @@ Seat.prototype = {
 
 		if(this.group_seat.sex && this.show_labels) {
 			hideLabels(this)
+		}
+		var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
+		var l_dy = this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
+		if(!this.popup_pos) {
+			this.popup_pos = {
+				x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
+				y: l_dy + size*1.5
+			}
 		}
 	},
 	drawLine: function(side){
