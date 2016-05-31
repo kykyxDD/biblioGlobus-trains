@@ -214,11 +214,11 @@
   transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
 }
 .platz_lower_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
 }
 .platz_upper_left  .wrap {
   -webkit-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
@@ -235,11 +235,11 @@
   transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
 }
 .platz_upper_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
 }
 .kupe_upper_left  .wrap {
   -webkit-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
