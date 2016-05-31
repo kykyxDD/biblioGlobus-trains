@@ -671,6 +671,7 @@ function setup_viewmodel() {
 		})
 	}, view)
 	view.selectUser = function(user, e) {
+		// console.log(user, e)
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
 			var previous = view.user()
 
@@ -1795,8 +1796,11 @@ Seat.prototype = {
 					}
 					this.show_labels = true
 					this.seat_right = right;
+					if(this.sex == 'c') {
+						position(this.labels, this.labels_pos.x, this.labels_pos.y)	
+					}
 
-					position(this.labels, this.labels_pos.x, this.labels_pos.y)
+					
 				}
 			}
 			
