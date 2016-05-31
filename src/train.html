@@ -258,15 +258,15 @@
 				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
 					
 					<div class="input_icon input_m">
-						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { change: changeSex }'>
+						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { click: changeSex }'>
 						<label for='label_m' class='radio_label'></label>
 					</div>
 					<div class="input_icon input_f">
-						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { change: changeSex }'>
+						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { click: changeSex }'>
 						<label for='label_f' class='radio_label'></label>
 					</div>
 					<div class="input_icon input_s">
-						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { change: changeSex }'>
+						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { click: changeSex }'>
 						<label for='label_s' class='radio_label'></label>
 					</div>
 				</div>
@@ -277,7 +277,7 @@
 					</div>
 					<div class="num">
 						<div class="field">Место:</div> 
-						<div class='value' data-bind='text:popup_user_num'></div>
+						<div class='value'>№<span data-bind='text:popup_user_num'></span></div>
 					</div>
 					<div class="sc">
 						<div class="field">Тип:</div> 
@@ -322,13 +322,13 @@
 		<table class="train_nav">
 	        <thead>
 	            <tr>
-	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}">←</td>
+	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}, event: { tap: scroll_prev_to_car }">←</td>
 	            <td class="neighbors prev" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="visible: prev_car_type">(<span class="type" data-bind="text: prev_car_type"></span>)</div></td>
 
 	            <td class="current"><span  data-bind="text: current_car_num">Вагон №</span><span class="type" > (<span data-bind="text: current_car_type">купейный</span>)</span></td>
 
 	            <td class="neighbors next" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="visible: next_car_type">(<span data-bind="text: next_car_type"></span>)</div></td>
-	            <td class="arror next" data-bind="css: { 'hide': !next_car_num()}">→</td>
+	            <td class="arror next" data-bind="css: { 'hide': !next_car_num()},event: { tap: scroll_next_to_car }">→</td>
 	            </tr>
 	        </thead>
             <tr><td colspan="5">
@@ -425,7 +425,7 @@
 						<div class="cont_val">
 							<span data-bind="text: board.date.date"></span> 
 							<span data-bind="text: board.date.month"></span> 
-							(<span data-bind="text: board.date.day"></span>) в
+							(<span data-bind="text: board.date.day" class='text_day'></span>) в
 							<span data-bind="text: board.time"></span>
 							
 						</div>
@@ -435,7 +435,7 @@
 						<div class="cont_val">
 							<span data-bind="text: board.arrival_date.date"></span> 
 							<span data-bind="text: board.arrival_date.month"></span> 
-							(<span data-bind="text: board.arrival_date.day"></span>) в
+							(<span data-bind="text: board.arrival_date.day" class='text_day'></span>) в
 							<span data-bind="text: board.arrival_time"></span>
 						</div>
 					</div>

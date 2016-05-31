@@ -767,11 +767,12 @@ function setup_viewmodel() {
 		view.click_select(data)
 	}
 	view.changeSex = function(item, event){
+		
 		var group = view.item_group();
 		var seat = view.item_seat();
 		var user = view.user();
 		var target = event.target || event.srcElement;
-		var sex = target.value
+		var sex = target.value;
 
 		if(group) {
 			var next_sex = sex == 's' || sex == 'c';
@@ -782,21 +783,21 @@ function setup_viewmodel() {
 					}
 				})
 			}
-			group.sex = sex;
-			group.seats.forEach(function(g_seat){
-				g_seat.sex = sex
-			})
+
 			if(((user.parent && user.parent.curseat() && FilterSeat.seatChild(seat, user.parent)) || !user.parent)) {
 				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
 			}
+			group.sex = sex;
+			group.seats.forEach(function(g_seat){
+				g_seat.sex = sex;
+				g_seat.group.draw()
+			})
 			if(user.parent && !user.parent.seat && !user.seat) {
 				select_next_user()
 			}
-			
-			seat.group.draw()
 		}
 		
 		hidePopupSex()
@@ -954,13 +955,14 @@ function create_group_seat(){
 		var id = +arr[1];
 		var id_group = Math.floor((id-1)/4);
 		var obj_g = groups_seat[num], obj;
+		var sex = seat.sex == 'c' && id < 37 ? true : false;
 
 		if(!obj_g){
 			groups_seat[num] = {};
 			obj_g = groups_seat[num]
 			obj_g.groups = [];
 			obj = {
-				sex: seat.sex == 'c' ? true : false,
+				sex: sex,
 				seats: [seat]
 			}
 			obj_g.groups[id_group] = obj;
@@ -971,20 +973,19 @@ function create_group_seat(){
 				obj_g.groups[id_group].seats.push(seat)
 			} else {
 				obj = {
-					sex: seat.sex == 'c' ? true : false,
+					sex: sex,
 					seats: [seat]
 				}
 				obj_g.groups[id_group] = obj
 				seat.group_seat = obj;
 			}
 		}
-		if(obj.sex) {
+		if(sex) {
 			create_label(seat)
 		}
 
 		seat.group_seat = obj
 	})
-
 
 	view.groups_seat(groups_seat)
 }
@@ -1028,14 +1029,6 @@ function update_group_seat() {
 			}
 		}
 	}
-}
-function createSelectGroup(group) {
-	var elem = document.createElement('div');
-	elem.className = 'change_sex';
-	(function(g){elem.addEventListener('click', function(){
-		changeSexGroup(g)
-	})})(group);
-	return elem
 }
 function changeSexGroup(group){
 	if(!view.show_popup_select_sex() || 
@@ -1104,6 +1097,7 @@ function sortUsers(){
 	}))
 }
 function showPopupSex(seat){
+	if(!view.user()) return
 	var group = seat.group_seat;
 	view.item_group(group)
 	view.item_seat(seat)
@@ -1306,8 +1300,6 @@ function register_events() {
 		view.popup_user(false)
 		view.error_seat(false)
 		view.text_hind(false)
-		view.popup_user_num(false)
-		view.popup_user_sc(false)
 
 		var user = view.user();
 
@@ -1332,10 +1324,6 @@ function register_events() {
 			} else if(!seat.match_service_class){
 				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
 				view.text_hind('')
-			} else if(!seat.match_sex) {
-				// console.log(seat)
-			} else {
-				// console.log(seat)
 			}
 		} else {
 			view.hind(false)
@@ -1371,7 +1359,7 @@ function register_events() {
 		e.preventDefault()
 	}
 	function click(e) {
-		var target = e.target || e.srcElement
+		var target = e.target || e.srcElement;
 
 		if(target.tagName == 'INPUT' || target.tagName == 'LABEL' || has_class(target,'change_sex') || has_class(target,'label_group')) return
 		if(view.user() && !C.VIEWONLY) {
@@ -1423,16 +1411,6 @@ function click_sound() {
 	try { el.sound.currentTime = 0.01 }
 	catch(e) { 'hello, my name is iOS' }
 	el.sound.play()
-}
-function showLabels(seat){
-	seat.show_labels = true;
-	var elem = seat.labels;
-	rem_class(elem, 'hide')
-}
-function hideLabels(seat){
-	seat.show_labels = false;
-	var elem = seat.labels;
-	add_class(elem, 'hide')
 }
 
 function Tile(elem) {
@@ -1791,7 +1769,40 @@ Seat.prototype = {
 			}
 		} else {
 			this.drawLabelNoSeat(this.name.toUpperCase())
-		} 
+		}
+
+		
+		if(!this.popup_pos || (this.group_seat.sex && !this.labels_pos)) {
+			var size = this.labelSize;
+	        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+	        var dy = this.sprite.offset.label[1];
+	        var right = this.num_side !== 'right' ? true : false;
+			var i_dx = right ? -size*0.9 : size*1.2 ;
+			var i_dy = size/2
+			var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
+			var l_dy = this.Y + dy + i_dy -9 - size*1.5 + this.group.size.top;
+			if(!this.popup_pos) {
+				this.popup_pos = {
+					x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
+					y: l_dy + size*1.5
+				}
+			}
+			if(this.group_seat && this.group_seat.sex){
+				if(!this.labels_pos) {
+					this.labels_pos = {
+						x: l_dx, 
+						y: l_dy
+					}
+					this.show_labels = true
+					this.seat_right = right;
+
+					position(this.labels, this.labels_pos.x, this.labels_pos.y)
+				}
+			}
+			
+		}
+
+		
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1878,28 +1889,8 @@ Seat.prototype = {
 
 		if(img_sex.img) {
 			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
-			if(this.group_seat.sex){
-				if(!this.labels_pos) {
-					this.labels_pos = {
-						x: l_dx, 
-						y: l_dy
-					}
-					this.show_labels = true
-					this.seat_right = right;
-					position(this.labels, this.labels_pos.x, this.labels_pos.y)
-				}
-			}
-		}
-		if(!this.popup_pos) {
-			this.popup_pos = {
-				x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
-				y: l_dy + size*1.5
-			}
 		}
 
-		if(this.group_seat.sex && !this.show_labels) {
-			showLabels(this)
-		}
 		this.coor_popup = right ? [this.x, this.y] : [this.x + size, this.y];
 		ctx.strokeStyle = "rgb(0,0,0)";
 		ctx.fillText(text, size / 2, size / 2);
@@ -1946,18 +1937,6 @@ Seat.prototype = {
 			// this.drawLine(right)
 		}
 		ctx.restore();
-
-		if(this.group_seat.sex && this.show_labels) {
-			hideLabels(this)
-		}
-		var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
-		var l_dy = this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
-		if(!this.popup_pos) {
-			this.popup_pos = {
-				x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
-				y: l_dy + size*1.5
-			}
-		}
 	},
 	drawLine: function(side){
 		var ctx = this.group.context;

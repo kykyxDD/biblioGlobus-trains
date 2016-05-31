@@ -247,7 +247,7 @@ var self = window.model = {
 				if(add.length){
 					return [['n'+ user.id, seat+sex].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
 				} else {
-					return ['n'+ user.id, seat+sex].map(encodeURIComponent).join('=')
+					return [ 'n'+ user.id, seat+sex].map(encodeURIComponent).join('=')
 				}
 			}
 		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')
