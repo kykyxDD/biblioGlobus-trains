@@ -265,7 +265,7 @@ function ready() {
 	}
 	function loading_error(error) {
 		clearInterval(refresh.interval)
-		el.progress.textContent = error.message
+		el.progress.textContent = typeof error == 'string' ? error : error.message;
 	}
 	
 }
@@ -1302,26 +1302,28 @@ function register_events() {
 			seat = Seat.findByPositionMove(x / frames.view.scale, y / frames.view.scale)
 
 		var target = e.target || e.srcElement;
+		var user
 		view.popup_user(false)
 		view.error_seat(false)
 		view.text_hind(false)
 		view.popup_user_num(false)
 		view.popup_user_sc(false)
 
+		var user = view.user();
+
 		if(seat){
 			view.hind(true)
 			position(el.hind, seat.popup_pos.x, seat.popup_pos.y)
-			var res  = view.user().parent ? FilterSeat.seatChild(seat, view.user().parent) : true
 			view.popup_user_num(seat.name)
 			view.popup_user_sc(seat.sc_name)
+
 			if(seat.user) {
 				var elem_parent = target.parentNode;
-				var user = seat.info;
+				var info_user = seat.info;
 				view.popup_user(true)
-				view.popup_user_name(user.name)
-				view.popup_user_num(seat.name)
-				view.popup_user_sc(seat.sc_name)
-			} else if(!res){
+				view.popup_user_name(info_user.name)
+
+			} else if(user && user.parent && FilterSeat.seatChild(seat, user.parent) == false){
 				view.error_seat(view.error_texts.parent)
 			} else if(seat.sex){
 				view.text_hind(view.sex_text[seat.sex][1])

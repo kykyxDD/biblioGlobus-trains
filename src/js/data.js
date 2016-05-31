@@ -22,6 +22,7 @@ var self = window.model = {
 		self.get.ready(function() {
 			if('ERROR' in self.ticket) {
 				var error = self.locale.error.select('code', self.ticket['ERROR'])
+				error = !error && self.ticket['COMMENT'] ? self.ticket['COMMENT'] : error;
 				fail_callback(error)
 			} else {
 				var pre = decodeURIComponent(REGISTRATION_NUMBER),
@@ -179,6 +180,7 @@ var self = window.model = {
 				seat.back = back
 				seat.sc   = info['sc']
 				seat.sex  = info['sex'].toLowerCase() || false;
+				seat.info = user || false ; 
                 seat.status = status
                 seat.has_child_cradle = status === 'i'
 			} else if(duplicate){
@@ -220,6 +222,7 @@ var self = window.model = {
         
 		var seats = self.users.map(function(user) {
 			var seat = user.curseat().toUpperCase()
+			var sex = user.seat.group_seat.sex ? user.seat.group_seat.sex.toUpperCase() : user.seat.sex ? user.seat.sex.toUpperCase() : '';
             
 			var add = []
 			if(user.parent){
@@ -240,10 +243,11 @@ var self = window.model = {
                 var seat_data = self.struct.seats.select('num', user.curseat())
                 schemas.collect(seat_data.car)
 
+
 				if(add.length){
-					return [['n'+ user.id, seat].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
+					return [['n'+ user.id, seat+sex].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
 				} else {
-					return ['n'+ user.id, seat].map(encodeURIComponent).join('=')
+					return ['n'+ user.id, seat+sex].map(encodeURIComponent).join('=')
 				}
 			}
 		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')

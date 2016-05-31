@@ -180,11 +180,11 @@
         <SEAT no="8-18" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-19" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-20" status="*" sc="Y"  sex="C" srvClass="2Э"/>
-        <SEAT no="8-21" status="*" sc="Y"  sex="" srvClass="2Э"/>
-        <SEAT no="8-23" status="*" sc="Y"  sex="" srvClass="2Э"/>
-        <SEAT no="8-24" status="*" sc="Y"  sex="" srvClass="2Э"/>
-        <SEAT no="8-27" status="*" sc="Y"  sex="" srvClass="2Э"/>
-        <SEAT no="8-28" status="*" sc="Y"  sex="" srvClass="2Э"/>
+        <SEAT no="8-21" status="*" sc="Y"  sex="m" srvClass="2Э"/>
+        <SEAT no="8-23" status="*" sc="Y"  sex="m" srvClass="2Э"/>
+        <SEAT no="8-24" status="*" sc="Y"  sex="m" srvClass="2Э"/>
+        <SEAT no="8-27" status="*" sc="Y"  sex="m" srvClass="2Э"/>
+        <SEAT no="8-28" status="*" sc="Y"  sex="m" srvClass="2Э"/>
         <SEAT no="8-29" status="*" sc="Y"  sex="f" srvClass="2Э"/>
         <SEAT no="8-30" status="*" sc="Y"  sex="f" srvClass="2Э"/>
         <SEAT no="8-31" status="*" sc="Y"  sex="f" srvClass="2Э"/>
