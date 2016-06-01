@@ -63,10 +63,10 @@ audio {
   background-color: #72797f; }
   .view .switch-deck {
     position: relative;
-    height: 40px;
+    height: 38px;
     width: 190px;
     color: #000;
-    font: 0.9em Arial, sans-serif;
+    font: 0.95em Arial, sans-serif;
     background-size: 100%; }
     .view .switch-deck.two,
     .view .switch-deck.one {
@@ -132,7 +132,7 @@ audio {
         width: 25px;
         height: 25px;
         visibility: visible;
-        z-index: 10;
+        z-index: 210;
         cursor: pointer;
       }
       .view .plane .change_sex {
@@ -182,6 +182,7 @@ audio {
         margin-top: -30px;
         font-family: Arial, sans-serif;
         cursor: pointer;
+        pointer-events: none;
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
         -ms-transition: all 0.3s ease;
@@ -197,6 +198,8 @@ audio {
           transition: all 0.3s ease;
         }
         .view .plane .deck .selection .wrap {
+          cursor: pointer;
+          pointer-events: auto;
           width: 100%;
           height: 100%;
           -webkit-transform: rotate(30deg) translate(18px, -6px) skew(15deg);
@@ -312,12 +315,15 @@ audio {
       position: absolute;
       pointer-events: none;
       z-index: 5; }
+      .view .plane .text_hind,
+      .view .plane .popup_error_seat {
+        padding-top: 5px;
+      }
       .view .popup_selected_sex {
         position: absolute;
-        margin-top: 1px;
         z-index: 5;
         width: 72px;
-        height: 22px;
+        height: 24px;
         padding-left: 25px;
         padding-bottom: 5px;
         font-family: Arial, sans-serif;
@@ -326,6 +332,11 @@ audio {
         background-repeat: no-repeat;
         background-position: center; 
         background-size: 100%;
+        cursor: pointer;
+        }
+        .view .popup_selected_sex label {
+          cursor: pointer;
+          z-index: 200;
         }
         .view .popup_selected_sex:before {
           position: absolute;
@@ -363,6 +374,9 @@ audio {
           background-repeat: no-repeat;
           background-position: center;
         }
+
+          
+
         .view .popup_selected_sex label[for='label_s'] {
           background-image: url('../img/sex_s.png');
         }
@@ -432,7 +446,7 @@ audio {
         opacity: 0; }
     .view .plane .popup_seat {
       color: #fff;
-      padding: 5px;
+      padding: 10px;
       font-size: 0.85em;
       width: 200px;
       font-family: Arial, sans-serif;
@@ -440,16 +454,18 @@ audio {
       border-radius: 3px;
       opacity: 0;
       margin-top: 40px;
+      
       pointer-events: none;
-/*      -webkit-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
-      -moz-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
-      -ms-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
-      -o-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
-      transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;*/
+      -webkit-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
+      -moz-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
+      -ms-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
+      -o-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
+      transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
     }
     .view .plane .popup_seat.show {
       margin-top: 0px;
       opacity: 1;
+
     }
     .view .plane .popup_seat.user {
       text-align: left;
@@ -469,6 +485,7 @@ audio {
     .view .plane .popup_seat .num,
     .view .plane .popup_seat .sc {
       text-align: left;
+      margin-bottom: 5px;
     }
 
     .view .plane .popup_seat .field {
@@ -569,6 +586,9 @@ audio {
       width: 65%;
       color: #000;
       float: right;
+    }
+    .controls .board-info .cred .cont_val .text_day {
+      text-transform: capitalize;
     }
 
     .controls .board-info .cred .left .value {
@@ -822,7 +842,7 @@ audio {
     font-family: Arial, sans-serif;
     padding: 10px 5px 10px 50px;
     text-transform: uppercase;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
   }
   .icon_help.show {

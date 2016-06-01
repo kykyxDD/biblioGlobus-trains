@@ -45,24 +45,15 @@
   pointer-events: auto;
   background: #0bd04c;
   color: #fff;
-  height: 58px;
+  height: 56px;
   font-weight: bold;
 }
 .train_nav thead .type {
   text-transform: lowercase;
   font-weight: normal;
 }
-.train_nav .info {
-  /*pointer-events: none;*/
-/*  -ms-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;*/
-}
 .train_nav thead td {
-  height: 58px
+  height: 56px
 }
 
 .train_nav td.hide {
@@ -70,6 +61,7 @@
 }
 .train_nav .arror {
   font-size: 25px;
+  cursor: pointer;
 }
 .train_nav .arror.prev {
   padding: 0 5px 0 10px;
@@ -92,13 +84,13 @@
 }
 
 .train_nav .neighbors {
-    font-size: 15px;
+    font-size: 16px;
     width: 140px;
     cursor: pointer;
 }
 
 .train_nav .neighbors .type {
-    font-size: 11px;
+    font-size: 12px;
 }
 .train_nav .neighbors.prev {
   text-align: left;
@@ -107,9 +99,10 @@
   text-align: right;
 }
 .train_nav .info {
+  line-height: 1.35em;
   text-align: left;
   font-size: 0.85em;
-  padding: 5px 10px;
+  padding: 9px 10px 14px;
 }
 .train_nav .info td{
   vertical-align: top;
@@ -132,9 +125,11 @@
   color: #ff6600;
 
 }
+.train_nav .info .price td {
+  padding-bottom: 5px;
+}
 .train_nav .info .price .name{
   vertical-align: bottom;
-  padding-bottom: 3px;
 }
 .train_nav .info .price span.price {
   font-size: 20px;
@@ -142,6 +137,7 @@
 }
 .train_nav .info .carrier .text {
   font-weight: bold;
+  padding: 2px 0;
 }
 .train_nav .info .text {
   vertical-align: middle;
@@ -151,10 +147,9 @@
   vertical-align: bottom;
 }
 .train_nav .info .info_icon {
-  width: 30px;
+  width: 31px;
   height: 20px;
   display: inline-block;
-  /*background: url(../img/icons.png) no-repeat;*/
   background-size: 100%;
   background-color: #fff;
   border-radius: 5px;
@@ -207,25 +202,25 @@
   transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
 }
 .platz_lower_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-28px, 56px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
 }
 .platz_lower_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
-  transform: rotate(0deg) translate(7px, 77px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-42px, 70px) skew(0deg) !important;
 }
 .platz_upper_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-71px, 132px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
 }
 .platz_upper_top  .wrap {
   -webkit-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
@@ -235,25 +230,25 @@
   transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
 }
 .platz_upper_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-53px, 139px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-103px, 133px) skew(0deg) !important;
 }
 .kupe_upper_left  .wrap {
-  -webkit-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-76px, 117px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
 }
 .kupe_upper_right .wrap {
-  -webkit-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-112px, 132px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-115px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-115px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-115px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-115px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-115px, 132px) skew(0deg) !important;
 }
 .kupe_lower_left  .wrap {
   -webkit-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
@@ -263,11 +258,11 @@
   transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
 }
 .kupe_lower_right  .wrap {
-  -webkit-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
-  -moz-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
-  -ms-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
-  -o-transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
-  transform: rotate(0deg) translate(-35px, 85px) skew(0deg) !important;
+  -webkit-transform: rotate(0deg) translate(-38px, 86px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-38px, 86px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-38px, 86px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-38px, 86px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-38px, 86px) skew(0deg) !important;
 }
 
 .platz_lower_right img ,
