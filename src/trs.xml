@@ -168,10 +168,10 @@
         <SEAT no="8-2" status="*" sc="Y"  sex="" srvClass="D"/>
         <SEAT no="8-3" status="*" sc="Y"  sex="" srvClass="D"/>
         <SEAT no="8-4" status="*" sc="Y"  sex="" srvClass="D"/>
-        <SEAT no="8-5" status="*" sc="Y"  sex="C" srvClass="D"/>
-        <SEAT no="8-6" status="*" sc="Y"  sex="C" srvClass="D"/>
-        <SEAT no="8-7" status="*" sc="Y"  sex="C" srvClass="D"/>
-        <SEAT no="8-8" status="*" sc="Y"  sex="C" srvClass="D"/>
+        <SEAT no="8-5" status="*" sc="Y"  sex="m" srvClass="D"/>
+        <SEAT no="8-6" status="*" sc="Y"  sex="m" srvClass="D"/>
+        <SEAT no="8-7" status="*" sc="Y"  sex="m" srvClass="D"/>
+        <SEAT no="8-8" status="*" sc="Y"  sex="m" srvClass="D"/>
         <SEAT no="8-9" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-10" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-11" status="*" sc="Y"  sex="C" srvClass="2Э"/>

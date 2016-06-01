@@ -335,12 +335,27 @@ function loadImageIcon(){
 	var loader = new Loader;
 	
 	var obj_url = {
-		'no_seat': {
+		'seat'   : {
+			src: BASE_URL + 'img/01.png',
+			seats: [],
+			img: false
+		},
+		'seat_no'   : {
+			src: BASE_URL + 'img/01_no.png',
+			seats: [],
+			img: false
+		},
+		'seat_s'   : {
+			src: BASE_URL + 'img/01_s.png',
+			seats: [],
+			img: false
+		},
+		'no_seat_s': {
 			src: BASE_URL + 'img/04_no.png',
 			seats: [],
 			img: false
 		},
-		'no_seat_r': {
+		'no_seat_s_r': {
 			src: BASE_URL + 'img/02_no.png',
 			seats: [],
 			img: false
@@ -671,7 +686,6 @@ function setup_viewmodel() {
 		})
 	}, view)
 	view.selectUser = function(user, e) {
-		// console.log(user, e)
 		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
 			var previous = view.user()
 
@@ -785,17 +799,22 @@ function setup_viewmodel() {
 				})
 			}
 
+			group.sex = sex;
+			group.seats.forEach(function(g_seat){
+				g_seat.sex = sex;
+				g_seat.group.draw()
+				if(g_seat.user) {
+					createSexSelect(g_seat.info, g_seat)
+				}
+			})
+
 			if(((user.parent && user.parent.curseat() && FilterSeat.seatChild(seat, user.parent)) || !user.parent)) {
 				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
 			}
-			group.sex = sex;
-			group.seats.forEach(function(g_seat){
-				g_seat.sex = sex;
-				g_seat.group.draw()
-			})
+
 			if(user.parent && !user.parent.seat && !user.seat) {
 				select_next_user()
 			}
@@ -908,11 +927,11 @@ function setup_viewmodel() {
 }
 function make_selection_label(user) {
 	var root = document.createElement('div');
-	root.className = 'selection ' +user.sex;
+	root.className = 'selection';
 	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
-			'<img height="100%" src="'+ BASE_URL + 'img/06.png">'+
+			'<div class="icon_seat" > </div>'+
 			'<div class="label"></div>'+
 
  		'</div>'
@@ -956,7 +975,7 @@ function create_group_seat(){
 		var id = +arr[1];
 		var id_group = Math.floor((id-1)/4);
 		var obj_g = groups_seat[num], obj;
-		var sex = seat.sex == 'c' && id < 37 ? true : false;
+		var sex = seat.sex == 'c' ? true : false;
 
 		if(!obj_g){
 			groups_seat[num] = {};
@@ -970,7 +989,11 @@ function create_group_seat(){
 			seat.group_seat = obj
 		} else {
 			obj = obj_g.groups[id_group]
+
 			if(obj) {
+				if(obj_g.groups[id_group].sex == false && sex) {
+					obj_g.groups[id_group].sex = true
+				}
 				obj_g.groups[id_group].seats.push(seat)
 			} else {
 				obj = {
@@ -1615,7 +1638,7 @@ Seat.togglePassengers = function(show) {
 Seat.unlink = function(user, unlink_child) {
 	if(user && user.seat) {
 		user.selection.parentNode && user.selection.parentNode.removeChild(user.selection)
-		user.selection.className = "selection "+user.sex
+		user.selection.className = "selection "
 
 		var prev_seat = user.seat
 
@@ -1650,11 +1673,7 @@ Seat.link = function(user, seat) {
 		position(user.selection, seat)
 		user.label.textContent = seat.name;
 		seat.deckElement.appendChild(user.selection)
-		if(has_class(user.selection)) {
-			add_class(user.selection, seat.type)
-		} else  {
-			add_class(user.selection, seat.type + ' active')
-		}
+		createSexSelect(user, seat)
 
 		user.seat = seat
 		seat.info = user
@@ -1672,6 +1691,10 @@ Seat.link = function(user, seat) {
 		seat.group.draw()
 		updateDisable()
 	}
+}
+function createSexSelect(user, seat) {
+	var sex = seat.sex ? seat.sex : '';
+	user.selection.className = "selection " + seat.type + ' ' + sex;
 }
 function numInfant(){
 	var num = 0;
@@ -1773,7 +1796,7 @@ Seat.prototype = {
 		}
 
 		
-		if(!this.popup_pos || (this.group_seat.sex && !this.labels_pos)) {
+		if(!this.popup_pos || (this.labels && !this.labels_pos)) {
 			var size = this.labelSize;
 	        var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
 	        var dy = this.sprite.offset.label[1];
@@ -1781,14 +1804,14 @@ Seat.prototype = {
 			var i_dx = right ? -size*0.9 : size*1.2 ;
 			var i_dy = size/2
 			var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
-			var l_dy = this.Y + dy + i_dy -9 - size*1.5 + this.group.size.top;
+			var l_dy = this.Y + dy + i_dy -9 - size*1.5 + this.group.size.top - (right ? 7 : 0);
 			if(!this.popup_pos) {
 				this.popup_pos = {
 					x: right ? l_dx + size*1.5 - 200 : l_dx - size, 
 					y: l_dy + size*1.5
 				}
 			}
-			if(this.group_seat && this.group_seat.sex){
+			if(this.labels){
 				if(!this.labels_pos) {
 					this.labels_pos = {
 						x: l_dx, 
@@ -1859,6 +1882,8 @@ Seat.prototype = {
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
         var dy = this.sprite.offset.label[1];
         var obj_img = view.objIconSeat
+        var y = 7;
+        var x = 0;
 
 		ctx.save();
 		ctx.fillStyle =
@@ -1867,12 +1892,19 @@ Seat.prototype = {
 			this === model.taken       ? '#19cf00'   :
 			                             'rgb(0,0,0)';
 
-		ctx.translate(this.X + dx, this.Y + dy - 7);
+		ctx.translate(this.X + dx, this.Y + dy);
 		ctx.transform.apply(ctx, this.labelTransform);
 
 		var right = this.num_side !== 'right' ? true : false;
-		var img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
-		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
+		var img_s, img_sex;
+		if(this.sex) {
+			img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
+			img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
+		} else {
+			img_s = obj_img['seat']
+			img_sex = true
+			x = right ? 0 : size/2;
+		}
 
 		if(!img_s || !img_sex) {
 			ctx.restore()
@@ -1881,23 +1913,20 @@ Seat.prototype = {
 		var w = right ? Math.floor(img_s.img.width/size) -1 : 0;
 
 		if(img_s.img) {
-			ctx.drawImage(img_s.img, 0-size*w, 0, img_s.img.width, img_s.img.height)	
+			ctx.drawImage(img_s.img, 0-size*w + x, 0-y - (right ? 7 : 0), img_s.img.width, img_s.img.height)	
 		} else {
     		img_s.seats.push(this)
 		}
 
-		var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
-		var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
-		var l_dx = this.X + dx + i_dx - (size*0.7) + this.group.size.left;
-		var l_dy = this.Y + dy + i_dy -7 - size*1.5 + this.group.size.top
-
 		if(img_sex.img) {
-			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
+			var i_dx = right ? 0 - size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
+			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
+			ctx.drawImage(img_sex.img, i_dx, i_dy-y - (right ? 7 : 0), img_sex.img.width, img_sex.img.height)
 		}
 
 		this.coor_popup = right ? [this.x, this.y] : [this.x + size, this.y];
 		ctx.strokeStyle = "rgb(0,0,0)";
-		ctx.fillText(text, size / 2, size / 2);
+		ctx.fillText(text, size/2 + x, size/2 - y - (right ? 7 : 0));
 
 		ctx.textAlign = 'center';
 		ctx.restore();
@@ -1908,6 +1937,7 @@ Seat.prototype = {
         var dx = this.sprite.offset.label[0] + this.sprite.offset.size[0];
         var dy = this.sprite.offset.label[1];
         var obj_img = view.objIconSeat
+        var x = 0
 
         ctx.save();
 		ctx.fillStyle =
@@ -1916,10 +1946,18 @@ Seat.prototype = {
 			this === model.taken       ? '#19cf00'   :
 			                             'rgba(255, 255, 255)';
 		
-		
 		var right = this.num_side !== 'right' ? true : false;
-		var obj = right ? obj_img['no_seat_r'] : obj_img['no_seat'];
-		var img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
+		var obj, img_sex;
+
+		if(this.sex) {
+			obj = right ? obj_img['no_seat_s_r'] : obj_img['no_seat_s'];
+			img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];	
+		} else {
+			obj = obj_img['seat_no']
+			img_sex = true
+			x = right ? 0 : size/2;
+		}
+		
 
 		if(!obj || !img_sex) {
 			ctx.restore()
@@ -1928,17 +1966,14 @@ Seat.prototype = {
 		if(obj.img) {
 			ctx.translate(this.X + dx , this.Y + dy - size/4 -1);
 			ctx.transform.apply(ctx, this.labelTransform);
-			ctx.fillText(text, size / 2, size / 2);
-
-			ctx.drawImage(obj.img, 0 - (right ? size : 0), 0, obj.img.width, obj.img.height)		
-			
+			ctx.fillText(text, size/2 + x, size / 2- (right ? 7 : 0));
+			ctx.drawImage(obj.img, 0 - (right && this.sex ? size : 0) + x, 0- (right ? 7 : 0), obj.img.width, obj.img.height)
 		}
 		
 		if(img_sex.img) {
 			var i_dx = right ? 0-size + (size - img_sex.img.width)/2 : 0 +  size + (size - img_sex.img.width)/2;
 			var i_dy = right ? 0 + (size - img_sex.img.height)/2     : 0 + (size - img_sex.img.height)/2;
-			ctx.drawImage(img_sex.img, i_dx, i_dy, img_sex.img.width, img_sex.img.height)
-			// this.drawLine(right)
+			ctx.drawImage(img_sex.img, i_dx, i_dy- (right ? 7 : 0), img_sex.img.width, img_sex.img.height)
 		}
 		ctx.restore();
 	},

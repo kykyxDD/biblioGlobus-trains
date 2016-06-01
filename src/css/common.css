@@ -176,7 +176,7 @@ audio {
         position: absolute;
         left: 0;
         top: 0;
-        width: 72px;
+        width: 50px;
         height: 28px;
         margin-left: -40px;
         margin-top: -30px;
@@ -210,13 +210,47 @@ audio {
           position: relative; }
           .view .plane .deck .selection .wrap svg {
             fill: rgba(64, 255, 64, 0.8); }
+          .view .plane .deck .selection .wrap .icon_seat {
+            width: 100%;
+            height: 100%;
+            float: left;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto 100%;
+            background-image: url(../img/01_s.png);
+          }
+          .view .plane .deck .selection.f .wrap .icon_seat,
+          .view .plane .deck .selection.m .wrap .icon_seat, 
+          .view .plane .deck .selection.s .wrap .icon_seat  {
+            background-image: url(../img/06.png);
+          }
+          .view .plane .deck .selection.f.platz_lower_right .icon_seat,
+          .view .plane .deck .selection.m.platz_lower_right .icon_seat,
+          .view .plane .deck .selection.s.platz_lower_right .icon_seat,
+          .view .plane .deck .selection.f.platz_upper_right .icon_seat,
+          .view .plane .deck .selection.m.platz_upper_right .icon_seat,
+          .view .plane .deck .selection.s.platz_upper_right .icon_seat,
+          .view .plane .deck .selection.f.kupe_upper_right .icon_seat,
+          .view .plane .deck .selection.m.kupe_upper_right .icon_seat,
+          .view .plane .deck .selection.s.kupe_upper_right .icon_seat,
+          .view .plane .deck .selection.f.kupe_lower_right .icon_seat,
+          .view .plane .deck .selection.m.kupe_lower_right .icon_seat,
+          .view .plane .deck .selection.s.kupe_lower_right .icon_seat {
+            background-image: url(../img/06_1.png);
+          }
           .view .plane .deck .selection .wrap .label {
             position: absolute;
             font: 11px/2 Arial;
             line-height: 22px;
-            width: 26px; 
+            width: 100%; 
             text-align: center;
           }
+          .view .plane .deck .selection.f .wrap .label,
+          .view .plane .deck .selection.s .wrap .label,
+          .view .plane .deck .selection.m .wrap .label {
+            width: 50%;
+          }
+
           .view .plane .deck .selection .wrap .label,
           .view .plane .deck .selection .wrap img {
             pointer-events: none;
@@ -236,16 +270,32 @@ audio {
             transition: all 0.3s ease;
           }
           .selection.f .wrap:after {
-            background: url('../img/sex_f_s.png') no-repeat center;
+            background: url('../img/sex_f_s_b.png') no-repeat center;
             background-size: 12px;
           }
           .selection.m .wrap:after {
-            background: url('../img/sex_m_s.png') no-repeat center;
+            background: url('../img/sex_m_s_b.png') no-repeat center;
             background-size: 12px;  
           }
           .selection.s .wrap:after {
-            background: url('../img/sex_s_s.png') no-repeat center;
-            background-size: 12px;  
+            background: url('../img/sex_s_s_b.png') no-repeat center;
+            background-size: 15px;  
+          }
+          .view .plane .deck .selection.platz_lower_right .icon_seat,
+          .view .plane .deck .selection.platz_upper_right .icon_seat,
+          .view .plane .deck .selection.kupe_upper_right .icon_seat,
+          .view .plane .deck .selection.kupe_lower_right .icon_seat,
+          .view .plane .deck .selection.platz_lower_right .label,
+          .view .plane .deck .selection.platz_upper_right .label,
+          .view .plane .deck .selection.kupe_upper_right .label,
+          .view .plane .deck .selection.kupe_lower_right .label {
+            width: 50%;
+            float: right;
+          }
+          .view .plane .deck .selection.f .icon_seat,
+          .view .plane .deck .selection.m .icon_seat,
+          .view .plane .deck .selection.s .icon_seat {
+            width: 100%;
           }
           .selection.platz_lower_right .wrap:after,
           .selection.platz_upper_right .wrap:after,
@@ -254,13 +304,13 @@ audio {
             right: 25px;
             left: auto;
           }
-          .view .plane .deck .selection.platz_lower_right:hover .wrap:after,
+/*          .view .plane .deck .selection.platz_lower_right:hover .wrap:after,
           .view .plane .deck .selection.platz_upper_right:hover .wrap:after,
           .view .plane .deck .selection.kupe_upper_right:hover .wrap:after,
           .view .plane .deck .selection.kupe_lower_right:hover .wrap:after {
             right: 35px;
             left: auto;
-          }
+          }*/
           .view .plane .deck .selection .popup_info {
             position: absolute;
             top: 60px;
@@ -279,36 +329,6 @@ audio {
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease;
           }
-
-          .view .plane .deck .selection:hover { 
-            height: 40px;
-            top: -5px;
-          } 
-          .view .plane .deck .selection:hover .label { 
-            color: #fff;
-            font-size: 20px;
-            width: 35px;
-            line-height: 35px;
-          }
-          .view .plane .deck .selection:hover .wrap:after {
-            width: 35px;
-            height: 35px;
-            left: 35px;
-          }
-          .selection.f:hover .wrap:after {
-            background: url('../img/sex_f_s_b.png') no-repeat center;
-            background-size: 17px;
-          }
-          .selection.m:hover .wrap:after {
-            background: url('../img/sex_m_s_b.png') no-repeat center;
-            background-size: 17px;  
-          }
-          .selection.s:hover .wrap:after {
-            background: url('../img/sex_s_s_b.png') no-repeat center;
-            background-size: 17px;  
-          }
-
-
 
     .view .plane .fly,
     .view .plane .popup_seat {
