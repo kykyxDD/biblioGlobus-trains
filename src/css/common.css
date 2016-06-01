@@ -682,6 +682,7 @@ audio {
         background-image: url(../img/check_s.png);
         background-position: center;
         background-repeat: no-repeat;
+        pointer-events:none;
         visibility: visible; }
       .users-box .users .user > td {
         border-top: 1px solid #e6e7e7;
