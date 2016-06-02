@@ -42,8 +42,8 @@ body {
   padding-top: 9px;
   font-size: 7px;
 }
-.train_nav {
-  padding: 5px;
+.train_nav thead td{
+  height: 40px;
 }
 .train_nav .current {
   font-size: 9px;

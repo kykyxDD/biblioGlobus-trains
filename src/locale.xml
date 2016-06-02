@@ -48,10 +48,6 @@
 		<code>5060</code>
 		<message><![CDATA[На заданном направлении (или поезде) мест нет]]></message>
 	</error>
-	<error>
-		<code>500</code>
-		<message><![CDATA[Ошибка соединения]]></message>
-	</error>
 
 	<resultsPopupHeader>Вы успешно зарегистрировались на рейс __val__</resultsPopupHeader>
 	<resultsPopupText1>Спасибо что воспользовались услугами нашей компании.</resultsPopupText1>

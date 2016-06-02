@@ -106,6 +106,7 @@ Loader.prototype = {
 		data.type    = 'responseXML'
 		success      = data.success
 		data.success = function(response) {
+			// console.log(response)
 			try {
 				data.raw    = response
 				data.result = Loader.serialize(response.documentElement)
