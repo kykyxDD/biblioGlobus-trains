@@ -1015,7 +1015,8 @@ function create_group_seat(){
 			}
 		}
 		if(sex) {
-			create_label(seat)
+			seat.labels = true
+			// create_label(seat)
 		}
 
 		seat.group_seat = obj
@@ -1035,14 +1036,14 @@ function create_label(seat) {
 
 	var div = document.createElement('div');
 	div.className = 'label_group';
-	el.cont_label.appendChild(div);
-	// seat.deckElement.appendChild(div);
+	// el.cont_label.appendChild(div);
+	seat.deckElement.appendChild(div);
 	var dx = seat.X + seat.sprite.offset.label[0] + seat.sprite.offset.size[0];
     var dy = seat.Y + seat.sprite.offset.label[1] -7;
 
-	addEvent(div, 'click', function(){
-		showPopupSex(seat)
-	})
+    var cont = document.createElement('div');
+	cont.className = 'cont';
+	div.appendChild(cont);
 
 	seat.labels = div
 }
@@ -1143,22 +1144,27 @@ function sortUsers(){
 }
 function showPopupSex(seat){
 	if(!view.user()) return
-	var group = seat.group_seat;
-	view.item_group(group)
-	view.item_seat(seat)
-	var right = seat.seat_right ? seat.labelSize*2 : seat.labelSize;
 
-	position(el.popup_sex, seat.labels_pos.x - right, seat.labels_pos.y)
-	view.popup_right(seat.seat_right)
+	if(!view.show_popup_select_sex()){
+		var group = seat.group_seat;
+		view.item_group(group)
+		view.item_seat(seat)
+		var right = seat.seat_right ? seat.labelSize*2 : 0;
 
-	view.show_popup_select_sex(true);
-	if(group.sex !== true){
-		el.popup_sex.querySelector('input[value="'+group.sex+'"]').checked = true
-	} else {
-		var all_input = el.popup_sex.querySelectorAll('input[name="sex"]')
-		for(var i = 0; i < all_input.length; i++){
-			if(all_input[i].checked) all_input[i].checked = false
+		position(el.popup_sex, seat.labels_pos.x - right, seat.labels_pos.y)
+		view.popup_right(seat.seat_right)
+
+		view.show_popup_select_sex(true);
+		if(group.sex !== true){
+			el.popup_sex.querySelector('input[value="'+group.sex+'"]').checked = true
+		} else {
+			var all_input = el.popup_sex.querySelectorAll('input[name="sex"]')
+			for(var i = 0; i < all_input.length; i++){
+				if(all_input[i].checked) all_input[i].checked = false
+			}
 		}
+	} else {
+		hidePopupSex()
 	}
 	
 } 
@@ -1412,8 +1418,13 @@ function register_events() {
 				x      = (point.pageX + frames.view.center.x),
 				y      = (point.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
-				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true;
-			if(seat) {
+
+				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true,
+				labels = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
+
+			if(labels){
+				showPopupSex(labels)
+			} else if(seat) {
 				view.item_seat(seat);
 
 				if(seat.group_seat.sex == true){
@@ -1649,6 +1660,18 @@ Seat.findByPositionMove = function(x, y) {
 		}
 	}
 }
+Seat.findByPositionLabel = function(x,y){
+	var remains = seats.length, seat
+
+	while(seat = seats[--remains]) {
+		if(seat.labels && 
+		  (view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			seat.containsLabels(x, y)){
+			return seat
+		}
+	}
+
+}
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
 	seats.some(function(seat) {
@@ -1695,6 +1718,7 @@ Seat.link = function(user, seat) {
 		user.label.textContent = seat.name;
 		seat.deckElement.appendChild(user.selection)
 		createSexSelect(user, seat)
+		// add_class(user.selection, 'active')
 
 		user.seat = seat
 		seat.info = user
@@ -1769,6 +1793,12 @@ Seat.prototype = {
 				&& dy > 0 && dy < border[3]
 		}, this)
 	},
+	containsLabels: function(x, y) {
+		var dx = x - this.labels_pos.x,
+			dy = y - this.labels_pos.y
+		return dx > 0 && dx < 50
+			&& dy > 0 && dy < 25
+	},
 	updateState: function() {
 
 		this.X = this.x - this.group.size.left - this.size[0]
@@ -1835,16 +1865,14 @@ Seat.prototype = {
 			if(this.labels){
 				if(!this.labels_pos) {
 					this.labels_pos = {
-						x: l_dx, 
+						x: right ? l_dx : l_dx - 25, 
 						y: l_dy
 					}
 					this.show_labels = true
 					this.seat_right = right;
-					if(this.sex == 'c') {
-						position(this.labels, this.labels_pos.x, this.labels_pos.y)	
-					}
-
-					
+					// if(this.sex == 'c') {
+					// 	position(this.labels, this.labels_pos.x, this.labels_pos.y)	
+					// }
 				}
 			}
 			

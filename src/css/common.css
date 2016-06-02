@@ -199,6 +199,16 @@ audio {
           -o-transition: all 0.3s ease;
           transition: all 0.3s ease;
         }
+        .label_group {
+          z-index: 201 !important;
+        }
+        .label_group .cont{
+          cursor: pointer;
+          pointer-events: auto;
+          width: 100%;
+          height: 100%;
+          position: relative; 
+        }
         .view .plane .deck .selection .wrap {
           cursor: pointer;
           pointer-events: auto;
@@ -262,9 +272,9 @@ audio {
             content: '';
             position: absolute;
             top: 0;
-            width: 24px;
-            height: 24px;
-            left: 25px;
+            width: 50%;
+            height: 85%;
+            left: 50%;
             -webkit-transition: all 0.3s ease;
             -moz-transition: all 0.3s ease;
             -ms-transition: all 0.3s ease;
@@ -303,7 +313,7 @@ audio {
           .selection.platz_upper_right .wrap:after,
           .selection.kupe_upper_right .wrap:after,
           .selection.kupe_lower_right .wrap:after {
-            right: 25px;
+            right: 50%;
             left: auto;
           }
 /*          .view .plane .deck .selection.platz_lower_right:hover .wrap:after,
@@ -330,6 +340,22 @@ audio {
             -ms-transition: all 0.3s ease;
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease;
+          }
+          .view .plane .deck .selection.active {
+            height: 35px;
+            width: 60px;
+            margin-left: -43px;
+          }
+          .view .plane .deck .selection.active .label {
+            font-size: 18px;
+            line-height: 29px;
+            color: #fff;
+          }
+
+          .selection.active.f .wrap:after ,
+          .selection.active.m .wrap:after, 
+          .selection.active.s .wrap:after {
+            background-size: 20px;  
           }
 
     .view .plane .fly,
