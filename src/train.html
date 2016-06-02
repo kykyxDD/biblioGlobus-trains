@@ -409,7 +409,7 @@
 						<div class="field">Рейс №: </div>
 						<div class="cont_val">
 							<span data-bind="text: board.num" class="value big"></span> 
-							<span data-bind="if: board.train_name, text: board.train_name" class='value'> </span>
+							<span data-bind="visible: board.train_name, text: board.train_name" class='value'> </span>
 						</div>
 					</div>
 					<div class="train_info city">

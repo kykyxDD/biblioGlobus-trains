@@ -57,10 +57,12 @@
 }
 
 .train_nav td.hide {
-  opacity: 0;
+  /*opacity: 0;*/
+  font-size: 0em !important;
 }
 .train_nav .arror {
-  font-size: 25px;
+  font-size: 2em;
+  width: 7%;
   cursor: pointer;
 }
 .train_nav .arror.prev {
@@ -72,6 +74,7 @@
 .train_nav .current {
     font-size: 20px;
     width: 180px;
+    cursor: default;
     text-transform: uppercase;
 }
 .train_nav .current div {
@@ -103,6 +106,7 @@
   text-align: left;
   font-size: 0.85em;
   padding: 9px 10px 14px;
+  cursor: default;
 }
 .train_nav .info td{
   vertical-align: top;
@@ -132,7 +136,7 @@
   vertical-align: bottom;
 }
 .train_nav .info .price span.price {
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: bold;
 }
 .train_nav .info .carrier .text {

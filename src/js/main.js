@@ -616,7 +616,7 @@ function load_session() {
 function _date (str){
 	var arr_month = ['января' , 'февраля' , 'марта' , 'апреля' , 'мая' , 'июня' , 'июля' , 'августа' , 'сентября' , 'октября' , 'ноября' , 'декабря '];
 	var arr_day = ['понедельник' , 'вторник' , 'среда' , 'четверг' , 'пятница' , 'суббота' , 'воскресение']
-	var arr = str.split('.').reverse();
+	var arr = str.split('.').reverse().join('-');
 	var date = new Date(arr)
 	return {
 		date: date.getDate(),
@@ -672,9 +672,9 @@ function setup_viewmodel() {
 		return data.port_rus + " " + data.port
 	}
 
-	_date(view.board.date)
 	view.board.date = _date(view.board.date)
 	view.board.arrival_date = _date(view.board.arrival_date)
+	// console.log(view.board.date,view.board.arrival_date)
 	view.objIconSeat = {}
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
@@ -754,6 +754,10 @@ function setup_viewmodel() {
 
 		if(user.parent && user.parent.child) {
 			user.parent.child.remove(user);	
+			user.parent.p_selected(false)
+			user.parent.child().forEach(function(child){
+				child.p_selected(false)
+			})
 		}
 		user.sc = val.sc;
 		user.parent = val;
@@ -969,6 +973,12 @@ function update_seats() {
 function create_group_seat(){
 	var groups_seat = {};
 
+	var elem = document.createElement('div');
+	elem.className = 'cont_label_group';
+	// el.plane.appendChild(elem);
+	el.plane.appendChild(elem);
+	el.cont_label = elem;
+
 	seats.forEach(function(seat){
 		var arr = seat.num.split('-');
 		var num = arr[0];
@@ -1013,16 +1023,27 @@ function create_group_seat(){
 
 	view.groups_seat(groups_seat)
 }
+function addEvent(elem, type, handler){
+  if (elem.addEventListener){
+    elem.addEventListener(type, handler, false)
+  } else {
+    elem.attachEvent("on"+type, handler)
+  }
+}
+
 function create_label(seat) {
+
 	var div = document.createElement('div');
 	div.className = 'label_group';
-	seat.deckElement.appendChild(div);
+	el.cont_label.appendChild(div);
+	// seat.deckElement.appendChild(div);
 	var dx = seat.X + seat.sprite.offset.label[0] + seat.sprite.offset.size[0];
     var dy = seat.Y + seat.sprite.offset.label[1] -7;
 
-	div.addEventListener('click', function(){
+	addEvent(div, 'click', function(){
 		showPopupSex(seat)
 	})
+
 	seat.labels = div
 }
 function update_group_seat() {

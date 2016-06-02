@@ -132,7 +132,7 @@ audio {
         width: 25px;
         height: 25px;
         visibility: visible;
-        z-index: 210;
+        z-index: 4;
         cursor: pointer;
       }
       .view .plane .change_sex {
@@ -161,15 +161,17 @@ audio {
       .view .plane .deck .selection {
         z-index: 201; }
       .view .plane .deck canvas, .view .plane .deck img {
+        z-index: 0;
         position: absolute;
         pointer-events: none; }
         .draggable .view .plane .deck canvas, .draggable .view .plane .deck img {
           pointer-events: all; }
-        .view .plane .deck canvas:hover, .view .plane .deck img:hover {
-          outline: 3px solid #3bf; }
+
       .view .plane .deck.hidden {
+        visibility: hidden;
+        opacity: 0;
         pointer-events: none;
-        opacity: 0; }
+        }
         .view .plane .deck.hidden canvas, .view .plane .deck.hidden img {
           pointer-events: none; }
       .view .plane .deck .selection {
@@ -335,6 +337,11 @@ audio {
       position: absolute;
       pointer-events: none;
       z-index: 5; }
+    .view .plane .cont_label_group {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
       .view .plane .text_hind,
       .view .plane .popup_error_seat {
         padding-top: 5px;
@@ -474,7 +481,7 @@ audio {
       border-radius: 3px;
       opacity: 0;
       margin-top: 40px;
-      
+      visibility: hidden;
       pointer-events: none;
       -webkit-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
       -moz-transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s, visibility 0s ease;
@@ -485,7 +492,7 @@ audio {
     .view .plane .popup_seat.show {
       margin-top: 0px;
       opacity: 1;
-
+      visibility: visible;
     }
     .view .plane .popup_seat.user {
       text-align: left;
@@ -676,6 +683,9 @@ audio {
       .users-box .users .user.selected.p_selected {
         background-color: #0bd04c;
       }
+      .users-box .users .user.placed .ok {
+        cursor: pointer;
+      }
       .users-box .users .user.placed .ok .check {
         width: 100%;
         height: 20px;
@@ -865,9 +875,16 @@ audio {
     text-transform: uppercase;
     font-size: 20px;
     cursor: pointer;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    z-index: 5;
   }
   .icon_help.show {
-    z-index: 21;
+    /*z-index: 21;*/
   }
   .icon_help:before {
     position: absolute;
@@ -881,16 +898,21 @@ audio {
   }
   .popup.popup_help {
     position: absolute;
-    left: -100%;
+    left: -300px;
     width: 300px;
     height: 100%;
     color: #fff;
+    z-index: 5;
     opacity: 0;
     top: 0;
     bottom: 0;
     background: rgba(0,0,0,0.8); 
-    transition: all 0.8s ease;
-    pointer-events: none;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    cursor: default;
     font-family: Arial, sans-serif;
   }
   .popup.popup_help.show {
@@ -907,9 +929,16 @@ audio {
     background: url(../img/cross.png) no-repeat center;
     background-size: 100%;
     pointer-events: auto;
+    cursor: pointer;
   }
   .popup_help .info_help {
     margin-top: 120px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
   .popup_help .list {
     margin: 10px 0;
