@@ -106,11 +106,16 @@ Loader.prototype = {
 		data.type    = 'responseXML'
 		success      = data.success
 		data.success = function(response) {
-			// console.log(response)
 			try {
 				data.raw    = response
 				data.result = Loader.serialize(response.documentElement)
-			} catch(e) { return data.error(e, data.url) }
+			} catch(e) { 
+				if(!response) {
+					return false
+				} else {
+					return console.log(e)	
+				}
+			}
 
 			success(data.result, data.url)
 		}

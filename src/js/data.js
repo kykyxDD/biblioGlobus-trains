@@ -20,8 +20,8 @@ var self = window.model = {
 		self.get.xml (self.info,    self._expose('ticket'))
 
 		self.get.ready(function() {
-			if('ERROR' in self.ticket) {
-				var error = self.locale.error.select('code', self.ticket['ERROR'])
+			if((self.ticket && 'ERROR' in self.ticket) || !self.ticket) {
+				var error = self.ticket ? self.locale.error.select('code',self.ticket['ERROR']) : self.locale.error[0];
 				error = !error && self.ticket['COMMENT'] ? self.ticket['COMMENT'] : error;
 				fail_callback(error)
 			} else {

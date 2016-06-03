@@ -213,4 +213,10 @@
         <SEAT no="8-54" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-55" status="*" sc="Y"  sex="C" srvClass="2Э"/>
         <SEAT no="8-56" status="*" sc="Y"  sex="C" srvClass="2Э"/>
+        <SEAT no="9-1" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="9-2" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="9-3" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="9-4" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="9-5" status="*" sc="C"  sex="" srvClass="2Э"/>
+        <SEAT no="9-6" status="*" sc="C"  sex="" srvClass="2Э"/>
 </SEATS></ROOT>

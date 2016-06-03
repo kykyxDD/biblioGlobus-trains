@@ -260,7 +260,7 @@ audio {
           .view .plane .deck .selection.f .wrap .label,
           .view .plane .deck .selection.s .wrap .label,
           .view .plane .deck .selection.m .wrap .label {
-            width: 50%;
+            width: 57%;
           }
 
           .view .plane .deck .selection .wrap .label,
@@ -301,7 +301,7 @@ audio {
           .view .plane .deck .selection.platz_upper_right .label,
           .view .plane .deck .selection.kupe_upper_right .label,
           .view .plane .deck .selection.kupe_lower_right .label {
-            width: 50%;
+            /*margin-right: 1px;*/
             float: right;
           }
           .view .plane .deck .selection.f .icon_seat,
@@ -920,7 +920,7 @@ audio {
     width: 70px;
     height: 70px;
     background: url('../img/help.png') no-repeat center;
-    background-size:  100%;
+    background-size: contain;
   }
   .popup.popup_help {
     position: absolute;

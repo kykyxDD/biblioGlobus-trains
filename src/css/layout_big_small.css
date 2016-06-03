@@ -1,5 +1,5 @@
 .landscape .view .switch-deck {
-	/*width: 100px;*/
+	width: 170px;
 	height: 35px;
 	font-size: 12px;
 	padding-top: 12px;
@@ -8,15 +8,25 @@
 	bottom: 15px;
 }
 .landscape .view .switch-deck.two {
-	bottom: 60px;
+	bottom: 55px;
 }
 .landscape .view .btn_regul_seat {
-  bottom: 120px;
+  bottom: 95px;
   height: 37px;
 }
+.landscape .view .btn_back {
+	bottom: 140px;
+}
 
+.landscape .view .switch-deck.one, 
+.landscape .view .switch-deck.two {
+	width: 185px;
+}
+.landscape .train_nav thead td {
+	height: 50px;
+}
 .landscape .train_nav .info {
-    margin-top: 5px;
+    margin-top: 0px;
     padding-top: 5px;
     font-size: 0.7em;
 }
@@ -33,6 +43,16 @@
 }
 .landscape .train_nav .neighbors .type {
 	font-size: 9px;
+}
+
+.landscape .train_nav .arror {
+	font-size: 1.3em;
+}
+.landscape .train_nav .arror.next {
+	padding-right: 5px;
+}
+.landscape .train_nav .arror.prev {
+	padding-left: 5px;
 }
 
 .landscape .train_nav .info .info_icon {
@@ -119,4 +139,41 @@
 }
 .landscape .popup.regul-seat #regul_seat p {
 	margin: 5px 0;
+}
+.icon_help {
+	padding-left: 30px;
+	font-size: 15px;
+}
+.icon_help:before {
+	width: 60px;
+	height: 60px;
+}
+.popup_help .info_help {
+	margin-top: 100px;
+}
+.landscape .info_help .list {
+	font-size: 0.8em;
+}
+.landscape .info_help .list.sex ul li {
+	padding: 5px 0px 5px 30px;
+}
+.landscape .info_help .list.seat ul li {
+	padding: 7px 0px 7px 30px;
+}
+
+.landscape .info_help .list ul li:before {
+	background-size: contain;
+}
+
+.landscape .info_help .list.sex ul li:before {
+	width: 20px;
+	height: 20px;
+	top: 2px;
+}
+.landscape .info_help .list.seat ul li:before {
+	width: 25px;
+	height: 25px;
+}
+.landscape .popup.popup_help {
+	width: 250px
 }

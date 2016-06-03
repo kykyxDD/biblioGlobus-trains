@@ -309,7 +309,6 @@ function start() {
 	update_users(model.users)
 	model.struct.double_decker && view.hide_upper_deck()
 	create_group_seat()
-	// update_group_seat()
 	loadImageIcon()
 
 	resize()
@@ -490,7 +489,6 @@ function prepare_train_view() {
 	    
 	    update_view()
 	}
-
 }
 
 function calc_current_car_index()
@@ -674,7 +672,6 @@ function setup_viewmodel() {
 
 	view.board.date = _date(view.board.date)
 	view.board.arrival_date = _date(view.board.arrival_date)
-	// console.log(view.board.date,view.board.arrival_date)
 	view.objIconSeat = {}
 	view.item_group = ko.observable(false)
 	view.users = ko.observableArray()
@@ -866,7 +863,7 @@ function setup_viewmodel() {
 		's' : ['C', ' ']
 	};
 	view.error_texts = {
-		sc: "Не совпадает класс обслуживания пассажира и места.", 
+		sc: "Не совпадает класс обслуживания.", 
 		sex: "Не совпадает пол.",
 		parent: 'Ребенок должен сидеть в одном вагоне с родителем.',
 		no_seat: 'Нет доступа к посадке на это место.'
@@ -932,7 +929,6 @@ function setup_viewmodel() {
 function make_selection_label(user) {
 	var root = document.createElement('div');
 	root.className = 'selection';
-	// root.setAttribute('data-bind','css: { "active": userselected}')
 	root.innerHTML =
 		'<div class="wrap">'+
 			'<div class="icon_seat" > </div>'+
@@ -954,7 +950,11 @@ function select_next_user() {
 		})
 
 	if(await.length){ 
+		view.user() && rem_class(view.user().selection, 'active')
 		view.selectUser(await[0]) 
+		add_class(await[0].selection, 'active')
+	} else {
+		view.user() && add_class(view.user().selection, 'active')
 	}
 }
 function update_seats() {
@@ -1047,35 +1047,7 @@ function create_label(seat) {
 
 	seat.labels = div
 }
-function update_group_seat() {
-	var train = view.groups_seat();
 
-	for(var s in train) {
-		var g = train[s].groups;
-		for(var i = 0; i < g.length; i++){
-			if(!g[i]) continue
-			if(g[i].sex) {
-				var seats = g[i].seats;
-				var min_x = 10000000,
-					min_y = 10000000,
-					max_x = 0,
-					max_y = 0
-				for(var g_s = 0; g_s < seats.length; g_s++) {
-					var seat = seats[g_s]
-					var pos = [seat.x, seat.y];
-					min_x = Math.min(min_x, pos[0])
-					max_x = Math.max(max_x, pos[0])
-					min_y = Math.min(min_y, pos[1])
-					max_y = Math.max(max_y, pos[1])
-				}
-				g[i].center = {
-					x: min_x + (max_x - min_x)/2,
-					y: min_y + (max_y - min_y)/2
-				}
-			}
-		}
-	}
-}
 function changeSexGroup(group){
 	if(!view.show_popup_select_sex() || 
 	   (view.item_group() && (view.item_group().center.x !== group.center.x || view.item_group().center.y !== group.center.y))){
@@ -1366,16 +1338,16 @@ function register_events() {
 				view.popup_user(true)
 				view.popup_user_name(info_user.name)
 
+			} else if(!seat.match_service_class && seat.sex !== 'c'){
+				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
+				view.text_hind('')
 			} else if(user && user.parent && FilterSeat.seatChild(seat, user.parent) == false){
 				view.error_seat(view.error_texts.parent)
 			} else if(seat.sex){
 				view.text_hind(view.sex_text[seat.sex][1])
 			} else if(seat.match_service_class && seat.match_sex) {
 				view.text_hind(view.sex_text['s'][1])
-			} else if(!seat.match_service_class){
-				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
-				view.text_hind('')
-			}
+			} 
 		} else {
 			view.hind(false)
 		}
@@ -1418,18 +1390,17 @@ function register_events() {
 				x      = (point.pageX + frames.view.center.x),
 				y      = (point.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
-
 				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true,
 				labels = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
 
 			if(labels){
 				showPopupSex(labels)
+			} else if(seat && seat.user){
+				view.selectUser(seat.info)
 			} else if(seat) {
 				view.item_seat(seat);
 
-				if(seat.group_seat.sex == true){
-					// showPopupSex(seat)
-				} else if(seat && parent){
+				if(seat && parent){
 					updateDisable(seat, view.user())
 
 					if(view.user().parent) {
@@ -1641,8 +1612,7 @@ Seat.findByPosition = function(x, y) {
 		user = view.user();
 
 	while(seat = seats[--remains]) {
-		if(((seat.match_service_class && seat.match_sex) || C.DEMO) &&
-			(!seat.user || seat === user.seat) &&
+		if(((seat.match_service_class && seat.match_sex) || C.DEMO || seat.user) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
 			seat.contains(x, y)){
 			return seat
@@ -1718,7 +1688,6 @@ Seat.link = function(user, seat) {
 		user.label.textContent = seat.name;
 		seat.deckElement.appendChild(user.selection)
 		createSexSelect(user, seat)
-		// add_class(user.selection, 'active')
 
 		user.seat = seat
 		seat.info = user
