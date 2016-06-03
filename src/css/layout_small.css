@@ -25,22 +25,35 @@ body {
   position: absolute;
   right: -3px;
   width: 80px;
-  height: 37px;
+  height: 30px;
   background-repeat: no-repeat;
-  padding-top: 12px;
+  padding-top: 10px;
   font-size: 1.1em; }
   .view .switch-deck.two {
-    bottom: 46px; }
+    bottom: 40px; }
   .view .switch-deck.one {
     bottom: 10px; }
-.view .btn_regul_seat {
+.view .btn_regul_seat,
+.view .btn_back {
   position: absolute;
-  bottom: 90px;
+  bottom: 75px;
   right: -3px;
-  width: 70px;
-  height: 35px;
-  padding-top: 9px;
-  font-size: 7px;
+  width: 120px;
+  height: 25px;
+  padding-top: 7px;
+  font-size: 1.1em;
+}
+.view .btn_regul_seat {
+   bottom: 75px;
+}
+.view .btn_back {
+  bottom: 105px;
+}
+
+.view .switch-deck.two, 
+.view .switch-deck.one {
+  width: 140px;
+  padding-left: 40px;
 }
 .train_nav thead td{
   height: 40px;
@@ -467,4 +480,52 @@ body {
 .popup.regul-seat .cont_regul_seat .text{
   cursor: pointer;
   padding: 0 15px;
+}
+
+.icon_help {
+  top: auto;
+  left: 40px;
+  bottom: 25px;
+  font-size: 1em;
+  padding: 7px 5px 7px 25px;
+}
+.icon_help:before {
+  top: -6px;
+  left: -20px;
+  width: 35px;
+  height: 35px;
+}
+.portrait .icon_help {
+  bottom: 65px;
+  left: 30px;
+}
+
+.popup.popup_help {
+  width: 180px;
+}
+.popup.popup_help .info_help {
+  margin-top: 20px;
+}
+.popup_help .help_close {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+}
+.popup_help .list {
+  padding-right: 40px;
+}
+
+.popup_help .list ul li {
+  padding: 7px 0 7px 25px;
+}
+.popup_help .list ul li:before {
+  width: 20px;
+  height: 20px;
+  top: 2px;
+}
+.popup_help .list.seat ul li:before {
+  background-size: contain;
+}
+.popup_help .list.sex ul li:before {
+  background-size: 70%;
 }

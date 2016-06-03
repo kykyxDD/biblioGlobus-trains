@@ -250,12 +250,13 @@
 		</script>
 		<div data-bind="text: debug.pos_view" class="corner view-info"></div>
 		<div id="plane-scroll" class="view center">
-			<div class="plane">
+			<div class="plane" data-bind="css: {cursor: cursor}">
 				<div class="fly">
 					<div class="inner"></div>
 					<div class="outer"></div>
 				</div>
 				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
+					<div class="num_seat"></div>
 					
 					<div class="input_icon input_m">
 						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { click: changeSex }'>
@@ -391,14 +392,22 @@
 							<td rowspan="2">
 								<span data-bind="text: board.num"></span> <span data-bind="visible: board.train_name, text: board.train_name"></span>
 							</td>
-							<td data-bind="text: formatAirport(board.from)" colspan="2"></td>
-							<td data-bind="text: formatAirport(board.to)" colspan="2"></td>
+							<td data-bind="text: formatAirport(board.from)" ></td>
+							<td data-bind="text: formatAirport(board.to)" ></td>
 						</tr>
 						<tr>
-							<td data-bind="text: board.time"></td>
-							<td data-bind="text: board.date"></td>
-							<td data-bind="text: board.arrival_time"></td>
-							<td data-bind="text: board.arrival_date"></td>
+							<td >
+								<span data-bind="text: board.date.date"></span> 
+								<span data-bind="text: board.date.month"></span> 
+								 в
+								<span data-bind="text: board.time"></span>
+							</td>
+							<td>
+								<span data-bind="text: board.arrival_date.date"></span> 
+								<span data-bind="text: board.arrival_date.month"></span> 
+								в
+								<span data-bind="text: board.arrival_time"></span>
+							</td>
 						</tr>
 					</tbody>
 				</table>

@@ -12,10 +12,15 @@
 }
 .landscape .view .btn_regul_seat {
   bottom: 95px;
-  height: 37px;
+  height: 33px;
 }
 .landscape .view .btn_back {
-	bottom: 140px;
+	bottom: 135px;
+	height: 33px;
+}
+.landscape .view .btn_regul_seat,
+.landscape .view .btn_back {
+	padding-top: 10px;
 }
 
 .landscape .view .switch-deck.one, 
@@ -177,3 +182,17 @@
 .landscape .popup.popup_help {
 	width: 250px
 }
+.portrait .view .switch-deck.one {
+	bottom: 20px;
+}
+.portrait .view .switch-deck.two {
+	bottom: 60px;
+}
+
+.portrait .view .btn_regul_seat {
+	bottom: 100px;
+}
+.portrait .view .btn_back {
+	bottom: 145px;
+}
+

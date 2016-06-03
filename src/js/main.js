@@ -198,7 +198,8 @@ var el = {
 	current   : '.selection',
 	label     : '.selection .label',
 	hind      : '.popup_seat',
-	popup_sex : '.popup_selected_sex'
+	popup_sex : '.popup_selected_sex',
+	num_popup_sex : '.popup_selected_sex .num_seat'
 }
 
 var C = {
@@ -457,6 +458,7 @@ function prepare_train_view() {
 	view.popup_user_num = ko.observable('');
 	view.popup_user_sc = ko.observable('');
 	view.show_popup_select_sex = ko.observable(false);
+	view.cursor = ko.observable(false)
 
 	navigation.position = V(0.2, 0.2)
 	var update_nav_interval = setInterval(update_view, 200)
@@ -733,6 +735,7 @@ function setup_viewmodel() {
 			}
 
 			updateDisable()
+			hidePopupSex()
 
 			return true
 		}
@@ -1125,8 +1128,12 @@ function showPopupSex(seat){
 
 		position(el.popup_sex, seat.labels_pos.x - right, seat.labels_pos.y)
 		view.popup_right(seat.seat_right)
+		if(seat.info && seat.info.selected()){
+			add_class(el.popup_sex, 'active')
+		}
 
 		view.show_popup_select_sex(true);
+		el.num_popup_sex.textContent = seat.name
 		if(group.sex !== true){
 			el.popup_sex.querySelector('input[value="'+group.sex+'"]').checked = true
 		} else {
@@ -1141,6 +1148,10 @@ function showPopupSex(seat){
 	
 } 
 function hidePopupSex(e){
+	if(has_class(el.popup_sex, 'active')){ 
+		rem_class(el.popup_sex, 'active') 
+	}
+	el.num_popup_sex.textContent = ''
 	view.item_group(false)
 	view.show_popup_select_sex(false);
 }
@@ -1316,7 +1327,8 @@ function register_events() {
 
 		var x    = (point1.pageX + frames.view.center.x),
 			y    = (point1.pageY + frames.view.center.y),
-			seat = Seat.findByPositionMove(x / frames.view.scale, y / frames.view.scale)
+			seat = Seat.findByPositionMove(x / frames.view.scale, y / frames.view.scale),
+			marker = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
 
 		var target = e.target || e.srcElement;
 		var user
@@ -1326,11 +1338,14 @@ function register_events() {
 
 		var user = view.user();
 
+		view.cursor(marker)
+
 		if(seat){
 			view.hind(true)
 			position(el.hind, seat.popup_pos.x, seat.popup_pos.y)
 			view.popup_user_num(seat.name)
 			view.popup_user_sc(seat.sc_name)
+
 
 			if(seat.user) {
 				var elem_parent = target.parentNode;
@@ -1395,11 +1410,10 @@ function register_events() {
 
 			if(labels){
 				showPopupSex(labels)
-			} else if(seat && seat.user){
+			} else if(seat && seat.user && !seat.info.selected()){
 				view.selectUser(seat.info)
-			} else if(seat) {
+			} else if(seat && seat.sex !== 'c') {
 				view.item_seat(seat);
-
 				if(seat && parent){
 					updateDisable(seat, view.user())
 
@@ -1641,6 +1655,8 @@ Seat.findByPositionLabel = function(x,y){
 		}
 	}
 
+	return false
+
 }
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
@@ -1811,7 +1827,7 @@ Seat.prototype = {
 			} else {
 				this.drawLabel(this.name.toUpperCase())
 			}
-		} else {
+		} else if(model.ticket.SEATS.SEAT.select('no', this.num)) {
 			this.drawLabelNoSeat(this.name.toUpperCase())
 		}
 
