@@ -259,16 +259,16 @@
 					<div class="num_seat"></div>
 					
 					<div class="input_icon input_m">
-						<input type='radio' id='label_m' name='sex' value="m" data-bind='event: { click: changeSex }'>
 						<label for='label_m' class='radio_label'></label>
+						<input type='radio' id='label_m' name='sex' value="m">
 					</div>
 					<div class="input_icon input_f">
-						<input type='radio' id='label_f'  name='sex' value="f" data-bind='event: { click: changeSex }'>
-						<label for='label_f' class='radio_label'></label>
+						<label for='label_f' class='radio_label' ></label>
+						<input type='radio' id='label_f'  name='sex' value="f">
 					</div>
 					<div class="input_icon input_s">
-						<input type='radio' id='label_s' name='sex' value="s" data-bind='event: { click: changeSex }'>
 						<label for='label_s' class='radio_label'></label>
+						<input type='radio' id='label_s' name='sex' value="s">
 					</div>
 				</div>
 				<div class="popup_seat" data-bind='css: {user : popup_user, show:hind}, click: hidePopupSex'>
@@ -373,7 +373,104 @@
 		</table>
 		</div>
 		<div class="controls">
-			<div class="logo static-biblioglobus_logo"></div>
+			<table class="table_controls">
+				<tr class="logo_tr">
+					<td><div class="logo static-biblioglobus_logo"></div></td>
+				</tr>
+				<tr class="info_train">
+					<td>
+						<div class="board-info-table">
+							<table>
+								<tbody>
+									<tr>
+										<td rowspan="2">
+											<span data-bind="text: board.num"></span> <span data-bind="visible: board.train_name, text: board.train_name"></span>
+										</td>
+										<td data-bind="text: formatAirport(board.from)" ></td>
+										<td data-bind="text: formatAirport(board.to)" ></td>
+									</tr>
+									<tr>
+										<td >
+											<span data-bind="text: board.date.date"></span> 
+											<span data-bind="text: board.date.month"></span> 
+											 в
+											<span data-bind="text: board.time"></span>
+										</td>
+										<td>
+											<span data-bind="text: board.arrival_date.date"></span> 
+											<span data-bind="text: board.arrival_date.month"></span> 
+											в
+											<span data-bind="text: board.arrival_time"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="board-info">
+							<div class="cred clearfix">
+								<div class="train_info number">
+									<div class="field">Рейс №: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.num" class="value big"></span> 
+										<span data-bind="visible: board.train_name, text: board.train_name" class='value'> </span>
+									</div>
+								</div>
+								<div class="train_info city">
+									<div class="field">Откуда: </div>
+									<div class="cont_val" data-bind="text: formatAirport(board.from)" class="from"></div>
+								</div>
+								<div class="train_info city">
+									<div class="field">Куда: </div>
+									<div class="cont_val" data-bind="text: formatAirport(board.to)" class="to"></div>
+								</div>
+								<div class="train_info ">
+									<div class="field">Отправление: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.date.date"></span> 
+										<span data-bind="text: board.date.month"></span> 
+										<span class='text_day'>
+											(<span data-bind="text: board.date.day"></span>)
+										</span>
+										в
+										<span data-bind="text: board.time"></span>
+										
+									</div>
+								</div>
+								<div class="train_info ">
+									<div class="field">Прибытие: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.arrival_date.date"></span> 
+										<span data-bind="text: board.arrival_date.month"></span> 
+										<span class='text_day'>
+											(<span data-bind="text: board.arrival_date.day"></span>)
+										</span>
+										 в
+										<span data-bind="text: board.arrival_time"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr class="list_users">
+					<td>
+						<div id="users-scroll" class="users-box static-user-bg">
+							<table class="users" cellpadding=0>
+								<tbody data-bind="template: { name: 'user-select', foreach: users }"></tbody>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr class='controls_btn'>
+					<td>
+						<div data-bind="event: { tap: submit }, css: { disabled: disable_submite}" class="button confirm static-confirm">
+							<div class="confirm-tick static-tick"></div>
+							<div data-bind="text: confirm_caption" class="confirm-caption"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
 			<div class="screen">
 				<div class="board-num">
 					<div data-bind="text: board.name"     class="name" ></div>
@@ -385,82 +482,9 @@
 				<div class="overlay"></div>
 				<div data-bind="text: debug.pos_nav" class="corner nav-info"></div>
 			</div>
-			<div class="board-info-table">
-				<table>
-					<tbody>
-						<tr>
-							<td rowspan="2">
-								<span data-bind="text: board.num"></span> <span data-bind="visible: board.train_name, text: board.train_name"></span>
-							</td>
-							<td data-bind="text: formatAirport(board.from)" ></td>
-							<td data-bind="text: formatAirport(board.to)" ></td>
-						</tr>
-						<tr>
-							<td >
-								<span data-bind="text: board.date.date"></span> 
-								<span data-bind="text: board.date.month"></span> 
-								 в
-								<span data-bind="text: board.time"></span>
-							</td>
-							<td>
-								<span data-bind="text: board.arrival_date.date"></span> 
-								<span data-bind="text: board.arrival_date.month"></span> 
-								в
-								<span data-bind="text: board.arrival_time"></span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="board-info">
-				<div class="cred clearfix">
-					<div class="train_info number">
-						<div class="field">Рейс №: </div>
-						<div class="cont_val">
-							<span data-bind="text: board.num" class="value big"></span> 
-							<span data-bind="visible: board.train_name, text: board.train_name" class='value'> </span>
-						</div>
-					</div>
-					<div class="train_info city">
-						<div class="field">Откуда: </div>
-						<div class="cont_val" data-bind="text: formatAirport(board.from)" class="from"></div>
-					</div>
-					<div class="train_info city">
-						<div class="field">Куда: </div>
-						<div class="cont_val" data-bind="text: formatAirport(board.to)" class="to"></div>
-					</div>
-					<div class="train_info ">
-						<div class="field">Отправление: </div>
-						<div class="cont_val">
-							<span data-bind="text: board.date.date"></span> 
-							<span data-bind="text: board.date.month"></span> 
-							(<span data-bind="text: board.date.day" class='text_day'></span>) в
-							<span data-bind="text: board.time"></span>
-							
-						</div>
-					</div>
-					<div class="train_info ">
-						<div class="field">Прибытие: </div>
-						<div class="cont_val">
-							<span data-bind="text: board.arrival_date.date"></span> 
-							<span data-bind="text: board.arrival_date.month"></span> 
-							(<span data-bind="text: board.arrival_date.day" class='text_day'></span>) в
-							<span data-bind="text: board.arrival_time"></span>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div id="users-scroll" class="users-box static-user-bg">
-				<table class="users" cellpadding=0>
-					<tbody data-bind="template: { name: 'user-select', foreach: users }"></tbody>
-				</table>
-			</div>
 			<div class="airline-logo"></div>
-			<div data-bind="event: { tap: submit }, css: { disabled: disable_submite}" class="button confirm static-confirm">
-				<div class="confirm-tick static-tick"></div>
-				<div data-bind="text: confirm_caption" class="confirm-caption"></div>
-			</div>
+
 			<div data-bind="event: { tap: show_passengers }, css: { void:  passengers_visible() }" class="button confirm fill static-confirm">
 				<div class="confirm-tick static-tick"></div>
 				<div class="confirm-caption">Заполнить все места</div>

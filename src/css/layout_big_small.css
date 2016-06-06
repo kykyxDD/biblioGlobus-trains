@@ -66,9 +66,11 @@
 }
 
 .landscape .logo {
-	height: 60px;
+	height: 50px;
 	width: 175px;
 	background-size: 140px;
+	border-radius: 0;
+	background-position: 0 12px;
 }
 .landscape .controls {
 	width: 260px;
@@ -82,11 +84,17 @@
 }
 .landscape .controls .board-info .cred {
 	font-size: 0.8em;
-	padding: 0px 12px;
+	padding: 0px;
+}
+.landscape .controls .board-info .cred .train_info {
+	line-height: 1.1em;
 }
 
 .landscape .controls .board-info .cred .field{
 	font-size: 0.75em;
+}
+.landscape .controls .board-info .cred .cont_val .text_day{
+	display: none;
 }
 
 .landscape .controls .users-box {

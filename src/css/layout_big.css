@@ -68,7 +68,7 @@ body {
 .controls .board-info .route {
   margin: 0.5em 0px 0px; }
 .controls .board-info .cred {
-  padding: 10px 12px; }
+  padding: 0px 12px; }
 .controls .users-box .users .user {
   min-height: 57px; 
   -webkit-user-select: none;
@@ -282,14 +282,8 @@ body {
     top: 3px;
     width: 324px;
     height: 238px; }
-  .landscape .controls .board-info {
-    width: 100%;}
-  .landscape .controls .users-box {
-    position: inherit;
-    left: 0px;
-    /*top: 327px;*/
-    right: 0px;
-    bottom: 86px; }
+
+
   .landscape .controls .airline-logo {
     position: absolute;
     left: 3px;
@@ -297,12 +291,7 @@ body {
     right: 3px;
     bottom: 86px; }
   .landscape .controls .confirm {
-    position: absolute;
-    left: 3px;
-    top: auto;
-    right: 3px;
-    bottom: 3px;
-    
+    position: relative;
     height: 80px; }
 
 .portrait .view {

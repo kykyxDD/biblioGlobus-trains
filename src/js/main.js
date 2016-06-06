@@ -785,12 +785,13 @@ function setup_viewmodel() {
 		}
 		view.click_select(data)
 	}
-	view.changeSex = function(item, event){
+
+	view.changeSex = function(elem){
 		
 		var group = view.item_group();
 		var seat = view.item_seat();
 		var user = view.user();
-		var target = event.target || event.srcElement;
+		var target = elem;
 		var sex = target.value;
 
 		if(group) {
@@ -929,6 +930,7 @@ function setup_viewmodel() {
 
 	setTimeout(function() { view.usersbox_scroll.refresh() })
 }
+
 function make_selection_label(user) {
 	var root = document.createElement('div');
 	root.className = 'selection';
@@ -1398,8 +1400,13 @@ function register_events() {
 	}
 	function click(e) {
 		var target = e.target || e.srcElement;
+		if(target.tagName == 'INPUT' || target.tagName == 'LABEL') {
+			var elem = target.tagName == 'INPUT' ? target : document.getElementById(target.getAttribute('for'))
+			view.changeSex(elem)
+			return
+		}
 
-		if(target.tagName == 'INPUT' || target.tagName == 'LABEL' || has_class(target,'change_sex') || has_class(target,'label_group')) return
+		if(has_class(target,'change_sex') || has_class(target,'label_group')) return
 		if(view.user() && !C.VIEWONLY) {
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),

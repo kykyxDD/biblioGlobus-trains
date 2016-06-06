@@ -76,7 +76,8 @@ body {
 .train_nav .info {
   margin-top: 0px;
   font-size: 0.9em;
-  padding-top: 0px;
+  padding: 0px 5px;
+
 }
 .train_nav .info .info_icon {
   background-size: 175px;
@@ -84,8 +85,8 @@ body {
   width: 18px;
 }
 .train_nav .info .info_icon.ELREG {
-  width: 18px;
-  background-position: -56px 0;
+  /*width: 18px;*/
+  /*background-position: -56px 0;*/
 }
 
 .controls .screen {
@@ -119,7 +120,9 @@ body {
   margin: 3px 0 3px 30px;
 }
 .controls .board-info .cred {
-  padding: 2px; }
+  padding: 2px; 
+  line-height: 1em;
+  }
   .controls .board-info .cred .number, .controls .board-info .cred .date {
     line-height: 1;
     display: block;
@@ -298,24 +301,15 @@ body {
   .landscape .controls .board-info-table {
     display: none; }
   .landscape .controls .board-info {
-    position: absolute;
-    left: 1px;
-    top: 1px;
-    width: 162px;
-    height: 40px; }
-  .landscape .controls .users-box {
-    position: absolute;
-    left: 1px;
-    top: 55px;
-    right: 1px;
-    bottom: 42px; }
+    position: relative;}
+
   .landscape .controls .confirm {
-    position: absolute;
+    position: relative;
     left: auto;
     top: auto;
     right: 1px;
     bottom: 1px;
-    width: 162px;
+    width: 100%;
     height: 40px; }
 .landscape .users-box .users .user .print {
   width: 33px; }
@@ -359,21 +353,20 @@ body {
   right: 0;
   bottom: 0;
   height: 132px; }
+  .portrait .controls .info_train > td {
+    padding-right: 50px;
+  }
   .portrait .controls .board-info-table {
-    position: absolute;
-    left: 4px;
-    top: 4px;
-    width: auto;
-    height: 40px;
-    right: 55px; }
+    width: 100%;
+   }
   .portrait .controls .board-info {
     display: none; }
   .portrait .controls .users-box {
-    position: absolute;
+/*    position: absolute;
     left: 4px;
     top: 48px;
     right: 4px;
-    bottom: 4px; }
+    bottom: 4px; */}
   .portrait .controls .confirm {
     width: 50px;
     height: 40px;

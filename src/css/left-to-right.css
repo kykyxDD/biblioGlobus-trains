@@ -9,10 +9,6 @@
     display: none !important;
 }
 
-.controls .board-info {
-    top: 15px;
-}
-
 .controls .board-info .route {
     white-space: normal !important;
 }
