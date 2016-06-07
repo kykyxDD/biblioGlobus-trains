@@ -73,6 +73,12 @@ body {
   font-size: 8px;
 }
 
+.train_nav .arror.next {
+  padding: 0 3px 0 0;
+}
+.train_nav .arror.prev {
+  padding: 0 0 0 3px;
+}
 .train_nav .info {
   margin-top: 0px;
   font-size: 0.9em;
@@ -127,6 +133,19 @@ body {
     line-height: 1;
     display: block;
     float: none; }
+  .landscape .controls .board-info .cred {
+    line-height: 0.8em;
+  }
+  .landscape .controls .board-info .cred .number .field, 
+  .landscape .controls .board-info .cred .city .field {
+    display: none;
+    width: 10%;
+  }
+  .landscape .controls .board-info .cred .number .cont_val, 
+  .landscape .controls .board-info .cred .city .cont_val {
+    width: 80%;
+    text-align: center;
+  }
 .controls .users-box .users .user {
   height: 29px; }
   .controls .users-box .users .user.infant {
@@ -361,12 +380,6 @@ body {
    }
   .portrait .controls .board-info {
     display: none; }
-  .portrait .controls .users-box {
-/*    position: absolute;
-    left: 4px;
-    top: 48px;
-    right: 4px;
-    bottom: 4px; */}
   .portrait .controls .confirm {
     width: 50px;
     height: 40px;

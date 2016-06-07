@@ -701,6 +701,10 @@ audio {
   }
   .controls .table_controls tr {
     width: 100%;
+    padding: 0;
+  }
+  .controls .table_controls tr td {
+    padding: 0; 
   }
   .controls .logo_tr,
   .controls .info_train {
