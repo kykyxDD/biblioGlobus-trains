@@ -417,6 +417,13 @@ function loadImageIcon(){
 	}
 }
 
+function change_tourid_in_page_url(new_tourid) {
+	if(new_tourid && new_tourid.length !== 18){
+		var href = location.href.replace('tourid='+get_params.tourid, 'tourid='+new_tourid) 
+		history.pushState('','', href)	
+	}
+}
+
 
 function prepare_train_view() {
 

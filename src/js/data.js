@@ -261,6 +261,9 @@ var self = window.model = {
 			} else {
 				self.compareTRS(data)
 				self.applyTRS(data)
+				if(data['BIDT']){
+					change_tourid_in_page_url(data['BIDT'])
+				}
 
 				done({
 					head: self.locale['resultsPopupHeader'].replace('__val__', self.boardinfo.num),
