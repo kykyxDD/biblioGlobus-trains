@@ -185,11 +185,11 @@
 }
 
 .view .plane .deck .selection .wrap {
-  -webkit-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
-  -moz-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
-  -ms-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
-  -o-transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
-  transform: rotate(-30deg) translate(-39px, -25px) skew(-15deg);
+  -webkit-transform:translate(-45px, 5px);
+  -moz-transform: translate(-45px, 5px);
+  -ms-transform: translate(-45px, 5px);
+  -o-transform: translate(-45px, 5px);
+  transform: translate(-45px, 5px);
   position: relative;
   
 }

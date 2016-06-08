@@ -67,7 +67,7 @@
             <NAME>АЛЕКСЕЙ</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -106,7 +106,7 @@
             <PARENTID>102399999900000001</PARENTID>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
@@ -119,7 +119,7 @@
             <PARENTID>102399999900000001</PARENTID>
             <IS_INF>true</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
 
@@ -130,10 +130,10 @@
         <SEAT no="1-2"  status="*" sc="C"  sex="F" />
         <SEAT no="1-3"  status="*" sc="C"  sex="F" />
         <SEAT no="1-4"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-5"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-6"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-7"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-8"  status="*" sc="C"  sex="M" />
+        <SEAT no="1-5"  status="*" sc="C"  sex="S" />
+        <SEAT no="1-6"  status="*" sc="C"  sex="S" />
+        <SEAT no="1-7"  status="*" sc="C"  sex="S" />
+        <SEAT no="1-8"  status="*" sc="C"  sex="S" />
         <SEAT no="1-9"  status="*" sc="C"  sex="F" />
         <SEAT no="1-10"  status="*" sc="C"  sex="M" />
         <SEAT no="1-11"  status="*" sc="C"  sex="F" />

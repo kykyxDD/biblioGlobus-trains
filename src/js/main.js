@@ -948,7 +948,7 @@ function make_selection_label(user) {
 }
 function select_next_user() {
 	var users = view.users(),
-		index = users.indexOf(view.user()),
+		index = view.user() ? users.indexOf(view.user()) : 0,
 
 		await = users.slice(index).concat(users.slice(0, index)).filter(function(item){
 			return !item.curseat() && !item.block() && !item.disabled
