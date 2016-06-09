@@ -1733,7 +1733,9 @@ Seat.link = function(user, seat) {
 	}
 }
 function createSexSelect(user, seat) {
-	var sex = seat.sex ? seat.sex : '';
+	var group = (seat.group_seat && seat.group_seat.sex) || !seat.sex ? true : 
+			   ((seat.sex && seat.sex !== 's')) ? true : false; 
+	var sex = seat.sex && group ? seat.sex : '';
 	user.selection.className = "selection " + seat.type + ' ' + sex;
 }
 function numInfant(){
@@ -1865,15 +1867,9 @@ Seat.prototype = {
 					}
 					this.show_labels = true
 					this.seat_right = right;
-					// if(this.sex == 'c') {
-					// 	position(this.labels, this.labels_pos.x, this.labels_pos.y)	
-					// }
 				}
 			}
-			
 		}
-
-		
 	},
 	drawUnit: function(img, x, y) {
         var ctx = this.group.context
@@ -1941,7 +1937,9 @@ Seat.prototype = {
 
 		var right = this.num_side !== 'right' ? true : false;
 		var img_s, img_sex;
-		if(this.sex) {
+		if(this.group_seat && 
+		 (( this.group_seat.sex && this.sex) ||
+		  (!this.group_seat.sex && this.sex && this.sex !== "s"))) {
 			img_s = right ? obj_img['seat_l_na'] : obj_img['seat_r_na'];
 			img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];
 		} else {
@@ -1992,8 +1990,11 @@ Seat.prototype = {
 		
 		var right = this.num_side !== 'right' ? true : false;
 		var obj, img_sex;
+		var sex = this.group_seat && 
+		 (( this.group_seat.sex && this.sex) ||
+		  (!this.group_seat.sex && this.sex && this.sex !== "s"))
 
-		if(this.sex) {
+		if(sex) {
 			obj = right ? obj_img['no_seat_s_r'] : obj_img['no_seat_s'];
 			img_sex = this.sex ? obj_img['icon_'+this.sex] : obj_img['icon_s'];	
 		} else {
@@ -2011,7 +2012,7 @@ Seat.prototype = {
 			ctx.translate(this.X + dx , this.Y + dy - size/4 -1);
 			ctx.transform.apply(ctx, this.labelTransform);
 			ctx.fillText(text, size/2 + x, size / 2- (right ? 7 : 0));
-			ctx.drawImage(obj.img, 0 - (right && this.sex ? size : 0) + x, 0- (right ? 7 : 0), obj.img.width, obj.img.height)
+			ctx.drawImage(obj.img, 0 - (right && sex ? size : 0) + x, 0- (right ? 7 : 0), obj.img.width, obj.img.height)
 		}
 		
 		if(img_sex.img) {

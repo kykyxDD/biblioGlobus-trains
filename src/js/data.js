@@ -223,7 +223,7 @@ var self = window.model = {
 		var seats = self.users.map(function(user) {
 			var seat = user.curseat().toUpperCase()
 			var sex = user.seat.group_seat.sex ? user.seat.group_seat.sex.toUpperCase() : user.seat.sex ? user.seat.sex.toUpperCase() : '';
-            
+
 			var add = []
 			if(user.parent){
 				add = ['c'+user.id, user.parent.id]
@@ -239,7 +239,7 @@ var self = window.model = {
 			}
 	
 			if(seat) {
-                
+
                 var seat_data = self.struct.seats.select('num', user.curseat())
                 schemas.collect(seat_data.car)
 
