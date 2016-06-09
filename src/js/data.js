@@ -261,6 +261,7 @@ var self = window.model = {
 			} else {
 				self.compareTRS(data)
 				self.applyTRS(data)
+				self.ticket.TRAIN.CAR = data['TRAIN']['CAR']
 				if(data['BIDT']){
 					change_tourid_in_page_url(data['BIDT'])
 				}

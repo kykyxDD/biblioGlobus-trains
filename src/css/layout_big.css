@@ -328,9 +328,10 @@ body {
   .portrait .controls .users-box {
     position: absolute;
     left: 360px;
-    top: 12px;
+    top: 12px !important;
     right: 12px;
     bottom: auto;
+    width: auto;
     height: 238px; }
   .portrait .controls .confirm {
     position: absolute;
@@ -338,6 +339,7 @@ body {
     top: auto;
     right: 12px;
     bottom: 12px;
+
     height: 80px; }
 .portrait.demo .view {
   position: absolute;

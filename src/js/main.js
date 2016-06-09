@@ -1098,7 +1098,10 @@ function update_users(users) {
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
         })
-        if(seat) seat.user = user.face[seat.sid]
+        if(seat) {
+        	seat.user = user.face[seat.sid]
+        	seat.info = user
+        }
 
 		user.copy(make_selection_label(user))
 	})
@@ -1111,6 +1114,7 @@ function update_users(users) {
 	sortUsers()
 	select_next_user()
 	view.group_ticket(model.group_ticket)
+	groups.some(method('draw'))
 }
 function sortUsers(){
 	var users = view.users() 
@@ -1348,7 +1352,7 @@ function register_events() {
 			view.popup_user_sc(seat.sc_name)
 
 
-			if(seat.user) {
+			if(seat.user && seat.info) {
 				var elem_parent = target.parentNode;
 				var info_user = seat.info;
 				view.popup_user(true)
