@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ROOT>
-    <IDT>/tozaya?idTour=104499999900000043&amp;find=yes&amp;idt=104499999900000043I1TSgL000000CI44yFFhW9p+8y.Kcl3%2573ShERd41vbUpR0gln44GCLI+c%231004n2LFO052LFO08%2400%2580l720wJ20l720Q12%2594510%3B251478%3B%3B%3B%3B%3BMr%3B%D0%BC%D1%83%D0%B6.%3B%D0%9F%D0%95%D0%A0%D0%92%D0%AB%D0%99%D0%92%D0%97%D0%A0%D0%9E%D0%A1%D0%9B%D0%AB%D0%99%3B%D0%9D%D0%98%D0%9A%D0%9E%D0%9B%D0%90%D0%99%3B01.05.1980%3B100410000050%3B%3B%3B1%3B%3B%3B500000%3B%3B%3B%3B%3B%3B%3B%D0%9D%D0%98%D0%9A%D0%9E%D0%9B%D0%90%D0%95%D0%92%D0%98%D0%A7%3B%3B%232004n2LFO052LFO08%2400%2580l720wJ20l720Q12%2594510%3B765432%3B%3B%3B%3B%3BMrs%3B%D0%B6%D0%B5%D0%BD.%3B%D0%92%D0%A2%D0%9E%D0%A0%D0%9E%D0%99%D0%92%D0%97%D0%A0%D0%9E%D0%A1%D0%9B%D0%AB%D0%99%3B%D0%A0%D0%90%D0%98%D0%A1%D0%90%3B01.05.1980%3B100410000050%3B%3B%3B1%3B%3B%3B500000%3B%3B%3B%3B%3B%3B%3B%D0%97%D0%90%D0%A5%D0%90%D0%A0%D0%9E%D0%92%D0%9D%D0%90%3B%3B%233004n2LFO052LFO08%2400%2580l720wJ20l720Q12%259VI%D0%A4%D0%AB%3B362541%3B%3B%3B%3B%3BChld%3B%D0%BC%D1%83%D0%B6.%3B%D0%9F%D0%95%D0%A0%D0%92%D0%AB%D0%99%D0%A0%D0%95%D0%91%D0%95%D0%9D%D0%9E%D0%9A%3B%D0%A0%D0%95%D0%91%D0%95%D0%9D%D0%9E%D0%9A%3B01.05.2008%3B100410000050%3B%3B%3B1%3B%3B%3B500000%3B%3B%3B%3B%3B%3B%3B%D0%9D%D0%98%D0%9A%D0%9E%D0%9B%D0%90%D0%95%D0%92%D0%98%D0%A7%3B%3B%234004n2LFO052LFO08%2400%2580l720wJ20l720Q12%259V%D0%A4%D0%AB%3B234234%3B%3B%3B%3B%3BChld%3B%D0%B6%D0%B5%D0%BD.%3B%D0%92%D0%A2%D0%9E%D0%A0%D0%9E%D0%99%D0%A0%D0%95%D0%91%D0%95%D0%9D%D0%9E%D0%9A%3B%D0%A0%D0%96%D0%94%D0%9C%D0%9B%D0%90%D0%94%D0%95%D0%9D%D0%95%D0%A6%3B01.05.2013%3B100410000050%3B%3B%3B1%3B%3B%3B500000%3B%3B%3B%3B%3B%3B%3B%D0%98%D0%92%D0%90%D0%9D%D0%9E%D0%92%D0%9D%D0%90%3B%3B58055a6d54f9735aa02f67d8c38f72af&amp;add</IDT>
-    <TRIP ID="103128042941" idTour="104499999900000043">
-        <DATE>03.12.2016</DATE>
+    <IDT>/tozaya?idTour=104400000817729410&amp;find=yes</IDT>
+    <BIDT>104400000817729410</BIDT>
+    <TRIP ID="103128042941" idTour="104400000817729410">
+        <DATE>12.07.2016</DATE>
         <NUM>102М</NUM>
         <CONFIG_UID>TRAIN2</CONFIG_UID>
         <BOARDING_TIME>1408</BOARDING_TIME>
         <DEPARTURE_TIME>1408</DEPARTURE_TIME>
-        <ARRIVAL_DATE>04.12.2016</ARRIVAL_DATE>
+        <ARRIVAL_DATE>13.07.2016</ARRIVAL_DATE>
         <ARRIVAL_TIME>1406</ARRIVAL_TIME>
         <CITYRUS_FROM>МОСКВА КАЗАНСКАЯ</CITYRUS_FROM>
         <CITYRUS_TO>АДЛЕР</CITYRUS_TO>
@@ -18,323 +19,174 @@
         <TRAIN_NAME>Премиум</TRAIN_NAME>
     </TRIP>
     <TRAIN>
-        <CAR type="coupe2x" num="1" gender="F" elreg="true" twostorey="false">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
-            <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
-        </CAR>
-        <CAR type="platz" num="2" gender="" elreg="false" twostorey="false">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
-            <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
-        </CAR>
-        <CAR type="shtab" num="3" gender="" elreg="true" twostorey="false">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
-            <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
-        </CAR>
-        <CAR type="shtab2x" num="4" gender="" elreg="false" twostorey="false">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
-            <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
-        </CAR>
-        <CAR type="coupe" num="5" gender="M" elreg="true" twostorey="false">
-            <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN,WIFI">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор, WIFI        </SRV>
-            <CARRIER>ФПК</CARRIER>
-            <PRICE from="8267" to="" srv="667"/>
-        </CAR>
+
+    <CAR type="coupe" num="7" gender="" elreg="false" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="">        </DESCR>        <SRV>        </SRV>
+        <CARRIER></CARRIER>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="" to="" srv=""/>
+    </CAR>
+    <CAR type="coupe" num="9" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="2Э">Спальный вагон повышенной комфортности с четырехместными купе, с кондиционером. В стоимость входит: комплект постельного  белья, санитарно-гигиенический набор.        </DESCR>        <SRV short="EAT,COND,BED,SAN">Питание, Кондиционер, Постельное белье, Санитарно-гигиенический набор        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short="У1">Количество рационов питания - 1</CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="9123.20" to="" srv="667"/>
+    </CAR>    <INTERNATIONAL dirGroup="0">false</INTERNATIONAL>
+    <IsSuburbanTrain>false</IsSuburbanTrain>
     </TRAIN>
-    <PASSENGERS>
-        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
+    <PASSENGERS>        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
         <PASSENGER ageGroup="ADT">
-            <ID>102399999900000002</ID>
+            <ID>102300000817729510</ID>
             <TITLE>Mr</TITLE>
-            <SEX>F</SEX>
+            <SEX>M</SEX>
             <AGE>36</AGE>
-            <SURNAME>ГОБАЧОВ</SURNAME>
-            <NAME>АНАСТАСИЯ</NAME>
+            <SURNAME>ПЯТНАДЦАТЬ</SURNAME>
+            <NAME>НИКОЛАЙ</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
-            <ID>102399999900000001</ID>
+            <ID>102300000817730310</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>36</AGE>
-            <SURNAME>СМИТ</SURNAME>
-            <NAME>АЛЕКСЕЙ</NAME>
+            <SURNAME>ШЕСТНАДЦАТЬ</SURNAME>
+            <NAME>НИКОЛАЙ</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000817731210</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>СЕМНАДЦАТЬ</SURNAME>
+            <NAME>НИКОЛАЙ</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
-            <ID>102399999900000003</ID>
-            <TITLE>Ms</TITLE>
-            <SEX>f</SEX>
-            <AGE>10</AGE>
-            <SURNAME>ГОБАЧОВА</SURNAME>
+            <ID>102300000817729610</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>9</AGE>
+            <SURNAME>ПЯТНАДЦАТЬ</SURNAME>
             <NAME>РАИСА</NAME>
             <IS_INF>false</IS_INF>
-            <PARENTID>102399999900000002</PARENTID>
+            <PARENTID>102300000817729510</PARENTID>
             <CURSEAT></CURSEAT>
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
-            <ID>102399999900000006</ID>
-            <TITLE>Ms</TITLE>
-            <SEX>f</SEX>
-            <AGE>2</AGE>
-            <SURNAME>ГОБАЧОВА</SURNAME>
-            <NAME>МАЛЕНЬКАЯ</NAME>
-            <IS_INF>true</IS_INF>
-            <PARENTID>102399999900000002</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102399999900000004</ID>
-            <TITLE>Mr</TITLE>
+            <ID>102300000817730610</ID>
+            <TITLE>Chld</TITLE>
             <SEX>M</SEX>
-            <AGE>10</AGE>
-            <SURNAME>СМИТ</SURNAME>
-            <NAME>НИКОЛАЙ</NAME>
-            <PARENTID>102399999900000001</PARENTID>
+            <AGE>5</AGE>
+            <SURNAME>ШЕСТНАДЦАТЬ</SURNAME>
+            <NAME>ИВАН</NAME>
             <IS_INF>false</IS_INF>
+            <PARENTID>102300000817730310</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="CHD">
-            <ID>102399999900000005</ID>
-            <TITLE>Mr</TITLE>
+            <ID>102300000817730410</ID>
+            <TITLE>Chld</TITLE>
             <SEX>M</SEX>
-            <AGE>2</AGE>
-            <SURNAME>СМИТ</SURNAME>
-            <NAME>МЛАДШИЙ</NAME>
-            <PARENTID>102399999900000001</PARENTID>
-            <IS_INF>true</IS_INF>
+            <AGE>5</AGE>
+            <SURNAME>ШЕСТНАДЦАТЬ</SURNAME>
+            <NAME>РАИСА</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817729510</PARENTID>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
+        <PASSENGER ageGroup="CHD">
+            <ID>102300000817730510</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>5</AGE>
+            <SURNAME>ШЕСТНАДЦАТЬ</SURNAME>
+            <NAME>МАРИНА</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817731210</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="CHD">
+            <ID>102300000817731310</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>5</AGE>
+            <SURNAME>СЕМНАДЦАТЬ</SURNAME>
+            <NAME>РАИСА</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817730310</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="CHD">
+            <ID>102300000817731510</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>5</AGE>
+            <SURNAME>СЕМНАДЦАТЬ</SURNAME>
+            <NAME>ИВАН</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817731210</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="CHD">
+            <ID>102300000817729710</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>5</AGE>
+            <SURNAME>ПЯТНАДЦАТЬ</SURNAME>
+            <NAME>МАРИНА</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817730310</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="CHD">
+            <ID>102300000817731410</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>5</AGE>
+            <SURNAME>СЕМНАДЦАТЬ</SURNAME>
+            <NAME>СЫН</NAME>
+            <IS_INF>false</IS_INF>
+            <PARENTID>102300000817731210</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="INF">
+            <ID>102300000817729810</ID>
+            <TITLE>Inf</TITLE>
+            <SEX>M</SEX>
+            <AGE>1</AGE>
+            <SURNAME>ПЯТНАДЦАТЬ</SURNAME>
+            <NAME>ИВАН</NAME>
+            <IS_INF>true</IS_INF>
+            <PARENTID>102300000817729510</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+    </PASSENGERS>    <SEATS>        <SEAT no="9-37" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-36" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-38" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="7-38" status="a" sc="C"  sex="M" age="36" srvClass=""/>        <SEAT no="7-21" status="a" sc="C"  sex="M" age="36" srvClass=""/>        <SEAT no="7-10" status="a" sc="C"  sex="M" age="36" srvClass=""/>        <SEAT no="7-17" status="a" sc="C"  sex="M" age="9" srvClass=""/>        <SEAT no="7-24" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-23" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-22" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-12" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-9" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-20" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-11" status="a" sc="C"  sex="M" age="5" srvClass=""/>        <SEAT no="7-19" status="a" sc="C"  sex="M" age="1" srvClass=""/>    </SEATS></ROOT>
 
-    </PASSENGERS>
-    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>
-    <SEATS>
-        <SEAT no="1-1"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-2"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-3"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-4"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-5"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-6"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-7"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-8"  status="*" sc="C"  sex="S" />
-        <SEAT no="1-9"  status="*" sc="C"  sex="" />
-        <SEAT no="1-10"  status="*" sc="C"  sex="" />
-        <SEAT no="1-11"  status="*" sc="C"  sex="" />
-        <SEAT no="1-12"  status="*" sc="C"  sex="" />
-        <SEAT no="1-13"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-14"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-15"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-16"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-17"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-18"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-19"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-20"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-21"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-22"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-23"  status="*" sc="C"  sex="F" />
-        <SEAT no="1-24"  status="*" sc="C"  sex="M" />
-        <SEAT no="1-25"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-26"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-27"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-28"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-29"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-30"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-31"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-32"  status="*" sc="C"  sex="C" />
-        <SEAT no="1-81"  status="*" sc="C"  sex="" />
-        <SEAT no="1-82"  status="*" sc="C"  sex="" />
-        <SEAT no="1-83"  status="*" sc="C"  sex="" />
-        <SEAT no="1-84"  status="*" sc="C"  sex="" />
-        <SEAT no="1-85"  status="*" sc="C"  sex="" />
-        <SEAT no="1-86"  status="*" sc="C"  sex="" />
-        <SEAT no="1-87"  status="*" sc="C"  sex="" />
-        <SEAT no="1-88"  status="*" sc="C"  sex="" />
-        <SEAT no="1-89"  status="*" sc="C"  sex="" />
-        <SEAT no="1-90"  status="*" sc="C"  sex="" />
-        <SEAT no="1-91"  status="*" sc="C"  sex="" />
-        <SEAT no="1-92"  status="*" sc="C"  sex="" />
-        <SEAT no="1-93"  status="*" sc="C"  sex="" />
-        <SEAT no="1-94"  status="*" sc="C"  sex="" />
-        <SEAT no="1-95"  status="*" sc="C"  sex="" />
-        <SEAT no="1-96"  status="*" sc="C"  sex="" />
-        <SEAT no="1-97"  status="*" sc="C"  sex="" />
-        <SEAT no="1-98"  status="*" sc="C"  sex="" />
-        <SEAT no="1-99"  status="*" sc="C"  sex="" />
-        <SEAT no="1-100"  status="*" sc="C"  sex="" />
-        <SEAT no="1-101"  status="*" sc="C"  sex="" />
-        <SEAT no="1-102"  status="*" sc="C"  sex="" />
-        <SEAT no="1-103"  status="*" sc="C"  sex="" />
-        <SEAT no="1-104"  status="*" sc="C"  sex="" />
-        <SEAT no="1-105"  status="*" sc="C"  sex="" />
-        <SEAT no="1-106"  status="*" sc="C"  sex="" />
-        <SEAT no="1-107"  status="*" sc="C"  sex="" />
-        <SEAT no="1-108"  status="*" sc="C"  sex="" />
-        <SEAT no="1-109"  status="*" sc="C"  sex="" />
-        <SEAT no="1-110"  status="*" sc="C"  sex="" />
-        <SEAT no="1-111"  status="*" sc="C"  sex="" />
-        <SEAT no="1-112"  status="*" sc="C"  sex="" />        
-        <SEAT no="2-1"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-2"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-3"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-4"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-5"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-6"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-7"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-8"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-9"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-10"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-11"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-12"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-13"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-14"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-15"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-16"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-17"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-18"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-19"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-20"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-21"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-22"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-23"  status="*" sc="Y"  sex="F" />
-        <SEAT no="2-24"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-25"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-26"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-27"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-28"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-29"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-30"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-31"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-32"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-33"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-34"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-35"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-36"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-37"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-38"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-39"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-40"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-41"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-42"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-43"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-44"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-45"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-46"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-47"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-48"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-49"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-50"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-51"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-52"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-53"  status="*" sc="Y"  sex="" />
-        <SEAT no="2-54"  status="*" sc="Y"  sex="" />
-        
-        <SEAT no="3-1"  status="*" sc="C"  sex="" />
-        <SEAT no="3-2"  status="*" sc="C"  sex="" />
-        <SEAT no="3-3"  status="*" sc="C"  sex="" />
-        <SEAT no="3-4"  status="*" sc="C"  sex="" />
-        <SEAT no="3-5"  status="*" sc="C"  sex="" />
-        <SEAT no="3-6"  status="*" sc="C"  sex="" />
-        <SEAT no="3-7"  status="*" sc="C"  sex="" />
-        <SEAT no="3-8"  status="*" sc="C"  sex="" />
-        <SEAT no="3-9"  status="*" sc="C"  sex="" />
-        <SEAT no="3-10"  status="*" sc="C"  sex="" />
-        <SEAT no="3-11"  status="*" sc="C"  sex="" />
-        <SEAT no="3-12"  status="*" sc="C"  sex="" />
-        <SEAT no="3-13"  status="*" sc="C"  sex="" />
-        <SEAT no="3-14"  status="*" sc="C"  sex="" />
-        <SEAT no="3-15"  status="*" sc="C"  sex="" />
-        <SEAT no="3-16"  status="*" sc="C"  sex="" />
-        <SEAT no="3-17"  status="*" sc="C"  sex="" />
-        <SEAT no="3-18"  status="*" sc="C"  sex="" />
-        <SEAT no="3-19"  status="*" sc="C"  sex="" />
-        <SEAT no="3-20"  status="*" sc="C"  sex="" />
-        <SEAT no="3-21"  status="*" sc="C"  sex="" />
-        <SEAT no="3-22"  status="*" sc="C"  sex="" />
-        <SEAT no="3-23"  status="*" sc="C"  sex="" />
-        <SEAT no="3-24"  status="*" sc="C"  sex="" />
-        <SEAT no="3-25"  status="*" sc="C"  sex="" />
-        <SEAT no="3-26"  status="*" sc="C"  sex="" />
-        <SEAT no="3-27"  status="*" sc="C"  sex="" />
-        <SEAT no="3-28"  status="*" sc="C"  sex="" />
-        <SEAT no="3-29"  status="*" sc="C"  sex="" />
-        <SEAT no="3-30"  status="*" sc="C"  sex="" />
-        <SEAT no="3-31"  status="*" sc="C"  sex="" />
-        <SEAT no="3-32"  status="*" sc="C"  sex="" />
-         
-        <SEAT no="4-1"  status="*" sc="C"  sex="" />
-        <SEAT no="4-2"  status="*" sc="C"  sex="" />
-        <SEAT no="4-3"  status="*" sc="C"  sex="" />
-        <SEAT no="4-4"  status="*" sc="C"  sex="" />
-        <SEAT no="4-5"  status="*" sc="C"  sex="" />
-        <SEAT no="4-6"  status="*" sc="C"  sex="" />
-        <SEAT no="4-7"  status="*" sc="C"  sex="" />
-        <SEAT no="4-8"  status="*" sc="C"  sex="" />
-        <SEAT no="4-9"  status="*" sc="C"  sex="" />
-        <SEAT no="4-10"  status="*" sc="C"  sex="" />
-        <SEAT no="4-11"  status="*" sc="C"  sex="" />
-        <SEAT no="4-12"  status="*" sc="C"  sex="" />
-        <SEAT no="4-13"  status="*" sc="C"  sex="" />
-        <SEAT no="4-14"  status="*" sc="C"  sex="" />
-        <SEAT no="4-15"  status="*" sc="C"  sex="" />
-        <SEAT no="4-16"  status="*" sc="C"  sex="" />
-        <SEAT no="4-17"  status="*" sc="C"  sex="" />
-        <SEAT no="4-18"  status="*" sc="C"  sex="" />
-        <SEAT no="4-19"  status="*" sc="C"  sex="" />
-        <SEAT no="4-20"  status="*" sc="C"  sex="" />
-        <SEAT no="4-21"  status="*" sc="C"  sex="" />
-        <SEAT no="4-22"  status="*" sc="C"  sex="" />
-        <SEAT no="4-23"  status="*" sc="C"  sex="" />
-        <SEAT no="4-24"  status="*" sc="C"  sex="" />
-         
-        <SEAT no="5-1"  status="*" sc="C"  sex="" />
-        <SEAT no="5-2"  status="*" sc="C"  sex="" />
-        <SEAT no="5-3"  status="*" sc="C"  sex="" />
-        <SEAT no="5-4"  status="*" sc="C"  sex="" />
-        <SEAT no="5-5"  status="*" sc="C"  sex="" />
-        <SEAT no="5-6"  status="*" sc="C"  sex="" />
-        <SEAT no="5-7"  status="*" sc="C"  sex="" />
-        <SEAT no="5-8"  status="*" sc="C"  sex="" />
-        <SEAT no="5-9"  status="*" sc="C"  sex="" />
-        <SEAT no="5-10"  status="*" sc="C"  sex="" />
-        <SEAT no="5-11"  status="*" sc="C"  sex="" />
-        <SEAT no="5-12"  status="*" sc="C"  sex="" />
-        <SEAT no="5-13"  status="*" sc="C"  sex="" />
-        <SEAT no="5-14"  status="*" sc="C"  sex="" />
-        <SEAT no="5-15"  status="*" sc="C"  sex="" />
-        <SEAT no="5-16"  status="*" sc="C"  sex="" />
-        <SEAT no="5-17"  status="*" sc="C"  sex="" />
-        <SEAT no="5-18"  status="*" sc="C"  sex="" />
-        <SEAT no="5-19"  status="*" sc="C"  sex="" />
-        <SEAT no="5-20"  status="*" sc="C"  sex="" />
-        <SEAT no="5-21"  status="*" sc="C"  sex="" />
-        <SEAT no="5-22"  status="*" sc="C"  sex="" />
-        <SEAT no="5-23"  status="*" sc="C"  sex="" />
-        <SEAT no="5-24"  status="*" sc="C"  sex="" />
-        <SEAT no="5-25"  status="*" sc="C"  sex="" />
-        <SEAT no="5-26"  status="*" sc="C"  sex="" />
-        <SEAT no="5-27"  status="*" sc="C"  sex="" />
-        <SEAT no="5-28"  status="*" sc="C"  sex="" />
-        <SEAT no="5-29"  status="*" sc="C"  sex="" />
-        <SEAT no="5-30"  status="*" sc="C"  sex="" />
-        <SEAT no="5-31"  status="*" sc="C"  sex="" />
-        <SEAT no="5-32"  status="*" sc="C"  sex="" />
-        
-    </SEATS>
-</ROOT>

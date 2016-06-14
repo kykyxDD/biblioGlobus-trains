@@ -253,6 +253,7 @@
             "offset": {"x": -1002, "y": -573},
             "desc": "купе",
             "seat_positions": [
+{ "type": "kupe_upper_left", "deck": 1, "no": "38", "x": 674.0, "y": 219.55},
 { "type": "kupe_upper_left", "deck": 1, "no": "36", "x": -689.90, "y": -358.70},
 { "type": "kupe_upper_right", "deck": 1, "no": "34", "x": -580.35, "y": -319.95},
 { "type": "kupe_upper_left", "deck": 1, "no": "32", "x": -538.40, "y": -293.70},
@@ -271,6 +272,7 @@
 { "type": "kupe_upper_right", "deck": 1, "no": "6", "x": 483.35, "y": 129.70},
 { "type": "kupe_upper_left", "deck": 1, "no": "4", "x": 521.90, "y": 156.50},
 { "type": "kupe_upper_right", "deck": 1, "no": "2", "x": 632.95, "y": 194.00},
+{ "type": "kupe_lower_left", "deck": 1, "no": "37", "x": 635.65, "y": 344.13},
 { "type": "kupe_lower_left", "deck": 1, "no": "35", "x": -730.35, "y": -231.85},
 { "type": "kupe_lower_right", "deck": 1, "no": "33", "x": -657.85, "y": -212.90},
 { "type": "kupe_lower_left", "deck": 1, "no": "31", "x": -578.55, "y": -168.10},
