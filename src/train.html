@@ -14,6 +14,7 @@
 					get_params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1])
 				}
 			}
+			console.log(get_params)
 
 			var BASE_URL = ""
 			var CONFIG_URL = BASE_URL + "config.xml"
@@ -83,48 +84,48 @@
 				var context = dummy_canvas.getContext('2d');
 				return typeof context.fillText == 'function';
 			}
-			var HTML = supports_canvas_text();
+			var HTML = supports_canvas_text() ? get_params['v'] && get_params['v'].toLowerCase() == "flash" ? false : true : false;
 
 			try { var FLASH = new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('$version') } catch(e) {}
 			try { var FLASH = navigator.plugins['Shockwave Flash'].description && navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin } catch(e) {}
 			FLASH = FLASH && get_params.no_flash == null
-			console.log(FLASH)
+			// console.log(FLASH, HTML)
 
 			if(HTML || FLASH) {
 				all(HTML ? scripts.mobile : scripts.flash , add_script)
 				all(HTML ? styles.mobile  : styles.flash  , add_style)	
 			} else {
 				window.onload = function(){
-					var elem = document.createElement('div');
-					elem.style.position = 'absolute';
-					elem.style.zIndex = 999;
-					elem.style.fontSize = '20px';
-					elem.style.textAlign = 'center';
-					elem.style.top = "0px";
-					elem.style.bottom = "0px";
-					elem.style.left = "0px";
-					elem.style.width = '100%';
-					elem.style.height = '100%';
-					elem.style.color = '#000';
-					elem.style.background = "#fff";
-
+				var elem = document.createElement('div');
+				if(document.body != null){ 
 					document.body.style.display = 'block';
-					document.body.style.overflow = "hidden"
-					if(document.body != null){ document.body.appendChild(elem); }
-					console.log(elem)
-
-					var text = document.createElement("div");
-					elem.appendChild(text)
-					text.innerHTML = 'Ваш браузер устарел. <br> Обновитесь или откройте в другом браузере.';
-					text.style.position = 'absolute';
-					text.style.zIndex = 999;
-					text.style.top = "50%";
-					text.style.left = "50%";
-					text.style.width = "300px";
-					text.style.height = '100px';
-					text.style.marginTop = "-50px";
-					text.style.marginLeft = "-150px";
+					document.body.style.overflow = "hidden";
+					document.body.appendChild(elem); 
 				}
+				elem.style.position = 'absolute';
+				elem.style.zIndex = 999;
+				elem.style.fontSize = '20px';
+				elem.style.textAlign = 'center';
+				elem.style.top = "0px";
+				elem.style.bottom = "0px";
+				elem.style.left = "0px";
+				elem.style.width = '100%';
+				elem.style.height = '100%';
+				elem.style.color = '#000';
+				elem.style.background = "#fff";
+
+				var text = document.createElement("div");
+				elem.appendChild(text);
+				text.innerHTML = 'Ваш браузер устарел. <br> Обновитесь или откройте в другом браузере.';
+				text.style.position = 'absolute';
+				text.style.zIndex = 999;
+				text.style.top = "50%";
+				text.style.left = "50%";
+				text.style.width = "300px";
+				text.style.height = '100px';
+				text.style.marginTop = "-50px";
+				text.style.marginLeft = "-150px";
+		}
 			}
 		</script>
 	</head>
