@@ -96,36 +96,36 @@
 				all(HTML ? styles.mobile  : styles.flash  , add_style)	
 			} else {
 				window.onload = function(){
-				var elem = document.createElement('div');
-				if(document.body != null){ 
-					document.body.style.display = 'block';
-					document.body.style.overflow = "hidden";
-					document.body.appendChild(elem); 
-				}
-				elem.style.position = 'absolute';
-				elem.style.zIndex = 999;
-				elem.style.fontSize = '20px';
-				elem.style.textAlign = 'center';
-				elem.style.top = "0px";
-				elem.style.bottom = "0px";
-				elem.style.left = "0px";
-				elem.style.width = '100%';
-				elem.style.height = '100%';
-				elem.style.color = '#000';
-				elem.style.background = "#fff";
+					var elem = document.createElement('div');
+					if(document.body != null){ 
+						document.body.style.display = 'block';
+						document.body.style.overflow = "hidden";
+						document.body.appendChild(elem); 
+					}
+					elem.style.position = 'absolute';
+					elem.style.zIndex = 999;
+					elem.style.fontSize = '20px';
+					elem.style.textAlign = 'center';
+					elem.style.top = "0px";
+					elem.style.bottom = "0px";
+					elem.style.left = "0px";
+					elem.style.width = '100%';
+					elem.style.height = '100%';
+					elem.style.color = '#000';
+					elem.style.background = "#fff";
 
-				var text = document.createElement("div");
-				elem.appendChild(text);
-				text.innerHTML = 'Ваш браузер устарел. <br> Обновитесь или откройте в другом браузере.';
-				text.style.position = 'absolute';
-				text.style.zIndex = 999;
-				text.style.top = "50%";
-				text.style.left = "50%";
-				text.style.width = "300px";
-				text.style.height = '100px';
-				text.style.marginTop = "-50px";
-				text.style.marginLeft = "-150px";
-		}
+					var text = document.createElement("div");
+					elem.appendChild(text);
+					text.innerHTML = 'Ваш браузер устарел. <br> Обновитесь или откройте в другом браузере.';
+					text.style.position = 'absolute';
+					text.style.zIndex = 999;
+					text.style.top = "50%";
+					text.style.left = "50%";
+					text.style.width = "300px";
+					text.style.height = '100px';
+					text.style.marginTop = "-50px";
+					text.style.marginLeft = "-150px";
+				}
 			}
 		</script>
 	</head>
