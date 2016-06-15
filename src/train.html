@@ -14,7 +14,7 @@
 					get_params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1])
 				}
 			}
-			console.log(get_params)
+			// console.log(get_params)
 
 			var BASE_URL = ""
 			var CONFIG_URL = BASE_URL + "config.xml"
@@ -158,7 +158,7 @@
 							</div>
 
 							<div data-bind=' ifnot: $root.list_parent().length > 1'>
-								<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div> 
+								<div data-bind=' text: parent.name'  class='value'></div> 
 							</div>
 						</div>
 					</div>

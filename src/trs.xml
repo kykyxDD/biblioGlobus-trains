@@ -53,6 +53,18 @@
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000876780402</ID>
+            <TITLE>Mrs</TITLE>
+            <SEX>F</SEX>
+            <AGE>36</AGE>
+            <SURNAME>МАМА</SURNAME>
+            <NAME>Инна</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
         <PASSENGER ageGroup="CHD">
             <ID>102300000876780500</ID>
             <TITLE>Chld</TITLE>
@@ -61,6 +73,19 @@
             <SURNAME>ДОЧЬ</SURNAME>
             <NAME>ИВАННА</NAME>
             <IS_INF>false</IS_INF>
+            <PARENTID>102300000876780400</PARENTID>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="INF">
+            <ID>102300000876781100</ID>
+            <TITLE>Chld</TITLE>
+            <SEX>M</SEX>
+            <AGE>4</AGE>
+            <SURNAME>СЫН</SURNAME>
+            <NAME>ИВАН</NAME>
+            <IS_INF>true</IS_INF>
             <PARENTID>102300000876780400</PARENTID>
             <CURSEAT></CURSEAT>
             <SC>C</SC>
