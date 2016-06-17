@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ROOT>
-    <IDT>/tozaya?idTour=104400000821784403&amp;find=yes</IDT>
-    <BIDT>104400000821784403</BIDT>
-    <TRIP ID="103128042941" idTour="104400000821784403">
+    <IDT>/tozaya?idTour=104499999900000084&amp;find=yes&amp;idt=104499999900000084I1TSgL000000CIAQ+qFhW9p+8y.Kcl6%2573ShAw941w640u0gmO14GCLI+c%231004n2LFO052LFO08%2400%2580Kae1000004MQ%3D%3DGVUZTIzg4OTYxMzI18OS0zNw%3D%3DSMTguMDYuMjAxNiAwMTozMDowMA%3D%3D00l7200Q120000%2594510%3B646588%3B%3B%3B%3B%3BMr%3B%D0%BC%D1%83%D0%B6.%3B%D0%9F%D0%9E%D0%A1%D0%9B%D0%95%D0%94%D0%9D%D0%95%D0%95%D0%9C%D0%95%D0%A1%D0%A2%D0%9E%3B%D0%9D%D0%98%D0%9A%D0%9E%D0%9B%D0%90%D0%99%3B12.06.1980%3B100410000050%3B%3B%3B1%3B%3B%3B500000%3B%3B%3B%3B1%3B%3B%3B%D0%9D%D0%98%D0%9A%D0%9E%D0%9B%D0%90%D0%95%D0%92%D0%98%D0%A7%3B%3Bd0c2703a67cee70d9743f65d79fef47a&amp;add</IDT>
+    <BIDT>31303434393939393939303030303030383449315453674C30303030303043494151207146685739702038792E4B636C3625373353684177393431773634307530676D4F313447434C49206323313030346E324C464F3035324C464F30382430302538304B6165313030303030344D513D3D4756555A54497A67344F5459784D7A4931384F53307A4E773D3D534D5467754D4459754D6A41784E6941774D546F7A4D446F774D413D3D30306C37323030513132303030302539343531303B3634363538383B3B3B3B3B4D723BD0BCD183D0B62E3BD09FD09ED0A1D09BD095D094D09DD095D095D09CD095D0A1D0A2D09E3BD09DD098D09AD09ED09BD090D0993B31322E30362E313938303B3130303431303030303035303B3B3B313B3B3B3530303030303B3B3B3B313B3B3BD09DD098D09AD09ED09BD090D095D092D098D0A73B3B6430633237303361363763656537306439373433663635643739666566343761</BIDT>
+    <TRIP ID="103128042941" idTour="104499999900000084">
         <DATE>12.07.2016</DATE>
         <NUM>102М</NUM>
         <CONFIG_UID>TRAIN2</CONFIG_UID>
@@ -30,155 +30,16 @@
     </TRAIN>
     <PASSENGERS>        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
         <PASSENGER ageGroup="ADT">
-            <ID>102300000821786103</ID>
+            <ID>102399999900000001</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>36</AGE>
-            <SURNAME>СИДОРОВ</SURNAME>
+            <SURNAME>ПОСЛЕДНЕЕМЕСТО</SURNAME>
             <NAME>НИКОЛАЙ</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
-        <PASSENGER ageGroup="ADT">
-            <ID>102300000821784603</ID>
-            <TITLE>Mrs</TITLE>
-            <SEX>F</SEX>
-            <AGE>36</AGE>
-            <SURNAME>ПЕТРОВА</SURNAME>
-            <NAME>РАИСА</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="ADT">
-            <ID>102300000821785003</ID>
-            <TITLE>Mrs</TITLE>
-            <SEX>F</SEX>
-            <AGE>36</AGE>
-            <SURNAME>ИВАНОВА</SURNAME>
-            <NAME>РАИСА</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="ADT">
-            <ID>102300000821784903</ID>
-            <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
-            <AGE>36</AGE>
-            <SURNAME>ИВАНОВ</SURNAME>
-            <NAME>НИКОЛАЙ</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="ADT">
-            <ID>102300000821784503</ID>
-            <TITLE>Mr</TITLE>
-            <SEX>M</SEX>
-            <AGE>36</AGE>
-            <SURNAME>ПЕТРОВ</SURNAME>
-            <NAME>НИКОЛАЙ</NAME>
-            <IS_INF>false</IS_INF>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821784703</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>M</SEX>
-            <AGE>9</AGE>
-            <SURNAME>ПЕТРОВ</SURNAME>
-            <NAME>СЫН</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821786103</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821786203</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>M</SEX>
-            <AGE>8</AGE>
-            <SURNAME>СИДОРОВ</SURNAME>
-            <NAME>РАИСА</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821784603</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821785103</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>M</SEX>
-            <AGE>5</AGE>
-            <SURNAME>ИВАНОВ</SURNAME>
-            <NAME>СЫН</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821786103</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821786303</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>M</SEX>
-            <AGE>5</AGE>
-            <SURNAME>СИДОРОВ</SURNAME>
-            <NAME>СЫН</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821786103</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821785203</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>F</SEX>
-            <AGE>5</AGE>
-            <SURNAME>ИВАНОВА</SURNAME>
-            <NAME>ДОЧЬ</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821784603</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="CHD">
-            <ID>102300000821784803</ID>
-            <TITLE>Chld</TITLE>
-            <SEX>F</SEX>
-            <AGE>5</AGE>
-            <SURNAME>ПЕТРОВА</SURNAME>
-            <NAME>ДОЧЬ</NAME>
-            <IS_INF>false</IS_INF>
-            <PARENTID>102300000821784603</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-        <PASSENGER ageGroup="INF">
-            <ID>102300000821786403</ID>
-            <TITLE>Inf</TITLE>
-            <SEX>M</SEX>
-            <AGE>1</AGE>
-            <SURNAME>СИДОРОВ</SURNAME>
-            <NAME>ИВАН</NAME>
-            <IS_INF>true</IS_INF>
-            <PARENTID>102300000821784503</PARENTID>
-            <CURSEAT></CURSEAT>
-            <SC>C</SC>
-            <BOARDINGPASS></BOARDINGPASS>
-        </PASSENGER>
-    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="9-5" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-6" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-7" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-8" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-9" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-10" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-11" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-12" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-13" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-14" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-15" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-16" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-17" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-18" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-19" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-20" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-21" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-22" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-23" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-24" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-25" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-26" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-27" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-28" status="*" sc="C"  sex="" srvClass="2Э"/>        <SEAT no="9-37" status="*" sc="C"  sex="" srvClass="2Э"/>    </SEATS></ROOT>
+    </PASSENGERS>    <SEATS>        <SEAT no="9-37" status="*" sc="C"  sex="" age="36" srvClass="2Э"/>    </SEATS></ROOT>
 
