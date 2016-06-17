@@ -50,6 +50,14 @@ var self = window.model = {
         self.home = BASE_URL +'resources/'+ self.struct['path']
 
         var left = 0;
+
+        if(self.ticket["TRAIN"]["CAR"] && !self.ticket["TRAIN"]["CAR"].length) {
+			self.ticket["TRAIN"]["CAR"] = [self.ticket["TRAIN"]["CAR"]]
+		}
+
+		if(self.ticket['SEATS']['SEAT'] && !self.ticket['SEATS']['SEAT'].length) {
+			self.ticket['SEATS']['SEAT'] = [self.ticket['SEATS']['SEAT']];
+		}
         
         self.struct.seats = self.make_seats()
         
@@ -156,10 +164,6 @@ var self = window.model = {
 				})
 			}
 		})
-
-		if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
-			data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
-		}
 
 		data['SEATS']['SEAT'].forEach(function(info, index) {
 			var arr = data['SEATS']['SEAT'].slice(0, index);
@@ -505,6 +509,9 @@ var self = window.model = {
         }
         
         return seats
+    },
+    createSeats: function(){
+
     },
 	resourcesProgress: function() {},
 	resourcesLoaded  : function() {}
