@@ -1351,10 +1351,9 @@ function register_events() {
 			view.popup_user_num(seat.name)
 			view.popup_user_sc(seat.sc_name)
 
-
-			if(seat.user && seat.info) {
+			if(seat.user) {
 				var elem_parent = target.parentNode;
-				var info_user = seat.info;
+				var info_user = seat.info ? seat.info : { name: "Неизвестно" };
 				view.popup_user(true)
 				view.popup_user_name(info_user.name)
 

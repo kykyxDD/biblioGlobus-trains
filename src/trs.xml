@@ -51,8 +51,9 @@
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>C</SC>
+
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         
-    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="9-36" status="*" sc="C"  sex="" srvClass="2Э"/>       </SEATS></ROOT>
+    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="9-36" status="." sc="C"  sex="" srvClass="2Э"/>       </SEATS></ROOT>
 
