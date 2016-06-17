@@ -157,6 +157,10 @@ var self = window.model = {
 			}
 		})
 
+		if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
+			data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
+		}
+
 		data['SEATS']['SEAT'].forEach(function(info, index) {
 			var arr = data['SEATS']['SEAT'].slice(0, index);
 			var duplicate = arr.select('no', info['no'].toUpperCase());
