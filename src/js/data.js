@@ -92,13 +92,13 @@ var self = window.model = {
 			types = Object.keys(self.planes['seat_types']),
 			taken = []
 
-		if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
-			data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]
-		}
+		// if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
+		// 	data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]
+		// }
 
-		if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
-			data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
-		}
+		// if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
+		// 	data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
+		// }
 
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 		self.boardinfo.idt = data['IDT']
@@ -275,6 +275,13 @@ var self = window.model = {
 				var error = self.locale.error.select('code', data['ERROR'])
 				fail(error ? error.message : 'Unknown error')
 			} else {
+				if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
+					data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]
+				}
+
+				if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
+					data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
+				}
 				self.compareTRS(data)
 				self.applyTRS(data)
 				self.ticket.TRAIN.CAR = data['TRAIN']['CAR']
