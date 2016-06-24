@@ -684,7 +684,8 @@ function setup_viewmodel() {
 		})
 	}, view)
 	view.selectUser = function(user, e) {
-		if(user && (!user.parent || (user.parent && user.parent.seat)) && !user.disabled && !user.block()) {
+		var parent = user && user.parent()
+		if(user && (!parent || (parent && parent.seat)) && !user.disabled && !user.block()) {
 			var previous = view.user()
 
 			if(previous) {
@@ -695,9 +696,9 @@ function setup_viewmodel() {
 						child.p_selected(false)
 					})
 				}
-				if(previous.parent) {
-					previous.parent.p_selected(false)
-					previous.parent.child().forEach(function(child){
+				if(previous.parent()) {
+					previous.parent().p_selected(false)
+					previous.parent().child().forEach(function(child){
 						child.p_selected(false)
 					})
 				}
@@ -709,15 +710,15 @@ function setup_viewmodel() {
 					child.p_selected(true)
 				})
 			} 
-			if(user.parent) {
-				user.parent.p_selected(true)
-				user.parent.child().forEach(function(child){
+			if(parent) {
+				parent.p_selected(true)
+				parent.child().forEach(function(child){
 					child.p_selected(true)
 				})
 			}
 			add_class(user.selection, 'active')
 			if(!previous || user.sc !== previous.sc || user.sex !== previous.sex 
-				|| user.child || user.parent || (previous.parent || (!user.child))) {
+				|| user.child || parent || (previous.parent() || (!user.child))) {
 				groups.some(method('draw'))
 			}
 			if(user.seat) {
@@ -751,18 +752,18 @@ function setup_viewmodel() {
 
 		if(val.child && val.child.indexOf(user) >= 0) return
 
-		if(user.parent && user.parent.child) {
-			user.parent.child.remove(user);	
-			user.parent.p_selected(false)
-			user.parent.child().forEach(function(child){
+		if(user.parent() && user.parent().child) {
+			user.parent().child.remove(user);	
+			user.parent().p_selected(false)
+			user.parent().child().forEach(function(child){
 				child.p_selected(false)
 			})
 		}
 		user.sc = val.sc;
-		user.parent = val;
+		user.parent(val);
 		user.parent_name(val.name);
 		user.fclass_name(val.fclass_name());
-		user.index = user.parent.index + user.parent.child().length + 1;
+		user.index = user.parent().index + user.parent().child().length + 1;
 		val.child.push(user);
 		sortUsers();
 		if(!val.seat) {
@@ -812,14 +813,14 @@ function setup_viewmodel() {
 				}
 			})
 
-			if(((user.parent && user.parent.curseat() && FilterSeat.seatChild(seat, user.parent)) || !user.parent)) {
+			if(((user.parent() && user.parent().curseat() && FilterSeat.seatChild(seat, user.parent())) || !user.parent())) {
 				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
 			}
 
-			if(user.parent && !user.parent.seat && !user.seat) {
+			if(user.parent() && !user.parent().seat && !user.seat) {
 				select_next_user()
 			}
 		}
@@ -1093,7 +1094,9 @@ function update_users(users) {
 		user.id_car   = ko.observable(user.id_car  || '-')
 		user.fclass_name  = ko.observable(user.fclass  || '')
 		user.p_selected = ko.observable(false)
+		
 		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
+		user.parent   = ko.observable(user.parent || false);
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -1360,7 +1363,7 @@ function register_events() {
 			} else if(!seat.match_service_class && seat.sex !== 'c'){
 				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
 				view.text_hind('')
-			} else if(user && user.parent && FilterSeat.seatChild(seat, user.parent) == false){
+			} else if(user && user.parent() && FilterSeat.seatChild(seat, user.parent()) == false){
 				view.error_seat(view.error_texts.parent)
 			} else if(seat.sex){
 				view.text_hind(view.sex_text[seat.sex][1])
@@ -1414,7 +1417,7 @@ function register_events() {
 				x      = (point.pageX + frames.view.center.x),
 				y      = (point.pageY + frames.view.center.y),
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
-				parent = view.user().parent && seat ? FilterSeat.seatChild(seat, view.user().parent) : true,
+				parent = view.user().parent() && seat ? FilterSeat.seatChild(seat, view.user().parent()) : true,
 				labels = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
 
 			if(labels){
@@ -1426,8 +1429,8 @@ function register_events() {
 				if(seat && parent){
 					updateDisable(seat, view.user())
 
-					if(view.user().parent) {
-						var seat_parent = view.user().parent.seat;
+					if(view.user().parent()) {
+						var seat_parent = view.user().parent().seat;
 					}
 					seat && seat.take(view.user(), [x,y])
 				}
@@ -1828,8 +1831,9 @@ Seat.prototype = {
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
 		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
-			if(view.user().parent && view.user().parent.seat){
-				var res = FilterSeat.seatChild(this, view.user().parent)
+			var parent = view.user().parent();
+			if(parent && parent.seat){
+				var res = FilterSeat.seatChild(this, parent)
 				if(res) {
 					this.drawLabel(this.name.toUpperCase())
 				} else {

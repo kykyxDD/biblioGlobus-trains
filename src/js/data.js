@@ -92,14 +92,6 @@ var self = window.model = {
 			types = Object.keys(self.planes['seat_types']),
 			taken = []
 
-		// if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
-		// 	data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]
-		// }
-
-		// if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
-		// 	data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
-		// }
-
 		self.group_ticket = data['PASSENGERS']['GROUPBOARDINGPASS']
 		self.boardinfo.idt = data['IDT']
 
@@ -240,8 +232,8 @@ var self = window.model = {
 			var seat = user.curseat().toUpperCase();
 
 			var add = []
-			if(user.parent){
-				add = ['c'+user.id, user.parent.id]
+			if(user.parent()){
+				add = ['c'+user.id, user.parent().id]
 			} else if(user.child) {
 				add[0] = 'p' + user.id;
 				var arr = []
