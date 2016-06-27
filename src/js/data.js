@@ -265,7 +265,7 @@ var self = window.model = {
 		function(data) {
 			if('ERROR' in data) {
 				var error = self.locale.error.select('code', data['ERROR'])
-				fail(error ? error.message : 'Unknown error')
+				fail(error ? error.message : data['COMMENT'] ? data['COMMENT'] : 'Unknown error')
 			} else {
 				if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
 					data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]

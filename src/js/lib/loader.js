@@ -107,8 +107,12 @@ Loader.prototype = {
 		success      = data.success
 		data.success = function(response) {
 			try {
-				data.raw    = response
-				data.result = Loader.serialize(response.documentElement)
+				if(!response && error) {
+					error()
+				} else {
+					data.raw    = response
+					data.result = Loader.serialize(response.documentElement)	
+				}
 			} catch(e) { 
 				if(!response) {
 					return false
