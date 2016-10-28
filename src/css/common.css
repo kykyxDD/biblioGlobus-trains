@@ -190,6 +190,29 @@ audio {
         transition: all 0.3s ease;
         
         }
+        .view .plane .deck .selection.last_right {
+          margin-left: -10px;
+          margin-top: -15px; 
+        }
+        .view .plane .deck .selection.last_right.active {
+          margin-left: -12px; 
+        } 
+
+        .view .plane .deck .selection.last_left_fold {
+          margin-top: -10px;
+          margin-left: -45px;
+
+        }
+        .view .plane .deck .selection.last_left_fold.active {
+          margin-left: -47px;
+        }
+        .view .plane .deck .selection.last_right_fold {
+          margin-top: -10px;
+          margin-left: -10px;
+        }
+        .view .plane .deck .selection.last_right_fold.active {
+          margin-left: -12px;
+        }
         .view .plane .deck .selection .label {
           -webkit-transition: all 0.3s ease;
           -moz-transition: all 0.3s ease;
