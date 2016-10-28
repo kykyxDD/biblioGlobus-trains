@@ -1422,9 +1422,9 @@ function register_events() {
 
 			if(labels){
 				showPopupSex(labels)
-			} else if(seat && seat.user && !seat.info.selected()){
+			} else if(seat && seat.user && seat.info && !seat.info.selected()){
 				view.selectUser(seat.info)
-			} else if(seat && seat.sex !== 'c') {
+			} else if(seat && seat.sex !== 'c' && ((seat.user && seat.info) || !seat.user)) {
 				view.item_seat(seat);
 				if(seat && parent){
 					updateDisable(seat, view.user())

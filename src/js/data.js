@@ -53,7 +53,8 @@ var self = window.model = {
 
         if(self.ticket["TRAIN"]["CAR"] && !self.ticket["TRAIN"]["CAR"].length) {
 			self.ticket["TRAIN"]["CAR"] = [self.ticket["TRAIN"]["CAR"]]
-		}
+		};
+		self.checkCars();
 
 		if(self.ticket['SEATS']['SEAT'] && !self.ticket['SEATS']['SEAT'].length) {
 			self.ticket['SEATS']['SEAT'] = [self.ticket['SEATS']['SEAT']];
@@ -80,6 +81,8 @@ var self = window.model = {
 
         // 1x1 transparent
         self.pixel.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAAXNSR0IArs4c6QAAAAtJREFUCB1jYGAAAAADAAFPSAqvAAAAAElFTkSuQmCC'
+
+
 
         self.struct.plane.decks.some(self.collectDeckTiles)
         self.downloadImages(self.struct)
@@ -270,6 +273,7 @@ var self = window.model = {
 				if(data["TRAIN"]["CAR"] && !data["TRAIN"]["CAR"].length) {
 					data["TRAIN"]["CAR"] = [data["TRAIN"]["CAR"]]
 				}
+				self.checkCars();
 
 				if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
 					data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
@@ -356,6 +360,56 @@ var self = window.model = {
 				city      :board['AIRPCITYEN_TO'  ]
 			}
 		}
+	},
+
+	checkCars: function(){
+
+		var last = false
+		var premium = false
+
+		self.ticket["TRAIN"]["CAR"].forEach(function(car){
+			if(car.type.indexOf('lastochka') >= 0){
+				last = true
+				var pr = car.premium && +car.premium;
+				premium = pr ? pr : premium
+			}
+		})
+		if(last){
+			var str_pr = premium ? '_pr' : '';
+			if(premium){
+				self.ticket["TRAIN"]["CAR"].sort(function(a,b){
+					var a_num = +a.num;
+					var b_num = +b.num;
+					if(a_num > b_num){
+						return 1
+					} else if(a_num < b_num){
+						return -1
+					}
+				});
+			} else {
+				self.ticket["TRAIN"]["CAR"].sort(function(a,b){
+					var a_num = +a.num;
+					var b_num = +b.num;
+					if(a_num > b_num){
+						return -1
+					} else if(a_num < b_num){
+						return 1
+					}
+				});
+			}
+
+			self.ticket["TRAIN"]["CAR"].forEach(function(car){
+				var num = +car.num;
+				car.type = 'lastochka';
+				if(num%5 == 1){
+        			car.type = 'lastochka'+1;
+        		} else if(num%5 == 0){
+        			car.type = 'lastochka'+5;
+        		}
+        		car.type += str_pr
+			});
+		}
+
 	},
 	collectDeckTiles: function(deck) {
 			var path = deck.tile_path_template

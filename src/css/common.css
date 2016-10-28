@@ -190,28 +190,36 @@ audio {
         transition: all 0.3s ease;
         
         }
+
+        .view .plane .deck .selection.last_left {
+          margin-left: -50px;
+          margin-top: -15px;
+        }
+        .view .plane .deck .selection.last_left.active {
+          margin-left: -52px;
+        }
         .view .plane .deck .selection.last_right {
           margin-left: -10px;
-          margin-top: -15px; 
+          margin-top: 5px; 
         }
         .view .plane .deck .selection.last_right.active {
-          margin-left: -12px; 
+          margin-left: -13px; 
         } 
 
         .view .plane .deck .selection.last_left_fold {
-          margin-top: -10px;
-          margin-left: -45px;
+          margin-top: 0px;
+          margin-left: -50px;
 
         }
         .view .plane .deck .selection.last_left_fold.active {
-          margin-left: -47px;
+          margin-left: -55px;
         }
         .view .plane .deck .selection.last_right_fold {
-          margin-top: -10px;
-          margin-left: -10px;
+          margin-top: -18px;
+          margin-left: -12px;
         }
         .view .plane .deck .selection.last_right_fold.active {
-          margin-left: -12px;
+          margin-left: -15px;
         }
         .view .plane .deck .selection .label {
           -webkit-transition: all 0.3s ease;
