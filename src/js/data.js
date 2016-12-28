@@ -3,6 +3,7 @@
 var self = window.model = {
 	info     : SEATS_INFO_URL,
 	locfile  : LOCALE_URL,
+	schema   : SCHEMA_URL.replace('.xml', '.json'),
 	config   : CONFIG_URL.replace('.xml', '.json'),
 	backup   : {},
 	onready  : [],
@@ -15,6 +16,7 @@ var self = window.model = {
 	},
 	loadConfig: function(fail_callback) {
 		self.get = new Loader
+		self.get.json(self.schema,  self._expose('schema'))
 		self.get.json(self.config,  self._expose('planes'))
 		self.get.xml (self.locfile, self._expose('locale'))
 		self.get.xml (self.info,    self._expose('ticket'))
@@ -368,12 +370,16 @@ var self = window.model = {
 		var premium = false
 
 		self.ticket["TRAIN"]["CAR"].forEach(function(car){
-			if(car.type.indexOf('lastochka') >= 0){
+			var arr_schema = car.schema.split('_');
+			console.log('schema:',car.schema)
+			if(car.schema.indexOf('LAST') >= 0){
 				last = true
-				var pr = car.premium && +car.premium;
-				premium = pr ? pr : premium
+				premium = car.schema.indexOf('PREM') >= 0;
 			}
+			var id = arr_schema.slice(1, arr_schema.length -1).join("_");
+			car.type = self.schema[car.schema.split('_')[0]][id];
 		})
+
 		if(last){
 			var str_pr = premium ? '_pr' : '';
 			if(premium){
@@ -397,17 +403,6 @@ var self = window.model = {
 					}
 				});
 			}
-
-			self.ticket["TRAIN"]["CAR"].forEach(function(car){
-				var num = +car.num;
-				car.type = 'lastochka';
-				if(num%5 == 1){
-        			car.type = 'lastochka'+1;
-        		} else if(num%5 == 0){
-        			car.type = 'lastochka'+5;
-        		}
-        		car.type += str_pr
-			});
 		}
 
 	},

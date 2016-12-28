@@ -1353,22 +1353,25 @@ function register_events() {
 			position(el.hind, seat.popup_pos.x, seat.popup_pos.y)
 			view.popup_user_num(seat.name)
 			view.popup_user_sc(seat.sc_name)
+			var all_disabled = allDisabled();
+			var users = view.users();
 
 			if(seat.user) {
 				var elem_parent = target.parentNode;
 				var info_user = seat.info ? seat.info : { name: "Неизвестно" };
-				view.popup_user(true)
-				view.popup_user_name(info_user.name)
-
+				view.popup_user(true);
+				view.popup_user_name(info_user.name);
+			} else if(!user && all_disabled && users.length){
+				view.error_seat(users[0].disabled)
 			} else if(!seat.match_service_class && seat.sex !== 'c'){
-				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat)
-				view.text_hind('')
+				view.error_seat(seat.sc ? view.error_texts.sc : view.error_texts.no_seat);
+				view.text_hind('');
 			} else if(user && user.parent() && FilterSeat.seatChild(seat, user.parent()) == false){
-				view.error_seat(view.error_texts.parent)
+				view.error_seat(view.error_texts.parent);
 			} else if(seat.sex){
-				view.text_hind(view.sex_text[seat.sex][1])
+				view.text_hind(view.sex_text[seat.sex][1]);
 			} else if(seat.match_service_class && seat.match_sex) {
-				view.text_hind(view.sex_text['s'][1])
+				view.text_hind(view.sex_text['s'][1]);
 			} 
 		} else {
 			view.hind(false)
@@ -1770,6 +1773,13 @@ function updateDisable(seat, user){
 	}
 
 	view.disable_submite(view.error_len())
+}
+function allDisabled(){
+	var disabled = true
+	view.users().forEach(function(user){
+		if(!user.disabled || user.disabled == '') {disabled = false}
+	})
+	return disabled
 }
 
 Seat.prototype = {
