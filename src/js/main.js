@@ -1097,6 +1097,7 @@ function update_users(users) {
 		
 		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
 		user.parent   = ko.observable(user.parent || false);
+		console.log(user.parent())
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -1336,7 +1337,8 @@ function register_events() {
 		var x    = (point1.pageX + frames.view.center.x),
 			y    = (point1.pageY + frames.view.center.y),
 			seat = Seat.findByPositionMove(x / frames.view.scale, y / frames.view.scale),
-			marker = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
+			marker = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale),
+			markerSed = Seat.findByPositionLabelSed (x / frames.view.scale, y / frames.view.scale)
 
 		var target = e.target || e.srcElement;
 		var user
@@ -1347,6 +1349,13 @@ function register_events() {
 		var user = view.user();
 
 		view.cursor(marker)
+		if(seat){
+			if(markerSed && seat != markerSed) {
+				seat = markerSed
+			}
+		} else  if(markerSed){
+ 			seat = markerSed
+		}
 
 		if(seat){
 			view.hind(true)
@@ -1422,6 +1431,14 @@ function register_events() {
 				seat   = Seat.findByPosition(x / frames.view.scale, y / frames.view.scale),
 				parent = view.user().parent() && seat ? FilterSeat.seatChild(seat, view.user().parent()) : true,
 				labels = Seat.findByPositionLabel(x / frames.view.scale, y / frames.view.scale)
+				markerSed = Seat.findByPositionLabelSed (x / frames.view.scale, y / frames.view.scale)
+			if(seat){
+				if(markerSed && seat != markerSed) {
+					seat = markerSed
+				}
+			} else  if(markerSed){
+	 			seat = markerSed
+			}
 
 			if(labels){
 				showPopupSex(labels)
@@ -1673,6 +1690,21 @@ Seat.findByPositionLabel = function(x,y){
 	return false
 
 }
+Seat.findByPositionLabelSed = function(x,y){
+	var remains = seats.length, seat
+
+	while(seat = seats[--remains]) {
+		if(((seat.match_service_class && seat.match_sex) || C.DEMO || seat.user) &&
+			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
+			seat.containsLabelsSed(x, y)){
+			return seat
+		}
+	}
+
+	return false
+
+}
+
 Seat.togglePassengers = function(show) {
 	view.passengers_visible(show)
 	seats.some(function(seat) {
@@ -1805,6 +1837,23 @@ Seat.prototype = {
 	containsLabels: function(x, y) {
 		var dx = x - this.labels_pos.x,
 			dy = y - this.labels_pos.y
+		return dx > 0 && dx < 50
+			&& dy > 0 && dy < 25
+	},
+	containsLabelsSed: function(x, y) {
+		var size = this.labelSize;
+		var _x = this.sprite.offset.label[0] + this.sprite.offset.size[0];
+		var _y = this.sprite.offset.label[1];
+		var right = this.num_side !== 'right' ? true : false;
+		var i_dx = right ? -size*0.9 : size*1.2 ;
+		var i_dy = size/2
+		var l_dx = this.X + _x + i_dx - (size*0.7) + this.group.size.left;
+		var l_dy = this.Y + _y + i_dy -9 - size*1.5 + this.group.size.top - (right ? 7 : 0);
+
+	    var real_x = right ? l_dx : l_dx - 25
+	    var real_y = l_dy
+		var dx = x - real_x,
+			dy = y - real_y
 		return dx > 0 && dx < 50
 			&& dy > 0 && dy < 25
 	},

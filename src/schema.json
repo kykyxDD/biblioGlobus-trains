@@ -1,44 +1,77 @@
 {
-	"GRAND" : {},
-	"TVER": {
-		"2/4" : "coupe"
+	"V1":{
+		"GRAND" : {},
+		"TVER": {
+			"2/4" : "coupe"
+		},
+		"FPK" : {
+			"2/4" : "coupe",
+			"2/4_RIC":  "coupe_ric",
+			"3/4" : "platz",
+			"2/4_2Storey" : "coupe2x",
+			"S1_2Storey" : "sedentary2x",
+			"VIP_2Storey" : "sedentary2x",
+			"S2_2Storey" : "sedentary2x_S2"
+		},
+		"TKS" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"PKS" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"SAPSAN" : {},
+		"ALLEGRO" : {},
+		"NEV"  : {},
+		"PASS" : {},
+		"LASTOCHKA": {
+			"W1": "lastochka_w1",
+			"W2": "lastochka_w",
+			"W3": "lastochka_w",
+			"W4": "lastochka_w",
+			"W5": "lastochka_w5"
+		},
+		"LASTPREM" : {
+			"W1": "lastprem_w1",
+			"W2": "lastprem_w",
+			"W3": "lastprem_w",
+			"W4": "lastprem_w",
+			"W5": "lastprem_w5"
+		},
+		"YROSL" : {},
+		"STRIZH" : {},
+		"SWIFT" : {}, 
+		"KRG" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"LG" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"LDZ" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"MOL" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"AZ" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"KZH" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		},
+		"KRG" : {
+			"2/4" : "coupe",
+			"3/4" : "platz"
+		}
 	},
-	"FPK" : {
-		"2/4" : "coupe",
-		"2/4_RIC":  "coupe_ric",
-		"3/4" : "platz",
-		"2/4_2Storey" : "coupe2x",
-		"S1_2Storey" : "sedentary2x",
-		"VIP_2Storey" : "sedentary2x",
-		"S2_2Storey" : "sedentary2x_S2"
-	},
-	"TKS" : {
-		"2/4" : "coupe",
-		"3/4" : "platz"
-	},
-	"PKS" : {
-		"2/4" : "coupe",
-		"3/4" : "platz"
-	},
-	"SAPSAN" : {},
-	"ALLEGRO" : {},
-	"NEV"  : {},
-	"PASS" : {},
-	"LASTOCHKA": {
-		"W1": "lastochka_w1",
-		"W2": "lastochka_w",
-		"W3": "lastochka_w",
-		"W4": "lastochka_w",
-		"W5": "lastochka_w5"
-	},
-	"LASTPREM" : {
-		"W1": "lastprem_w1",
-		"W2": "lastprem_w",
-		"W3": "lastprem_w",
-		"W4": "lastprem_w",
-		"W5": "lastprem_w5"
-	},
-	"YROSL" : {},
-	"STRIZH" : {},
-	"SWIFT" : {}
+	"V2": {
+		"KZH": {}
+	}
 }

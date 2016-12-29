@@ -377,8 +377,8 @@ var self = window.model = {
 				premium = car.schema.indexOf('PREM') >= 0;
 			}
 			var id = arr_schema.slice(1, arr_schema.length -1).join("_");
-			car.type = self.schema[car.schema.split('_')[0]][id];
-		})
+			car.type = self.schema[arr_schema[arr_schema.length -1]][car.schema.split('_')[0]][id];
+		});
 
 		if(last){
 			var str_pr = premium ? '_pr' : '';
