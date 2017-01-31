@@ -191,18 +191,23 @@ audio {
         
         }
 
-        .view .plane .deck .selection.last_left {
+        .view .plane .deck .selection.last_left,
+        .view .plane .deck .selection.sedentary_left {
           margin-left: -50px;
           margin-top: -15px;
         }
-        .view .plane .deck .selection.last_left.active {
+        .view .plane .deck .selection.last_left.active,
+        .view .plane .deck .selection.sedentary_left.active {
           margin-left: -52px;
         }
-        .view .plane .deck .selection.last_right {
+        
+        .view .plane .deck .selection.last_right,
+        .view .plane .deck .selection.sedentary_right {
           margin-left: -10px;
           margin-top: 5px; 
         }
-        .view .plane .deck .selection.last_right.active {
+        .view .plane .deck .selection.last_right.active,
+        .view .plane .deck .selection.sedentary_right.active {
           margin-left: -13px; 
         } 
 
@@ -221,6 +226,25 @@ audio {
         .view .plane .deck .selection.last_right_fold.active {
           margin-left: -15px;
         }
+
+        .view .plane .deck .selection.strizh_left {
+          margin-left: -50px;
+          margin-top: -10px;
+        }
+        .view .plane .deck .selection.strizh_left.active{
+          margin-left: -53px;
+          margin-top: -13px;
+        }
+        .view .plane .deck .selection.strizh_right {
+          margin-left: -10px;
+          margin-top: 3px;
+        }
+        .view .plane .deck .selection.strizh_right.active{
+          margin-left: -14px;
+          margin-top: 0px;
+        }
+
+
         .view .plane .deck .selection .label {
           -webkit-transition: all 0.3s ease;
           -moz-transition: all 0.3s ease;

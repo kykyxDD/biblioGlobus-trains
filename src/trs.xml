@@ -19,37 +19,62 @@
         <TRAIN_NAME></TRAIN_NAME>
     </TRIP>
     <TRAIN>
-
-    <CAR type="platz" num="1" gender="" elreg="true" twostorey="false" schema="LASTPREM_W1_V1">
+    <CAR type="platz" num="1" gender="" elreg="true" twostorey="false" schema="STRIZH_W1_V1">
         <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
         <CAT_MODIFIER short=""></CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
     </CAR>
-    <CAR type="platz" num="2" gender="" elreg="true" twostorey="false" schema="LASTPREM_W2_V1">
+    <CAR type="platz" num="2" gender="" elreg="true" twostorey="false" schema="STRIZH_W2_V1">
+        <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
+    </CAR>   
+    <CAR type="platz" num="3" gender="" elreg="true" twostorey="false" schema="STRIZH_W3_V1">
         <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
         <CAT_MODIFIER short=""></CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
     </CAR>
-    <CAR type="platz" num="3" gender="" elreg="true" twostorey="false" schema="LASTPREM_W3_V1">
+    <CAR type="platz" num="4" gender="" elreg="true" twostorey="false" schema="STRIZH_W4_V1">
         <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
         <CAT_MODIFIER short=""></CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
     </CAR>
-    <CAR type="platz" num="4" gender="" elreg="true" twostorey="false" schema="LASTPREM_W4_V1">
+    <CAR type="platz" num="5" gender="" elreg="true" twostorey="false" schema="STRIZH_W5_V1">
         <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
         <CAT_MODIFIER short=""></CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
     </CAR>
-    <CAR type="platz" num="5" gender="" elreg="true" twostorey="false" schema="LASTPREM_W5_V1">
+    <CAR type="platz" num="8" gender="" elreg="true" twostorey="false" schema="STRIZH_W8_V1">
         <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
         <CAT_MODIFIER short=""></CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
     </CAR>
+    <CAR type="platz" num="9" gender="" elreg="true" twostorey="false" schema="STRIZH_W9_V1">
+        <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
+    </CAR>
+    <CAR type="platz" num="10" gender="" elreg="true" twostorey="false" schema="STRIZH_W10_V1">
+        <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
+    </CAR>
+    <CAR type="platz" num="11" gender="" elreg="true" twostorey="false" schema="STRIZH_W11_V1">
+        <DESCR SHORT="2С">Вагон без услуг. Наличие установки кондиционирования воздуха не гарантировано.        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short=""></CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="1205" to="1446" srv=""/>
+    </CAR>
+    
+    
     <INTERNATIONAL dirGroup="0">false</INTERNATIONAL>
     <IsSuburbanTrain>false</IsSuburbanTrain>
     </TRAIN>
@@ -57,7 +82,59 @@
         <PASSENGER ageGroup="ADT">
             <ID>102300000820467917</ID>
             <TITLE>Mrs</TITLE>
-            <SEX>F</SEX>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>LASTOCHKA</SURNAME>
+            <NAME>ELENA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000820467918</ID>
+            <TITLE>Mrs</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>LASTOCHKA</SURNAME>
+            <NAME>ELENA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000820467919</ID>
+            <TITLE>Mrs</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>LASTOCHKA</SURNAME>
+            <NAME>ELENA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000820467916</ID>
+            <TITLE>Mrs</TITLE>
+            <SEX>M</SEX>
+            <AGE>36</AGE>
+            <SURNAME>LASTOCHKA</SURNAME>
+            <NAME>ELENA</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>Y</SC>
+
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102300000820467915</ID>
+            <TITLE>Mrs</TITLE>
+            <SEX>M</SEX>
             <AGE>36</AGE>
             <SURNAME>LASTOCHKA</SURNAME>
             <NAME>ELENA</NAME>
@@ -80,5 +157,272 @@
             <PARENTID>102300000820467917</PARENTID>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
-    </PASSENGERS>    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="1-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="1-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-56" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-66" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-68" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-86" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-101" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="2-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-34" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-57" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-62" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-70" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-83" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-101" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-109" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="3-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-13" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-26" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-27" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-30" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-34" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-65" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-68" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-70" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-83" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-86" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-98" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-101" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-114" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="4-116" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-44" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="5-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-2" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-34" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-44" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="6-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-29" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-30" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-56" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-57" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-61" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-62" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-70" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-98" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-109" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-26" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-56" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-86" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-101" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-27" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-32" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-34" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-57" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-66" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-68" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-83" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-97" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-98" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-109" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-13" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-26" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-32" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-43" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-44" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-51" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-64" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-66" status="*" sc="Y"  sex="" srvClass="2С"/>    </SEATS><VERSION>UFS:  2, BIBLIOG2_TEST_EMUL</VERSION></ROOT>
+    </PASSENGERS>    
+    <MESSAGE>Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE> 
+    <SEATS>        
+        <SEAT no="1-1" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-2" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-3" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-4" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-7" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-8" status="*" sc="Y"  sex="" srvClass="2С"/> 
+        <SEAT no="1-9" status="*" sc="Y"  sex="" srvClass="2С"/> 
+        <SEAT no="1-10" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-11" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-13" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-14" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-15" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-16" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-19" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-21" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-22" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-23" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-24" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-25" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-26" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-27" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-28" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-29" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-30" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-31" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-32" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-33" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-34" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-35" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-36" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-37" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-38" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="1-39" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-40" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-42" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-48" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="1-50" status="*" sc="Y"  sex="" srvClass="2С"/> 
+
+        
+        <SEAT no="2-1" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-2" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-3" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-4" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-7" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-8" status="*" sc="Y"  sex="" srvClass="2С"/> 
+        <SEAT no="2-9" status="*" sc="Y"  sex="" srvClass="2С"/> 
+        <SEAT no="2-10" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-11" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-13" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-14" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-15" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-16" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-19" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-21" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-22" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-23" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-24" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-25" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-26" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-27" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-28" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-29" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-30" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-31" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-32" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-33" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-34" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-35" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-36" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-37" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-38" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-39" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-40" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-42" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-48" status="*" sc="Y"  sex="" srvClass="2С"/>
+        <SEAT no="2-50" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-52" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-56" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-60" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-66" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-68" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-73" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-74" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-76" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-77" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-78" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-80" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-86" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-89" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-90" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-92" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-93" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-94" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-96" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-100" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-101" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-102" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-104" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-105" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-106" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-108" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-110" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-111" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="2-112" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-8" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-9" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-10" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-21" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-22" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-24" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-34" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-35" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-36" status="*" sc="Y"  sex="" srvClass="2С"/>       
+        <SEAT no="3-38" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-39" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-40" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-42" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-45" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-46" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-48" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-49" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-50" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-52" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-57" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-58" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-60" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-62" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-70" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-72" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-73" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-74" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-76" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-77" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-78" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-80" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-83" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-89" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-90" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-92" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-93" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-94" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-96" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-100" status="*" sc="Y"  sex="" srvClass="2С"/>       
+        <SEAT no="3-101" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-102" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-104" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-108" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-109" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-110" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-111" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="3-112" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-8" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-10" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-13" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-14" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-16" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-22" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-24" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-26" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-27" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-28" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-30" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-34" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-35" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-36" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-38" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-39" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-40" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-42" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-45" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-46" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-48" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-50" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-52" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-60" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-65" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-68" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-70" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-72" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-73" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-74" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-76" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-77" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-78" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-80" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-83" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-84" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-86" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-93" status="*" sc="Y"  sex="" srvClass="2С"/>       
+        <SEAT no="4-94" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-96" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-98" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-100" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-101" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-102" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-104" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-105" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-106" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-108" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-110" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-112" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-114" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="4-116" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-8" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-10" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-22" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-24" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-38" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-40" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-44" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="5-46" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-2" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-8" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-12" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-14" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-16" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-20" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-22" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-24" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-28" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-34" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-44" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-45" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-46" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="6-54" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-5" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-6" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-8" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-14" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-15" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-17" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-18" status="*" sc="Y"  sex="" srvClass="2С"/>        
+        <SEAT no="7-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-29" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-30" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-56" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-57" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-61" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-62" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-70" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-98" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-109" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="7-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-26" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-56" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-86" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-101" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-102" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-104" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-105" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-106" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-108" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="8-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-5" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-14" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-27" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-28" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-32" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-34" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-35" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-36" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-48" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-49" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-50" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-57" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-58" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-60" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-66" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-68" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-72" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-73" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-74" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-76" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-77" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-78" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-80" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-83" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-84" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-89" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-90" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-92" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-93" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-94" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-96" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-97" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-98" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-99" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-100" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-109" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-110" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-111" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="9-112" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-6" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-8" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-9" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-10" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-12" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-13" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-15" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-16" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-17" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-18" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-20" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-21" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-22" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-24" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-26" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-31" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-32" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-38" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-39" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-40" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-42" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-43" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-44" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-45" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-46" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-51" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-52" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-54" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-64" status="*" sc="Y"  sex="" srvClass="2С"/>        <SEAT no="10-66" status="*" sc="Y"  sex="" srvClass="2С"/>    </SEATS><VERSION>UFS:  2, BIBLIOG2_TEST_EMUL</VERSION>
+</ROOT>
 

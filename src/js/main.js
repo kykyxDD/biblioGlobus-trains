@@ -510,7 +510,7 @@ function update_view()
     var cars = model.ticket.TRAIN.CAR
     var car = cars[ind]
     if(!cars || !car) return
-    var car_info = model.planes.bus_parts[car.type]
+    var car_info = model.planes.bus_parts[car.type.name]
 
     view.current_car_type(car_info.desc)
     view.current_car_num("Вагон №" + car.num)
@@ -550,7 +550,7 @@ function update_view()
     if (ind > 0) {
     	view.prev_car_item(true)
         car = cars[ind-1]
-        car_info = model.planes.bus_parts[car.type]
+        car_info = model.planes.bus_parts[car.type.name]
         view.prev_car_type(car_info.desc)
         view.prev_car_num("Вагон №" + car.num)
     }
@@ -563,7 +563,7 @@ function update_view()
     if (ind < cars.length-1) {
     	view.next_car_item(true)
         car = cars[ind+1]
-        car_info = model.planes.bus_parts[car.type]
+        car_info = model.planes.bus_parts[car.type.name]
         view.next_car_type(car_info.desc)
         view.next_car_num("Вагон №" + car.num)
     }
@@ -1097,7 +1097,6 @@ function update_users(users) {
 		
 		user.index    = user.index ? user.index : user.parent.index + user.parent.child.indexOf(user) + 1; 
 		user.parent   = ko.observable(user.parent || false);
-		console.log(user.parent())
 
         user.seat_name = ko.computed(function() {
             return user.curseat().replace(/^.*-/, '')
@@ -1353,7 +1352,7 @@ function register_events() {
 			if(markerSed && seat != markerSed) {
 				seat = markerSed
 			}
-		} else  if(markerSed){
+		} else  if(markerSed) {
  			seat = markerSed
 		}
 
@@ -1425,6 +1424,7 @@ function register_events() {
 
 		if(has_class(target,'change_sex') || has_class(target,'label_group')) return
 		if(view.user() && !C.VIEWONLY) {
+			var user   = view.user();
 			var point  = e.detail.changedTouches ? e.detail.changedTouches[0] : e.detail,
 				x      = (point.pageX + frames.view.center.x),
 				y      = (point.pageY + frames.view.center.y),
@@ -1436,7 +1436,7 @@ function register_events() {
 				if(markerSed && seat != markerSed) {
 					seat = markerSed
 				}
-			} else  if(markerSed){
+			} else  if(markerSed && (!user.parent() || (user.parent() && user.parent().curseat() && FilterSeat.seatChild(markerSed, user.parent())))){
 	 			seat = markerSed
 			}
 

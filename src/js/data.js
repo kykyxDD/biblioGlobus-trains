@@ -370,18 +370,24 @@ var self = window.model = {
 		var premium = false
 
 		self.ticket["TRAIN"]["CAR"].forEach(function(car){
-			var arr_schema = car.schema.split('_');
-			console.log('schema:',car.schema)
-			if(car.schema.indexOf('LAST') >= 0){
-				last = true
-				premium = car.schema.indexOf('PREM') >= 0;
+			if(car.schema){
+				var arr_schema = car.schema.split('_');
+				//console.log('schema:',car.schema)
+				if(car.schema.indexOf('LAST') >= 0){
+					last = true
+					premium = car.schema.indexOf('PREM') >= 0;
+				}
+				var id = arr_schema.slice(1, arr_schema.length -1).join("_");
+				car.type = self.schema[arr_schema[arr_schema.length -1]][car.schema.split('_')[0]][id];	
+			} else {
+				car.type = {
+					"name" : car.type,
+					"img"  : car.type
+				}
 			}
-			var id = arr_schema.slice(1, arr_schema.length -1).join("_");
-			car.type = self.schema[arr_schema[arr_schema.length -1]][car.schema.split('_')[0]][id];
 		});
 
 		if(last){
-			var str_pr = premium ? '_pr' : '';
 			if(premium){
 				self.ticket["TRAIN"]["CAR"].sort(function(a,b){
 					var a_num = +a.num;
@@ -444,7 +450,7 @@ var self = window.model = {
                 
                 for (var b=0; b<car_h; b++) {
                      for (var a=0; a<car_w; a++) {
-                        tiles[tx+a][ty+b].push({t: car.type, ind: ind++})
+                        tiles[tx+a][ty+b].push({t: car.type.img , ind: ind++})
                     }
                 }
             }
@@ -540,10 +546,11 @@ var self = window.model = {
         
         var left = 1437
         var top = 810
-        
+
+
         for (var i=0; i<cars.length; i++) {
             var car = cars[i]
-            var cfg = self.planes.bus_parts[car.type]
+            var cfg = self.planes.bus_parts[car.type.name]
             for (var j=0; j<cfg.seat_positions.length; j++) {
                 var pos = cfg.seat_positions[j]
                 num = Math.max(pos.deck)
