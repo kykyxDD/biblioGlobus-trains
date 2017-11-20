@@ -19,7 +19,18 @@
         <TRAIN_NAME></TRAIN_NAME>
     </TRIP>
     <TRAIN>
-
+<CAR type="platz" num="8" gender="" elreg="true" twostorey="false" schema="FPK_2/4_V1">
+        <DESCR SHORT="3Д">        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short="Ж">В вагоне есть места для пассажиров с мелкими домашними животными</CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2585.70" to="3634.60" srv="138.20"/>
+    </CAR>
+    <CAR type="platz" num="9" gender="" elreg="true" twostorey="false" schema="FPK_2/4_2Storey_V1">
+        <DESCR SHORT="3Д">        </DESCR>        <SRV>        </SRV>
+        <CARRIER>ФПК</CARRIER>
+        <CAT_MODIFIER short="Ж">В вагоне есть места для пассажиров с мелкими домашними животными</CAT_MODIFIER>
+        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2585.70" to="3634.60" srv="138.20"/>
+    </CAR>
     <CAR type="platz" num="10" gender="" elreg="true" twostorey="false" schema="FPK_3/4_V1">
         <DESCR SHORT="3Д">        </DESCR>        <SRV>        </SRV>
         <CARRIER>ФПК</CARRIER>
@@ -38,44 +49,241 @@
         <CAT_MODIFIER short="Ж">В вагоне есть места для пассажиров с мелкими домашними животными</CAT_MODIFIER>
         <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2585.70" to="3634.60" srv="138.20"/>
     </CAR>
-    <CAR type="platz" num="13" gender="" elreg="true" twostorey="false" schema="FPK_3/4_V1">
-        <DESCR SHORT="3Д">        </DESCR>        <SRV>        </SRV>
-        <CARRIER>ФПК</CARRIER>
-        <CAT_MODIFIER short="Ж">В вагоне есть места для пассажиров с мелкими домашними животными</CAT_MODIFIER>
-        <SPEC_CONDS></SPEC_CONDS>        <PRICE from="2585.70" to="3634.60" srv="138.20"/>
-    </CAR>    <INTERNATIONAL dirGroup="0">false</INTERNATIONAL>
+    <INTERNATIONAL dirGroup="0">false</INTERNATIONAL>
     <IsSuburbanTrain>false</IsSuburbanTrain>
     </TRAIN>
     <PASSENGERS>        <GROUPBOARDINGPASS></GROUPBOARDINGPASS>
         <PASSENGER ageGroup="ADT">
-        <DISABLED>
-           <MESSAGE>Не заполнены или неправильно заполнены ФИО и паспортные данные!</MESSAGE>
-        </DISABLED>
             <ID>102399999900000001</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>36</AGE>
-            <SURNAME>Surname1</SURNAME>
-            <NAME>Name</NAME>
+            <SURNAME>Смирнов</SURNAME>
+            <NAME>Андрей</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
-            <SC>Y</SC>
+            <SC>C</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
         <PASSENGER ageGroup="ADT">
-        <DISABLED>
-           <MESSAGE>Не заполнены или неправильно заполнены ФИО и паспортные данные!</MESSAGE>
-        </DISABLED>
             <ID>102399999900000002</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>F</SEX>
+            <AGE>36</AGE>
+            <SURNAME>Смирнова</SURNAME>
+            <NAME>Екатерина</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+
+        <PASSENGER ageGroup="ADT">
+            <ID>102399999900000003</ID>
+            <TITLE>Mr</TITLE>
+            <SEX>F</SEX>
+            <AGE>8</AGE>
+            <SURNAME>Смирнова</SURNAME>
+            <NAME>Ольга</NAME>
+            <IS_INF>false</IS_INF>
+            <CURSEAT></CURSEAT>
+            <SC>C</SC>
+            <PARENTID>102399999900000002</PARENTID>
+            <BOARDINGPASS></BOARDINGPASS>
+        </PASSENGER>
+        <PASSENGER ageGroup="ADT">
+            <ID>102399999900000004</ID>
             <TITLE>Mr</TITLE>
             <SEX>M</SEX>
             <AGE>36</AGE>
-            <SURNAME>Surname2</SURNAME>
-            <NAME>Name</NAME>
+            <SURNAME>Яковлев</SURNAME>
+            <NAME>Михаил</NAME>
             <IS_INF>false</IS_INF>
             <CURSEAT></CURSEAT>
             <SC>Y</SC>
             <BOARDINGPASS></BOARDINGPASS>
         </PASSENGER>
-    </PASSENGERS>    <MESSAGE>Вы можете ознакомиться с наличием свободных мест в вагонах поезда.&lt;br&gt; Для выбора и бронирования конкретных мест необходимо вернуться в заявку и заполнить Ф.И.О. и точные паспортные данные всех пассажиров.&lt;br&gt; Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    <SEATS>        <SEAT no="10-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-10" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="10-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-30" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-42" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-46" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="11-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-30" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-41" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-43" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-44" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-50" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="12-51" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-2" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-3" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-10" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-23" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-27" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-33" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-35" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-40" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-41" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-42" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-43" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-44" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-45" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-47" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-49" status="*" sc="Y"  sex="" srvClass="3Д"/>        <SEAT no="13-50" status="*" sc="Y"  sex="" srvClass="3Д"/>    </SEATS><VERSION>UFS:  2, BIBLIOG2_TEST_EMUL</VERSION></ROOT>
+    </PASSENGERS>    
+    <MESSAGE>Вы можете ознакомиться с наличием свободных мест в вагонах поезда.&lt;br&gt; Для выбора и бронирования конкретных мест необходимо вернуться в заявку и заполнить Ф.И.О. и точные паспортные данные всех пассажиров.&lt;br&gt; Обратите внимание, после регистрации изменить места будет нельзя!</MESSAGE>    
+    <SEATS> 
+        <SEAT no="8-1" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-2" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-3" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="8-4" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-5" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-6" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="8-7" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-8" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-10" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-12" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-14" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-15" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="8-16" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-17" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-18" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-20" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-22" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-24" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-26" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-28" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-32" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-33" status="*" sc="C"  sex="" srvClass="3Д"/> 
+        <SEAT no="8-34" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="8-35" status="*" sc="C"  sex="" srvClass="3Д"/> 
+        <SEAT no="8-36" status="*" sc="C"  sex="" srvClass="3Д"/>        
+               
+        
+        <SEAT no="9-1" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-2" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-3" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-4" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-5" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-6" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-7" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-8" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-9" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-10" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-12" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-20" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-22" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-24" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-26" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-28" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-32" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-34" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-36" status="*" sc="C"  sex="" srvClass="3Д"/> 
+
+
+        <SEAT no="9-81" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-82" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-83" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-84" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-85" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-86" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-87" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-88" status="*" sc="C"  sex="" srvClass="3Д"/>
+        <SEAT no="9-89" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-90" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-92" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-91" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-93" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-94" status="*" sc="C"  sex="" srvClass="3Д"/>   
+        <SEAT no="9-95" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-96" status="*" sc="C"  sex="" srvClass="3Д"/>         
+        <SEAT no="9-97" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-98" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-99" status="*" sc="C"  sex="" srvClass="3Д"/> 
+        <SEAT no="9-103" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-104" status="*" sc="C"  sex="" srvClass="3Д"/>   
+        <SEAT no="9-105" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-106" status="*" sc="C"  sex="" srvClass="3Д"/>  
+        <SEAT no="9-107" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-108" status="*" sc="C"  sex="" srvClass="3Д"/>   
+        <SEAT no="9-110" status="*" sc="C"  sex="" srvClass="3Д"/>        
+        <SEAT no="9-112" status="*" sc="C"  sex="" srvClass="3Д"/>     
+   
+
+        <SEAT no="10-1" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-2" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-3" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-5" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-6" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-7" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-10" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-12" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-15" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-16" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-17" status="*" sc="Y"  sex="" srvClass="3Д"/>
+        <SEAT no="10-18" status="*" sc="Y"  sex="" srvClass="3Д"/>         
+        <SEAT no="10-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="10-39" status="*" sc="Y"  sex="" srvClass="3Д"/>   
+
+        <SEAT no="11-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-30" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-42" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-46" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="11-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-30" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-32" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-41" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-43" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-44" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-50" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="12-51" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-2" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-3" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-4" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-6" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-8" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-10" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-12" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-14" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-16" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-18" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-20" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-22" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-23" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-24" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-26" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-27" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-28" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-33" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-34" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-35" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-36" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-37" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-39" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-40" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-41" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-42" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-43" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-44" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-45" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-47" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-48" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-49" status="*" sc="Y"  sex="" srvClass="3Д"/>        
+        <SEAT no="13-50" status="*" sc="Y"  sex="" srvClass="3Д"/>    
+    </SEATS><VERSION>UFS:  2, BIBLIOG2_TEST_EMUL</VERSION></ROOT>
 
