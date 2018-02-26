@@ -883,6 +883,10 @@ audio {
       .users-box .users .user .info select {
         text-transform: capitalize;
       }
+      .users-box .users .user .info select.select_tariffs option,
+      .users-box .users .user .info select.select_tariffs {
+        text-transform: none;
+      }
       .users-box .users .user .print .icon {
           width: 22px;
           height: 23px;
@@ -899,6 +903,18 @@ audio {
           visibility: hidden;
           fill: #3dce03; }
 
+.tariffs {
+  padding-top: 5px;
+  
+}
+.tariffs .field {
+  padding-right: 5px;
+}
+.tariffs .field,
+.tariffs .value {
+  display: inline-block;
+  padding-bottom: 5px;
+}
 /******************************** REGISTRATION ********************************/
 .popup {
   position: absolute;

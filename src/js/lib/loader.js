@@ -52,7 +52,7 @@ Loader.prototype = {
 		req.onreadystatechange = function() {
 			if(req.readyState === 4) {
 				if(req.status.toString().charAt() === '2') {
-					data.result = req[data.type || 'responseText']
+					data.result = req[data.type || 'responseText'];
 					data.success(data.result, data.url)
 				} else {
 					data.error('Failed to load resource', data.url)

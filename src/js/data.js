@@ -61,6 +61,10 @@ var self = window.model = {
 		if(self.ticket['SEATS']['SEAT'] && !self.ticket['SEATS']['SEAT'].length) {
 			self.ticket['SEATS']['SEAT'] = [self.ticket['SEATS']['SEAT']];
 		}
+
+		if(self.ticket['TARIFFS']['tariff'] && !self.ticket['TARIFFS']['tariff'].length) {
+			self.ticket['TARIFFS']['tariff'] = [self.ticket['TARIFFS']['tariff']];
+		}
         
         self.struct.seats = self.make_seats()
         
@@ -83,8 +87,6 @@ var self = window.model = {
 
         // 1x1 transparent
         self.pixel.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAAXNSR0IArs4c6QAAAAtJREFUCB1jYGAAAAADAAFPSAqvAAAAAElFTkSuQmCC'
-
-
 
         self.struct.plane.decks.some(self.collectDeckTiles)
         self.downloadImages(self.struct)
@@ -130,14 +132,20 @@ var self = window.model = {
 				parent    : data.parent,
 				child     : data.child ? data.child : ko.observableArray(),
 				infant	  : data['IS_INF'],
-
+				tariffs   : (data['touristTariffs'] && data['touristTariffs']['codes'])  ?  (data['touristTariffs']['codes']).split(';') : [],
+				arrTariffs: (data['touristTariffs'] && data['touristTariffs']['codes'])  ?  (data['touristTariffs']['codes']).split(';') : [],
+				itmTariff : '',
 				name      : (data['SURNAME'] +' '+ data['NAME']).toLowerCase(),
 				fclass    : data['SC'] != '*' ? self.locale['flightClass'+ data['SC']] : 'любой' || 'любой',
 				role 	  : data['PARENTID'] || data["IS_INF"] ? data['IS_INF'] ? "младенец" : "ребенок" : "взрослый",
-
 				curseat   : '',
 				face      : {}
 			}
+			user.tariffs.forEach(function(id, key){
+				user.tariffs[key] = self.getTariff(id)
+			});
+
+			user.itmTariff = user.tariffs && user.tariffs.length ? user.tariffs[0] : null;
 
 			var seat = data['CURSEAT'] ? data['CURSEAT'].toUpperCase() : ''
 			if(seat) if(~taken.indexOf(seat)) {
@@ -209,6 +217,15 @@ var self = window.model = {
 			}
 		})
 	},
+
+	getTariff: function(key){
+		var tariff = null;
+		self.ticket.TARIFFS.tariff.forEach(function(obj){
+			if(!tariff && obj.code == key)  tariff = obj
+		});
+
+		return tariff
+	},
 	valAirline: function(){
 		var str = self.ticket[Const.tripInfoTag].NUM
 		var index = str.search(/[0-9]/);
@@ -238,16 +255,22 @@ var self = window.model = {
 
 			var add = []
 			if(user.parent()){
-				add = ['c'+user.id, user.parent().id]
+				add.push(['c'+user.id, user.parent().id])
 			} else if(user.child) {
-				add[0] = 'p' + user.id;
+				// add[0] = 'p' + user.id;
 				var arr = []
 				user.child().forEach(function(child){
 					if(child.seat || child.infant) {
 						arr.push(child.id)
 					}
 				})
-				add[1] = arr.join(',')
+				// add[1] = arr.join(',')
+				add.push(['p' + user.id, arr.join(',')])
+			}
+
+			
+			if(user.itmTariff) {
+				add.push(['tf'+ user.id, user.itmTariff.code])
 			}
 	
 			if(seat) {
@@ -257,12 +280,17 @@ var self = window.model = {
 				schemas.collect(seat_data.car)
 
 
-				if(add.length){
+				/*if(add.length){
 					return [['n'+ user.id, seat+sex].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
 				} else {
 					return [ 'n'+ user.id, seat+sex].map(encodeURIComponent).join('=')
-				}
+				}*/
+				add.push(['n'+ user.id, seat+sex])
 			}
+			return add.map(function(itm){
+				return itm.map(encodeURIComponent).join('=')
+			}).join('&')
+			
 		}).filter(Boolean).concat('platform=html5', schemas.toString()).join('&')
 
 		var join = ~SEAT_REQUEST.indexOf('?') ? '&' : '?'
@@ -280,9 +308,13 @@ var self = window.model = {
 				if(data['SEATS']['SEAT'] && !data['SEATS']['SEAT'].length) {
 					data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
 				}
+
+				if(data['TARIFFS']['tariff'] && !data['TARIFFS']['tariff'].length) {
+					data['TARIFFS']['tariff'] = [data['TARIFFS']['tariff']];
+				}
+
 				self.compareTRS(data)
 				self.applyTRS(data)
-				self.ticket.TRAIN.CAR = data['TRAIN']['CAR']
 				if(data['BIDT']){
 					change_tourid_in_page_url(data['BIDT'])
 				}
@@ -370,9 +402,9 @@ var self = window.model = {
 		var premium = false
 
 		self.ticket["TRAIN"]["CAR"].forEach(function(car){
+			car.tariffs = car.tariffs.split(';');
 			if(car.schema){
 				var arr_schema = car.schema.split('_');
-				//console.log('schema:',car.schema)
 				if(car.schema.indexOf('LAST') >= 0){
 					last = true
 					premium = car.schema.indexOf('PREM') >= 0;

@@ -308,6 +308,7 @@ function start() {
 	setup_viewmodel()
 	setup_navigation()
 	update_users(model.users)
+	update_tariffs()
 	model.struct.double_decker && view.hide_upper_deck()
 	create_group_seat()
 	loadImageIcon()
@@ -434,6 +435,8 @@ function prepare_train_view() {
 	view.current_car_prime_to = ko.observable('')
 	view.current_car_modifier = ko.observable('') 
 	view.current_car_spec_conds = ko.observable('')
+	view.current_car_tarrifs = ko.observableArray()
+	view.obj_tariffs = {}
 	var obj = {
 		len: ko.observable(false),
 		ELREG: ko.observable(false),
@@ -519,12 +522,14 @@ function update_view()
     view.current_car_carrier(car.CARRIER)
     view.current_car_prime_from(car.PRICE.from)
     view.current_car_modifier((car.CAT_MODIFIER && car.CAT_MODIFIER.text) || '')
-    view.current_car_spec_conds(car.SPEC_CONDS)
+	view.current_car_spec_conds(car.SPEC_CONDS)
+	view.current_car_tarrifs(car.tariffs)
+
     if(car.PRICE.to !== '') {
     	view.current_car_prime_to(car.PRICE.to)
     } else {
     	view.current_car_prime_to(false)
-    }
+	}
 
     var info = view.current_car_info();
     var arr_info = car.SRV && car.SRV.short ? car.SRV.short.split(',') : [];
@@ -786,6 +791,15 @@ function setup_viewmodel() {
 		view.click_select(data)
 	}
 
+	view.selectionTarriffs = function(user, e){
+		if(!user.tariffs || (user.tariffs && !user.tariffs.length)) {
+			user.itmTariff = false
+		} else {
+			var target = e.target || e.srcElement;
+			user.itmTariff = user.tariffs[target.selectedIndex];
+		}
+	}
+
 	view.changeSex = function(elem){
 		
 		var group = view.item_group();
@@ -814,7 +828,7 @@ function setup_viewmodel() {
 			})
 
 			if(((user.parent() && user.parent().curseat() && FilterSeat.seatChild(seat, user.parent())) || !user.parent())) {
-				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex){
+				if((sex == view.user().sex || sex == 's') && seat.match_service_class && seat.match_sex && seat.match_tariff){
 					Seat.link(user, seat)
 					C.DEMO || select_next_user()
 				}
@@ -870,7 +884,8 @@ function setup_viewmodel() {
 		sc: "Не совпадает класс обслуживания.", 
 		sex: "Не совпадает пол.",
 		parent: 'Ребенок должен сидеть в одном вагоне с родителем.',
-		no_seat: 'Нет доступа к посадке на это место.'
+		no_seat: 'Нет доступа к посадке на это место.',
+		tariff: 'Выбранный тарифом не совпадает с разрешенными тарифами вагона.'
 	}
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -925,7 +940,7 @@ function setup_viewmodel() {
 
 	ko.applyBindings(view)
 	view.register_scroll = new iScroll('confirm-users')
-	view.usersbox_scroll = new iScroll('users-scroll')
+	view.usersbox_scroll = new iScroll('users-scroll', { bounce: false })
 
 
 	setTimeout(function() { view.usersbox_scroll.refresh() })
@@ -938,7 +953,6 @@ function make_selection_label(user) {
 		'<div class="wrap">'+
 			'<div class="icon_seat" > </div>'+
 			'<div class="label"></div>'+
-
  		'</div>'
  	root.user = user
 	return { 
@@ -1118,6 +1132,12 @@ function update_users(users) {
 	select_next_user()
 	view.group_ticket(model.group_ticket)
 	groups.some(method('draw'))
+}
+function update_tariffs(){
+	var tariffs = model.ticket.TARIFFS.tariff;
+	tariffs.forEach(function(obj){
+		view.obj_tariffs[obj.code] = obj
+	});
 }
 function sortUsers(){
 	var users = view.users() 
@@ -1376,6 +1396,8 @@ function register_events() {
 				view.text_hind('');
 			} else if(user && user.parent() && FilterSeat.seatChild(seat, user.parent()) == false){
 				view.error_seat(view.error_texts.parent);
+			} else if(!seat.match_tariff){
+				view.error_seat(view.error_texts.tariff);
 			} else if(seat.sex){
 				view.text_hind(view.sex_text[seat.sex][1]);
 			} else if(seat.match_service_class && seat.match_sex) {
@@ -1412,7 +1434,7 @@ function register_events() {
 
 		frames.map[stage](x / scale, y / scale, false)
 
-		e.preventDefault()
+	    e.preventDefault()
 	}
 	function click(e) {
 		var target = e.target || e.srcElement;
@@ -1658,7 +1680,7 @@ Seat.findByPosition = function(x, y) {
 		user = view.user();
 
 	while(seat = seats[--remains]) {
-		if(((seat.match_service_class && seat.match_sex) || C.DEMO || seat.user) &&
+		if(((seat.match_service_class && seat.match_sex && seat.match_tariff) || C.DEMO || seat.user) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
 			seat.contains(x, y)){
 			return seat
@@ -1694,7 +1716,7 @@ Seat.findByPositionLabelSed = function(x,y){
 	var remains = seats.length, seat
 
 	while(seat = seats[--remains]) {
-		if(((seat.match_service_class && seat.match_sex) || C.DEMO || seat.user) &&
+		if(((seat.match_service_class && seat.match_sex && seat.match_tariff) || C.DEMO || seat.user) &&
 			(view.upper() ? !seat.low && seat.deck == 2 : seat.deck < 2) &&
 			seat.containsLabelsSed(x, y)){
 			return seat
@@ -1862,13 +1884,23 @@ Seat.prototype = {
 		this.X = this.x - this.group.size.left - this.size[0]
 		this.Y = this.y - this.group.size.top
         this.match_service_class = false
-        this.match_sex = false
+		this.match_sex = false
+		this.match_tariff = false
         var user = view.user()
 
         if (user) {
             this.match_service_class = (user.sc === "*" || this.sc === "*") || this.sc === user.sc
-            this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c' || this.sex == 's')) || !this.sex || user.infant;
-        }
+			this.match_sex = (this.sex && (this.sex === user.sex || this.sex =='c' || this.sex == 's')) || !this.sex || user.infant;
+			this.match_tariff = this.compareTariffs(this.car.tariffs, user.itmTariff && user.itmTariff.code )
+		}
+	},
+	compareTariffs: function(car_tariff, user_tariffs){
+		if(!car_tariff || (car_tariff && !car_tariff.length)) return true
+		if(!user_tariffs) return true
+
+		var index = car_tariff.indexOf(user_tariffs);
+
+		return index >= 0 ? true : false;
 	},
 	draw: function() {
 		this.updateState()
@@ -1889,7 +1921,7 @@ Seat.prototype = {
 			this.drawUnit(this.user,
 					this.X + this.sprite.offset.user[0] + this.size[0] - this.user.w,
 					this.Y + this.sprite.offset.user[1])
-		} else if((this.match_service_class && this.match_sex) || C.DEMO) {
+		} else if((this.match_service_class && this.match_sex && this.match_tariff) || C.DEMO) {
 			var parent = view.user().parent();
 			if(parent && parent.seat){
 				var res = FilterSeat.seatChild(this, parent)

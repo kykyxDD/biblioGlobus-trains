@@ -222,6 +222,16 @@
 							<!-- /ko -->
 						</tbody>
 					</table>
+					<div class='tariffs'>
+						<div class='field'> Тариф: </div>
+						<div class='value' >
+							<div data-bind='if: tariffs.length'>
+								<select data-bind='foreach: tariffs, event: { change: $root.selectionTarriffs }' class='select_tariffs'>
+									<option data-bind=' name: code, text: tariffName'></option>
+								</select>
+							</div>
+						</div>
+					</div>
 				</td>
 				<td class="class">
 					<div class="label">класс: </div>
@@ -403,7 +413,15 @@
 		            <tr class="carrier" data-bind='visible: current_car_carrier'>
 		            	<td class="name">Перевозчик: </td> 
 		            	<td class="text" data-bind="text: current_car_carrier"></td>
-		            </tr>
+					</tr>
+					<tr class='tariffs' data-bind='visible: current_car_tarrifs().length'>
+						<td class="name">Тарифы:</td>
+						<td>
+							<ul data-bind="foreach: current_car_tarrifs">
+								<li data-bind=" text: $root.obj_tariffs[$data].tariffName"></li>
+							</ul>
+						</td>
+					</tr>
 		            <tr class="price">
 		            	<td class="name">Цена: </td> 
 		            	<td class="text">от <span class='price' data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span class='price' data-bind='text: current_car_prime_to'></span> </span>руб </td>
@@ -418,9 +436,9 @@
 				            	<div data-bind='visible: current_car_info().BED' class="info_icon BED" title="Постельное белье"></div>
 				            	<div data-bind='visible: current_car_info().SAN' class="info_icon SAN" title="Санитарно-гигиенический набор"></div>
 		            		</div>
-		            	</td>
-		            	
-		            </tr>
+		            	</td>		            	
+					</tr>
+					
             	</table>
             </div> 
            </td></tr>

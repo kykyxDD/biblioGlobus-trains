@@ -180,8 +180,12 @@
   display: none;
 }
 .train_nav .info .info_icon.WIFI {
- background: url(../img/wifi.png) no-repeat center; 
- background-size: 100%;
+  background: url(../img/wifi.png) no-repeat center; 
+  background-size: 100%;
+}
+.train_nav .info .tariffs ul {
+  margin: 0;
+  padding-left: 15px;
 }
 
 .view .plane .deck .selection .wrap {
