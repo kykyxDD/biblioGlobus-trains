@@ -930,7 +930,8 @@ audio {
     text-align: center;
     box-sizing: border-box; }
     .popup .register .button-close {
-      background-size: 100%; }
+      background-size: 100%;
+    cursor: pointer; }
     .popup .register .content .header .result {
       font: 1.6em Arial, sans-serif;
       color: #0165a8; }

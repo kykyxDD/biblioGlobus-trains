@@ -215,6 +215,18 @@
 								</td>
 							</tr>
 							<!-- /ko -->
+							<!-- ko if: tariffs.length -->
+							<tr class='tariffs'>
+								<td>
+									<div class='field'> Тариф: </div>
+									<div class='value' >
+										<select data-bind='foreach: tariffs, event: { change: $root.selectionTariffs }' class='select_tariffs'>
+											<option data-bind=' name: code, text: tariffName'></option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<!-- /ko -->
 							<!-- ko if: message -->
 							<tr class="message">
 								<td data-bind="text: message"></td>
@@ -222,16 +234,7 @@
 							<!-- /ko -->
 						</tbody>
 					</table>
-					<div class='tariffs'>
-						<div class='field'> Тариф: </div>
-						<div class='value' >
-							<div data-bind='if: tariffs.length'>
-								<select data-bind='foreach: tariffs, event: { change: $root.selectionTarriffs }' class='select_tariffs'>
-									<option data-bind=' name: code, text: tariffName'></option>
-								</select>
-							</div>
-						</div>
-					</div>
+					
 				</td>
 				<td class="class">
 					<div class="label">класс: </div>
@@ -414,10 +417,10 @@
 		            	<td class="name">Перевозчик: </td> 
 		            	<td class="text" data-bind="text: current_car_carrier"></td>
 					</tr>
-					<tr class='tariffs' data-bind='visible: current_car_tarrifs().length'>
+					<tr class='tariffs' data-bind='visible: current_car_tariffs().length'>
 						<td class="name">Тарифы:</td>
 						<td>
-							<ul data-bind="foreach: current_car_tarrifs">
+							<ul data-bind="foreach: current_car_tariffs">
 								<li data-bind=" text: $root.obj_tariffs[$data].tariffName"></li>
 							</ul>
 						</td>

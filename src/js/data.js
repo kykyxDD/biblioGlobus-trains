@@ -62,7 +62,7 @@ var self = window.model = {
 			self.ticket['SEATS']['SEAT'] = [self.ticket['SEATS']['SEAT']];
 		}
 
-		if(self.ticket['TARIFFS']['tariff'] && !self.ticket['TARIFFS']['tariff'].length) {
+		if( self.ticket['TARIFFS'] &&  self.ticket['TARIFFS']['tariff'] && !self.ticket['TARIFFS']['tariff'].length) {
 			self.ticket['TARIFFS']['tariff'] = [self.ticket['TARIFFS']['tariff']];
 		}
         
@@ -279,7 +279,6 @@ var self = window.model = {
 				var sex = user.seat.group_seat.sex ? user.seat.group_seat.sex.toUpperCase() : user.seat.sex ? user.seat.sex.toUpperCase() : '';
 				schemas.collect(seat_data.car)
 
-
 				/*if(add.length){
 					return [['n'+ user.id, seat+sex].map(encodeURIComponent).join('='), add.map(encodeURIComponent).join('=')].join('&')	
 				} else {
@@ -309,7 +308,7 @@ var self = window.model = {
 					data['SEATS']['SEAT'] = [data['SEATS']['SEAT']];
 				}
 
-				if(data['TARIFFS']['tariff'] && !data['TARIFFS']['tariff'].length) {
+				if(data['TARIFFS'] && data['TARIFFS']['tariff'] && !data['TARIFFS']['tariff'].length) {
 					data['TARIFFS']['tariff'] = [data['TARIFFS']['tariff']];
 				}
 
@@ -402,7 +401,7 @@ var self = window.model = {
 		var premium = false
 
 		self.ticket["TRAIN"]["CAR"].forEach(function(car){
-			car.tariffs = car.tariffs.split(';');
+			car.tariffs = car.tariffs ? typeof car.tariffs == 'string' ? car.tariffs.split(';') : car.tariffs : [];
 			if(car.schema){
 				var arr_schema = car.schema.split('_');
 				if(car.schema.indexOf('LAST') >= 0){

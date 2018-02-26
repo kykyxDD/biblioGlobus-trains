@@ -435,7 +435,7 @@ function prepare_train_view() {
 	view.current_car_prime_to = ko.observable('')
 	view.current_car_modifier = ko.observable('') 
 	view.current_car_spec_conds = ko.observable('')
-	view.current_car_tarrifs = ko.observableArray()
+	view.current_car_tariffs = ko.observableArray()
 	view.obj_tariffs = {}
 	var obj = {
 		len: ko.observable(false),
@@ -523,7 +523,7 @@ function update_view()
     view.current_car_prime_from(car.PRICE.from)
     view.current_car_modifier((car.CAT_MODIFIER && car.CAT_MODIFIER.text) || '')
 	view.current_car_spec_conds(car.SPEC_CONDS)
-	view.current_car_tarrifs(car.tariffs)
+	view.current_car_tariffs(car.tariffs)
 
     if(car.PRICE.to !== '') {
     	view.current_car_prime_to(car.PRICE.to)
@@ -791,7 +791,7 @@ function setup_viewmodel() {
 		view.click_select(data)
 	}
 
-	view.selectionTarriffs = function(user, e){
+	view.selectionTariffs = function(user, e){
 		if(!user.tariffs || (user.tariffs && !user.tariffs.length)) {
 			user.itmTariff = false
 		} else {
@@ -885,7 +885,7 @@ function setup_viewmodel() {
 		sex: "Не совпадает пол.",
 		parent: 'Ребенок должен сидеть в одном вагоне с родителем.',
 		no_seat: 'Нет доступа к посадке на это место.',
-		tariff: 'Выбранный тарифом не совпадает с разрешенными тарифами вагона.'
+		tariff: 'Выбранный тариф не совпадает с разрешенными тарифами вагона.'
 	}
 	view.confirm_caption = ko.computed(function() {
 		return view.small() ? 'Готово' : 'Зарегистрировать'
@@ -1134,6 +1134,7 @@ function update_users(users) {
 	groups.some(method('draw'))
 }
 function update_tariffs(){
+	if(!model.ticket.TARIFFS) return
 	var tariffs = model.ticket.TARIFFS.tariff;
 	tariffs.forEach(function(obj){
 		view.obj_tariffs[obj.code] = obj
