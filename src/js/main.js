@@ -1135,8 +1135,7 @@ function update_users(users) {
 }
 function update_tariffs(){
 	if(!model.ticket.TARIFFS) return
-	var tariffs = model.ticket.TARIFFS.tariff;
-	tariffs.forEach(function(obj){
+	model.ticket.TARIFFS.tariff.forEach(function(obj){
 		view.obj_tariffs[obj.code] = obj
 	});
 }
