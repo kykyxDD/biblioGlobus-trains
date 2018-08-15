@@ -1,0 +1,550 @@
+/************************************ MIXINS **********************************/
+body {
+  font-size: 100%; }
+
+.logo {
+  width: 264px;
+  height: 71px;
+  border-radius: 0 35px 35px 0;
+  background-size: 230px;
+  background-position: 12px; }
+
+.view .switch-deck {
+  position: absolute;
+  right: -5px;
+  background-repeat: no-repeat;
+  padding-top: 10px;
+  padding-right: 10px;}
+  .view .switch-deck.two {    
+    bottom: 70px; }
+  .view .switch-deck.one {    
+    bottom: 30px; }
+.view .btn_regul_seat {
+  position: absolute;
+  bottom: 115px;
+  right: -5px;
+  padding-top: 10px;
+  font-size: 15px;
+}
+.view .btn_back {
+  position: absolute;
+  bottom: 160px;
+  right: -5px;
+  font-size: 15px;
+}
+.view .btn_back a{
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 25px;
+}
+.view .btn_back a:focus {
+  text-decoration: none;
+}
+.view .btn_regul_seat.vis-regul-seat {
+  z-index: 999;
+  right: 0;
+  bottom: 30px;
+}
+.portrait .view .btn_regul_seat.vis-regul-seat {
+  z-index: 999;
+  right: 0;
+  bottom: auto;
+  top: 40px;
+}
+
+.controls .screen .board-num {
+  padding: 10px 14px; }
+.controls .screen .airline-logo-small {
+  position: absolute;
+  left: auto;
+  top: 0px;
+  right: 12px;
+  bottom: auto;
+  width: 150px;
+  height: 50px; }
+.controls .board-info-table {
+  display: none; }
+.controls .board-info .route {
+  margin: 0.5em 0px 0px; }
+.controls .board-info .cred {
+  padding: 0px 12px; }
+.controls .users-box .users .user {
+  min-height: 57px; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;}
+  .controls .users-box .users .user.infant {
+    height: 28px; }
+  .controls .users-box .users .user .info {
+    padding: 5px 12px; }
+    .controls .users-box .users .user .info .select_child > div{
+      text-transform: capitalize;
+    }
+    .controls .users-box .users .user .info .name {
+      padding: 5px 0 3px; }
+    .controls .users-box .users .user.infant .info .name {
+      padding: 5px 0 0;
+    }
+    .controls .users-box .users .user .info .role {
+      padding: 3px 0px; }
+    .controls .users-box .users .user.disabled .info .role{
+      padding: 0px;
+    }
+    .controls .users-box .users .user .info .status tr {
+      max-height: 20px; }
+    .controls .users-box .users .user .info .status .place {
+      display: table-row; }
+
+    .controls .users-box .users .user .info .place td div,
+    .controls .users-box .users .user .info .parent td div,
+    .controls .users-box .users .user .info .child td div {
+      display: inline-block;
+    }
+    .controls .users-box .users .user .info .status .child td > div,
+    .controls .users-box .users .user .info .status .parent td > div {
+      padding-top: 3px;
+    }
+    .controls .users-box .users .user .info .status .parent td .field {
+      padding-right: 0;
+    }
+    .controls .users-box .users .user .info .status .parent select{
+      width: 100%;
+      text-transform: capitalize;
+      outline: none;
+    }
+    .controls .users-box .users .user .info .status .child td .list-child div {
+      display: block;
+    }
+    .controls .users-box .users .user .info .status .place td div.value {
+      min-width: 20px;
+      line-height: 1.5em;
+    }
+    .controls .users-box .users .user .info .status .message td {
+      padding-bottom: 4px; }
+    .controls .users-box .users .user .info .status .car,
+    .controls .users-box .users .user .info .status .sc { 
+      vertical-align: bottom;
+    }
+    .controls .users-box .users .user .info .status .car .value,
+    .controls .users-box .users .user .info .status .sc .value {
+      color: #000;
+      font-weight: bold;
+    }
+    .controls .users-box .users .user .info .status .sc td {
+      padding: 10px 0;
+    }
+    .controls .users-box .users .user .info .status .child .field,
+    .controls .users-box .users .user .info .status .parent .field {
+      vertical-align: top;
+    }
+    .controls .users-box .users .user .info .status .parent .value,
+    .controls .users-box .users .user .info .status .child .value:last-child{
+      margin-bottom: 5px;
+    }
+    .controls .users-box .users .user.user_parent .info {
+     /* padding-bottom: 20px;*/
+    }
+
+  .controls .users-box .users .user .class {
+    display: none; }
+    .controls .users-box .users .user .class .label {
+      height: 18px;
+      line-height: 22px; }
+    .controls .users-box .users .user .class .value {
+      height: 24px; }
+  .controls .users-box .users .user .place {
+    width: 66px;
+    display: none; }
+    .controls .users-box .users .user .place .label {
+      height: 18px;
+      line-height: 22px; }
+
+  .controls .users-box .users .user .ok {
+    width: 30px;
+    padding-top: 10px; }
+    .controls .users-box .users .user .ok svg {
+      pointer-events: none;
+      width: 18px;
+      height: 18px; }
+.controls .confirm .confirm-caption {
+  padding-top: 44px; }
+.controls .confirm .confirm-tick {
+  background-size: 35px 34px; }
+
+.popup .register {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 800px;
+  height: 620px;
+  margin-left: -400px;
+  margin-top: -310px; }
+  .popup .register .button-close {
+    position: absolute;
+    left: auto;
+    top: 4px;
+    right: 4px;
+    bottom: auto;
+    width: 71px;
+    height: 71px; }
+  .popup .register .content {
+    margin: 40px 80px; }
+    .popup .register .content .header .notice {
+      margin-top: 8px; }
+  .popup .register .users-container {
+    width: 100%;
+    height: 265px; 
+    border-bottom:1px solid #a2a7a8;
+  }
+  .popup .register .list td {
+    padding: 0 13px; }
+    .popup .register .list td:nth-child(1) {
+      padding: 0 22px; }
+    .popup .register .list td:nth-child(2) {
+      width: 100px; }
+    .popup .register .list td:nth-child(3) {
+      width: 175px; }
+  .popup .register .list.users .user td {
+    height: 40px; }
+  .popup .register .list.users .error td {
+    height: 15px; }
+  .popup .register .list.users .print .icon {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: sub; }
+  .popup .register .list.headers {
+    height: 45px;
+    margin-top: 30px; }
+    .popup .register .list.headers td {
+      padding: 7px 13px; }
+  .popup .register .actions {
+    margin-top: 26px; }
+    .popup .register .actions .action {
+      width: 190px;
+      height: 67px; }
+      .popup .register .actions .action.button-print-all {
+        width: 237px; }
+  .popup .register-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 600px;
+    height: 300px;}
+  .popup .register-error .message {
+    margin: 30px 30px 80px;
+    max-height: 190px;
+    overflow: auto; }
+  .popup .register-error .close {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    right: auto;
+    bottom: 20px;
+    width: 200px;
+    height: 50px;
+    margin-left: -100px;
+    padding-top: 16px; }
+
+
+.background .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 253px;
+  height: 253px;
+  margin-left: -126.5px;
+  margin-top: -126.5px; }
+
+.landscape .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 330px;
+  bottom: 0; }
+.landscape .controls {
+  position: absolute;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 330px; }
+  .landscape .controls .screen {
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 324px;
+    height: 238px; }
+
+
+  .landscape .controls .airline-logo {
+    position: absolute;
+    left: 3px;
+    top: 244px;
+    right: 3px;
+    bottom: 86px; }
+  .landscape .controls .confirm {
+    position: relative;
+    height: 80px; }
+
+.portrait .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 354px; }
+
+.portrait .controls {
+  position: absolute;
+  left: 0;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  height: 354px; }
+  .portrait .controls .screen {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 324px;
+    height: 238px; }
+  .portrait .controls .board-info {
+    position: absolute;
+    left: 12px;
+    top: 210px;
+    width: 324px;
+    height: 80px; }
+  .controls .board-info .cred .cont_date {
+    width: 100%;
+    }    
+  .controls .board-info .cred .date {
+    display: inline-block;}
+  .portrait .controls .users-box {
+    position: absolute;
+    left: 360px;
+    top: 12px !important;
+    right: 12px;
+    bottom: auto;
+    width: auto;
+    height: 238px; }
+  .portrait .controls .confirm {
+    position: absolute;
+    left: 360px;
+    top: auto;
+    right: 12px;
+    bottom: 12px;
+
+    height: 80px; }
+.portrait.demo .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 262px; }
+.portrait.demo .controls {
+  height: 262px; }
+  .portrait.demo .controls .airline-logo {
+    position: absolute;
+    left: 360px;
+    top: 12px;
+    right: 12px;
+    bottom: 104px;
+    background-size: auto 100%; }
+
+.popup.regul-seat .cont_regul_seat {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  height: 600px;
+  max-width: 80%;
+  max-height: 80%;
+  background: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;;
+
+}
+.popup.regul-seat #regul_seat {
+  position: absolute;
+  margin: 0 5px;
+  top: 60px;
+  left: 0px;
+  right: 0px;
+  bottom: 30px;
+  text-align: justify;
+  font-size: 0.8em;
+}
+.popup.regul-seat .title_regul_seat {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 50px;
+  margin: auto;
+  font-size: 1.5em;
+  text-align: center;
+
+}
+.popup.regul-seat .close_regul_seat {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.popup.regul-seat .cont_regul_seat .text{
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+.group {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 5;}
+  .group .cont_group {
+    position: absolute;
+    background: #fff;
+    height: 500px;
+    width: 600px;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;}
+    .group .title_cont_group {
+      height: 35px;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 30px;
+      position: relative;
+    }
+    .group .title_cont_group .close {
+      position: absolute;
+      top: 15px; 
+      right: 15px;
+      width: 33px;
+      height: 33px;
+      line-height: 31px;
+      border: 1px solid gray;
+      border-radius: 50%;
+    }
+    .group  .list {
+      width: 50%;
+      height: 400px;
+    }
+    .group .title_path {
+      padding: 10px 20px 15px;
+      font-size: 20px;
+    }
+    .group .list_user {
+      float: left;
+    }
+    .group .list_user .cont_list_user {
+      width: 100%;
+      height: 100%;
+    }
+    .group .list_user ul {
+      padding: 0 20px;
+      list-style: none;
+      margin: 0;
+      font-size: 20px;
+      line-height: 35px;
+      text-transform: capitalize;
+    }
+
+    .group .list_user .itm_user {
+      cursor: pointer;
+    }
+    .group .list_user .itm_user.item {
+      color: #f;
+    }
+    .group .list_group {
+      float: right;
+    }
+    .group .list_group .cont_list_group{
+      padding: 0 25px;
+    }
+    .group .list_group .btn_create_group {
+      height: 25px;
+      padding: 5px 0 ;
+      font-size: 20px;
+      text-align: center;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      -khtml-user-select: none;
+      user-select: none;
+      border: 1px solid #000;
+      border-radius: 5px;
+      margin: 10px 30px ;
+    }
+    .group .list_group .cont_groups {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #000;
+      list-style: none;
+    }
+    .group .item_group {
+      position: relative;
+      padding: 5px 0;
+      width: 100%;
+      min-height: 20px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      -khtml-user-select: none;
+      user-select: none;
+    }
+    .group .item_group.item {
+      background: #D2D2D2;
+    }
+    .group .item_group .name_group {
+      padding-left: 5px;
+      width: 65%;
+      height: 20px;
+    }
+    .group .item_group .rem_group{
+      position: absolute;
+      top: 5px; 
+      right: 5px;
+      width: 30%;
+      height: 20px;
+    }
+    .group .item_group .g_user {
+      text-transform: capitalize;
+      padding: 0 10px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+    .group .item_group .g_user:first-child {
+      margin-top: 5px;
+      border-top: 1px solid #000;
+    }
+    .group .item_group .g_user:last-child {
+      border-bottom: 1px solid #000;
+    }
+

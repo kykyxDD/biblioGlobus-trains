@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script>
+
+			var get_params = {}
+			if(~location.href.indexOf('?')) {
+				var pairs = location.href.split('#')[0].split('?')[1].split('&')
+				for(var i = 0; i < pairs.length; i++) {
+					var pair = pairs[i].split('=')
+					get_params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1])
+				}
+			}
+			// console.log(get_params)
+
+			var BASE_URL = ""
+			var SCHEMA_URL = BASE_URL + "schema.xml"
+			var CONFIG_URL = BASE_URL + "config.xml"
+			var LOCALE_URL = BASE_URL + "locale.xml"
+			var NO_SHOW_TICKETS = "true"
+			var SEATS_INFO_URL = escape("trs.xml")
+			var SEAT_REQUEST = escape("trs2.xml")
+			var REGISTRATION_NUMBER = get_params.tourid
+
+			var first = document.getElementsByTagName('script')[0]
+
+			function add_script(src) {
+				var elem   = document.createElement('script')
+				elem.type  = 'text/javascript'
+				elem.src   = BASE_URL + src
+				first.parentNode.insertBefore(elem, first)
+			}
+			function add_style(obj) {
+				var elem  = document.createElement('link')
+				elem.rel  = 'stylesheet'
+				elem.type = 'text/css'
+				for(var name in obj) elem[name] = obj[name]
+				elem.href = BASE_URL + obj.href
+				first.parentNode.insertBefore(elem, first)
+			}
+			function all(arr, callback) {
+				for(var i = 0; i < arr.length; i++) callback(arr[i])
+			}
+
+			var styles = {
+				mobile: [
+					{ href: 'css/common.css' },
+					{ href: 'css/left-to-right.css'},
+
+					{ href: 'css/layout_small.css', media: 'screen and (max-width: 640px)' },
+
+					{ href: 'css/layout_big.css',   media: 'screen and (min-width: 641px)' },
+					{ href: 'css/layout_big_small.css', media: 'screen and (max-width: 980px) and (min-width: 641px)' 
+					}
+
+				],
+				flash: []
+			}
+
+			var scripts = {
+				mobile: [
+					'js/const.js',
+					'js/common.js'
+				],
+				flash: [
+					'js/swfobject.js',
+					'js/flash_main.js'
+				]
+			}
+			function change_tourid_in_page_url(new_tourid) {
+				if(new_tourid && new_tourid.length !== 18){
+					var href = location.href.replace('tourid='+get_params.tourid, 'tourid='+new_tourid) 
+					history.pushState('','', href)	
+				}
+			}
+			function supports_canvas() { 
+			return !!document.createElement('canvas').getContext; 
+			}
+			function supports_canvas_text() {
+				if (!supports_canvas()) { return false; }
+				var dummy_canvas = document.createElement('canvas');
+				var context = dummy_canvas.getContext('2d');
+				return typeof context.fillText == 'function';
+			}
+			var HTML = supports_canvas_text() ? get_params['v'] && get_params['v'].toLowerCase() == "flash" ? false : true : false;
+
+			try { var FLASH = new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('$version') } catch(e) {}
+			try { var FLASH = navigator.plugins['Shockwave Flash'].description && navigator.mimeTypes['application/x-shockwave-flash'].enabledPlugin } catch(e) {}
+			FLASH = FLASH && get_params.no_flash == null
+			// console.log(FLASH, HTML)
+
+			if(HTML || FLASH) {
+				all(HTML ? scripts.mobile : scripts.flash , add_script)
+				all(HTML ? styles.mobile  : styles.flash  , add_style)	
+			} else {
+				window.onload = function(){
+					var elem = document.createElement('div');
+					if(document.body != null){ 
+						document.body.style.display = 'block';
+						document.body.style.overflow = "hidden";
+						document.body.appendChild(elem); 
+					}
+					elem.style.position = 'absolute';
+					elem.style.zIndex = 999;
+					elem.style.fontSize = '20px';
+					elem.style.textAlign = 'center';
+					elem.style.top = "0px";
+					elem.style.bottom = "0px";
+					elem.style.left = "0px";
+					elem.style.width = '100%';
+					elem.style.height = '100%';
+					elem.style.color = '#000';
+					elem.style.background = "#fff";
+
+					var text = document.createElement("div");
+					elem.appendChild(text);
+					text.innerHTML = 'Ваш браузер устарел. <br> Обновитесь или откройте в другом браузере.';
+					text.style.position = 'absolute';
+					text.style.zIndex = 999;
+					text.style.top = "50%";
+					text.style.left = "50%";
+					text.style.width = "300px";
+					text.style.height = '100px';
+					text.style.marginTop = "-50px";
+					text.style.marginLeft = "-150px";
+				}
+			}
+		</script>
+	</head>
+	<body style="display: none" data-bind="attr: { class: root_class }">
+		<script type="text/html" id="user-select">
+			<tr class="user" data-bind="click: $root.selectUser, css: { selected: selected, placed: curseat, infant: block, disabled: disabled, p_selected: p_selected, user_parent: child().length }">
+				
+				<td class="info">
+					<div class="name">
+						<span data-bind="text: name" class="value"></span>
+						<span data-bind='if: parent && block'>
+							<span style="text-transform: lowercase;"> вместе с </span>
+							<span data-bind="text: parent_name" class="value"></span>
+							<br>
+							<span class='error_seat_child'>Выберите место родителю</span>
+						</span>
+					</div>
+					<div class='role'>
+						<span class="text_role" data-bind="text: role"></span>
+						<span>(пол <span data-bind='text: sex_text'></span>)</span>
+					</div>
+					<div data-bind='if: parent && block' class='select_child'>
+						<div class='field'> Родитель: </div>
+						<div class='value' >
+							<div data-bind='if: $root.list_parent().length > 1 '>
+							
+								<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
+									<option data-bind=' attr: { selected: id == $parent.parent().id}, text: name'></option>
+								</select>
+							</div>
+
+							<div data-bind=' ifnot: $root.list_parent().length > 1'>
+								<div data-bind=' text: parent.name'  class='value'></div> 
+							</div>
+						</div>
+					</div>
+
+					<table class="status" cellspacing=0 cellpadding=0>
+						<tbody>
+							<tr class="place">
+								<td>
+									<div>
+									<div class="field">Вагон №: </div>
+									<div class="value" data-bind="text: id_car"></div>
+									</div>
+									<div>
+									<div class="field">Место: </div>
+									<div data-bind="text: seat_name() !== '' ? seat_name : '-'" class="value"></div>
+									</div>
+									<div>
+										<div class="field">Тип: </div>
+										<div class="value" data-bind="text: fclass_name"></div>
+									</div>
+								</td>
+							</tr>
+							<tr class="class">
+								<td class="field">класс: </td>
+								<td data-bind="text: fclass" class="value"></td>
+							</tr>
+							<!-- ko if: child -->
+							<tr class="child" data-bind='visible: child().length > 0'>
+								<td>
+									<div class='field'> Дети: </div>
+									<div data-bind="foreach: child" class='list-child'>
+										<div data-bind='text: name' ></div>
+									</div>
+								</td>
+							</tr>
+							<!-- /ko -->
+							<!-- ko if: parent -->
+							<tr class="parent" >
+								<td>
+									<div class='field'> Родитель: </div>
+									<div class='value' >
+										<div data-bind='if: $root.list_parent().length > 1 '>
+										
+											<select data-bind='foreach: $root.list_parent(), event: { click: $root.changeSelectParent, focus: $root.clickSelectParent}'>
+												<option data-bind=' attr: { selected: id == $parent.parent().id}, text: name'></option>
+											</select>
+										</div>
+
+										<div data-bind=' ifnot: $root.list_parent().length > 1'>
+											<div data-bind=' foreach: $root.list_parent(), text: name'  class='value'></div>
+										</div> 
+									</div>
+								</td>
+							</tr>
+							<!-- /ko -->
+							<!-- ko if: tariffs.length -->
+							<tr class='tariffs'>
+								<td>
+									<div class='field'> Тариф: </div>
+									<div class='value' >
+										<select data-bind='foreach: tariffs, event: { change: $root.selectionTariffs }' class='select_tariffs'>
+											<option data-bind=' name: code, text: tariffName'></option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<!-- /ko -->
+							<!-- ko if: message -->
+							<tr class="message">
+								<td data-bind="text: message"></td>
+							</tr>
+							<!-- /ko -->
+						</tbody>
+					</table>
+					
+				</td>
+				<td class="class">
+					<div class="label">класс: </div>
+					<div data-bind="text: fclass" class="value"></div>
+				</td>
+				<td class="place">
+					<div class="label">место: </div>
+					<div data-bind="text: curseat" class="value"></div>
+				</td>
+				<td class="ok">
+					<div class='check'></div>
+				</td>
+
+
+				<!-- ko if: disabled-->
+				<td class="info">
+					<div class="name">
+						<span data-bind="text: fclass" class="value"></span> <span data-bind="text: curseat" class="value"></span>
+					</div>
+					<div data-bind="text: disabled" class="reason"></div>
+				</td>
+				<!-- /ko -->
+			</tr>
+		</script>
+		<script type="text/html" id="register-confirmation">
+			<div class="register">
+				<div data-bind="event: { tap: complete }" class="button-close static-button-close"></div>
+				<div class="content">
+					<div class="header">
+						<div class="result" data-bind="text: result_header"></div>
+						<div class="notice" data-bind="text: result_text"></div>
+					</div>
+					<div class="headers-wrap">
+						<table class="list headers">
+							<tbody>
+								<tr>
+									<td></td>
+									<td>Место</td>
+									<td>Посадочный талон</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="confirm-users" class="users-container static-background-gray">
+						<table class="list users">
+							<tbody data-bind="foreach: users">
+								<tr class="user">
+									<td data-bind="text: name" class="name"></td>
+									<td data-bind="text: curseat" class="seat"></td>
+									<td class="print">
+										<a target="_blank" data-bind="attr: { href: ticket }, visible: ticket">
+											<div class="icon static-print-i"></div>
+											<span class="label">Распечатать</span>
+										</a>
+									</td>
+								</tr>
+								<!-- ko if: message || error -->
+								<tr class="error">
+									<td colspan="3" data-bind="text: message || error"></td>
+								</tr>
+								<!-- /ko -->
+							</tbody>
+						</table>
+					</div>
+					<div class="actions-wrap">
+						<table class="actions">
+							<tbody>
+								<tr>
+									<td>
+									</td>
+									<td>
+										<a target="_blank"gclass="action button-print-all static-button-print-all" data-bind="attr: { href: group_ticket }, visible: group_ticket"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</script>
+		<div data-bind="text: debug.pos_view" class="corner view-info"></div>
+		<div id="plane-scroll" class="view center">
+			<div class="plane" data-bind="css: {cursor: cursor}">
+				<div class="fly">
+					<div class="inner"></div>
+					<div class="outer"></div>
+				</div>
+				<div class='popup_selected_sex' data-bind='visible: show_popup_select_sex, css: {right: popup_right }'>
+					<div class="num_seat"></div>
+					
+					<div class="input_icon input_m">
+						<label for='label_m' class='radio_label'></label>
+						<input type='radio' id='label_m' name='sex' value="m">
+					</div>
+					<div class="input_icon input_f">
+						<label for='label_f' class='radio_label' ></label>
+						<input type='radio' id='label_f'  name='sex' value="f">
+					</div>
+					<div class="input_icon input_s">
+						<label for='label_s' class='radio_label'></label>
+						<input type='radio' id='label_s' name='sex' value="s">
+					</div>
+				</div>
+				<div class="popup_seat" data-bind='css: {user : popup_user, show:hind}, click: hidePopupSex'>
+					<div class="user_seat" data-bind='visible:popup_user'>
+						<div class='name_user' data-bind='text: popup_user_name'></div>
+						
+					</div>
+					<div class="num">
+						<div class="field">Место:</div> 
+						<div class='value'>№<span data-bind='text:popup_user_num'></span></div>
+					</div>
+					<div class="sc">
+						<div class="field">Тип:</div> 
+						<div class='value' data-bind='text:popup_user_sc'></div>
+					</div>
+					<div class='text_hind' data-bind='visible:text_hind'>
+						Разрешена посадка пассажира
+						<span class='hind' data-bind='html:text_hind'></span> или младенца любого пола.
+					</div>
+					<div class="popup_error_seat" data-bind='visible:error_seat'>
+						Нельзя посадить выбранного пассажира.<br>
+						<span data-bind='text:error_seat'></span>
+					</div>
+				</div>
+				
+			</div>
+			<div data-bind="event: { tap: hide_upper_deck }, css: lower_deck_class" class="button switch-deck one">Нижний уровень</div>
+			<div data-bind="event: { tap: show_upper_deck }, css: upper_deck_class" class="button switch-deck two">Верхний уровень</div>
+			<div class='button btn_regul_seat switch-deck static-deck_ina'
+			data-bind='click: funRegusSeat, css: {"vis-regul-seat": display_result}'>Правила бронирования</div>
+			<div class=" btn_back button switch-deck static-deck_ina" data-bind='visible:idt_href'><a data-bind='attr: {href: idt_href}'>Вернуться в заявку</a></div>
+			<div class="popup popup_help" data-bind='css: { show: show_popup_help}'>
+				<div class="help_close" data-bind='click: showPopupHelp'></div>
+				<div class="info_help">
+					<div class="list sex">
+						<ul>
+							<li class="sex_f">Только мужской пол</li>
+							<li class="sex_m">Только женский пол</li>
+							<li class="sex_s">Любой</li>
+						</ul>
+					</div>
+					<div class="list seat">
+						<ul>
+							<li class="seat_u">Выбранные места</li>
+							<li class="seat">Доступные места</li>
+							<li class="seat_no">Недоступные места</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="icon_help" data-bind='click: showPopupHelp, css: {show: show_popup_help}'>помощь </div>
+		<table class="train_nav">
+	        <thead>
+	            <tr>
+	            <td class="arror prev" data-bind="css: { 'hide': !prev_car_item()}, event: { tap: scroll_prev_to_car }">←</td>
+	            <td class="neighbors prev" data-bind="event: { tap: scroll_prev_to_car }"><div data-bind="text: prev_car_num">Предыдущий вагон №</div><div class="type" data-bind="visible: prev_car_type">(<span class="type" data-bind="text: prev_car_type"></span>)</div></td>
+
+	            <td class="current"><span  data-bind="text: current_car_num">Вагон №</span><span class="type" > (<span data-bind="text: current_car_type">купейный</span>)</span></td>
+
+	            <td class="neighbors next" data-bind="event: { tap: scroll_next_to_car }"><div  data-bind="text: next_car_num">Следующий вагон №</div><div class="type" data-bind="visible: next_car_type">(<span data-bind="text: next_car_type"></span>)</div></td>
+	            <td class="arror next" data-bind="css: { 'hide': !next_car_num()},event: { tap: scroll_next_to_car }">→</td>
+	            </tr>
+	        </thead>
+            <tr><td colspan="5">
+            <div class="info">
+            	<table>
+            		<tr class="descr">
+		            	<td class="name">Описание: </td> 
+		            	<td class="text" >
+		            		<div data-bind='visible: current_car_descr_short'>Класс обслуживания 
+		            		<span class="text" data-bind="text: current_car_descr_short"></span>.
+		            		</div>
+		            		<div data-bind="text: current_car_descr"></div>
+		            		<div data-bind='text: current_car_modifier'></div>
+		            		<div data-bind='text: current_car_spec_conds'></div>
+		            	</td>
+		            </tr>
+		            <tr class="carrier" data-bind='visible: current_car_carrier'>
+		            	<td class="name">Перевозчик: </td> 
+		            	<td class="text" data-bind="text: current_car_carrier"></td>
+					</tr>
+					<tr class='tariffs' data-bind='visible: current_car_tariffs().length'>
+						<td class="name">Тарифы:</td>
+						<td>
+							<ul data-bind="foreach: current_car_tariffs">
+								<li data-bind=" text: $root.obj_tariffs[$data].tariffName"></li>
+							</ul>
+						</td>
+					</tr>
+		            <tr class="price">
+		            	<td class="name">Цена: </td> 
+		            	<td class="text">от <span class='price' data-bind="text: current_car_prime_from"></span> <span data-bind='if: current_car_prime_to'> до <span class='price' data-bind='text: current_car_prime_to'></span> </span>руб </td>
+		            </tr>	
+		            <tr class='services' data-bind='visible: current_car_info().len'>
+		            	<td class="name">Услуги:</td>
+		            	<td>
+		            		<div class='list_info_icon'>
+		            			<div data-bind='visible: current_car_info().ELREG' class="info_icon ELREG" title="Электронная регистрация"></div>
+				            	<div data-bind='visible: current_car_info().EAT' class="info_icon EAT" title='Питание'></div>
+				            	<div data-bind='visible: current_car_info().COND' class="info_icon COND" title="Кондиционер"></div>
+				            	<div data-bind='visible: current_car_info().BED' class="info_icon BED" title="Постельное белье"></div>
+				            	<div data-bind='visible: current_car_info().SAN' class="info_icon SAN" title="Санитарно-гигиенический набор"></div>
+		            		</div>
+		            	</td>		            	
+					</tr>
+					
+            	</table>
+            </div> 
+           </td></tr>
+		</table>
+		</div>
+		<div class="controls">
+			<table class="table_controls">
+				<tr class="logo_tr">
+					<td><div class="logo static-biblioglobus_logo"></div></td>
+				</tr>
+				<tr class="info_train">
+					<td>
+						<div class="board-info-table">
+							<table>
+								<tbody>
+									<tr>
+										<td rowspan="2">
+											<span data-bind="text: board.num"></span> <span data-bind="visible: board.train_name, text: board.train_name"></span>
+										</td>
+										<td data-bind="text: formatAirport(board.from)" ></td>
+										<td data-bind="text: formatAirport(board.to)" ></td>
+									</tr>
+									<tr>
+										<td >
+											<span data-bind="text: board.date.date"></span> 
+											<span data-bind="text: board.date.month"></span> 
+											 в
+											<span data-bind="text: board.time"></span>
+										</td>
+										<td>
+											<span data-bind="text: board.arrival_date.date"></span> 
+											<span data-bind="text: board.arrival_date.month"></span> 
+											в
+											<span data-bind="text: board.arrival_time"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="board-info">
+							<div class="cred clearfix">
+								<div class="train_info number">
+									<div class="field">Рейс №: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.num" class="value big"></span> 
+										<span data-bind="visible: board.train_name, text: board.train_name" class='value'> </span>
+									</div>
+								</div>
+								<div class="train_info city">
+									<div class="field">Откуда: </div>
+									<div class="cont_val" data-bind="text: formatAirport(board.from)" class="from"></div>
+								</div>
+								<div class="train_info city">
+									<div class="field">Куда: </div>
+									<div class="cont_val" data-bind="text: formatAirport(board.to)" class="to"></div>
+								</div>
+								<div class="train_info ">
+									<div class="field">Отправление: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.date.date"></span> 
+										<span data-bind="text: board.date.month"></span> 
+										<span class='text_day'>
+											(<span data-bind="text: board.date.day"></span>)
+										</span>
+										в
+										<span data-bind="text: board.time"></span>
+										
+									</div>
+								</div>
+								<div class="train_info ">
+									<div class="field">Прибытие: </div>
+									<div class="cont_val">
+										<span data-bind="text: board.arrival_date.date"></span> 
+										<span data-bind="text: board.arrival_date.month"></span> 
+										<span class='text_day'>
+											(<span data-bind="text: board.arrival_date.day"></span>)
+										</span>
+										 в
+										<span data-bind="text: board.arrival_time"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr class="list_users">
+					<td>
+						<div id="users-scroll" class="users-box static-user-bg">
+							<table class="users" cellpadding=0>
+								<tbody data-bind="template: { name: 'user-select', foreach: users }"></tbody>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr class='controls_btn'>
+					<td>
+						<div data-bind="event: { tap: submit }, css: { disabled: disable_submite}" class="button confirm static-confirm">
+							<div class="confirm-tick static-tick"></div>
+							<div data-bind="text: confirm_caption" class="confirm-caption"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+			<div class="screen">
+				<div class="board-num">
+					<div data-bind="text: board.name"     class="name" ></div>
+					<div data-bind="text: board.boardnum" class="board"></div>
+				</div>
+
+				<div class="airline-logo-small"></div>
+				<div class="nav"><div class="frame center"></div></div>
+				<div class="overlay"></div>
+				<div data-bind="text: debug.pos_nav" class="corner nav-info"></div>
+			</div>
+
+			<div class="airline-logo"></div>
+
+			<div data-bind="event: { tap: show_passengers }, css: { void:  passengers_visible() }" class="button confirm fill static-confirm">
+				<div class="confirm-tick static-tick"></div>
+				<div class="confirm-caption">Заполнить все места</div>
+			</div>
+			<div data-bind="event: { tap: hide_passengers }, css: { void: !passengers_visible() }" class="button confirm fill static-confirm">
+				<div class="confirm-tick static-tick"></div>
+				<div class="confirm-caption">Освободить все места</div>
+			</div>
+		</div>
+		<a class="button back" href="demo/planes2.html"></a>
+		<div class="popup done" data-bind="visible: display_result, template: 'register-confirmation'" style="display: none;"></div>
+		<div class='popup regul-seat' data-bind='visible: show_regul_seat' style='display: none;'>
+			<div class='cont_regul_seat' >
+				<div class='title_regul_seat'>Правила бронирования билетов</div>
+				<div data-bind='click: funRegusSeat' class="close_regul_seat"> &#10006;</div>
+				<div id='regul_seat' class=""><div data-bind='html: regul_seat' class="text"></div></div>
+				
+			</div>
+		</div>
+		<div class="popup fail" data-bind="visible: display_error" style="display: none;">
+			<div class="register-error">
+				<div class="message" data-bind="html: error_message"></div>
+				<div class="close static-confirm" data-bind="event: { tap: hide_error }">ОК</div>
+			</div>
+		</div>
+		<div data-bind="css: loading" class="background">
+			<div class="center">
+				<div class="sandglass static-sandglass"></div>
+				<div class="caption">0%</div>
+			</div>
+		</div>
+	</body>
+</html>

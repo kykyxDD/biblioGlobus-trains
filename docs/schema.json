@@ -1,0 +1,94 @@
+{
+	"V1":{
+		"GRAND" : {},
+		"TVER": {
+			"2/4" : {"name":"coupe","img": "coupe"}
+		},
+		"FPK" : {
+			"2/4" : {"name":"coupe","img": "coupe"},
+			"3/4" : {"name":"platz","img": "platz"},
+			"2/4_RIC" : {"name":"coupe_ric","img": "coupe"},
+			"2/4_2Storey" : {"name": "coupe2x", "img": "coupe2x"},
+			"S1_2Storey"  : {"name": "sedentary2x", "img": "sedentary2x"}, 
+			"VIP_2Storey" : {"name": "sedentary2x", "img": "sedentary2x"}, 
+			"S2_2Storey"  : {"name": "sedentary2x_S2", "img": "sedentary2x"}
+		},
+		"TKS" : {
+			"2/4" : {"name":"coupe","img": "coupe"},
+			"3/4" : {"name":"platz","img": "platz"}
+		},
+		"PKS" : {
+			"2/4" : {"name":"coupe","img": "coupe"},
+			"3/4" : {"name":"platz","img": "platz"}
+		},
+		"SAPSAN" : {},
+		"ALLEGRO" : {},
+		"NEV"  : {},
+		"PASS" : {},
+		"LASTOCHKA": {
+			"W1": {"name":"lastochka_w1","img": "lastochka_w1"},
+			"W2": {"name":"lastochka_w", "img": "lastochka_w"},
+			"W3": {"name":"lastochka_w", "img": "lastochka_w"},
+			"W4": {"name":"lastochka_w", "img": "lastochka_w"},
+			"W5": {"name":"lastochka_w5","img": "lastochka_w5"}
+		},
+		"LASTPREM" : {
+			"W1": {"name":"lastprem_w1", "img": "lastprem_w1"},
+			"W2": {"name":"lastprem_w",  "img": "lastprem_w"},
+			"W3": {"name":"lastprem_w",  "img": "lastprem_w"},
+			"W4": {"name":"lastprem_w",  "img": "lastprem_w"},
+			"W5": {"name":"lastprem_w5", "img": "lastprem_w5"}
+		},
+		"YROSL" : {},
+		"STRIZH" : {
+			"W1": {"name":"strizh_w1", "img": "strizh_w1"},
+			"W2": {"name":"strizh_w2", "img": "strizh_w2"},
+			"W3": {"name":"strizh_w1", "img": "strizh_w1"},
+			"W4": {"name":"strizh_w2", "img": "strizh_w2"},
+			"W5": {"name":"strizh_w1", "img": "strizh_w1"},
+			"W8": {"name":"strizh_w8", "img": "strizh_w8"},
+			"W9": {"name":"strizh_w8", "img": "strizh_w8"},
+			"W10": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W11": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W12": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W13": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W14": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W15": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W16": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W17": {"name":"strizh_w10", "img": "strizh_w10"},
+			"W18": {"name":"strizh_w10", "img": "strizh_w10"}
+		},
+		"SWIFT" : {}, 
+		"KRG" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"LG" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"LDZ" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"MOL" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"AZ" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"KZH" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		},
+		"KRG" : {
+			"2/4" : {"name":"coupe", "img": "coupe"},
+			"3/4" : {"name":"platz", "img": "platz"}
+		}
+	},
+	"V2": {
+		"KZH": {}
+	}
+}

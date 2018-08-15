@@ -1,0 +1,206 @@
+.landscape .view .switch-deck {
+	width: 170px;
+	height: 35px;
+	font-size: 12px;
+	padding-top: 12px;
+}
+.landscape .view .switch-deck.one {
+	bottom: 15px;
+}
+.landscape .view .switch-deck.two {
+	bottom: 55px;
+}
+.landscape .view .btn_regul_seat {
+  bottom: 95px;
+  height: 33px;
+}
+.landscape .view .btn_back {
+	bottom: 135px;
+	height: 33px;
+}
+.landscape .view .btn_regul_seat,
+.landscape .view .btn_back {
+	padding-top: 10px;
+}
+
+.landscape .view .switch-deck.one, 
+.landscape .view .switch-deck.two {
+	width: 185px;
+}
+.landscape .train_nav thead td {
+	height: 50px;
+}
+.landscape .train_nav .info {
+    margin-top: 0px;
+    padding-top: 5px;
+    font-size: 0.7em;
+}
+
+.landscape .train_nav .current {
+	font-size: 15px;
+}
+.landscape .train_nav .current .type {
+    font-size: 10px;
+}
+
+.landscape  .train_nav .neighbors {
+    font-size: 12px;
+}
+.landscape .train_nav .neighbors .type {
+	font-size: 9px;
+}
+
+.landscape .train_nav .arror {
+	font-size: 1.3em;
+}
+.landscape .train_nav .arror.next {
+	padding-right: 5px;
+}
+.landscape .train_nav .arror.prev {
+	padding-left: 5px;
+}
+
+.landscape .train_nav .info .info_icon {
+	height: 17px;
+	width: 24px;
+}
+
+.landscape .logo {
+	height: 50px;
+	width: 175px;
+	background-size: 140px;
+	border-radius: 0;
+	background-position: 0 12px;
+}
+.landscape .controls {
+	width: 260px;
+}
+.landscape .view {
+	right: 260px;
+}
+.landscape .controls .board-info .route {
+	font-size: 15px;
+	margin: 0 0 0.5em;
+}
+.landscape .controls .board-info .cred {
+	font-size: 0.8em;
+	padding: 0px;
+}
+.landscape .controls .board-info .cred .train_info {
+	line-height: 1.1em;
+}
+
+.landscape .controls .board-info .cred .field{
+	font-size: 0.75em;
+}
+.landscape .controls .board-info .cred .cont_val .text_day{
+	display: none;
+}
+
+.landscape .controls .users-box {
+	top: 145px;
+	bottom: 65px;
+}
+.landscape .controls .confirm {
+	height: 60px;
+}
+.landscape .users-box .users {
+	font: 0.66em/1 Arial, sans-serif;
+}
+.landscape .controls .users-box .users .user .info {
+	padding: 3px 10px;
+}
+.landscape .controls .users-box .users .user .info .name {
+	padding:  3px 0;
+}
+.landscape .controls .confirm .confirm-tick {
+	background-size: 25px 25px;
+}  
+.landscape .controls .confirm .confirm-caption {
+	font-size: 18px;
+	padding-top: 34px;
+}
+.landscape .popup .register-error {
+	width: 400px;
+	height: 200px;
+}
+.landscape .popup .register-error .message {
+	font-size: 12px;
+	margin: 20px 20px 65px;
+	max-height: 115px;
+	font-size: 15px;
+}
+.landscape .popup .register-error .close {
+	bottom: 15px;
+	width: 140px;
+	height: 35px;
+	padding-top: 9px;
+	margin-left: -70px;
+}
+.landscape .popup.regul-seat .title_regul_seat {
+	font-size: 1.2em;
+}
+.landscape .popup.regul-seat .close_regul_seat {
+	font-size: 25px;
+	width: 25px;
+	height: 25px;
+}
+.landscape .popup.regul-seat #regul_seat {
+	font-size: 0.8em;
+	bottom: 20px;
+	top: 50px;
+}
+.landscape .popup.regul-seat #regul_seat p {
+	margin: 5px 0;
+}
+.icon_help {
+	padding-left: 30px;
+	font-size: 15px;
+}
+.icon_help:before {
+	width: 60px;
+	height: 60px;
+}
+.popup_help .info_help {
+	margin-top: 100px;
+}
+.landscape .info_help .list {
+	font-size: 0.8em;
+}
+.landscape .info_help .list.sex ul li {
+	padding: 5px 0px 5px 30px;
+}
+.landscape .info_help .list.seat ul li {
+	padding: 7px 0px 7px 30px;
+}
+
+.landscape .info_help .list ul li:before {
+	background-size: contain;
+}
+
+.landscape .info_help .list.sex ul li:before {
+	width: 20px;
+	height: 20px;
+	top: 2px;
+}
+.landscape .info_help .list.seat ul li:before {
+	width: 25px;
+	height: 25px;
+}
+.landscape .popup.popup_help {
+	width: 250px
+}
+.portrait .view .switch-deck.one {
+	bottom: 20px;
+}
+.portrait .view .switch-deck.two {
+	bottom: 60px;
+}
+
+.portrait .view .btn_regul_seat {
+	bottom: 100px;
+}
+.portrait .view .btn_back {
+	bottom: 145px;
+}
+

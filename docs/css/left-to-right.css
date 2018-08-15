@@ -1,0 +1,315 @@
+.airline-logo-small {
+    display: none;
+}
+.airline-logo {
+    display: none !important;
+}
+
+.controls .screen {
+    display: none !important;
+}
+
+.controls .board-info .route {
+    white-space: normal !important;
+}
+
+.landscape .controls .users-box {
+    top: 175px;
+}
+
+.train_nav {
+    position: absolute;
+    margin: 0 auto;
+    right: 25%;
+    left: 25%;
+    top: 15px;
+    font-family: Arial, sans-serif;
+    background-color: rgb(227, 247, 233);
+    width: 50%;
+    pointer-events: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    border-spacing: 0;
+}
+
+.train_nav thead {
+  text-align: center;
+  pointer-events: auto;
+  background: #0bd04c;
+  color: #fff;
+  height: 56px;
+  font-weight: bold;
+}
+.train_nav thead .type {
+  text-transform: lowercase;
+  font-weight: normal;
+}
+.train_nav thead td {
+  height: 56px
+}
+
+.train_nav td.hide {
+  /*opacity: 0;*/
+  font-size: 0em !important;
+}
+.train_nav .arror {
+  font-size: 2em;
+  width: 7%;
+  cursor: pointer;
+}
+.train_nav .arror.prev {
+  padding: 0 5px 0 10px;
+}
+.train_nav .arror.next {
+  padding: 0 10px 0 5px;
+}
+.train_nav .current {
+    font-size: 20px;
+    width: 180px;
+    cursor: default;
+    text-transform: uppercase;
+}
+.train_nav .current div {
+  display: inline-block;
+}
+
+.train_nav .current .type {
+    font-size: 15px;
+    padding: 0 5px;
+}
+
+.train_nav .neighbors {
+    font-size: 16px;
+    width: 140px;
+    cursor: pointer;
+}
+
+.train_nav .neighbors .type {
+    font-size: 12px;
+}
+.train_nav .neighbors.prev {
+  text-align: left;
+}
+.train_nav .neighbors.next {
+  text-align: right;
+}
+.train_nav .info {
+  line-height: 1.35em;
+  text-align: left;
+  font-size: 0.85em;
+  padding: 9px 10px 14px;
+  cursor: default;
+}
+.train_nav .info td{
+  vertical-align: top;
+}
+
+.train_nav .info .price,
+.train_nav .info .descr,
+.train_nav .info .carrier {
+  width: 100%;
+  margin-top: 10px;
+}
+.train_nav .info .name {
+  padding-right: 10px;
+  white-space: nowrap;
+  text-align: right;
+  color: #575858;
+}
+.train_nav .info .price,
+.train_nav .info .price .name {
+  color: #ff6600;
+
+}
+.train_nav .info .price td {
+  padding-bottom: 5px;
+}
+.train_nav .info .price .name{
+  vertical-align: bottom;
+}
+.train_nav .info .price span.price {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.train_nav .info .carrier .text {
+  font-weight: bold;
+  padding: 2px 0;
+}
+.train_nav .info .text {
+  vertical-align: middle;
+}
+.train_nav .info .services .name {
+  padding-bottom: 5px;
+  vertical-align: bottom;
+}
+.train_nav .info .info_icon {
+  width: 31px;
+  height: 20px;
+  display: inline-block;
+  background-size: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+}
+.train_nav .info .info_icon.ELREG {
+  background: url(../img/icon_elreg.png) no-repeat center;
+  background-size: 100%;
+}
+.train_nav .info .info_icon.EAT {
+  background: url(../img/icon_eat.png) no-repeat center;
+  background-size: 100%;
+}
+.train_nav .info .info_icon.COND {
+  height: 28px;
+  background-position: 0 -39px;
+  background-size: 100%;
+  display: none;
+}
+.train_nav .info .info_icon.BED {
+  background-position: 0 0;
+  background-size: 100%;
+  display: none;
+}
+.train_nav .info .info_icon.SAN {
+  background-position: -96px 0;
+  background-size: 100%;
+  display: none;
+}
+.train_nav .info .info_icon.WIFI {
+  background: url(../img/wifi.png) no-repeat center; 
+  background-size: 100%;
+}
+.train_nav .info .tariffs ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.view .plane .deck .selection .wrap {
+  -webkit-transform:translate(-45px, 5px);
+  -moz-transform: translate(-45px, 5px);
+  -ms-transform: translate(-45px, 5px);
+  -o-transform: translate(-45px, 5px);
+  transform: translate(-45px, 5px);
+  position: relative;
+  
+}
+
+.platz_lower_top  .wrap {
+  -webkit-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-46px, 48px) skew(0deg) !important;
+}
+.platz_lower_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-27px, 54px) skew(0deg) !important;
+}
+.platz_lower_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(-21px, 63px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-21px, 63px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-21px, 63px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-21px, 63px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-21px, 63px) skew(0deg) !important;
+}
+.platz_upper_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-68px, 132px) skew(0deg) !important;
+}
+.platz_upper_top  .wrap {
+  -webkit-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-104px, 44px) skew(0deg) !important;
+}
+.platz_upper_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(-83px, 126px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-83px, 126px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-83px, 126px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-83px, 126px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-83px, 126px) skew(0deg) !important;
+}
+.kupe_upper_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-73px, 118px) skew(0deg) !important;
+}
+.kupe_upper_right .wrap {
+  -webkit-transform: rotate(0deg) translate(-92px, 125px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-92px, 125px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-92px, 125px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-92px, 125px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-92px, 125px) skew(0deg) !important;
+}
+.kupe_lower_left  .wrap {
+  -webkit-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-32px, 50px) skew(0deg) !important;
+}
+.kupe_lower_right  .wrap {
+  -webkit-transform: rotate(0deg) translate(-15px, 79px) skew(0deg) !important;
+  -moz-transform: rotate(0deg) translate(-15px, 79px) skew(0deg) !important;
+  -ms-transform: rotate(0deg) translate(-15px, 79px) skew(0deg) !important;
+  -o-transform: rotate(0deg) translate(-15px, 79px) skew(0deg) !important;
+  transform: rotate(0deg) translate(-15px, 79px) skew(0deg) !important;
+}
+
+.platz_lower_right img ,
+.platz_upper_right img ,
+.kupe_upper_right img ,
+.kupe_lower_right img {
+  position: absolute;
+  right: 0;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.platz_lower_left img ,
+.platz_upper_left img ,
+.kupe_upper_left img ,
+.kupe_lower_left img {
+  position: absolute;
+  left: 0;
+}
+.platz_lower_right,
+.platz_upper_right,
+.kupe_upper_right,
+.kupe_lower_right {
+  text-align: right;
+}
+
+.platz_lower_left,
+.platz_upper_left,
+.kupe_upper_left,
+.kupe_lower_left {
+  text-align: left;
+}
+.platz_lower_left .wrap .label,
+.platz_upper_left .wrap .label,
+.kupe_upper_left .wrap .label,
+.kupe_lower_left .wrap .label {
+  left: 0;
+}
+.platz_lower_right .wrap .label,
+.platz_upper_right .wrap .label,
+.kupe_upper_right .wrap .label,
+.kupe_lower_right .wrap .label {
+  right: 0;
+}

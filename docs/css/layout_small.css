@@ -1,0 +1,537 @@
+/************************************ MIXINS **********************************/
+body {
+  font-size: 50%; }
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 132px;
+  height: 35px;
+  border-radius: 0 35px 35px 0;
+  background-size: 115px;
+  background-position: 6px; }
+.portrait .logo {
+  top: -45px;
+}
+.landscape .logo {
+  top: 0;
+  width: 27px;
+  height: 30px;
+  background-size: 95px;
+}
+
+.view .switch-deck {
+  position: absolute;
+  right: -3px;
+  width: 80px;
+  height: 30px;
+  background-repeat: no-repeat;
+  padding-top: 10px;
+  font-size: 1.1em; }
+  .view .switch-deck.two {
+    bottom: 40px; }
+  .view .switch-deck.one {
+    bottom: 10px; }
+.view .btn_regul_seat,
+.view .btn_back {
+  position: absolute;
+  bottom: 75px;
+  right: -3px;
+  width: 120px;
+  height: 25px;
+  padding-top: 7px;
+  font-size: 1.1em;
+}
+.view .btn_regul_seat {
+   bottom: 75px;
+}
+.view .btn_back {
+  bottom: 105px;
+}
+
+.view .switch-deck.two, 
+.view .switch-deck.one {
+  width: 140px;
+  padding-left: 40px;
+}
+.train_nav thead td{
+  height: 40px;
+}
+.train_nav .current {
+  font-size: 9px;
+}
+
+.train_nav .neighbors {
+  font-size: 7px;
+}
+
+.train_nav .neighbors .type {
+  font-size: 6px;
+}
+.train_nav .current .type {
+  font-size: 8px;
+}
+
+.train_nav .arror.next {
+  padding: 0 3px 0 0;
+}
+.train_nav .arror.prev {
+  padding: 0 0 0 3px;
+}
+.train_nav .info {
+  margin-top: 0px;
+  font-size: 0.9em;
+  padding: 0px 5px;
+
+}
+.train_nav .info .info_icon {
+  background-size: 175px;
+  height: 13px;
+  width: 18px;
+}
+.train_nav .info .info_icon.ELREG {
+  /*width: 18px;*/
+  /*background-position: -56px 0;*/
+}
+
+.controls .screen {
+  display: none; }
+  .controls .screen .board-num {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 4px; }
+  .controls .screen .airline-logo-small {
+    position: absolute;
+    left: auto;
+    top: 0px;
+    right: 6px;
+    bottom: auto;
+    width: 75px;
+    height: 25px; }
+  .controls .screen .nav {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5); }
+.controls .board-info-table {
+  font-size: 1.4em; }
+  .controls .board-info-table table {
+    width: 100%; }
+.controls .board-info .route {
+  margin: 3px 0px; }
+.landscape .controls .board-info .route {
+  min-height: 25px;
+  margin: 3px 0 3px 30px;
+}
+.controls .board-info .cred {
+  padding: 2px; 
+  line-height: 1em;
+  }
+  .controls .board-info .cred .number, .controls .board-info .cred .date {
+    line-height: 1;
+    display: block;
+    float: none; }
+  .landscape .controls .board-info .cred {
+    line-height: 0.8em;
+  }
+  .landscape .controls .board-info .cred .number .field, 
+  .landscape .controls .board-info .cred .city .field {
+    display: none;
+    width: 10%;
+  }
+  .landscape .controls .board-info .cred .number .cont_val, 
+  .landscape .controls .board-info .cred .city .cont_val {
+    width: 80%;
+    text-align: center;
+  }
+.controls .users-box .users .user {
+  height: 29px; }
+  .controls .users-box .users .user.infant {
+    height: 14px; }
+  .controls .users-box .users .user .info {
+    padding-left: 6px; }
+    .users-box .users .user .info option, 
+    .users-box .users .user .info select {
+      font-size: 1em;
+    }
+    .controls .users-box .users .user .info .name {
+      padding: 1px 0; }
+    .controls .users-box .users .user .info .status tr {
+      height: 7px; }
+    .controls .users-box .users .user .info .status .place, .controls .users-box .users .user .info .status .class {
+      display: none; }
+    .controls .users-box .users .user .info .status .message td {
+      padding-bottom: 2px; }
+  .controls .users-box .users .user .print {
+    width: 33px; }
+    .controls .users-box .users .user .print .icon {
+      display: none; }
+  .controls .users-box .users .user .class {
+    display: none; }
+  .controls .users-box .users .user .ok {
+    display: none;
+    width: 19px;
+    padding-top: 7px; }
+    .controls .users-box .users .user .ok svg {
+      width: 9px;
+      height: 9px; }
+    .controls .users-box .users .user .info .child td > div{
+      display: inline-block;
+      vertical-align: top;
+    }
+    .controls .users-box .users .user .select_child .value {
+      text-transform: capitalize;
+    }
+.controls .confirm .confirm-caption {
+  padding-top: 22px; }
+.controls .confirm .confirm-tick {
+  background-size: 17px 17px; }
+
+.popup .register {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; }
+  .popup .register .button-close {
+    position: absolute;
+    left: auto;
+    top: 2px;
+    right: 2px;
+    bottom: auto;
+    width: 35px;
+    height: 35px; }
+  .landscape .popup .register .content {
+    margin: 10px 40px; }
+  .portrait .popup .register .content {
+    margin: 50px 10px; }
+  .popup .register .content .header .notice {
+    margin-top: 4px; }
+  .popup .register .headers-wrap {
+    width: auto; }
+    .landscape .popup .register .headers-wrap {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      right: 60px;
+      bottom: auto; }
+    .portrait .popup .register .headers-wrap {
+      position: absolute;
+      left: 10px;
+      top: 120px;
+      right: 10px;
+      bottom: auto; }
+  .landscape .popup .register .users-container {
+    position: absolute;
+    left: 60px;
+    top: 80px;
+    right: 60px;
+    bottom: 50px; }
+  .portrait .popup .register .users-container {
+    position: absolute;
+    left: 10px;
+    top: 145px;
+    right: 10px;
+    bottom: 60px; }
+  .popup .register .list td {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 6px; }
+    .popup .register .list td:nth-child(1) {
+      padding: 0 11px; }
+    .popup .register .list td:nth-child(2) {
+      width: 50px; }
+    .popup .register .list td:nth-child(3) {
+      width: 87px; }
+  .popup .register .list.users .user td {
+    height: 20px; }
+  .popup .register .list.users .error td {
+    height: 7px; }
+  .popup .register .list.headers {
+    height: 25px; }
+    .popup .register .list.headers td {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 3px 6px; }
+  .popup .register .actions-wrap {
+    width: auto; }
+    .landscape .popup .register .actions-wrap {
+      position: absolute;
+      left: 60px;
+      top: auto;
+      right: 60px;
+      bottom: 0px; }
+    .portrait .popup .register .actions-wrap {
+      position: absolute;
+      left: 10px;
+      top: auto;
+      right: 10px;
+      bottom: 5px; }
+  .popup .register .actions .action {
+    width: 110px;
+    height: 39px; }
+.popup .register-error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  height: 150px;
+  margin-left: -150px;
+  margin-top: -75px; }
+  .popup .register-error .message {
+    margin: 15px 15px 75px;
+    max-height: 60%;
+    overflow: auto;}
+  .popup .register-error .close {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    right: auto;
+    bottom: 10px;
+    width: 100px;
+    height: 25px;
+    margin-left: -50px;
+    padding-top: 8px; }
+
+.background .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 176px;
+  height: 176px;
+  margin-left: -88px;
+  margin-top: -88px; }
+
+.landscape .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 164px;
+  bottom: 0; }
+.landscape .controls {
+  position: absolute;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 164px; }
+  .landscape .controls .board-info-table {
+    display: none; }
+  .landscape .controls .board-info {
+    position: relative;}
+
+  .landscape .controls .confirm {
+    position: relative;
+    left: auto;
+    top: auto;
+    right: 1px;
+    bottom: 1px;
+    width: 100%;
+    height: 40px; }
+.landscape .users-box .users .user .print {
+  width: 33px; }
+.landscape .users-box .users .user .class .label {
+  height: 9px;
+  line-height: 10px; }
+.landscape .users-box .users .user .class .value {
+  height: 12px; }
+.landscape .users-box .users .user .place {
+  width: 33px;
+  text-align: center; }
+  .landscape .users-box .users .user .place .label {
+    height: 9px;
+    line-height: 10px; }
+  .landscape .users-box .users .user .place .value {
+    height: 12px; }
+.landscape.demo .controls .screen {
+  display: block;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 162px;
+  height: 119px; }
+.landscape.demo .controls .airline-logo {
+  position: absolute;
+  left: 1px;
+  top: 121px;
+  right: 1px;
+  bottom: 42px; }
+
+.portrait .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 132px; }
+.portrait .controls {
+  position: absolute;
+  left: 0;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  height: 132px; }
+  .portrait .controls .info_train > td {
+    padding-right: 50px;
+  }
+  .portrait .controls .board-info-table {
+    width: 100%;
+   }
+  .portrait .controls .board-info {
+    display: none; }
+  .portrait .controls .confirm {
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    left: auto;
+    top: 4px;
+    right: 4px;
+    bottom: auto; }
+.portrait .users-box .users .user {
+  font-size: 2em; }
+  .portrait .users-box .users .user .print div, .portrait .users-box .users .user .class div, .portrait .users-box .users .user .place div {
+    display: inline-block; }
+  .portrait .users-box .users .user .print {
+    width: 60px; }
+  .portrait .users-box .users .user .class {
+    width: 100px; }
+  .users-box .users .user.disabled .place {
+    display: none;}
+
+.portrait.demo .view {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 127px; }
+.portrait.demo .controls {
+  height: 127px; }
+  .portrait.demo .controls .board-info-table {
+    display: none; }
+  .portrait.demo .controls .screen {
+    display: block;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 162px;
+    height: 119px; }
+  .portrait.demo .controls .airline-logo {
+    position: absolute;
+    left: 174px;
+    top: 4px;
+    right: 4px;
+    bottom: 48px;
+    background-size: auto 100%; }
+  .portrait.demo .controls .confirm {
+    position: absolute;
+    left: 174px;
+    top: auto;
+    right: 4px;
+    bottom: 4px;
+    width: auto;
+    height: 40px; }
+
+.popup.regul-seat .cont_regul_seat {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  height: 70%;
+  background: #fff;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+.portrait .popup.regul-seat .cont_regul_seat {
+  height: auto;
+  top: 10%;
+  bottom: 135px;
+}
+.popup.regul-seat #regul_seat {
+  position: absolute;
+  margin: 0 5px;
+  top: 35px;
+  left: 0px;
+  right: 0px;
+  bottom: 20px;
+}
+
+.popup.regul-seat .title_regul_seat {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 50px;
+  margin: auto;
+  font-size: 125%;
+  text-align: center;
+
+}
+.popup.regul-seat .close_regul_seat {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  text-align: right;
+  font-size: 150%;
+  cursor: pointer;
+}
+.popup.regul-seat .cont_regul_seat .text{
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.icon_help {
+  top: auto;
+  left: 40px;
+  bottom: 25px;
+  font-size: 1em;
+  padding: 7px 5px 7px 25px;
+}
+.icon_help:before {
+  top: -6px;
+  left: -20px;
+  width: 35px;
+  height: 35px;
+}
+.portrait .icon_help {
+  bottom: 65px;
+  left: 30px;
+}
+
+.popup.popup_help {
+  width: 180px;
+}
+.popup.popup_help .info_help {
+  margin-top: 20px;
+}
+.popup_help .help_close {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+}
+.popup_help .list {
+  padding-right: 40px;
+}
+
+.popup_help .list ul li {
+  padding: 7px 0 7px 25px;
+}
+.popup_help .list ul li:before {
+  width: 20px;
+  height: 20px;
+  top: 2px;
+}
+.popup_help .list.seat ul li:before {
+  background-size: contain;
+}
+.popup_help .list.sex ul li:before {
+  background-size: 70%;
+}
