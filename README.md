@@ -1,4 +1,4 @@
-https://kykyxdd.github.io/trains/
+https://kykyxdd.github.io/biblioGlobus-trains/
 
 
 Регистрация пассажиров поезда. Создание интерактивных страниц для выбора места в поезде и последующей регистрации для поездки. 
